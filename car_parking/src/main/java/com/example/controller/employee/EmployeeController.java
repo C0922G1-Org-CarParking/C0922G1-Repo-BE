@@ -24,7 +24,12 @@ public class EmployeeController {
 @Autowired
     private IPositionService positionService;
 
-
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2023
+     * Function: get the list position
+     * @return if return error then HttpStatus.NO_CONTENT else then return positionList and HttpStatus.OK
+     */
     @GetMapping("positionAll")
     public ResponseEntity getAllPosition() {
         List<IPositionDto> positionList = positionService.getAllPosition();
@@ -33,12 +38,24 @@ public class EmployeeController {
         }
         return new ResponseEntity(positionList, HttpStatus.OK);
     }
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2023
+     * Function: get the id in  Employee
+     * @return  id and HttpStatus.OK
+     */
+
     @GetMapping("/{id}")
     public ResponseEntity<Employee> findById(@PathVariable Long id) {
         Employee employee = employeeService.findById(id);
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
-
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2023
+     * Function: add data employee  into DB
+     * @return  if has errors then return HttpStatus.Not_FOUND else add data into DB
+     */
     @PostMapping("/createEmployee")
     public ResponseEntity createEmployee(@Validated @RequestBody EmployeeDto employee,
                                         BindingResult bindingResult) {
@@ -51,6 +68,12 @@ public class EmployeeController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2023
+     * Function: edit data employee if not findById then HttpStatus.NOT_FOUND else set data in DB and HttpStatus.OK
+     * @return  if has errors then return HttpStatus.Not_FOUND else add data into DB
+     */
 
     @PatchMapping("/updateEmployee/{id}")
     public ResponseEntity updateEmployee(@PathVariable("id") Long id,@Validated @RequestBody EmployeeDto employeeDto,BindingResult bindingResult) {
