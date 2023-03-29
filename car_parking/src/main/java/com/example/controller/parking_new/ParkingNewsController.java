@@ -20,7 +20,7 @@ public class ParkingNewsController {
     /**
      * Created by: QuynhND
      * Date created: 29/03/2023
-     * Function: find parking news with pagination and search
+     * Function: find/search parking news with pagination and search
      *
      * @param pageable, keyword
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
