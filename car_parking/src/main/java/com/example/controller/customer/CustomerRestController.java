@@ -14,8 +14,26 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RequestMapping("/customer")
 public class CustomerRestController {
+    /**
+     * Create by: VuBD
+     * Date create: 29/03/2023
+     * injection interface serviceCustomer
+     */
     @Autowired
     private ICustomerService customerService;
+
+    /**
+     * Create by: VuBD
+     * Date create: 29/03/2023
+     * Function: connect service to get data corresponding to the search data
+     * @param name
+     * @param idCard
+     * @param phoneNumber
+     * @param starDate
+     * @param endDate
+     * @param page
+     * @return
+     */
     @GetMapping("/search")
     public ResponseEntity<Page<ICustomerDTO>> searchCustomer(@RequestParam(required = false, defaultValue = "") String name,
                                                          @RequestParam(required = false, defaultValue = "") String idCard,
@@ -27,11 +45,21 @@ public class CustomerRestController {
         Page<ICustomerDTO> customerPage = this.customerService.searchCustomer(name, idCard, phoneNumber, starDate, endDate, pageable);
         return new ResponseEntity<>(customerPage, HttpStatus.OK);
     }
-    @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteCustomer(@RequestParam int id){
+
+    /**
+     * Create by: VuBD
+     * Date create: 29/03/2023
+     * Function: connect service to delete a customer with corresponding id
+     * @param id
+     * @return: If successful, return ResponseEntity<>("Xoá khách hàng thành công", HttpStatus.OK), if unsuccessful,
+     * return ResponseEntity<>("Xóa khách hàng không thành công", HttpStatus.NOT_FOUND)
+     */
+    @DeleteMapping("/{id}/delete")
+    public ResponseEntity<String> deleteCustomer(@PathVariable int id){
         if (customerService.deleteCustomer(id)){
             return new ResponseEntity<>("Xoá khách hàng thành công", HttpStatus.OK);
         }
-        return new ResponseEntity<>("Xóa khách hàng không thành công", HttpStatus.OK);
+        return new ResponseEntity<>("Xóa khách hàng không thành công, khách hàng đã bị xóa hoặc không tồn tại",
+                HttpStatus.NOT_FOUND);
     }
 }

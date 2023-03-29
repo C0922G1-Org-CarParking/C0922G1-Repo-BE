@@ -11,6 +11,18 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
+    /**
+     * Create by: VuBD
+     * Date create: 29/03/2023
+     * Function: connect database to get data corresponding to the search data
+     * @param name
+     * @param idCard
+     * @param phoneNumber
+     * @param starDate
+     * @param endDate
+     * @param pageable
+     * @return
+     */
     @Query(value = "SELECT customer.id, customer.name, customer.date_of_birth, customer.id_card, customer.gender, " +
             "customer.phone_number, customer.email FROM c0922g1_car_parking.customer WHERE is_deleted = 0 and " +
             "name like %:name% AND id_card like %:idCard% AND phone_number like %:phoneNumber% AND " +
@@ -22,11 +34,24 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
                                       @Param("starDate") String starDate,
                                       @Param("endDate") String endDate,
                                       Pageable pageable);
+
+    /**
+     * Create by: VuBD
+     * Date create: 29/03/2023
+     * Function: connect database to delete a customer with corresponding id
+     * @param id
+     */
     @Transactional
     @Modifying
     @Query(value = "UPDATE c0922g1_car_parking.customer SET is_deleted = 1 WHERE id = :id", nativeQuery = true)
     void deleteCustomer(@Param("id") int id);
+    /**
+     * Create by: VuBD
+     * Date create: 29/03/2023
+     * Function: connect database to get data a customer with corresponding id
+     * @param id
+     */
     @Query(value = "SELECT customer.id, customer.name, customer.date_of_birth, customer.id_card, customer.gender, " +
-            "customer.phone_number, customer.email FROM c0922g1_car_parking.customer WHERE id = :id", nativeQuery = true)
+            "customer.phone_number, customer.email FROM c0922g1_car_parking.customer WHERE id = :id AND is_deleted = 0", nativeQuery = true)
     ICustomerDTO findCustomerById(@Param("id") int id);
 }
