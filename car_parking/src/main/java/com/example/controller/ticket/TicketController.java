@@ -21,6 +21,12 @@ public class TicketController {
     @Autowired
     private TicketService ticketService;
 
+    /**
+     * Created by: HuyNL
+     * Date created: 29/03/2023
+     * Function: edit Ticket
+     * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
+     */
     @GetMapping("/ticket")
     private ResponseEntity<Ticket> findTicket(@RequestParam(value = "id", defaultValue = "-1") Long id) {
         Ticket ticket = ticketService.findTicket(id);
@@ -31,12 +37,12 @@ public class TicketController {
     }
 
     @PutMapping("/update/{id}")
-    private ResponseEntity<?> updateTicket(@Validated @RequestBody EditTicketDto editTicketDto, BindingResult bindingResult) {
+    private ResponseEntity<?> updateTicket(@Validated @RequestBody EditTicketDto editTicketDto,
+                                           BindingResult bindingResult, @PathVariable Long id) {
+//        int a = id;
         new TicketDto().validate(editTicketDto, bindingResult);
         Ticket ticket = new Ticket();
         BeanUtils.copyProperties(editTicketDto, ticket);
-//        ticketService.updateTicket1(editTicketDto.getLocationId(), editTicketDto.getExpiryDate(), editTicketDto.getId());
-//        ticketService.updateTicket2(editTicketDto.getFloorId(), editTicketDto.getSectionId(), editTicketDto.getId());
         ticketService.updateTicket(ticket.getTicketType().getId(), ticket.getLocation().getFloor().getId(), ticket.getLocation().getSection().getId(), ticket.getExpiryDate(), ticket.getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }

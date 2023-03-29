@@ -11,4 +11,6 @@ public interface ICarInOutDTO {
     String getFloor_name();
     String getTicket_effective_date();
     String getTicket_expiry_date();
+    String getPlate_number();
+    String getCustomer_id_card();
 }
