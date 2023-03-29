@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="773a2f80-050d-4838-9c7b-37377ea2a0eb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/car_in_out/CustomerRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/CustomerCarDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/customer_car/ICarRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/customer_car/ICarTypeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/customer_car/ICustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/customer_car/CarService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/customer_car/CarTypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/customer_car/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/customer_car/ICarService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/customer_car/ICarTypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/customer_car/ICustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Car.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NdZYujU3q9i3NsVW4GOZfWcDxf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Module_6_demo/C0922G1-Repo-BE/car_parking&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;8b813644e54a34321b3ce14b11b55c0d&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Car_parking\C0922G1-Repo-BE\car_parking\src\main" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.service.customer_car" />
+      <recent name="com.example.repository.customer_car" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="CarParkingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="car_parking.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.CarParkingApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="773a2f80-050d-4838-9c7b-37377ea2a0eb" name="Changes" comment="" />
+      <created>1679995982621</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679995982621</updated>
+      <workItem from="1679995985999" duration="1167000" />
+      <workItem from="1680005928165" duration="12821000" />
+      <workItem from="1680043988706" duration="5412000" />
+      <workItem from="1680052978303" duration="26651000" />
+      <workItem from="1680090428312" duration="672000" />
+      <workItem from="1680097204883" duration="1601000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
