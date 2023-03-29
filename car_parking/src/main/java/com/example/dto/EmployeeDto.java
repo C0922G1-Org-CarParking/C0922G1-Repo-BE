@@ -1,48 +1,22 @@
-package com.example.model;
+package com.example.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
-import java.util.Set;
+import com.example.model.Position;
 
-@Entity
-public class Employee {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+public class EmployeeDto {
     private Long id;
-
-    @Column(length = 45, nullable = false)
     private String name;
-
-    @Column(columnDefinition = "date", nullable = false)
     private String dateOfBirth;
-
-    @Column(nullable = false)
     private boolean gender;
-
-    @Column(length = 20, nullable = false, unique = true)
     private String phoneNumber;
-    @ManyToOne
-    @JoinColumn(name = "position_id", referencedColumnName = "id")
-    private Position position;
-
-    @OneToOne(mappedBy = "employee")
-    private Account account;
-
-    private String email;
-
-    @Column(length = 45, nullable = false, unique = true)
     private String idCard;
-
-    @Column(nullable = false)
     private int district;
-    @Column(nullable = false)
     private int province;
-    @Column(nullable = false)
     private int commune;
-    @Column(nullable = false)
     private String street;
-
+    private Position position;
+    private String email ;
     private boolean isDeleted;
 
     public boolean isDeleted() {
@@ -53,8 +27,6 @@ public class Employee {
         isDeleted = deleted;
     }
 
-
-
     public String getEmail() {
         return email;
     }
@@ -63,19 +35,7 @@ public class Employee {
         this.email = email;
     }
 
-    @OneToMany(mappedBy = "employee")
-    @JsonIgnore
-    private Set<Ticket> ticketSet;
-
-    public Employee() {
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public EmployeeDto() {
     }
 
     public Long getId() {
@@ -110,12 +70,12 @@ public class Employee {
         this.gender = gender;
     }
 
-    public Account getAccount() {
-        return account;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getIdCard() {
@@ -164,13 +124,5 @@ public class Employee {
 
     public void setPosition(Position position) {
         this.position = position;
-    }
-
-    public Set<Ticket> getTicketSet() {
-        return ticketSet;
-    }
-
-    public void setTicketSet(Set<Ticket> ticketSet) {
-        this.ticketSet = ticketSet;
     }
 }
