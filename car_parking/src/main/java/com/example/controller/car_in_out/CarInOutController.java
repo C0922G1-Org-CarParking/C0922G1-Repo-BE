@@ -67,7 +67,7 @@ public class CarInOutController {
      * Date created: 29/03/2023
      * Function: save Car history when getting in and out of the parking lot
      * @param CarInOut from user with properties timeIn and timeOut
-     * @return Object CarInOutDTO or Http.status Not_Found
+     * @return Http.status.NOT_FOUND or Http.status.OK
      */
     @PostMapping("/save-car-in-out")
     public ResponseEntity<CarInOutDTO> saveCarInOut(@Validated @RequestBody CarInOutDTO carInOutDTO, BindingResult bindingResult) {
