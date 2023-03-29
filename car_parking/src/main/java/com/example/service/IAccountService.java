@@ -1,11 +1,11 @@
 package com.example.service;
 
 
+import com.example.model.Account;
+
 public interface IAccountService {
+    Account findAccountByEmployee_Email(String username);
 
-
-//    String existsByUserName(String username);
-//
-//    void saveNewPassword(String password,String code);
+    void saveNewPassword(String newPassword,Long accountId);
 
 }

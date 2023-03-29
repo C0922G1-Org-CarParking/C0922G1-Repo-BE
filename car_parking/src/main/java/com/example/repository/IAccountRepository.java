@@ -14,8 +14,8 @@ public interface IAccountRepository extends JpaRepository<Account,Long> {
     
 //    @Query(value = "SELECT username from account where username = ?1", nativeQuery = true)
 //    String existsByEmployeeEmail(String username);
-//
-//    @Modifying
-//    @Query(value = "update account set encrypt_pw =?1 where verification_code=?2 ",nativeQuery = true)
-//    void saveNewPassword(String password, String code);
+
+    @Modifying
+    @Query(value = "update account set password =?1 where id =?2 ",nativeQuery = true)
+    void saveNewPassword(String newPassword, Long id);
 }
