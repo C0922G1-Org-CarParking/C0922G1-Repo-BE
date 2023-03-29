@@ -20,8 +20,9 @@ public class Employee {
     @Column(nullable = false)
     private boolean gender;
 
-    @OneToOne
-    @JoinColumn(name = "email", referencedColumnName = "employeeEmail")
+    @Column(length = 45,nullable = false,unique = true)
+    private String email;
+    @OneToOne(mappedBy = "employee")
     private Account account;
 
     @Column(length = 45, nullable = false, unique = true)
@@ -36,7 +37,22 @@ public class Employee {
     @Column(nullable = false)
     private String street;
 
+    @Column(length = 20, nullable = false, unique = true)
+    private String phoneNumber;
+
     private boolean isDeleted;
+
+    @ManyToOne
+    @JoinColumn(name = "position_id", referencedColumnName = "id")
+    private Position position;
+
+    @OneToMany(mappedBy = "employee")
+    @JsonIgnore
+    private Set<Ticket> ticketSet;
+
+
+    public Employee() {
+    }
 
     public boolean isDeleted() {
         return isDeleted;
@@ -46,16 +62,20 @@ public class Employee {
         isDeleted = deleted;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "position_id", referencedColumnName = "id")
-    private Position position;
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    @OneToMany(mappedBy = "employee")
-    @JsonIgnore
-    private Set<Ticket> ticketSet;
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
-    public Employee() {
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Long getId() {

@@ -7,9 +7,14 @@ import java.util.Set;
 
 @Entity
 public class Account {
+
     @Id
-    @Column(length = 45,nullable = false,unique = true)
-    private String employeeEmail;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long accountId;
+
+    @OneToOne
+    @JoinColumn(name = "employee_email",referencedColumnName = "email")
+    private Employee employee;
 
     @Column(nullable = false)
     private String password;
@@ -18,19 +23,25 @@ public class Account {
     @JsonIgnore
     private Set<AccountRole> accountRoleSet;
 
-    @OneToOne(mappedBy = "account")
-    private Employee employee;
-
     public Account() {
     }
 
-    public String getEmployeeEmail() {
-        return employeeEmail;
+    public Long getAccountId() {
+        return accountId;
     }
 
-    public void setEmployeeEmail(String employeeEmail) {
-        this.employeeEmail = employeeEmail;
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
     }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
 
     public String getPassword() {
         return password;
