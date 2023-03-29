@@ -10,7 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface IAccountRepository extends JpaRepository<Account,Long> {
 
-    Account findAccountByEmployee_Email(String username);
+
+    @Query(value = "select a.* from account a join employee e on a.employee_id = e.id where e.email = ?1",nativeQuery = true)
+    Account findAccountByEmployeeEmail(String username);
 
     @Modifying
     @Query(value = "update account set password =?1 where id =?2 ",nativeQuery = true)

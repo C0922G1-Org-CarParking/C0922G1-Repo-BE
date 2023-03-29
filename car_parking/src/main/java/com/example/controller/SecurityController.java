@@ -78,7 +78,7 @@ public class SecurityController {
 
     @GetMapping("/reset-password/{email}")
     public ResponseEntity<?> resetPassword(@PathVariable String email) {
-        Account account= accountService.findAccountByEmployee_Email(email);
+        Account account= accountService.findAccountByEmployeeEmail(email);
         if (account != null) {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(email);
