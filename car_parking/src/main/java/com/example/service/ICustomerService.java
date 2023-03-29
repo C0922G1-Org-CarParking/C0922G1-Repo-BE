@@ -10,6 +10,7 @@ public interface ICustomerService {
      * Create by: VuBD
      * Date create: 29/03/2023
      * Function: connect repository to get data corresponding to the search data
+     *
      * @param name
      * @param idCard
      * @param phoneNumber
@@ -25,6 +26,7 @@ public interface ICustomerService {
      * Create by: VuBD
      * Date create: 29/03/2023
      * Function: connect repository to get data a customer with corresponding id
+     *
      * @param id
      * @return
      */

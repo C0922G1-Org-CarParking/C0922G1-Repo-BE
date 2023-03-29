@@ -22,6 +22,7 @@ public class CustomerService implements ICustomerService {
      * Create by: VuBD
      * Date create: 29/03/2023
      * Function: connect repository to get data corresponding to the search data
+     *
      * @param name
      * @param idCard
      * @param phoneNumber
@@ -40,13 +41,14 @@ public class CustomerService implements ICustomerService {
      * Create by: VuBD
      * Date create: 29/03/2023
      * Function: connect database to delete a customer with corresponding id
+     *
      * @param id
      * @return: If successful, return true, if unsuccessful, return false
      */
 
     @Override
     public boolean deleteCustomer(int id) {
-        if (customerRepository.findCustomerById(id) != null){
+        if (customerRepository.findCustomerById(id) != null) {
             customerRepository.deleteCustomer(id);
             return true;
         }

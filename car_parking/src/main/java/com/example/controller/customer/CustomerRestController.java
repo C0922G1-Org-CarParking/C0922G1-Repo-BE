@@ -26,6 +26,7 @@ public class CustomerRestController {
      * Create by: VuBD
      * Date create: 29/03/2023
      * Function: connect service to get data corresponding to the search data
+     *
      * @param name
      * @param idCard
      * @param phoneNumber
@@ -36,11 +37,11 @@ public class CustomerRestController {
      */
     @GetMapping("/search")
     public ResponseEntity<Page<ICustomerDTO>> searchCustomer(@RequestParam(required = false, defaultValue = "") String name,
-                                                         @RequestParam(required = false, defaultValue = "") String idCard,
-                                                         @RequestParam(required = false, defaultValue = "") String phoneNumber,
-                                                         @RequestParam(required = false, defaultValue = "") String starDate,
-                                                         @RequestParam(required = false, defaultValue = "") String endDate,
-                                                         @RequestParam(required = false, defaultValue = "0") int page){
+                                                             @RequestParam(required = false, defaultValue = "") String idCard,
+                                                             @RequestParam(required = false, defaultValue = "") String phoneNumber,
+                                                             @RequestParam(required = false, defaultValue = "") String starDate,
+                                                             @RequestParam(required = false, defaultValue = "") String endDate,
+                                                             @RequestParam(required = false, defaultValue = "0") int page) {
         Pageable pageable = PageRequest.of(page, 2);
         Page<ICustomerDTO> customerPage = this.customerService.searchCustomer(name, idCard, phoneNumber, starDate, endDate, pageable);
         return new ResponseEntity<>(customerPage, HttpStatus.OK);
@@ -50,13 +51,14 @@ public class CustomerRestController {
      * Create by: VuBD
      * Date create: 29/03/2023
      * Function: connect service to delete a customer with corresponding id
+     *
      * @param id
      * @return: If successful, return ResponseEntity<>("Xoá khách hàng thành công", HttpStatus.OK), if unsuccessful,
      * return ResponseEntity<>("Xóa khách hàng không thành công", HttpStatus.NOT_FOUND)
      */
     @DeleteMapping("/{id}/delete")
-    public ResponseEntity<String> deleteCustomer(@PathVariable int id){
-        if (customerService.deleteCustomer(id)){
+    public ResponseEntity<String> deleteCustomer(@PathVariable int id) {
+        if (customerService.deleteCustomer(id)) {
             return new ResponseEntity<>("Xoá khách hàng thành công", HttpStatus.OK);
         }
         return new ResponseEntity<>("Xóa khách hàng không thành công, khách hàng đã bị xóa hoặc không tồn tại",
