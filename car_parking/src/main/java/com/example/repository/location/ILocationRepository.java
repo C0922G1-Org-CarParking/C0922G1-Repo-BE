@@ -1,21 +1,26 @@
 package com.example.repository.location;
 
+import com.example.dto.IFloorDto;
+import com.example.dto.ILocationDto;
+import com.example.model.Floor;
 import com.example.model.Location;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ILocationRepository extends JpaRepository<Location,Long> {
 
-    @Query(value = "select floor.id, floor.name as ten_tang from location join floor on location.floor_id = floor.id ",
+    @Query(value = "select f.id as id_floor, f.name as ten_tang from floor as f",
             nativeQuery = true)
-    void getListNameFloor();
+    List<IFloorDto> getListNameFloor();
 
 
-    @Query(value = "select location.id, location.name as ten_vi_tri  from location",
+    @Query(value = "select location.id as Id, location.name as NameLocation  from location",
             nativeQuery = true)
-    void getListNameLocation();
+    List<ILocationDto> getListNameLocation();
 
 
 }

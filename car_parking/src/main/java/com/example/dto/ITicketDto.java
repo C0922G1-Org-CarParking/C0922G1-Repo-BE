@@ -5,7 +5,7 @@ import com.example.model.Employee;
 import com.example.model.Location;
 import com.example.model.TicketType;
 
-public interface ITicketDTO {
+public interface ITicketDto {
 
 
 

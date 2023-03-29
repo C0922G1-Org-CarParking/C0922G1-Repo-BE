@@ -1,13 +1,13 @@
 package com.example.service.employee;
 
-import com.example.dto.EmployeeDto;
+import com.example.dto.IEmployeeDto;
 import com.example.model.Employee;
 
 import java.util.List;
 
 public interface IEmployeeService {
 
-    List<Employee> getListEmployeeByName(String name);
+    List<IEmployeeDto> getListEmployeeByName(String name);
 
-    EmployeeDto findEmployeeId(int id);
+    IEmployeeDto findEmployeeId(int id);
 }

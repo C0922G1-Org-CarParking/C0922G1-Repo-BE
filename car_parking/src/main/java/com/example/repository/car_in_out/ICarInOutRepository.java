@@ -1,6 +1,6 @@
 package com.example.repository.car_in_out;
 
-import com.example.dto.ICarInOutDTO;
+import com.example.dto.ICarInOutDto;
 import com.example.model.CarInOut;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -23,7 +23,7 @@ public interface ICarInOutRepository extends JpaRepository<CarInOut, Long> {
             "join floor on location.floor_id = floor.id" +
             "join section on location.section_id = section.id" +
             "where car.plate_number = :plateNumber;", nativeQuery = true)
-    ICarInOutDTO searchCarInOutDTO(@Param("plateNumber") String plateNumber);
+    ICarInOutDto searchCarInOutDTO(@Param("plateNumber") String plateNumber);
 
     @Transactional
     @Query(value = "insert into car_in_out values (:carId, :timeIn, :timeOut)", nativeQuery = true)

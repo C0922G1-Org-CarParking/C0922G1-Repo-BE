@@ -1,8 +1,7 @@
 package com.example.controller.car_in_out;
 
-import com.example.dto.ICarInOutDTO;
+import com.example.dto.ICarInOutDto;
 import com.example.model.CarInOut;
-import com.example.service.car_in_out.CarInOutService;
 import com.example.service.car_in_out.ICarInOutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,11 +19,11 @@ public class CarInOutController {
     private ICarInOutService carInOutService;
 
     @GetMapping("/{plateNumber}")
-    public ResponseEntity<ICarInOutDTO> findICarInOut(@PathVariable("plateNumber") String plateNumber) {
+    public ResponseEntity<ICarInOutDto> findICarInOut(@PathVariable("plateNumber") String plateNumber) {
         if (carInOutService.searchCarInOut(plateNumber) == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        ICarInOutDTO carInOutDTO = carInOutService.searchCarInOut(plateNumber);
+        ICarInOutDto carInOutDTO = carInOutService.searchCarInOut(plateNumber);
         return new ResponseEntity<>(carInOutDTO, HttpStatus.OK);
     }
 
