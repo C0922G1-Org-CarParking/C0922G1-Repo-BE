@@ -33,14 +33,13 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
      */
     @Modifying
     @Query(value = "INSERT INTO employee (commune, date_of_birth, district,gender,id_card,is_deleted,name,province,street,email,position_id,phone_number)" +
-            "VALUES (:commune, :dateOfBirth, :district,:gender,:idCard, :isDeleted,:name,:province,:street,:email,:positionId,:phoneNumber)",
+            "VALUES (:commune, :dateOfBirth, :district,:gender,:idCard, false ,:name,:province,:street,:email,:positionId,:phoneNumber)",
             nativeQuery = true)
     void addEmployee(@Param("commune") int commune,
                      @Param("dateOfBirth") String dateOfBirth,
                      @Param("district") int district,
                      @Param("gender") boolean gender,
                      @Param("idCard") String idCard,
-                     @Param("isDeleted") boolean isDeleted,
                      @Param("name") String name,
                      @Param("province") int province,
                      @Param("street") String street,
@@ -62,7 +61,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
             "province = :province," +
             "commune = :commune," +
             "street = :street," +
-            "is_deleted = :isDeleted," +
             "WHERE id = :id",
             nativeQuery = true)
     /**
@@ -83,7 +81,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
             @Param("province") int province,
             @Param("commune") int commune,
             @Param("street") String street,
-            @Param("isDeleted") boolean isDeleted,
             @Param("id") Long id
     );
 

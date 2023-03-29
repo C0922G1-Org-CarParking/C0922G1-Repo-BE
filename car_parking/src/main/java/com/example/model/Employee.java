@@ -42,7 +42,7 @@ public class Employee {
     private int commune;
     @Column(nullable = false)
     private String street;
-
+    @Column(columnDefinition = "boolean default false")
     private boolean isDeleted;
 
     public boolean isDeleted() {

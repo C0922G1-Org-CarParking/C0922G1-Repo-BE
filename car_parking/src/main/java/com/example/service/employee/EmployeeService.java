@@ -23,9 +23,10 @@ public class EmployeeService implements IEmployeeService {
      * @return  call to updateEmployee in employeeRepository
      */
     @Override
-    public void updateEmployee(String name, String dateOfBirth, boolean gender, String phoneNumber, Long positionId, String email, String idCard, int district, int province, int commune, String street, boolean isDeleted, Long id) {
-        employeeRepository.updateEmployee(name, dateOfBirth, gender, phoneNumber, positionId,
-                email, idCard, district, province, commune, street, isDeleted, id);
+    public void updateEmployee(String name, String dateOfBirth, boolean gender, String phoneNumber, Long positionId,
+                               String email, String idCard, int district, int province, int commune, String street,Long id) {
+        employeeRepository.updateEmployee(name, dateOfBirth, gender, phoneNumber, positionId,email, idCard,
+                district, province,commune, street,id);
     }
 
     /**
@@ -36,9 +37,9 @@ public class EmployeeService implements IEmployeeService {
      */
     @Override
     public void addEmployee(int commune, String dateOfBirth, int district, boolean gender, String idCard,
-                            boolean idDeleted, String name, int province, String street, String email,
+                             String name, int province, String street, String email,
                             Long positionId, String phoneNumber) {
-        employeeRepository.addEmployee(commune, dateOfBirth, district, gender, idCard, idDeleted, name, province, street, email, positionId, phoneNumber);
+        employeeRepository.addEmployee(commune, dateOfBirth, district, gender, idCard, name, province, street, email, positionId, phoneNumber);
     }
 }
 

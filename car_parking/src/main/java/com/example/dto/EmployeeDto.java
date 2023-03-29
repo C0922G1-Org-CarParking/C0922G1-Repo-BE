@@ -11,7 +11,6 @@ public class EmployeeDto {
     private String name;
     @Min(value = 16, message = "Tuổi của bạn phải lớn hơn hoặc bằng 16")
     private String dateOfBirth;
-    @NotBlank(message = "Chọn giới tính")
     private boolean gender;
     @NotBlank(message = "Nhập số điện thoại")
     @Pattern(regexp = "[0][1-9]{9}", message = "Số điện thoại phải có 10 số và bắt đầu bằng 0")
@@ -19,13 +18,11 @@ public class EmployeeDto {
     @Size(max = 12, message = "tên có độ dài tối đa 12 ký tự")
     @NotEmpty(message = "không được để trống")
     private String idCard;
-
     private int district;
     private int province;
     private int commune;
     @NotBlank(message = "Nhập địa chỉ")
     private String street;
-    @NotBlank(message = "Chọn chức vị")
     private Position position;
     @NotBlank(message = "Email ko được để trống")
     @Pattern(regexp = "^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Email sai định dạng")

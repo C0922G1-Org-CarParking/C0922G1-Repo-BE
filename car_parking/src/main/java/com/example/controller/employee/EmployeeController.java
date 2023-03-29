@@ -71,7 +71,7 @@ public class EmployeeController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         employeeService.addEmployee(employee.getCommune(), employee.getDateOfBirth(), employee.getDistrict(), employee.isGender(),
-                employee.getIdCard(), employee.isDeleted(), employee.getName(), employee.getProvince(), employee.getStreet(),
+                employee.getIdCard(), employee.getName(), employee.getProvince(), employee.getStreet(),
                 employee.getEmail(), employee.getPosition().getId(), employee.getPhoneNumber());
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -95,7 +95,7 @@ public class EmployeeController {
         } else {
             employeeService.updateEmployee(employeeDto.getName(), employeeDto.getDateOfBirth(), employeeDto.isGender(), employeeDto.getPhoneNumber(),
                     employeeDto.getPosition().getId(), employeeDto.getEmail(), employeeDto.getIdCard(), employeeDto.getDistrict(), employeeDto.getProvince(),
-                    employeeDto.getCommune(), employeeDto.getStreet(), employeeDto.isDeleted(), id);
+                    employeeDto.getCommune(), employeeDto.getStreet(), id);
             return new ResponseEntity(HttpStatus.OK);
         }
     }
