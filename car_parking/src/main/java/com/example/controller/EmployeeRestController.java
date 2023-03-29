@@ -18,6 +18,16 @@ public class EmployeeRestController {
     @Autowired
     private IEmployeeService employeeService;
 
+    /**
+     * Created by: TaiLH
+     * Date created: 29/03/2022
+     * function: get the list employee and search by field
+     * @param page
+     * @param size
+     * @param name
+     * @param dateOfBirth
+     * @return HttpStatus.NO_CONTENT if result is error or HttpStatus.OK if result is not error
+     */
     @GetMapping("/list-employee")
     public ResponseEntity<Page<Employee>> getEmployee(
             @RequestParam(required = false, defaultValue = "0") int page,
@@ -33,15 +43,29 @@ public class EmployeeRestController {
         return new ResponseEntity<>(employeePage, HttpStatus.OK);
     }
 
-
+    /**
+     * Created by: TaiLH
+     * Date created: 29/03/2022
+     * function: soft delete employee by id
+     * @param id
+     * @return  HttpStatus.OK if result is not error
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<?> softDeleteEmployeeById(@PathVariable("id") Long id) {
         employeeService.softDeleteById(id);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping
-    public ResponseEntity<Page<Employee>> getAllEmployees(
+    /**
+     * Created by: TaiLH
+     * Date created: 29/03/2022
+     * function: retrieve the list of soft-deleted employees
+     * @param page
+     * @param size
+     * @return HttpStatus.NO_CONTENT if result is error or HttpStatus.OK if result is not error
+     */
+    @GetMapping("/list-employee-soft-deleted")
+    public ResponseEntity<Page<Employee>> getAllDeletedEmployees(
             @RequestParam(required = false, defaultValue = "0") int page,
             @RequestParam(required = false, defaultValue = "10") int size
     ) {
