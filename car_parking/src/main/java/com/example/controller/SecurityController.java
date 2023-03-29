@@ -5,9 +5,12 @@ import com.example.model.Account;
 import com.example.payload.reponse.JwtResponse;
 import com.example.payload.reponse.MessageResponse;
 import com.example.payload.request.LoginRequest;
+import com.example.payload.request.ResetPasswordRequest;
 import com.example.service.IAccountService;
 import com.example.service.impl.AccountDetails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -16,6 +19,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +27,7 @@ import javax.mail.MessagingException;
 import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -99,5 +104,28 @@ public class SecurityController {
                 .badRequest()
                 .body(new MessageResponse("Tài khoản không đúng hoặc chưa đăng ký."));
     }
+
+
+    /**
+     * Created by: HoangNM
+     * Date created: 29/03/2023
+     * Function: change password
+     */
+
+    @GetMapping("/change-password")
+    public ResponseEntity<?> changePassword(@Valid @RequestBody ResetPasswordRequest resetPasswordRequest){
+        Account account = accountService.findAccountByEmployeeEmail(resetPasswordRequest.getUsername());
+        if(account == null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        boolean checkValidOldPassword = BCrypt.checkpw(resetPasswordRequest.getOldPassword(),account.getPassword());
+        boolean checkValidNewPassword = (Objects.equals(resetPasswordRequest.getNewPassword(), resetPasswordRequest.getConfirmNewPassword()));
+        if(checkValidOldPassword && checkValidNewPassword){
+            accountService.saveNewPassword(resetPasswordRequest.getNewPassword(), account.getId());
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
 
 }
