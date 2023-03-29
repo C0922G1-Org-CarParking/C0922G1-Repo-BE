@@ -86,9 +86,12 @@ public class EmployeeController {
 
     @PatchMapping("/updateEmployee/{id}")
     public ResponseEntity updateEmployee(@PathVariable("id") Long id, @Validated @RequestBody EmployeeDto employeeDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(employeeDto, HttpStatus.NOT_FOUND);
+        }
         Employee employee = employeeService.findById(id);
         if (employee == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             employeeService.updateEmployee(employeeDto.getName(), employeeDto.getDateOfBirth(), employeeDto.isGender(), employeeDto.getPhoneNumber(),
                     employeeDto.getPosition().getId(), employeeDto.getEmail(), employeeDto.getIdCard(), employeeDto.getDistrict(), employeeDto.getProvince(),
