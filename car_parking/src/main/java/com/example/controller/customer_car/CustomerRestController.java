@@ -90,27 +90,18 @@ public class CustomerRestController {
                     customer.getDistrict(), customer.getCommune(), customer.getStreet(), id);
             List<Car> carList1 = this.carService.listCar(id);
 
-            for (int i = 0; i < car1.size(); i++) {
-                for (int j = 0; j < carList1.size(); j++) {
-                    if (carList1.get(j).getId() == car1.get(i).getId()) {
-                        continue;
-                    }
-                    this.carService.deleteCar(carList1.get(j).getId());
-                }
-            }
-
-            for (int i = 0; i < car1.size(); i++) {
-                carList.add(car1.get(i));
-            }
-
             for (int i = 0; i < carList1.size(); i++) {
-                for (int j = 0; j < carList.size(); j++) {
-                    if (carList.get(j).getId() != carList1.get(i).getId()) {
+               if (!car1.contains(carList1.get(i))){
+                   this.carService.deleteCar(carList1.get(i).getId());
+               }
+               carList.add(carList1.get(i));
+            }
 
-                        Car car = carList.get(j);
+            for (int i = 0; i < car1.size(); i++) {
+                    if (!carList.contains(car1.get(i))) {
+                        Car car = car1.get(i);
                         this.carService.createCar(car.getName(), car.getCarType().getId(), car.getBrand(), car.getPlateNumber(), car.getCustomer().getId());
                     }
-                }
             }
         }
         return new ResponseEntity<>(HttpStatus.OK);
