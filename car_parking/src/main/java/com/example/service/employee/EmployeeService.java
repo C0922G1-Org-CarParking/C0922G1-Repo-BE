@@ -16,14 +16,24 @@ public class EmployeeService implements IEmployeeService {
         return employeeRepository.findEmployeeById(id);
 
     }
-
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2023
+     * Function: update  data employee to DB at id
+     * @return  call to updateEmployee in employeeRepository
+     */
     @Override
     public void updateEmployee(String name, String dateOfBirth, boolean gender, String phoneNumber, Long positionId, String email, String idCard, int district, int province, int commune, String street, boolean isDeleted, Long id) {
         employeeRepository.updateEmployee(name, dateOfBirth, gender, phoneNumber, positionId,
                 email, idCard, district, province, commune, street, isDeleted, id);
     }
 
-
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2023
+     * Function: add data employee to DB
+     * @return call to addEmployee in employeeRepository
+     */
     @Override
     public void addEmployee(int commune, String dateOfBirth, int district, boolean gender, String idCard,
                             boolean idDeleted, String name, int province, String street, String email,

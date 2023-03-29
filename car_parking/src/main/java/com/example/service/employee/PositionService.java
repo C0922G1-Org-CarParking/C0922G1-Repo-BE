@@ -11,6 +11,12 @@ import java.util.List;
 public class PositionService implements IPositionService{
     @Autowired
     private IPositionRepository positionRepository;
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2023
+     * Function: get all name in Position
+     * @return  function at positionRepository
+     */
     @Override
     public List<IPositionDto> getAllPosition() {
         return positionRepository.getAllPosition();

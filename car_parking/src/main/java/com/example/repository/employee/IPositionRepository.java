@@ -11,8 +11,15 @@ import java.util.List;
 
 @Repository
 public interface IPositionRepository extends JpaRepository<Position,Long> {
+
     @Query(value = "select position_id as id, position_name as name from `position`",
             countQuery = "select position_id as id, position_name as name from `position`",
             nativeQuery = true)
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2023
+     * Function: find all name and id in position
+     * @return  position_id and position_name from table position
+     */
     List<IPositionDto> getAllPosition();
 }

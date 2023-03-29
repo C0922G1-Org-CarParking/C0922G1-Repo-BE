@@ -17,9 +17,20 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
 //            "WHERE e.id=:idEmployee",
 //            nativeQuery = true)
 //    Employee findById(@Param("id") Long id);
-    @Query(value = "select * from employee where employee.id = :id", nativeQuery = true)
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2023
+     * Function: find id employee
+     * @return  call to updateEmployee in employeeRepository
+     */
+    @Query(value = "select commune, date_of_birth, district,gender,id_card,is_deleted,name,province,street,email,position_id,phone_number from employee where employee.id = :id", nativeQuery = true)
     Employee findEmployeeById(@Param("id") Long id);
-
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2023
+     * Function: add  data employee   to data employee in database
+     * @return
+     */
     @Modifying
     @Query(value = "INSERT INTO employee (commune, date_of_birth, district,gender,id_card,is_deleted,name,province,street,email,position_id,phone_number)" +
             "VALUES (:commune, :dateOfBirth, :district,:gender,:idCard, :isDeleted,:name,:province,:street,:email,:positionId,:phoneNumber)",
@@ -54,6 +65,12 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
             "is_deleted = :isDeleted," +
             "WHERE id = :id",
             nativeQuery = true)
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2023
+     * Function: add   new data employee to DB
+     * @return   param data employee in location id
+     */
     void updateEmployee(
             @Param("name") String name,
             @Param("dateOfBirth") String dateOfBirth,
