@@ -54,7 +54,7 @@ public class CustomerRestController {
      *
      * @param id
      * @return: If successful, return ResponseEntity<>("Xoá khách hàng thành công", HttpStatus.OK), if unsuccessful,
-     * return ResponseEntity<>("Xóa khách hàng không thành công", HttpStatus.NOT_FOUND)
+     * return ResponseEntity<>("Xóa khách hàng không thành công, khách hàng đã bị xóa hoặc không tồn tại", HttpStatus.NOT_FOUND)
      */
     @DeleteMapping("/{id}/delete")
     public ResponseEntity<String> deleteCustomer(@PathVariable int id) {
