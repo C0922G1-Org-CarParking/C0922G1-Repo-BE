@@ -22,8 +22,6 @@ public class Employee {
 
     @Column(length = 45,nullable = false,unique = true)
     private String email;
-    @OneToOne(mappedBy = "employee")
-    private Account account;
 
     @Column(length = 45, nullable = false, unique = true)
     private String idCard;
@@ -41,6 +39,9 @@ public class Employee {
     private String phoneNumber;
 
     private boolean isDeleted;
+
+    @OneToOne(mappedBy = "employee")
+    private Account account;
 
     @ManyToOne
     @JoinColumn(name = "position_id", referencedColumnName = "id")

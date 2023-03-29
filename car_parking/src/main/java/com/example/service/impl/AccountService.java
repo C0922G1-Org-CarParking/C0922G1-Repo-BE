@@ -10,15 +10,15 @@ public class AccountService implements IAccountService {
     @Autowired
     IAccountRepository accountRepository;
 
-    @Override
-    public String existsByUserName(String username) {
-        return accountRepository.existsByEmployeeEmail(username);
-    }
-
-    @Override
-    public void saveNewPassword(String password,String code) {
-        accountRepository.saveNewPassword(password,code);
-    }
+//    @Override
+//    public String existsByUserName(String username) {
+//        return accountRepository.existsByEmployeeEmail(username);
+//    }
+//
+//    @Override
+//    public void saveNewPassword(String password,String code) {
+//        accountRepository.saveNewPassword(password,code);
+//    }
 
 
 

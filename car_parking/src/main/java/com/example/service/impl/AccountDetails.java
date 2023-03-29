@@ -35,7 +35,7 @@ public class AccountDetails implements UserDetails {
                 .map(role -> new SimpleGrantedAuthority(role.getRole().getName()))
                 .collect(Collectors.toList());
         return new AccountDetails(
-                account.getEmployeeEmail(),
+                account.getEmployee().getEmail(),
                 account.getPassword(),
                 authorities);
     }

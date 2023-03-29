@@ -10,13 +10,16 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long accountId;
+    private Long id;
 
     @OneToOne
-    @JoinColumn(name = "employee_email",referencedColumnName = "email")
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
+//    private String username;
+
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
 
     @OneToMany(mappedBy = "account")
@@ -26,12 +29,21 @@ public class Account {
     public Account() {
     }
 
-    public Long getAccountId() {
-        return accountId;
+    public String getUsername() {
+        return this.employee.getEmail();
     }
 
-    public void setAccountId(Long accountId) {
-        this.accountId = accountId;
+//    public void setUsername() {
+//        this.username = this.employee.getEmail();
+//    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Employee getEmployee() {

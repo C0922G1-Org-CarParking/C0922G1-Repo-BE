@@ -71,15 +71,15 @@ public class SecurityController {
      * Function: forgot password
      */
 
-    @PostMapping("/reset-password")
-    public ResponseEntity<?> reset(@RequestBody LoginRequest loginRequest) throws  UnsupportedEncodingException {
-
-        if (IAccountService.existsByUserName(loginRequest.getUsername()) != null) {
-            return ResponseEntity.ok(new MessageResponse("Sent email "));
-        }
-        return ResponseEntity
-                .badRequest()
-                .body(new MessageResponse("Tài khoản không đúng"));
-    }
+//    @PostMapping("/reset-password")
+//    public ResponseEntity<?> reset(@RequestBody LoginRequest loginRequest) throws  UnsupportedEncodingException {
+//
+//        if (IAccountService.existsByUserName(loginRequest.getUsername()) != null) {
+//            return ResponseEntity.ok(new MessageResponse("Sent email "));
+//        }
+//        return ResponseEntity
+//                .badRequest()
+//                .body(new MessageResponse("Tài khoản không đúng"));
+//    }
 
 }
