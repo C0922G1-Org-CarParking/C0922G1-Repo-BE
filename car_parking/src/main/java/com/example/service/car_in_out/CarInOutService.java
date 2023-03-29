@@ -17,7 +17,7 @@ public class CarInOutService implements ICarInOutService {
     }
 
     @Override
-    public ICarInOutDTO searchCarInOut(String plateNumber) {
+    public ICarInOutDTO searchCarInOutDTO(String plateNumber) {
         return carInOutRepository.searchCarInOutDTO(plateNumber);
     }
 }

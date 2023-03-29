@@ -11,10 +11,10 @@ public class CarInOut {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "date", length = 45)
+    @Column(columnDefinition = "datetime", length = 45)
     private String timeIn;
 
-    @Column(columnDefinition = "date", length = 45)
+    @Column(columnDefinition = "datetime", length = 45)
     private String timeOut;
 
     @ManyToOne

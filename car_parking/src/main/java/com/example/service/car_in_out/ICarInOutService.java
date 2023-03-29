@@ -6,6 +6,6 @@ import com.example.model.CarInOut;
 public interface ICarInOutService {
     void saveCarInOut(CarInOut carInOut);
 
-    ICarInOutDTO searchCarInOut(String plateNumber);
+    ICarInOutDTO searchCarInOutDTO(String plateNumber);
 
 }
