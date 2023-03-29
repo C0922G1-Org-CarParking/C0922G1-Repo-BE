@@ -8,7 +8,7 @@ public class ParkingNews {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Integer parkingNewsId;
 
     @Column(name = "title", length = 255, nullable = false)
     private String title;
@@ -31,8 +31,8 @@ public class ParkingNews {
     public ParkingNews() {
     }
 
-    public ParkingNews(Integer id, String title, String description, String imageUrl, String content, LocalDate postingDate, Boolean isDeleted) {
-        this.id = id;
+    public ParkingNews(Integer parkingNewsId, String title, String description, String imageUrl, String content, LocalDate postingDate, Boolean isDeleted) {
+        this.parkingNewsId = parkingNewsId;
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;
@@ -41,12 +41,12 @@ public class ParkingNews {
         this.isDeleted = isDeleted;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getParkingNewsId() {
+        return parkingNewsId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setParkingNewsId(Integer parkingNewsId) {
+        this.parkingNewsId = parkingNewsId;
     }
 
     public String getTitle() {
@@ -89,11 +89,11 @@ public class ParkingNews {
         this.postingDate = postingDate;
     }
 
-    public Boolean getDeleted() {
+    public boolean isDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(Boolean deleted) {
+    public void setDeleted(boolean deleted) {
         isDeleted = deleted;
     }
 }

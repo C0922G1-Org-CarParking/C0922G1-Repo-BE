@@ -3,8 +3,7 @@ package com.example.dto;
 import java.time.LocalDate;
 
 public interface IParkingNewsDto {
-
-    Integer getId();
+    Integer getParkingNewsId();
     String getTitle();
     String getDescription();
     String getImageUrl();

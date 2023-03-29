@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IParkingNewsRepository extends JpaRepository<ParkingNews, Integer> {
-    String Get_All_Parking_News = "select pn.id, pn.title, pn.description, pn.image_url as imageUrl, pn.posting_date as postingDate" +
+    String Get_All_Parking_News = "select pn.id as parkingNewsId, pn.title, pn.description, pn.image_url as imageUrl, pn.posting_date as postingDate" +
             " from `parking_news` as pn" +
             " where pn.is_deleted = 0 and" +
             " (pn.title like concat('%', :keyword '%') or pn.description like concat('%', :keyword '%') or" +
