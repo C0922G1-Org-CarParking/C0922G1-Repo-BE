@@ -11,9 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface IAccountRepository extends JpaRepository<Account,Long> {
 
     Account findAccountByEmployee_Email(String username);
-    
-//    @Query(value = "SELECT username from account where username = ?1", nativeQuery = true)
-//    String existsByEmployeeEmail(String username);
 
     @Modifying
     @Query(value = "update account set password =?1 where id =?2 ",nativeQuery = true)

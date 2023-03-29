@@ -76,7 +76,7 @@ public class SecurityController {
      * Function: reset password (forgot password)
      */
 
-    @PostMapping("/reset-password/{email}")
+    @GetMapping("/reset-password/{email}")
     public ResponseEntity<?> resetPassword(@PathVariable String email) {
         Account account= accountService.findAccountByEmployee_Email(email);
         if (account != null) {
