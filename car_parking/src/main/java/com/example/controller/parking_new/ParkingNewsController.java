@@ -17,7 +17,7 @@ public class ParkingNewsController {
     @Autowired
     private IParkingNewsService parkingNewsService;
 
-    /*+
+    /**
      * Created by: QuynhND
      * Date created: 29/03/2023
      * Function: find all parking news with pagination and search
@@ -36,7 +36,7 @@ public class ParkingNewsController {
         return new ResponseEntity<>(parkingNewsPage, HttpStatus.OK);
     }
 
-    /*+
+    /**
      * Created by: QuynhND
      * Date created: 29/03/2023
      * Function: find parking news by id
