@@ -3,6 +3,7 @@ package com.example.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -46,5 +47,20 @@ public class Account {
 
     public void setAccountRoleSet(Set<AccountRole> accountRoleSet) {
         this.accountRoleSet = accountRoleSet;
+    }
+
+    public static interface IParkingNewsDto {
+        Integer getParkingNewsId();
+
+        String getTitle();
+
+        String getDescription();
+
+        String getImageUrl();
+
+        String getContent();
+
+        LocalDate getPostingDate();
+
     }
 }
