@@ -27,11 +27,11 @@ public class LocationController {
      * @param idFloor
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
      */
-    @GetMapping("")
+    @GetMapping("/mapParking")
     public ResponseEntity getMapParking(@RequestParam(defaultValue = "1") int idFloor ){
         List<Location> listMapParking= locationService.listMapParking(idFloor);
-        if(listMapParking==null){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        if(listMapParking.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(listMapParking, HttpStatus.OK);
     }
@@ -48,7 +48,7 @@ public class LocationController {
     public ResponseEntity <ILocationDetailDto> findByIdLocation(@RequestParam int id){
         ILocationDetailDto iLocationDetailDto=locationService.findByIdLocation(id);
         if(iLocationDetailDto==null){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(iLocationDetailDto, HttpStatus.OK);
     }

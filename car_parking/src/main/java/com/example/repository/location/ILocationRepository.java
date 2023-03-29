@@ -17,14 +17,14 @@ public interface ILocationRepository extends JpaRepository<Location, Integer> {
     List<Location> listMapParking(@Param("id") int id);
 
     @Query(value = "select location.name as locationName , floor.name as floorName, section.name as sectionName,\n" +
-            " location.height as locationHeight , location.width as locationWidth, location.length as locationLenght, " +
+            " location.height as locationHeight , location.width as locationWidth, location.length as locationLength, " +
             "customer.name as customerName, \n" +
             " customer.email as customerEmail, customer.phone_number as customerPhoneNumber from location\n" +
             " left join floor on floor.id=location.floor_id\n" +
             " left join section on section.id= location.section_id\n" +
             " left join ticket on location.id=ticket.location_id\n" +
             " left join car on car.id=ticket.car_id\n" +
-            " left join customer on car.customer_id=customer.id where location.id=:id ", nativeQuery = true)
+            " left join customer on car.customer_id=customer.id where location.id=:id and ticket.expiry_date >=curdate()  ", nativeQuery = true)
     ILocationDetailDto findByIdLocation(@Param("id") int id);
 
 
