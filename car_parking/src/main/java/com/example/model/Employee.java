@@ -36,6 +36,17 @@ public class Employee {
     @Column(nullable = false)
     private String street;
 
+    @Column(length = 20, nullable = false, unique = true)
+    private String phoneNumber;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     private boolean isDeleted;
 
     public boolean isDeleted() {

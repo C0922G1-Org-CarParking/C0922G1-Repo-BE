@@ -13,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface ITicketRepository extends JpaRepository<Ticket, Integer> {
     @Query(nativeQuery = true, value = "select t.id as TicketId, c.plate_number as PlateNumber, cus.name as CustomerName, cus.phone_number as CustomerPhoneNumber,\t\t\t\t\t\n" +
-            "e.name as EmployeeName, e.phone_number as EmployeePhoneNumber, tt.name as TicketType, tt.price * ct.rate / 100 as TotalPrice, \n" +
-            "f.name as Floor, t.expiry_date as ExpiryDate \t\t\t\n" +
+            "e.name as EmployeeName, e.phone_number as EmployeePhoneNumber, tt.name as TicketType,  DATEDIFF(t.expiry_date , t.effective_date) * t.price * ct.rate as TotalPrice, \n" +
+            "f.name as Floor, lc.name as Location,  t.expiry_date as ExpiryDate \t\t\t\n" +
             "from `ticket` as t\t\t\t\t\t\n" +
             "\tjoin `car` as c on t.car_id = c.id\t\t\t\t\t\n" +
             "\tjoin `car_type` as ct on c.car_type_id = ct.id\t\t\t\t\t\n" +
@@ -31,19 +31,19 @@ public interface ITicketRepository extends JpaRepository<Ticket, Integer> {
             "t.expiry_date like concat('%',:expiryDate,'%') and " +
             "tt.name like concat('%',:ticketType,'%') ")
     Page<TicketDto> search(@Param("customerName")String customerName,
-                        @Param("customerPhone")String customerPhone,
-                        @Param("employeeName")String employeeName,
-                        @Param("employeePhone")String employeePhone,
-                        @Param("floor")String floor,
-                        @Param("expiryDate")String expiryDate,
-                        @Param("ticketType")String ticketType, Pageable pageable);
+                           @Param("customerPhone")String customerPhone,
+                           @Param("employeeName")String employeeName,
+                           @Param("employeePhone")String employeePhone,
+                           @Param("floor")String floor,
+                           @Param("expiryDate")String expiryDate,
+                           @Param("ticketType")String ticketType, Pageable pageable);
     @Modifying
     @Query(nativeQuery = true, value = "delete from ticket as t where t.id = :idDelete")
     void delete(@Param("idDelete")int idDelete);
 
-    @Query(nativeQuery = true, value = "select t.id as TicketId, c.plate_number as PlateNumber, cus.name as CustomerName, cus.phone_number as CustomerPhoneNumber,\t\t\t\t\t\n" +
-            "e.name as EmployeeName, e.phone_number as EmployeePhoneNumber, tt.name as TicketType, tt.price * ct.rate / 100 as TotalPrice, \n" +
-            "f.name as Floor, t.expiry_date as ExpiryDate, s.name as Section \t\t\t\n" +
+    @Query(nativeQuery = true, value = "select t.id as TicketId, tt.name as TicketType, c.plate_number as PlateNumber, cus.name as CustomerName, cus.id as CustomerCode, cus.phone_number as CustomerPhoneNumber,\t\t\t\t\t\n" +
+            "e.name as EmployeeName, e.id as EmployeeCode, e.phone_number as EmployeePhoneNumber, DATEDIFF(t.expiry_date , t.effective_date) * t.price * ct.rate as TotalPrice, \n" +
+            "f.name as Floor, s.name as Section,t.effective_date as EffectiveDate, t.expiry_date as ExpiryDate, lc.name as Location \t\t\t\n" +
             "from ticket as t\t\t\t\t\t\n" +
             "\tjoin car as c on t.car_id = c.id\t\t\t\t\t\n" +
             "\tjoin car_type as ct on c.car_type_id = ct.id\t\t\t\t\t\n" +

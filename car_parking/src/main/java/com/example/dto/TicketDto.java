@@ -4,11 +4,16 @@ public interface TicketDto {
     Integer getTicketId();
     String getPlateNumber();
     String getCustomerName();
+    String getCustomerCode();
     String getCustomerPhoneNumber();
     String getEmployeeName();
+    String getEmployeeCode();
     String getEmployeePhoneNumber();
     String getTicketType();
-    String getTotalPrice();
+    Double getTotalPrice();
     Integer getFloor();
+    String getSection();
+    Integer getLocation();
+    String getEffectiveDate();
     String getExpiryDate();
 }
