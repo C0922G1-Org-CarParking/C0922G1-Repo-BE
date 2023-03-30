@@ -17,14 +17,8 @@ public class LocationService implements ILocationService{
 
 
     @Override
-    public void addLocation(
-            String name,
-            Double width,
-            Double height,
-            Double length,
-            Long floorId,
-            Long sectionId) {
-        iLocationRepository.addLocation(name, width, height, length, floorId, sectionId);
+    public void addLocation(Long name, Double width, Double height, Double length, String permissionCarTypeLocations, Long floorId, Long sectionId) {
+        iLocationRepository.addLocation(name, width, height, length, permissionCarTypeLocations, floorId, sectionId);
     }
 
     @Override
@@ -33,13 +27,31 @@ public class LocationService implements ILocationService{
     }
 
     @Override
-    public void updateLocation(String name, Double width, Double height, Double length, Long floorId, Long sectionId, Long Id) {
-        iLocationRepository.updateLocation(name, width, height, length, floorId, sectionId, Id);
+    public void updateLocation(Long name, Double width, Double height, Double length, String permissionCarTypeLocations, Long floorId, Long sectionId, Long Id) {
+        iLocationRepository.updateLocation(name, width, height, length, permissionCarTypeLocations, floorId, sectionId, Id);
     }
+
 
     @Override
     public Map<String, String> checkCreate(LocationDto locationDto) {
         Map<String, String> checkMap = new HashMap<>();
+
+        for (int i = 0; i < iLocationRepository.locationList().size(); i++) {
+
+            if (iLocationRepository.locationList().get(i).getName().equals(locationDto.getName())) {
+                checkMap.put("errorSố vị trí", "số vị trí đã tồn tại trong hệ thống.");
+            }
+            if (iLocationRepository.locationList().get(i).getSection().getName().equals(locationDto.getSection().getName())) {
+                checkMap.put("errorDãy", "dãy đã tồn tại trong hệ thống.");
+            }
+        }
+        return checkMap;
+    }
+
+    @Override
+    public Map<String, String> checkUpdate(LocationDto locationDto) {
+        Map<String, String> checkMap = new HashMap<>();
+
 
         for (int i = 0; i < iLocationRepository.locationList().size(); i++) {
             if (iLocationRepository.locationList().get(i).getName().equals(locationDto.getName())) {
@@ -53,20 +65,18 @@ public class LocationService implements ILocationService{
     }
 
     @Override
-    public Map<String, String> checkUpdate(LocationDto locationDto) {
-        Map<String, String> checkMap = new HashMap<>();
+    public void checkFloor(Long floorId) {
+        iLocationRepository.checkFloor(floorId);
+    }
 
-        Location location = findLocation(locationDto.getId());
-        for (int i = 0; i < iLocationRepository.locationList().size(); i++) {
+    @Override
+    public void checkSection(Long floorId, Long sectionId) {
+        iLocationRepository.checkSection(floorId,sectionId);
+    }
 
-            if (!location.getName().equals(location.getName()) && iLocationRepository.locationList().get(i).getName().equals(location.getName())) {
-                checkMap.put("errorDãy", "Dãy đã tồn tại trong hệ thống.");
-            }
-            if (!location.getSection().getName().equals(locationDto.getSection().getName()) && iLocationRepository.locationList().get(i).getSection().getName().equals(locationDto.getSection().getName())) {
-                checkMap.put("errorSố vị trí", "Số vị trí đã tồn tại trong hệ thống.");
-            }
-        }
-        return checkMap;
+    @Override
+    public void checkName(Long floorId, Long sectionId) {
+        iLocationRepository.checkSection(floorId,sectionId);
     }
 
 

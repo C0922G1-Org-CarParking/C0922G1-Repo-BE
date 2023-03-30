@@ -20,6 +20,7 @@ public interface ILocationRepository extends JpaRepository<Location, Integer> {
             "            width,\n" +
             "            height,\n" +
             "            length,\n" +
+            "            permission_car_type_locations,\n" +
             "            floor_id,\n" +
             "            section_id,\n" +
             "            is_occupied,\n" +
@@ -29,16 +30,18 @@ public interface ILocationRepository extends JpaRepository<Location, Integer> {
             "            :width,\n" +
             "            :height,\n" +
             "            :length,\n" +
+            "            :permission_car_type_locations,\n" +
             "            :floor_id,\n" +
             "            :section_id,\n" +
             "             false ,\n" +
             "             false)",
             nativeQuery = true)
     void addLocation(
-            @Param("name") String name,
+            @Param("name") Long name,
             @Param("width") Double width,
             @Param("height") Double height,
             @Param("length") Double length,
+            @Param("permission_car_type_locations") String permissionCarTypeLocations,
             @Param("floor_id") Long floorId,
             @Param("section_id") Long sectionId);
 
@@ -49,6 +52,9 @@ public interface ILocationRepository extends JpaRepository<Location, Integer> {
     List<Location> locationList();
 
 
+
+
+
     @Modifying
     @Transactional
     @Query(value = "update location set\n" +
@@ -56,11 +62,25 @@ public interface ILocationRepository extends JpaRepository<Location, Integer> {
             "            width = :width,\n" +
             "                   height = :height,\n" +
             "                   length = :length,\n" +
+            "                   permission_car_type_locations = :permission_car_type_locations\n," +
             "                   floor_id = :floor_id,\n" +
             "                   section_id = :section_id\n" +
             "                   where id = :id",
             nativeQuery = true)
 
-    void updateLocation(@Param("name") String name , @Param("width") Double width , @Param("height") Double height, @Param("length") Double length, @Param("floor_id") Long floorId, @Param("section_id") Long sectionId ,@Param("id") Long Id);
+    void updateLocation(@Param("name") Long name , @Param("width") Double width , @Param("height") Double height, @Param("length") Double length, @Param("permission_car_type_locations") String permissionCarTypeLocations , @Param("floor_id") Long floorId, @Param("section_id") Long sectionId ,@Param("id") Long Id);
 
+    @Modifying
+    @Transactional
+    @Query(value = "select count(floor_id) from location where floor_id = :floor_id ", nativeQuery = true)
+    void checkFloor(@Param("floor_id") Long floorId);
+
+    @Modifying
+    @Transactional
+    @Query(value = "select count(section_id) from  location where floor_id = :floor_id and section_id = :section_id ", nativeQuery = true)
+    void checkSection(@Param("floor_id") Long floorId, @Param("section_id") Long sectionId);
+    @Modifying
+    @Transactional
+    @Query(value = "select max(name) from  location where floor_id = :floor_id and section_id = :section_id;", nativeQuery = true)
+    void checkName(@Param("floor_id") Long floorId, @Param("section_id") Long sectionId);
 }

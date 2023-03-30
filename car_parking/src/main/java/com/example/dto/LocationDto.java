@@ -1,24 +1,18 @@
 package com.example.dto;
 
 import com.example.model.Floor;
-import com.example.model.PermissionCarTypeLocation;
 import com.example.model.Section;
-import com.example.model.Ticket;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import java.util.Set;
+import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 public class LocationDto implements Validator {
 
     private Long id;
 
-    private String name;
+    private Long name;
 
     private boolean isOccupied;
 
@@ -28,10 +22,11 @@ public class LocationDto implements Validator {
 
     private double length;
 
+    private String permissionCarTypeLocations;
+
     private Section section;
 
     private Floor floor;
-
 
     private boolean isDeleted;
 
@@ -46,11 +41,11 @@ public class LocationDto implements Validator {
         this.id = id;
     }
 
-    public String getName() {
+    public Long getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Long name) {
         this.name = name;
     }
 
@@ -84,6 +79,14 @@ public class LocationDto implements Validator {
 
     public void setLength(double length) {
         this.length = length;
+    }
+
+    public String getPermissionCarTypeLocations() {
+        return permissionCarTypeLocations;
+    }
+
+    public void setPermissionCarTypeLocations(String permissionCarTypeLocations) {
+        this.permissionCarTypeLocations = permissionCarTypeLocations;
     }
 
     public Section getSection() {
