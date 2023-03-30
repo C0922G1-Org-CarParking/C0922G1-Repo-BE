@@ -83,7 +83,7 @@ public class EmployeeRestController_findById {
                         jsonPath("province").value(1),
                         jsonPath("street").value("hamnghi"),
                         jsonPath("deleted").value(false),
-                        jsonPath("position").value(1)
+                        jsonPath("position.id").value(1)
         );
     }
 }
