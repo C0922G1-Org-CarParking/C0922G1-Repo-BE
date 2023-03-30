@@ -14,13 +14,8 @@ public class EmployeeService implements IEmployeeService {
     private IEmployeeRepository iEmployeeRepository;
 
     @Override
-    public List<IEmployeeDto> getListEmployeeByName(String name) {
-        return iEmployeeRepository.getListEmployeeByName(name);
-    }
-
-    @Override
-    public IEmployeeDto findEmployeeId(int id) {
-        return iEmployeeRepository.findEmployeeId(id);
+    public List<IEmployeeDto> getListEmployeeByName() {
+        return iEmployeeRepository.getListEmployeeByName();
     }
 
 }

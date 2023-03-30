@@ -4,6 +4,7 @@ import com.example.dto.ICustomerDto;
 import com.example.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,6 +23,6 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
 
     @Query(value = "select count(customer.id) from customer join car on car.id = customer.id_card" +
             "join ticket on car.id = ticket.car_id" +
-            " where (month(ticket.effective_date) =:sinceMonth) < (month(ticket.expiry_date =:toMonth) ", nativeQuery = true)
-    List<ICustomerDto> getstatisticalChart(int sinceMonth, int toMonth);
+            " where (month(ticket.effective_date) =:sinceMonth) <= (month(ticket.expiry_date =:toMonth) ", nativeQuery = true)
+    List<ICustomerDto> getstatisticalChart(@Param("sinceMonth") int sinceMonth,@Param("toMonth") int toMonth);
 }

@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface IEmployeeService {
 
-    List<IEmployeeDto> getListEmployeeByName(String name);
+    List<IEmployeeDto> getListEmployeeByName();
 
-    IEmployeeDto findEmployeeId(int id);
 }

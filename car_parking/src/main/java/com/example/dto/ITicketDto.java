@@ -8,7 +8,6 @@ import com.example.model.TicketType;
 public interface ITicketDto {
 
 
-
     public Long getId();
 
     public String getEffectiveDate();
@@ -24,5 +23,6 @@ public interface ITicketDto {
     public Employee getEmployee();
 
     public Location getLocation();
+
 
 }

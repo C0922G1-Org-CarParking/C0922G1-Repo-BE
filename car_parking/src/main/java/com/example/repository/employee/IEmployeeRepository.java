@@ -11,12 +11,9 @@ import java.util.List;
 
 @Repository
 public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
-    @Query(value = "select employee.date_of_birth as NgaySinh, employee.name as TenNhanVien from employee " +
-                   "where employee.name like concat ('%',:name ,'%')", nativeQuery = true)
-    List<IEmployeeDto> getListEmployeeByName(@Param("name") String name);
+    @Query(value = "select employee.id as Id, employee.date_of_birth as NgaySinh, employee.name as TenNhanVien from employee " , nativeQuery = true)
+    List<IEmployeeDto> getListEmployeeByName();
 
 
-    @Query(value = "select  employee.name as TenNhanVien from employee  where employee.id = :id",
-            nativeQuery = true)
-    IEmployeeDto findEmployeeId(@Param("id") int id);
+
 }

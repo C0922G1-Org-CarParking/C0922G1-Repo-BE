@@ -27,6 +27,9 @@ public class Employee {
     @Column(length = 45, nullable = false, unique = true)
     private String idCard;
 
+    @Column(length = 45, nullable = false, unique = true)
+    private String phoneNumber;
+
     @Column(nullable = false)
     private int district;
     @Column(nullable = false)
@@ -35,17 +38,7 @@ public class Employee {
     private int commune;
     @Column(nullable = false)
     private String street;
-
     private boolean isDeleted;
-
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
-
     @ManyToOne
     @JoinColumn(name = "position_id", referencedColumnName = "id")
     private Position position;
@@ -55,8 +48,14 @@ public class Employee {
     @JsonIgnore
     private Set<Ticket> ticketSet;
 
-    public Employee() {
+    public Employee(long id) {
+        this.id = id;
     }
+
+    public Employee() {
+
+    }
+
 
     public Long getId() {
         return id;
@@ -152,5 +151,21 @@ public class Employee {
 
     public void setTicketSet(Set<Ticket> ticketSet) {
         this.ticketSet = ticketSet;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }
