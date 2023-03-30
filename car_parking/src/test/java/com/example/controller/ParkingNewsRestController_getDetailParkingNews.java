@@ -40,6 +40,7 @@ public class ParkingNewsRestController_getDetailParkingNews {
      * Created by: QuynhND
      * Date created: 29/03/2023
      * Input: Parking News ID 999 is not existed in testing database
+     *
      * @throws Exception
      */
     @Test
@@ -68,5 +69,4 @@ public class ParkingNewsRestController_getDetailParkingNews {
                         jsonPath("postingDate").value("2021-10-30")
                 );
     }
-
 }

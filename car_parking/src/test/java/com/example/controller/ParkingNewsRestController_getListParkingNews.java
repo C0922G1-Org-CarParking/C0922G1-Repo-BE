@@ -21,13 +21,32 @@ public class ParkingNewsRestController_getListParkingNews {
 
     /**QuynhND
      * Created: 30/03/2023
-     * Function: Test for key word null, replace for function getListParkingNews_keyword_7()
+     * Function: Test for key word empty, replace for function getListParkingNews_keyword_7()
+     * Note: Function getListParkingNews set @RequestParam(name = "keyword", defaultValue = "") for param keyword
      * Expect:  HttpStatus.OK
      * @return pages of parking news
      * @throws Exception
      */
     @Test
     public void getListParkingNews_keyword_99() throws Exception {
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .get("/parking_news?page=0"))
+                .andDo(print())
+                .andExpect(status().is2xxSuccessful());
+    }
+
+
+    /**QuynhND
+     * Created: 30/03/2023
+     * Function: Test for key word null, replace for function getListParkingNews_keyword_8()
+     * Note: Function getListParkingNews set @RequestParam(name = "keyword", defaultValue = "") for param keyword
+     * Expect:  HttpStatus.OK
+     * @return pages of parking news
+     * @throws Exception
+     */
+    @Test
+    public void getListParkingNews_keyword_100() throws Exception {
         String emptyKeyword = "";
         this.mockMvc.perform(
                         MockMvcRequestBuilders
@@ -37,24 +56,9 @@ public class ParkingNewsRestController_getListParkingNews {
     }
 
     /**QuynhND
-     * Created: 30/03/2023
-     * Function: Test for key word empty, replace for function getListParkingNews_keyword_8()
-     * Expect:  HttpStatus.OK
-     * @return pages of parking news
-     * @throws Exception
-     */
-    @Test
-    public void getListParkingNews_keyword_100() throws Exception {
-        this.mockMvc.perform(
-                        MockMvcRequestBuilders
-                                .get("/parking_news?page=0"))
-                .andDo(print())
-                .andExpect(status().is2xxSuccessful());
-    }
-
-    /**QuynhND
      *Created: 30/03/2023
      * Function: Test for key word not existed in database, replace for function getListParkingNews_keyword_9()
+     * Note: Function getListParkingNews set @RequestParam(name = "keyword", defaultValue = "") for param keyword
      * Expect:  HttpStatus.No_Content
      * @return: empty page
      * @throws Exception
@@ -68,6 +72,15 @@ public class ParkingNewsRestController_getListParkingNews {
                 .andDo(print())
                 .andExpect(status().is(204));
     }
+
+    /**QuynhND
+     *Created: 30/03/2023
+     * Function: Test for key word exists in database and return list with size > 0, can use for function getListParkingNews_keyword_10()
+     * Note: Function getListParkingNews set @RequestParam(name = "keyword", defaultValue = "") for param keyword, and query database with condition: is_deleted = false
+     * Expect:  HttpStatus.No_Content
+     * @return: empty page
+     * @throws Exception
+     */
 
     @Test
     public void getListParkingNews_keyword_11() throws Exception {
@@ -92,5 +105,4 @@ public class ParkingNewsRestController_getListParkingNews {
                 .andExpect(jsonPath("content[2].postingDate").value("2021-10-30"))
                 .andExpect(jsonPath("content[2].content").value(IsNull.nullValue()));
     }
-
 }
