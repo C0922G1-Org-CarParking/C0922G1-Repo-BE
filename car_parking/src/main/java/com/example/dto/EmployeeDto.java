@@ -3,21 +3,23 @@ package com.example.dto;
 
 import com.example.model.Position;
 
+import javax.persistence.Column;
 import javax.validation.constraints.*;
 
 
 public class EmployeeDto {
     private Long id;
-    @NotBlank(message = "Không được để trống")
+    @NotBlank(message = "tên khách hàng không được để trống")
+    @Pattern(regexp = "^([\\p{Lu}][\\p{Ll}]{1,8})(\\s([\\p{Lu}]|[\\p{Lu}][\\p{Ll}]{1,10})){0,5}$",message = "Tên khách hàng không thể chứa ký tự đặc biệt và không thể chứa số")
     private String name;
     @Min(value = 16, message = "Tuổi của bạn phải lớn hơn hoặc bằng 16")
     private String dateOfBirth;
     private boolean gender;
-    @NotBlank(message = "Nhập số điện thoại")
-    @Pattern(regexp = "[0][1-9]{9}", message = "Số điện thoại phải có 10 số và bắt đầu bằng 0")
+    @Pattern(regexp = "(090\\d{7})|(091\\d{7})|(\\(84\\)\\+90\\d{7})|(\\(84\\)\\+91\\d{7})",message = "Số điện thoại phải đúng định dạng, vd:090xxxxxxx; 091xxxxxxx; (84)+90xxxxxxx; (84)+91xxxxxxx " )
+    @NotBlank(message = "số điện thoại không được để trống")
     private String phoneNumber;
-    @Size(max = 12, message = "tên có độ dài tối đa 12 ký tự")
-    @NotEmpty(message = "không được để trống")
+    @NotBlank(message = "số cmnd không được để trống")
+    @Pattern(regexp = "(\\d{9})|(\\d{12})",message = "số cmnd phải đúng định dạng,vd:XXXXXXXXX hoặc XXXXXXXXXXXX (X là số 0-9).")
     private String idCard;
     private int district;
     private int province;
@@ -25,7 +27,11 @@ public class EmployeeDto {
     @NotBlank(message = "Nhập địa chỉ")
     private String street;
     private Position position;
+    @NotBlank(message = "email không được để trống")
+    @Pattern(regexp = "[a-zA-Z]+\\w+@\\w+(\\.\\w+)+", message = "email phải đúng định dạng, vd: abc123@gmail.com")
     private String email;
+
+    @Column(columnDefinition = "boolean default false")
     private boolean isDeleted;
 
     public boolean isDeleted() {
