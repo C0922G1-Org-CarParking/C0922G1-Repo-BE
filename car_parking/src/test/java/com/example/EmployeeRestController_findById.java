@@ -63,7 +63,7 @@ public class EmployeeRestController_findById {
      * This function checks the correct input parameter
      */
     @Test
-    public void getInfoStudent_id_4() throws Exception {
+    public void findById_id_4() throws Exception {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
@@ -82,14 +82,8 @@ public class EmployeeRestController_findById {
                         jsonPath("phoneNumber").value("01234667885"),
                         jsonPath("province").value(1),
                         jsonPath("street").value("hamnghi"),
-                        jsonPath("position").value(1),
                         jsonPath("deleted").value(false),
                         jsonPath("position").value(1)
-
         );
     }
-
-
-
-
 }
