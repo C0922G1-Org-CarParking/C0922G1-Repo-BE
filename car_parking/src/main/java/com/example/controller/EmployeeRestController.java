@@ -38,7 +38,7 @@ public class EmployeeRestController {
         Pageable pageable = PageRequest.of(page, size);
         Page<Employee> employeePage = employeeService.searchEmployee(pageable, name, dateOfBirth);
         if (employeePage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(employeePage, HttpStatus.OK);
     }

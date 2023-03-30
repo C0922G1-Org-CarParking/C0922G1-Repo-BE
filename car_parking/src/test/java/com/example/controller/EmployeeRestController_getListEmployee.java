@@ -102,11 +102,16 @@ public class EmployeeRestController_getListEmployee {
                 .andExpect(status().is2xxSuccessful());
     }
 
-
+    /**
+     * Created by: TaiLH
+     * Date created: 30/03/2023
+     * function: test case returns a list of size 0
+     * @throws Exception
+     */
     @Test
     public void getListEmployee_5() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
-                        .get("/api/list-employee?page=0&size=0&dateOfBirth=null&name=null"))
+                        .get("/api/list-employee/0"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -122,7 +127,7 @@ public class EmployeeRestController_getListEmployee {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/list-employee?page=0"))
+                                .get("/api/list-employee?page=0&size=0"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("totalPages").value(1))
