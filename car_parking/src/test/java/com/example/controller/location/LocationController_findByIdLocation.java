@@ -61,11 +61,11 @@ public class LocationController_findByIdLocation {
                         jsonPath("floorName").value("1"),
                         jsonPath("customerName").value("Vu BD"),
                         jsonPath("customerEmail").value("vule@gmail.com"),
-                        jsonPath("locationWidth").value(6.0),
+                        jsonPath("nameCar").value("Fortuner"),
                         jsonPath("locationName").value("1"),
-                        jsonPath("locationHeight").value(6.0),
+                        jsonPath("plateNumber").value("92B-99999"),
                         jsonPath("customerPhoneNumber").value("1234567893"),
-                        jsonPath("locationLength").value(5.0));
+                        jsonPath("nameCarType").value("4 Chỗ"));
 
     }
 

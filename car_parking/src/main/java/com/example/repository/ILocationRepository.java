@@ -16,15 +16,15 @@ public interface ILocationRepository extends JpaRepository<Location, Integer> {
             " left join section on section.id= location.section_id where floor_id=:id", nativeQuery = true)
     List<Location> listMapParking(@Param("id") int id);
 
-    @Query(value = "select location.name as locationName , floor.name as floorName, section.name as sectionName,\n" +
-            " location.height as locationHeight , location.width as locationWidth, location.length as locationLength, permission_car_type_locations as permissionCarTypeLocations" +
-            "customer.name as customerName, \n" +
+    @Query(value = " select location.name as locationName , floor.name as floorName, section.name as sectionName,\n" +
+            " customer.name as customerName, car.name as nameCar,car_type.name as nameCarType,car.plate_number as plateNumber,\n" +
             " customer.email as customerEmail, customer.phone_number as customerPhoneNumber from location\n" +
             " left join floor on floor.id=location.floor_id\n" +
             " left join section on section.id= location.section_id\n" +
             " left join ticket on location.id=ticket.location_id\n" +
             " left join car on car.id=ticket.car_id\n" +
-            " left join customer on car.customer_id=customer.id where location.id=:id and ticket.expiry_date >=curdate()  ", nativeQuery = true)
+            " left join car_type on car_type.id=car.car_type_id\n" +
+            " left join customer on car.customer_id=customer.id where location.id=1  and ticket.expiry_date >=curdate()  ", nativeQuery = true)
     ILocationDetailDto findByIdLocation(@Param("id") int id);
 
 

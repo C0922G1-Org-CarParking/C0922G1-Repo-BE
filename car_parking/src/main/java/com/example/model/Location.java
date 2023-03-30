@@ -12,7 +12,7 @@ public class Location {
     private Long id;
 
     @Column(length = 45, nullable = false)
-    private String name;
+    private int name;
 
     private boolean isOccupied;
 
@@ -69,11 +69,11 @@ public class Location {
         this.id = id;
     }
 
-    public String getName() {
+    public int getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(int name) {
         this.name = name;
     }
 
@@ -125,7 +125,7 @@ public class Location {
         this.section = section;
     }
 
-    public Location(Long id, String name, boolean isOccupied, double width, double height,
+    public Location(Long id, int name, boolean isOccupied, double width, double height,
                     double length, String permissionCarTypeLocations, Section section, Floor floor, Set<Ticket> ticketSet, boolean isDeleted) {
         this.id = id;
         this.name = name;
