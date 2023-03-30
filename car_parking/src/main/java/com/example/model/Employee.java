@@ -9,7 +9,7 @@ import java.util.Set;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(length = 45, nullable = false)
     private String name;
@@ -27,6 +27,7 @@ public class Employee {
     private Position position;
 
     @OneToOne(mappedBy = "employee")
+    @JsonIgnore
     private Account account;
 
     private String email;
@@ -78,17 +79,18 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     public String getName() {
         return name;
     }
+
 
     public void setName(String name) {
         this.name = name;

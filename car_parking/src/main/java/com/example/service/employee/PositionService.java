@@ -1,6 +1,7 @@
 package com.example.service.employee;
 
 import com.example.dto.IPositionDto;
+import com.example.model.Position;
 import com.example.repository.employee.IPositionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class PositionService implements IPositionService{
      * @return  function at positionRepository
      */
     @Override
-    public List<IPositionDto> getAllPosition() {
+    public List<Position> getAllPosition() {
         return positionRepository.getAllPosition();
     }
 }

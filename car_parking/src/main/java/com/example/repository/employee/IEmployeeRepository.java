@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Repository
-public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
+public interface IEmployeeRepository extends JpaRepository<Employee,Long> {
     //
 //    @Query(value = "SELECT e.id as employee_id,e.name as employee_name,e.date_of_birth as dateOfBirth,e.gender as employee_gender,e.phone_number as phoneNumber,e.id_card as idCard,e.district,e.commune,e.province,e.street,e.position_id as positionId,e.email as employeeEmail from employee e " +
 //            "JOIN position p on p.id = e.position_id  " +
@@ -23,7 +23,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
      * Function: find id employee
      * @return  call to updateEmployee in employeeRepository
      */
-    @Query(value = "select commune, date_of_birth, district,gender,id_card,is_deleted,name,province,street,email,position_id,phone_number from employee where employee.id = :id", nativeQuery = true)
+    @Query(value = "select e.* from employee e join `position` p on p.id = e.position_id  where e.id =:id", nativeQuery = true)
     Employee findEmployeeById(@Param("id") Long id);
     /**
      * Created by: DinhNTC
@@ -60,8 +60,8 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
             "district = :district," +
             "province = :province," +
             "commune = :commune," +
-            "street = :street," +
-            "WHERE id = :id",
+            "street = :street" +
+            " WHERE id = :id",
             nativeQuery = true)
     /**
      * Created by: DinhNTC

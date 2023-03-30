@@ -4,6 +4,7 @@ package com.example.controller.employee;
 import com.example.dto.EmployeeDto;
 import com.example.dto.IPositionDto;
 import com.example.model.Employee;
+import com.example.model.Position;
 import com.example.service.employee.IEmployeeService;
 import com.example.service.employee.IPositionService;
 import org.springframework.beans.BeanUtils;
@@ -18,7 +19,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/employee")
+@RequestMapping("/api")
 public class EmployeeController {
     @Autowired
     private IEmployeeService employeeService;
@@ -32,9 +33,9 @@ public class EmployeeController {
      *
      * @return if return error then HttpStatus.NO_CONTENT else then return positionList and HttpStatus.OK
      */
-    @GetMapping("positionAll")
+    @GetMapping("list-position")
     public ResponseEntity getAllPosition() {
-        List<IPositionDto> positionList = positionService.getAllPosition();
+        List<Position> positionList = positionService.getAllPosition();
         if (positionList == null) {
             return new ResponseEntity(positionList, HttpStatus.NO_CONTENT);
         }
@@ -50,8 +51,8 @@ public class EmployeeController {
      */
 
     @GetMapping("/{id}")
-    public ResponseEntity<Employee> findById(@PathVariable Long id) {
-        Employee employee = employeeService.findById(id);
+    public ResponseEntity<Employee> findEmployeeById(@PathVariable Long id) {
+        Employee employee = employeeService.findEmployeeById(id);
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
@@ -62,7 +63,7 @@ public class EmployeeController {
      *
      * @return if has errors then return HttpStatus.Not_FOUND else add data into DB
      */
-    @PostMapping("/createEmployee")
+    @PostMapping("/create-employee")
     public ResponseEntity createEmployee(@Validated @RequestBody EmployeeDto employeeDto,
                                          BindingResult bindingResult) {
         Employee employee = new Employee();
@@ -84,12 +85,12 @@ public class EmployeeController {
      * @return if has errors then return HttpStatus.Not_FOUND else add data into DB
      */
 
-    @PatchMapping("/updateEmployee/{id}")
+    @PatchMapping("/update-employee/{id}")
     public ResponseEntity updateEmployee(@PathVariable("id") Long id, @Validated @RequestBody EmployeeDto employeeDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(employeeDto, HttpStatus.NOT_FOUND);
         }
-        Employee employee = employeeService.findById(id);
+        Employee employee = employeeService.findEmployeeById(id);
         if (employee == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {

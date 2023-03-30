@@ -4,7 +4,7 @@ import com.example.model.Employee;
 
 public interface IEmployeeService {
 
-    Employee findById(Long id);
+    Employee findEmployeeById(Long id);
 
     void updateEmployee(String name,String dateOfBirth,boolean gender,String phoneNumber,Long positionId,
                         String email,String idCard,int district,int province,int commune,String street,

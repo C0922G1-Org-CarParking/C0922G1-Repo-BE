@@ -9,23 +9,21 @@ import javax.validation.constraints.*;
 public class EmployeeDto {
     private Long id;
     private String name;
-    @Min(value = 16, message = "Tuổi của bạn phải lớn hơn hoặc bằng 16")
+//    @Min(value = 16, message = "Tuổi của bạn phải lớn hơn hoặc bằng 16")
     private String dateOfBirth;
     private boolean gender;
-    @NotBlank(message = "Nhập số điện thoại")
-    @Pattern(regexp = "[0][1-9]{9}", message = "Số điện thoại phải có 10 số và bắt đầu bằng 0")
+//    @NotBlank(message = "Nhập số điện thoại")
+//    @Pattern(regexp = "[0][1-9]{9}", message = "Số điện thoại phải có 10 số và bắt đầu bằng 0")
     private String phoneNumber;
-    @Size(max = 12, message = "tên có độ dài tối đa 12 ký tự")
-    @NotEmpty(message = "không được để trống")
+//    @Size(max = 12, message = "tên có độ dài tối đa 12 ký tự")
+//    @NotEmpty(message = "không được để trống")
     private String idCard;
     private int district;
     private int province;
     private int commune;
-    @NotBlank(message = "Nhập địa chỉ")
+//    @NotBlank(message = "Nhập địa chỉ")
     private String street;
     private Position position;
-    @NotBlank(message = "Email ko được để trống")
-    @Pattern(regexp = "^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Email sai định dạng")
     private String email;
     private boolean isDeleted;
 

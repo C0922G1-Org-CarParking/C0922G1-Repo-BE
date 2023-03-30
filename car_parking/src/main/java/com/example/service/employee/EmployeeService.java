@@ -12,7 +12,7 @@ public class EmployeeService implements IEmployeeService {
     private IEmployeeRepository employeeRepository;
 
     @Override
-    public Employee findById(Long id) {
+    public Employee findEmployeeById(Long id) {
         return employeeRepository.findEmployeeById(id);
 
     }
