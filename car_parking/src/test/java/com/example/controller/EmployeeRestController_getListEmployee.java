@@ -77,7 +77,7 @@ public class EmployeeRestController_getListEmployee {
     /**
      * Created by: TaiLH
      * Date created: 30/03/2023
-     * function: check if name search instance exists in database
+     * function: check if name search instance exist in database
      * @throws Exception
      */
     @Test
