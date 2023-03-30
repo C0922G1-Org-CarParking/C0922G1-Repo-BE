@@ -20,7 +20,7 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/api")
-public class EmployeeController {
+public class EmployeeRestController {
     @Autowired
     private IEmployeeService employeeService;
     @Autowired
