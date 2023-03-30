@@ -1,9 +1,8 @@
-package com.example.controller.car_in_out;
+package com.example.controller;
 
 import com.example.dto.ICarInOutDTO;
 import com.example.model.CarInOut;
-import com.example.service.car_in_out.CarInOutService;
-import com.example.service.car_in_out.ICarInOutService;
+import com.example.service.ICarInOutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

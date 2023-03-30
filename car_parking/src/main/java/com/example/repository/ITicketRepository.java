@@ -1,4 +1,4 @@
-package com.example.repository.ticket;
+package com.example.repository;
 
 import com.example.dto.TicketDto;
 import com.example.model.Ticket;
@@ -12,24 +12,26 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public interface ITicketRepository extends JpaRepository<Ticket, Integer> {
-    @Query(nativeQuery = true, value = "select t.id as TicketId, c.plate_number as PlateNumber, cus.name as CustomerName, cus.phone_number as CustomerPhoneNumber,\t\t\t\t\t\n" +
-            "e.name as EmployeeName, e.phone_number as EmployeePhoneNumber, tt.name as TicketType,  DATEDIFF(t.expiry_date , t.effective_date) * t.price * ct.rate as TotalPrice, \n" +
-            "f.name as Floor, lc.name as Location,  t.expiry_date as ExpiryDate \t\t\t\n" +
-            "from `ticket` as t\t\t\t\t\t\n" +
-            "\tjoin `car` as c on t.car_id = c.id\t\t\t\t\t\n" +
-            "\tjoin `car_type` as ct on c.car_type_id = ct.id\t\t\t\t\t\n" +
-            "\tjoin  `customer` as cus on  c.customer_id = cus.id\t\t\t\t\t\n" +
-            "\tjoin `ticket_type` as tt on t.ticket_type_id = tt.id\t\t\t\t\t\n" +
-            "\tjoin `employee` as e on e.id = t.employee_id\t\t\t\t\t\n" +
-            "\tjoin `location` as lc on lc.id = t.location_id \t\t\t\t\t\n" +
-            "\tjoin `floor` as f on f.id = lc.floor_id\n" +
-            "where cus.name like concat('%',:customerName,'%') and " +
-            "cus.phone_number like concat('%',:customerPhone,'%') and " +
-            "e.name like concat('%',:employeeName,'%') and " +
-            "e.phone_number like concat('%',:employeePhone,'%') and " +
-            "f.name like concat('%',:floor,'%') and " +
-            "t.expiry_date like concat('%',:expiryDate,'%') and " +
-            "tt.name like concat('%',:ticketType,'%') ")
+    @Query(nativeQuery = true, value = "select t.id as TicketId, c.plate_number as PlateNumber, cus.name as CustomerName, cus.phone_number as CustomerPhoneNumber,\n" +
+            "            e.name as EmployeeName, e.phone_number as EmployeePhoneNumber, tt.name as TicketType, \n" +
+            "             DATEDIFF(t.expiry_date , t.effective_date) * t.price * ct.rate as TotalPrice, \n" +
+            "            f.name as Floor, lc.name as Location,  t.expiry_date as ExpiryDate\n" +
+            "            from `ticket` as t\n" +
+            "            join `car` as c on t.car_id = c.id\n" +
+            "            join `car_type` as ct on c.car_type_id = ct.id\n" +
+            "            join  `customer` as cus on  c.customer_id = cus.id\n" +
+            "            join `ticket_type` as tt on t.ticket_type_id = tt.id\n" +
+            "            join `employee` as e on e.id = t.employee_id\n" +
+            "            join `location` as lc on lc.id = t.location_id \n" +
+            "            join `floor` as f on f.id = lc.floor_id\n" +
+            "            where cus.name like concat('%',:customerName,'%') and\n" +
+            "            cus.phone_number = coalesce(nullif(:customerPhone,''), cus.phone_number) and\n" +
+            "            e.name like concat('%',:employeeName,'%') and\n" +
+            "            e.phone_number = coalesce(nullif(:employeePhone,''), e.phone_number) and \n" +
+            "            f.name like concat('%',:floor,'%') and\n" +
+            "            t.expiry_date = coalesce(nullif(:expiryDate,''), t.expiry_date) and\n" +
+            "            tt.name like concat('%',:ticketType,'%') and\n" +
+            "            t.is_deleted = 0")
     Page<TicketDto> search(@Param("customerName")String customerName,
                            @Param("customerPhone")String customerPhone,
                            @Param("employeeName")String employeeName,

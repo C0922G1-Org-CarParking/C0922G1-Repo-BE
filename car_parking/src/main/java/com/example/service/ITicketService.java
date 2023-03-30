@@ -1,4 +1,4 @@
-package com.example.service.TicketService;
+package com.example.service;
 
 import com.example.dto.TicketDto;
 import org.springframework.data.domain.Page;

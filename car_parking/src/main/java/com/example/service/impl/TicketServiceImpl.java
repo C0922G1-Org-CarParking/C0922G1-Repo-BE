@@ -1,14 +1,15 @@
-package com.example.service.TicketService;
+package com.example.service.impl;
 
 import com.example.dto.TicketDto;
-import com.example.repository.ticket.ITicketRepository;
+import com.example.repository.ITicketRepository;
+import com.example.service.ITicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TicketServiceImpl implements ITicketService{
+public class TicketServiceImpl implements ITicketService {
 
     @Autowired
     private ITicketRepository ticketRepository;
