@@ -29,7 +29,7 @@ public class EmployeeRestController {
      * @return HttpStatus.NO_CONTENT if result is error or HttpStatus.OK if result is not error
      */
     @GetMapping("/list-employee")
-    public ResponseEntity<Page<Employee>> getEmployee(
+    public ResponseEntity<Page<Employee>> getListEmployee(
             @RequestParam(required = false, defaultValue = "0") int page,
             @RequestParam(required = false, defaultValue = "10") int size,
             @RequestParam(required = false,defaultValue = "") String name,
@@ -38,7 +38,7 @@ public class EmployeeRestController {
         Pageable pageable = PageRequest.of(page, size);
         Page<Employee> employeePage = employeeService.searchEmployee(pageable, name, dateOfBirth);
         if (employeePage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(employeePage, HttpStatus.OK);
     }
@@ -72,7 +72,7 @@ public class EmployeeRestController {
         Pageable pageable = PageRequest.of(page, size);
         Page<Employee> employees = employeeService.findAllByDeletedFalse(pageable);
         if (employees.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
