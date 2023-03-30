@@ -17,6 +17,12 @@ public class ParkingNewsRestController_getDetailParkingNews {
     @Autowired
     private MockMvc mockMvc;
 
+    /**QuynhND
+     * Created: 30/03/2023
+     * Test for id is null
+     * @return: empty page
+     * @throws Exception
+     */
     @Test
     public void getDetailParkingNews_parkingNewsId_1() throws Exception {
         this.mockMvc.perform(
@@ -26,6 +32,11 @@ public class ParkingNewsRestController_getDetailParkingNews {
                 .andExpect(status().is4xxClientError());
     }
 
+    /**Created by: QuynhND
+     * Date created: 29/03/2023
+     * Test for id is blank
+     * @throws Exception
+     */
     @Test
     public void getDetailParkingNews_parkingNewsId_2() throws Exception {
         this.mockMvc.perform(
@@ -36,11 +47,9 @@ public class ParkingNewsRestController_getDetailParkingNews {
 
     }
 
-    /**
-     * Created by: QuynhND
+    /**Created by: QuynhND
      * Date created: 29/03/2023
-     * Input: Parking News ID 999 is not existed in testing database
-     *
+     * Test for id does not exist in database. Parking News ID 999 is not existed in testing database
      * @throws Exception
      */
     @Test
@@ -53,6 +62,11 @@ public class ParkingNewsRestController_getDetailParkingNews {
                 .andExpect(status().is4xxClientError());
     }
 
+    /**Created by: QuynhND
+     * Date created: 29/03/2023
+     * Test for id exists in database
+     * @throws Exception
+     */
     @Test
     public void getDetailParkingNews_parkingNewsId_4() throws Exception {
         this.mockMvc.perform(

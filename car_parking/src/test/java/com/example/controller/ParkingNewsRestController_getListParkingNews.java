@@ -21,14 +21,14 @@ public class ParkingNewsRestController_getListParkingNews {
 
     /**QuynhND
      * Created: 30/03/2023
-     * Function: Test for key word empty, replace for function getListParkingNews_keyword_7()
+     * Test for keyword null
      * Note: Function getListParkingNews set @RequestParam(name = "keyword", defaultValue = "") for param keyword
      * Expect:  HttpStatus.OK
      * @return pages of parking news
      * @throws Exception
      */
     @Test
-    public void getListParkingNews_keyword_99() throws Exception {
+    public void getListParkingNews_keyword_7() throws Exception {
         this.mockMvc.perform(
                         MockMvcRequestBuilders
                                 .get("/parking_news?page=0"))
@@ -39,14 +39,14 @@ public class ParkingNewsRestController_getListParkingNews {
 
     /**QuynhND
      * Created: 30/03/2023
-     * Function: Test for key word null, replace for function getListParkingNews_keyword_8()
+     * Test for keyword blank
      * Note: Function getListParkingNews set @RequestParam(name = "keyword", defaultValue = "") for param keyword
      * Expect:  HttpStatus.OK
      * @return pages of parking news
      * @throws Exception
      */
     @Test
-    public void getListParkingNews_keyword_100() throws Exception {
+    public void getListParkingNews_keyword_8() throws Exception {
         String emptyKeyword = "";
         this.mockMvc.perform(
                         MockMvcRequestBuilders
@@ -56,15 +56,15 @@ public class ParkingNewsRestController_getListParkingNews {
     }
 
     /**QuynhND
-     *Created: 30/03/2023
-     * Function: Test for key word not existed in database, replace for function getListParkingNews_keyword_9()
+     * Created: 30/03/2023
+     * Test for keyword not exist in database
      * Note: Function getListParkingNews set @RequestParam(name = "keyword", defaultValue = "") for param keyword
      * Expect:  HttpStatus.No_Content
      * @return: empty page
      * @throws Exception
      */
     @Test
-    public void getListParkingNews_keyword_101() throws Exception {
+    public void getListParkingNews_keyword_9() throws Exception {
         String notExistedKeyword = "not existed keyword";
         this.mockMvc.perform(
                         MockMvcRequestBuilders
@@ -74,7 +74,8 @@ public class ParkingNewsRestController_getListParkingNews {
     }
 
     /**QuynhND
-     *Created: 30/03/2023
+     * Created: 30/03/2023
+     * Test for keyword exists in database
      * Function: Test for key word exists in database and return list with size > 0, can use for function getListParkingNews_keyword_10()
      * Note: Function getListParkingNews set @RequestParam(name = "keyword", defaultValue = "") for param keyword, and query database with condition: is_deleted = false
      * Expect:  HttpStatus.No_Content
