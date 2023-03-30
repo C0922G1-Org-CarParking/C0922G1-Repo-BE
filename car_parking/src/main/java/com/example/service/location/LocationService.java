@@ -28,4 +28,9 @@ public class LocationService implements ILocationService {
         return locationRepository.showList(pageable, search);
 
     }
+
+    @Override
+    public Page<ILocationDto> showListT(Pageable pageable, String search) {
+        return locationRepository.showListT(pageable, search);
+    }
 }
