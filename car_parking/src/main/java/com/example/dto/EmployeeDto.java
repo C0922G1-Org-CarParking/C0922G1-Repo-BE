@@ -12,17 +12,21 @@ public class EmployeeDto {
     @NotBlank(message = "tên khách hàng không được để trống")
     @Pattern(regexp = "^([\\p{Lu}][\\p{Ll}]{1,8})(\\s([\\p{Lu}]|[\\p{Lu}][\\p{Ll}]{1,10})){0,5}$",message = "Tên khách hàng không thể chứa ký tự đặc biệt và không thể chứa số")
     private String name;
-    @Min(value = 16, message = "Tuổi của bạn phải lớn hơn hoặc bằng 16")
+    @NotBlank(message = "Nhập ngày sinh")
     private String dateOfBirth;
     private boolean gender;
-    @Pattern(regexp = "(090\\d{7})|(091\\d{7})|(\\(84\\)\\+90\\d{7})|(\\(84\\)\\+91\\d{7})",message = "Số điện thoại phải đúng định dạng, vd:090xxxxxxx; 091xxxxxxx; (84)+90xxxxxxx; (84)+91xxxxxxx " )
-    @NotBlank(message = "số điện thoại không được để trống")
+    @NotBlank(message = "Nhập số điện thoại")
+    @Pattern(regexp = "[0][1-9]{9}", message = "Số điện thoại phải có 10 số và bắt đầu bằng 0")
     private String phoneNumber;
     @NotBlank(message = "số cmnd không được để trống")
     @Pattern(regexp = "(\\d{9})|(\\d{12})",message = "số cmnd phải đúng định dạng,vd:XXXXXXXXX hoặc XXXXXXXXXXXX (X là số 0-9).")
     private String idCard;
+    @Min(value = 1)
     private int district;
+    @Min(value = 1)
+    @Max(value = 63)
     private int province;
+    @Min(value = 1)
     private int commune;
     @NotBlank(message = "Nhập địa chỉ")
     private String street;
@@ -30,8 +34,6 @@ public class EmployeeDto {
     @NotBlank(message = "email không được để trống")
     @Pattern(regexp = "[a-zA-Z]+\\w+@\\w+(\\.\\w+)+", message = "email phải đúng định dạng, vd: abc123@gmail.com")
     private String email;
-
-    @Column(columnDefinition = "boolean default false")
     private boolean isDeleted;
 
     public boolean isDeleted() {

@@ -52,7 +52,11 @@ public class EmployeeRestController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Employee> findEmployeeById(@PathVariable Long id) {
+
         Employee employee = employeeService.findEmployeeById(id);
+        if(employee == null){
+            return  new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
@@ -64,12 +68,12 @@ public class EmployeeRestController {
      * @return if has errors then return HttpStatus.Not_FOUND else add data into DB
      */
     @PostMapping("/create-employee")
-    public ResponseEntity createEmployee(@Validated @RequestBody EmployeeDto employeeDto,
+    public ResponseEntity<?> createEmployee(@Validated @RequestBody EmployeeDto employeeDto,
                                          BindingResult bindingResult) {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDto, employee);
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(bindingResult.getAllErrors(),HttpStatus.BAD_REQUEST);
         }
         employeeService.addEmployee(employee.getCommune(), employee.getDateOfBirth(), employee.getDistrict(), employee.isGender(),
                 employee.getIdCard(), employee.getName(), employee.getProvince(), employee.getStreet(),
@@ -85,10 +89,10 @@ public class EmployeeRestController {
      * @return if has errors then return HttpStatus.Not_FOUND else add data into DB
      */
 
-    @PatchMapping("/update-employee/{id}")
-    public ResponseEntity updateEmployee(@PathVariable("id") Long id, @Validated @RequestBody EmployeeDto employeeDto, BindingResult bindingResult) {
+    @PutMapping("/update-employee/{id}")
+        public ResponseEntity<?> updateEmployee(@PathVariable("id") Long id, @Validated @RequestBody EmployeeDto employeeDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(employeeDto, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
         Employee employee = employeeService.findEmployeeById(id);
         if (employee == null) {
@@ -97,7 +101,7 @@ public class EmployeeRestController {
             employeeService.updateEmployee(employeeDto.getName(), employeeDto.getDateOfBirth(), employeeDto.isGender(), employeeDto.getPhoneNumber(),
                     employeeDto.getPosition().getId(), employeeDto.getEmail(), employeeDto.getIdCard(), employeeDto.getDistrict(), employeeDto.getProvince(),
                     employeeDto.getCommune(), employeeDto.getStreet(), id);
-            return new ResponseEntity(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
     }
 }
