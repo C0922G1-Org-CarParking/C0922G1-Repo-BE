@@ -16,8 +16,6 @@ public class Account {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
-//    private String username;
-
     @Column(nullable = false)
     @JsonIgnore
     private String password;
@@ -32,10 +30,6 @@ public class Account {
     public String getUsername() {
         return this.employee.getEmail();
     }
-
-//    public void setUsername() {
-//        this.username = this.employee.getEmail();
-//    }
 
 
     public Long getId() {
