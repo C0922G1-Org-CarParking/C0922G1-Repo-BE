@@ -28,6 +28,7 @@ import java.io.InputStream;
 public class CarInOutController {
     @Autowired
     private ICarInOutService carInOutService;
+
     /*
      * Created by: NamLQN
      * Date created: 29/03/2023
@@ -38,7 +39,8 @@ public class CarInOutController {
     @PostMapping(value = "/scanning-car",
             consumes = {MediaType.MULTIPART_FORM_DATA_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<ICarInOutDTO> findICarInOut(MultipartFile plateNumberImage) {
+    public ResponseEntity<Object> searchCarInOutDTO(@RequestParam(value = "plateNumberImage") MultipartFile plateNumberImage) {
+
         InputStream plateNumberIS = null;
         try {
             plateNumberIS = plateNumberImage.getInputStream();
@@ -49,28 +51,31 @@ public class CarInOutController {
             Intelligence intelligence = new Intelligence();
             CarSnapshot carSnapshot = new CarSnapshot(plateNumberIS);
             String plateNumber = intelligence.recognize(carSnapshot);
-            if (plateNumber.equals(null)){
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            if (plateNumber == null) {
+                return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
             }
-            if (carInOutService.searchCarInOutDTO(plateNumber).equals(null)) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+            if (carInOutService.searchCarInOutDTO(plateNumber) == null) {
+                return new ResponseEntity<>("Không tìm thấy dữ liệu", HttpStatus.NOT_FOUND);
             }
+
             ICarInOutDTO carInOutDTO = carInOutService.searchCarInOutDTO(plateNumber);
             return new ResponseEntity<>(carInOutDTO, HttpStatus.OK);
         } catch (ParserConfigurationException | IOException | SAXException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException();
         }
     }
 
-    /*
+    /**
      * Created by: NamLQN
      * Date created: 29/03/2023
      * Function: save Car history when getting in and out of the parking lot
-     * @param CarInOut from user with properties timeIn and timeOut
+     *
+     * @param carInOutDTO from user with properties timeIn and timeOut
      * @return Http.status.NOT_FOUND or Http.status.OK
      */
     @PostMapping("/save-car-in-out")
-    public ResponseEntity<CarInOutDTO> saveCarInOut(@Validated @RequestBody CarInOutDTO carInOutDTO, BindingResult bindingResult) {
+    public ResponseEntity<Object> saveCarInOut(@Validated @RequestBody CarInOutDTO carInOutDTO, BindingResult bindingResult) {
 
         new CarInOutDTO().validate(carInOutDTO, bindingResult);
 
@@ -82,7 +87,19 @@ public class CarInOutController {
         }
         CarInOut carInOut = new CarInOut();
         BeanUtils.copyProperties(carInOutDTO, carInOut);
+        Car car = new Car();
+        car.setId(carInOut.getId());
+        carInOut.setCar(car);
         carInOutService.saveCarInOut(carInOut);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @ResponseStatus(
+            value = HttpStatus.NOT_FOUND,
+            reason = "không xác định được file"
+    )
+    @ExceptionHandler(Exception.class)
+    public void handleException(Exception e){
+    }
+
 }

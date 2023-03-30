@@ -22,7 +22,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     // https://mvnrepository.com/artifact/net.sf.javaanpr/javaanpr
     implementation group: 'net.sf.javaanpr', name: 'javaanpr', version: '1.2.6'
-
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {

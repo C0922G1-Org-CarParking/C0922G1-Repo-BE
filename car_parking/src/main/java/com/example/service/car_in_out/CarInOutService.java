@@ -9,15 +9,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class CarInOutService implements ICarInOutService {
     @Autowired
-    private ICarInOutRepository carInOutRepository;
+    private ICarInOutRepository iCarInOutRepository;
 
     @Override
     public void saveCarInOut(CarInOut carInOut) {
-        carInOutRepository.saveCarInOut(carInOut.getCar().getId(), carInOut.getTimeIn(), carInOut.getTimeOut());
+        iCarInOutRepository.saveCarInOut(carInOut.getCar().getId(), carInOut.getTimeIn(), carInOut.getTimeOut());
     }
 
     @Override
     public ICarInOutDTO searchCarInOutDTO(String plateNumber) {
-        return carInOutRepository.searchCarInOutDTO(plateNumber);
+        return iCarInOutRepository.searchCarInOutDTO(plateNumber);
     }
 }

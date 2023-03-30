@@ -2,25 +2,18 @@ package com.example.dto;
 
 import com.example.model.Car;
 import com.example.model.CarInOut;
-import net.bytebuddy.asm.Advice;
-import org.springframework.boot.autoconfigure.web.format.DateTimeFormatters;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import javax.validation.constraints.NotNull;
-import java.sql.Time;
-import java.text.Format;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Formatter;
 
 public class CarInOutDTO implements Validator {
 
     private Long id;
 
 
-    private Car car;
+    private Car carDTO;
 
     @NotNull
     private String timeIn;
@@ -32,7 +25,7 @@ public class CarInOutDTO implements Validator {
 
     public CarInOutDTO(Long id, Car car, String timeIn, String timeOut) {
         this.id = id;
-        this.car = car;
+        this.carDTO = car;
         this.timeIn = timeIn;
         this.timeOut = timeOut;
     }
@@ -45,12 +38,12 @@ public class CarInOutDTO implements Validator {
         this.id = id;
     }
 
-    public Car getCar() {
-        return car;
+    public Car getCarDTO() {
+        return carDTO;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCarDTO(Car carDTO) {
+        this.carDTO = carDTO;
     }
 
     public String getTimeIn() {
