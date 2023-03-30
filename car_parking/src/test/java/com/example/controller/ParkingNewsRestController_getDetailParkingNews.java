@@ -18,7 +18,7 @@ public class ParkingNewsRestController_getDetailParkingNews {
     private MockMvc mockMvc;
 
     /**QuynhND
-     * Created: 30/03/2023
+     * Created: 29/03/2023
      * Test for id is null
      * @return: empty page
      * @throws Exception
