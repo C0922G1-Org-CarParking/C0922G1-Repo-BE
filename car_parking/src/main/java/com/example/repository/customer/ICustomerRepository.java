@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+
 public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
     /**
      * Create by: VuBD
@@ -29,12 +30,12 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
             "name like %:name% AND id_card like %:idCard% AND phone_number like %:phoneNumber% AND " +
             "date_of_birth >= COALESCE(NULLIF(:starDate, ''), date_of_birth) AND " +
             "date_of_birth <= COALESCE(NULLIF(:endDate, ''), date_of_birth)", nativeQuery = true)
-    Page<ICustomerDTO> searchCustomer(@Param("name") String name,
-                                      @Param("idCard") String idCard,
-                                      @Param("phoneNumber") String phoneNumber,
-                                      @Param("starDate") String starDate,
-                                      @Param("endDate") String endDate,
-                                      Pageable pageable);
+    Page<ICustomerDTO> getListCustomer(@Param("name") String name,
+                                       @Param("idCard") String idCard,
+                                       @Param("phoneNumber") String phoneNumber,
+                                       @Param("starDate") String starDate,
+                                       @Param("endDate") String endDate,
+                                       Pageable pageable);
 
     /**
      * Create by: VuBD
@@ -58,4 +59,6 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
     @Query(value = "SELECT customer.id, customer.name, customer.date_of_birth, customer.id_card, customer.gender, " +
             "customer.phone_number, customer.email FROM c0922g1_car_parking.customer WHERE id = :id AND is_deleted = 0", nativeQuery = true)
     ICustomerDTO findCustomerById(@Param("id") int id);
+
+
 }

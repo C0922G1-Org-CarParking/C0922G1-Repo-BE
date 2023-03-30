@@ -1,7 +1,10 @@
 package com.example.service.impl;
 
 import com.example.dto.ICustomerDTO;
+import com.example.model.Ticket;
+import com.example.repository.customer.ICarRepository;
 import com.example.repository.customer.ICustomerRepository;
+import com.example.repository.customer.ITicketRepository;
 import com.example.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +20,10 @@ public class CustomerService implements ICustomerService {
      */
     @Autowired
     private ICustomerRepository customerRepository;
+    @Autowired
+    private ICarRepository carRepository;
+    @Autowired
+    private ITicketRepository ticketRepository;
 
     /**
      * Create by: VuBD
@@ -32,9 +39,9 @@ public class CustomerService implements ICustomerService {
      * @return Returns a Page object containing a list of data corresponding to the data to be searched
      */
     @Override
-    public Page<ICustomerDTO> searchCustomer(String name, String idCard, String phoneNumber, String starDate, String endDate,
-                                             Pageable pageable) {
-        return customerRepository.searchCustomer(name, idCard, phoneNumber, starDate, endDate, pageable);
+    public Page<ICustomerDTO> getListCustomer(String name, String idCard, String phoneNumber, String starDate, String endDate,
+                                              Pageable pageable) {
+        return customerRepository.getListCustomer(name, idCard, phoneNumber, starDate, endDate, pageable);
     }
 
     /**
@@ -43,15 +50,25 @@ public class CustomerService implements ICustomerService {
      * Function: connect database to delete a customer with corresponding id
      *
      * @param id
-     * @return: If successful, return true, if unsuccessful, return false
+     * @return: If successful, return 1, if unsuccessful, return -1, if the customer is still valid for tickets 0
      */
 
     @Override
-    public boolean deleteCustomer(int id) {
+    public long deleteCustomer(int id) {
         if (customerRepository.findCustomerById(id) != null) {
+            int[] carIds = carRepository.findCarByCustomerId(id);
+            for (int i = 0; i < carIds.length; i++) {
+                Ticket ticket = ticketRepository.findTicketByCarId(carIds[i]);
+                if (ticket != null) {
+                    return 0;
+                }
+            }
+            if (carIds.length != 0) {
+                carRepository.deleteCarByCustomerId(id);
+            }
             customerRepository.deleteCustomer(id);
-            return true;
+            return 1;
         }
-        return false;
+        return -1;
     }
 }

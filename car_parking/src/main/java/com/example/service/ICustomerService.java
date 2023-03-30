@@ -1,7 +1,6 @@
 package com.example.service;
 
 import com.example.dto.ICustomerDTO;
-import com.example.model.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -19,8 +18,8 @@ public interface ICustomerService {
      * @param pageable
      * @return
      */
-    Page<ICustomerDTO> searchCustomer(String name, String idCard, String phoneNumber, String starDate, String endDate,
-                                      Pageable pageable);
+    Page<ICustomerDTO> getListCustomer(String name, String idCard, String phoneNumber, String starDate, String endDate,
+                                       Pageable pageable);
 
     /**
      * Create by: VuBD
@@ -30,5 +29,5 @@ public interface ICustomerService {
      * @param id
      * @return
      */
-    boolean deleteCustomer(int id);
+    long deleteCustomer(int id);
 }
