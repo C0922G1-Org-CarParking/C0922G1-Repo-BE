@@ -10,4 +10,5 @@ public interface ILocationDetailDto {
     String getCustomerName();
     String getCustomerEmail();
     String getCustomerPhoneNumber();
+   String getPermissionCarTypeLocations();
 }

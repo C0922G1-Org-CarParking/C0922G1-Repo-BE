@@ -18,6 +18,12 @@ public class Position {
     @JsonIgnore
     private Set<Employee> employeeSet;
 
+    public Position(Long id, String name, Set<Employee> employeeSet) {
+        this.id = id;
+        this.name = name;
+        this.employeeSet = employeeSet;
+    }
+
     public Position() {
     }
 

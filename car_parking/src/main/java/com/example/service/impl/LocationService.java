@@ -1,8 +1,9 @@
-package com.example.service.location;
+package com.example.service.impl;
 
 import com.example.dto.ILocationDetailDto;
 import com.example.model.Location;
-import com.example.repository.location.ILocationRepository;
+import com.example.repository.ILocationRepository;
+import com.example.service.ILocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

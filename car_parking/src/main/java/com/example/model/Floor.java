@@ -14,6 +14,11 @@ public class Floor {
     @Column(length = 45,nullable = false,unique = true)
     private String name;
 
+    public Floor(Long id, String name, Set<Location> locationSet) {
+        this.id = id;
+        this.name = name;
+        this.locationSet = locationSet;
+    }
 
     @OneToMany(mappedBy = "floor")
     @JsonIgnore

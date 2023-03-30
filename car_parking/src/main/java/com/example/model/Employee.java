@@ -20,9 +20,10 @@ public class Employee {
     @Column(nullable = false)
     private boolean gender;
 
-    @OneToOne
-    @JoinColumn(name = "email", referencedColumnName = "employeeEmail")
-    private Account account;
+
+    @Column(length = 45,nullable = false,unique = true)
+    private String email;
+
 
     @Column(length = 45, nullable = false, unique = true)
     private String idCard;
@@ -37,6 +38,43 @@ public class Employee {
     private String street;
 
     private boolean isDeleted;
+    @Column(length = 20, nullable = false, unique = true)
+    private String phoneNumber;
+
+
+    @OneToOne(mappedBy = "employee")
+    private Account account;
+
+    @ManyToOne
+    @JoinColumn(name = "position_id", referencedColumnName = "id")
+    private Position position;
+
+    @OneToMany(mappedBy = "employee")
+    @JsonIgnore
+    private Set<Ticket> ticketSet;
+
+    public Employee(Long id, String name, String dateOfBirth, boolean gender, String email, String idCard, int district, int province, int commune, String street,
+                    boolean isDeleted, String phoneNumber, Account account, Position position, Set<Ticket> ticketSet) {
+        this.id = id;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.email = email;
+        this.idCard = idCard;
+        this.district = district;
+        this.province = province;
+        this.commune = commune;
+        this.street = street;
+        this.isDeleted = isDeleted;
+        this.phoneNumber = phoneNumber;
+        this.account = account;
+        this.position = position;
+        this.ticketSet = ticketSet;
+    }
+
+    public Employee() {
+    }
+
 
     public boolean isDeleted() {
         return isDeleted;
@@ -46,16 +84,22 @@ public class Employee {
         isDeleted = deleted;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "position_id", referencedColumnName = "id")
-    private Position position;
 
+    public String getEmail() {
+        return email;
+    }
 
-    @OneToMany(mappedBy = "employee")
-    @JsonIgnore
-    private Set<Ticket> ticketSet;
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    public Employee() {
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+
     }
 
     public Long getId() {

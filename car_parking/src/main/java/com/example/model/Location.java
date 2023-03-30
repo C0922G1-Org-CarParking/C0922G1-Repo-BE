@@ -25,9 +25,8 @@ public class Location {
     @Column(nullable = false)
     private double length;
 
-    @OneToMany(mappedBy = "location")
-    @JsonIgnore
-    private Set<PermissionCarTypeLocation> permissionCarTypeLocations;
+    private String permissionCarTypeLocations;
+
 
     @ManyToOne
     @JoinColumn(name = "section_id", referencedColumnName = "id")
@@ -40,6 +39,14 @@ public class Location {
     @OneToMany(mappedBy = "location")
     @JsonIgnore
     private Set<Ticket> ticketSet;
+
+    public String getPermissionCarTypeLocations() {
+        return permissionCarTypeLocations;
+    }
+
+    public void setPermissionCarTypeLocations(String permissionCarTypeLocations) {
+        this.permissionCarTypeLocations = permissionCarTypeLocations;
+    }
 
     private boolean isDeleted;
 
@@ -102,14 +109,6 @@ public class Location {
         this.length = length;
     }
 
-    public Set<PermissionCarTypeLocation> getPermissionCarTypeLocations() {
-        return permissionCarTypeLocations;
-    }
-
-    public void setPermissionCarTypeLocations(Set<PermissionCarTypeLocation> permissionCarTypeLocations) {
-        this.permissionCarTypeLocations = permissionCarTypeLocations;
-    }
-
     public Floor getFloor() {
         return floor;
     }
@@ -124,6 +123,21 @@ public class Location {
 
     public void setSection(Section section) {
         this.section = section;
+    }
+
+    public Location(Long id, String name, boolean isOccupied, double width, double height,
+                    double length, String permissionCarTypeLocations, Section section, Floor floor, Set<Ticket> ticketSet, boolean isDeleted) {
+        this.id = id;
+        this.name = name;
+        this.isOccupied = isOccupied;
+        this.width = width;
+        this.height = height;
+        this.length = length;
+        this.permissionCarTypeLocations = permissionCarTypeLocations;
+        this.section = section;
+        this.floor = floor;
+        this.ticketSet = ticketSet;
+        this.isDeleted = isDeleted;
     }
 
     public Set<Ticket> getTicketSet() {

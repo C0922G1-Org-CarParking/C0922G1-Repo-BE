@@ -40,6 +40,17 @@ public class Car {
     @JsonIgnore
     private Set<Ticket> ticketSet;
 
+    public Car(Long id, String name, String plateNumber, String brand, boolean isDeleted, CarType carType, Customer customer, Set<CarInOut> carInOutSet, Set<Ticket> ticketSet) {
+        this.id = id;
+        this.name = name;
+        this.plateNumber = plateNumber;
+        this.brand = brand;
+        this.isDeleted = isDeleted;
+        this.carType = carType;
+        this.customer = customer;
+        this.carInOutSet = carInOutSet;
+        this.ticketSet = ticketSet;
+    }
 
     public Car() {
     }

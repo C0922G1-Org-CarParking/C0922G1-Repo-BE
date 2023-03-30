@@ -7,29 +7,47 @@ import java.util.Set;
 
 @Entity
 public class Account {
+
     @Id
-    @Column(length = 45,nullable = false,unique = true)
-    private String employeeEmail;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @OneToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
 
     @OneToMany(mappedBy = "account")
     @JsonIgnore
     private Set<AccountRole> accountRoleSet;
 
-    @OneToOne(mappedBy = "account")
-    private Employee employee;
+    public Account(Long id, Employee employee, String password, Set<AccountRole> accountRoleSet) {
+        this.id = id;
+        this.employee = employee;
+        this.password = password;
+        this.accountRoleSet = accountRoleSet;
+    }
 
     public Account() {
     }
 
-    public String getEmployeeEmail() {
-        return employeeEmail;
+    public Long getId() {
+        return id;
     }
 
-    public void setEmployeeEmail(String employeeEmail) {
-        this.employeeEmail = employeeEmail;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     public String getPassword() {

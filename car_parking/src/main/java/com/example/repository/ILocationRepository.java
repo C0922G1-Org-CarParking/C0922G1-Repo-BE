@@ -1,4 +1,4 @@
-package com.example.repository.location;
+package com.example.repository;
 
 import com.example.dto.ILocationDetailDto;
 import com.example.model.Location;
@@ -17,7 +17,7 @@ public interface ILocationRepository extends JpaRepository<Location, Integer> {
     List<Location> listMapParking(@Param("id") int id);
 
     @Query(value = "select location.name as locationName , floor.name as floorName, section.name as sectionName,\n" +
-            " location.height as locationHeight , location.width as locationWidth, location.length as locationLength, " +
+            " location.height as locationHeight , location.width as locationWidth, location.length as locationLength, permission_car_type_locations as permissionCarTypeLocations" +
             "customer.name as customerName, \n" +
             " customer.email as customerEmail, customer.phone_number as customerPhoneNumber from location\n" +
             " left join floor on floor.id=location.floor_id\n" +

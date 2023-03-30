@@ -6,13 +6,13 @@ import javax.persistence.*;
 public class AccountRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long accountId;
+    private Long accountRoleId;
     @ManyToOne
-    @JoinColumn(name = "account_employee_email")
+    @JoinColumn(name = "account_id",referencedColumnName = "id")
     private Account account;
 
     @ManyToOne
-    @JoinColumn(name = "role_id")
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
 
     public AccountRole() {
@@ -34,17 +34,17 @@ public class AccountRole {
         this.role = role;
     }
 
-    public AccountRole(Long accountId, Account account, Role role) {
-        this.accountId = accountId;
+    public Long getAccountRoleId() {
+        return accountRoleId;
+    }
+
+    public void setAccountRoleId(Long accountRoleId) {
+        this.accountRoleId = accountRoleId;
+    }
+
+    public AccountRole(Long accountRoleId, Account account, Role role) {
+        this.accountRoleId = accountRoleId;
         this.account = account;
         this.role = role;
-    }
-
-    public Long getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(Long accountId) {
-        this.accountId = accountId;
     }
 }

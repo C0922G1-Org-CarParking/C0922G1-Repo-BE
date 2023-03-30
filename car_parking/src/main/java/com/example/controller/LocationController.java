@@ -1,14 +1,11 @@
-package com.example.controller.location;
+package com.example.controller;
 
 import com.example.dto.ILocationDetailDto;
 import com.example.model.Location;
-import com.example.service.location.ILocationService;
-import org.aspectj.weaver.patterns.ReferencePointcut;
+import com.example.service.ILocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

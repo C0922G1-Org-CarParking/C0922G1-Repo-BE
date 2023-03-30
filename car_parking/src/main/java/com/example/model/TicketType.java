@@ -16,6 +16,14 @@ public class TicketType {
     @Column(nullable = false)
     private double price;
 
+
+    public TicketType(Long id, String name, double price, Set<Ticket> ticketSet) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.ticketSet = ticketSet;
+    }
+
     @OneToMany(mappedBy = "ticketType")
     @JsonIgnore
     private Set<Ticket> ticketSet;
@@ -47,6 +55,7 @@ public class TicketType {
         this.name = name;
     }
 
+
     public double getPrice() {
         return price;
     }
@@ -54,5 +63,6 @@ public class TicketType {
     public void setPrice(double price) {
         this.price = price;
     }
+
 }
 

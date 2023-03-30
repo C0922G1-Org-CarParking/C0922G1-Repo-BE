@@ -76,6 +76,7 @@ public class LocationController_getMapParking {
                 .andExpect(jsonPath("[0].section.id").value(1))
                 .andExpect(jsonPath("[0].occupied").value(true))
                 .andExpect(jsonPath("[0].floor.id").value(1))
+                .andExpect(jsonPath("[0].permissionCarTypeLocations").value("xe 4 chỗ"))
                 .andExpect(jsonPath("[3].id").value(4))
                 .andExpect(jsonPath("[3].name").value(4))
                 .andExpect(jsonPath("[3].width").value(4.0))
@@ -83,7 +84,8 @@ public class LocationController_getMapParking {
                 .andExpect(jsonPath("[3].length").value(4.0))
                 .andExpect(jsonPath("[3].section.id").value(4))
                 .andExpect(jsonPath("[3].floor.id").value(1))
-                .andExpect(jsonPath("[0].occupied").value(true)) ;
+                .andExpect(jsonPath("[3].occupied").value(true))
+                .andExpect(jsonPath("[3].permissionCarTypeLocations").value("xe 8 chỗ"));
 
 
     }
