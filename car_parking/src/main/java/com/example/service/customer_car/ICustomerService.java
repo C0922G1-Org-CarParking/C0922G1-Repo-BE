@@ -1,6 +1,7 @@
 package com.example.service.customer_car;
 
 import com.example.dto.ICarDto;
+import com.example.model.Customer;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 

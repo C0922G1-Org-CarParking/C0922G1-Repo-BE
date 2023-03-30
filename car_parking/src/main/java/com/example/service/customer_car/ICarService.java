@@ -7,7 +7,7 @@ import java.util.List;
 
 @Repository
 public interface ICarService {
-    void deleteCar(Long id);
+    void deleteCar(String plateNumber);
     List<Car> listCar(Long id);
     void createCar(String name,Long car_type_id,String brand,String plate_number,Long customer_id);
 }

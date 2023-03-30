@@ -13,9 +13,10 @@ public class CarService implements ICarService {
     @Autowired
     private ICarRepository carRepository;
 
+
     @Override
-    public void deleteCar(Long id) {
-        this.carRepository.deleteCarById(id);
+    public void deleteCar(String plateNumber) {
+        this.carRepository.deleteCarById(plateNumber);
     }
 
     @Override
