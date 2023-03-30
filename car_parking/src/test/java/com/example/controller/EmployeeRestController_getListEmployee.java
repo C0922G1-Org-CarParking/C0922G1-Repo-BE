@@ -41,7 +41,7 @@ public class EmployeeRestController_getListEmployee {
     @Test
     public void getListEmployee_2() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
-                        .get("/api/list-employee?page=0&size=10&dateOfBirth=&name=",""))
+                        .get("/api/list-employee?page=0&size=10&dateOfBirth=&name=", ""))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
@@ -59,6 +59,7 @@ public class EmployeeRestController_getListEmployee {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     /**
      * Created by: TaiLH
      * Date created: 30/03/2023
@@ -111,7 +112,7 @@ public class EmployeeRestController_getListEmployee {
     @Test
     public void getListEmployee_5() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
-                        .get("/api/list-employee/0"))
+                        .get("/api/list-employee/page=0&size=0"))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
