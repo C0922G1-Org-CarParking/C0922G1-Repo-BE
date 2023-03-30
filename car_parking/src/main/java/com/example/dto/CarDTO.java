@@ -35,6 +35,10 @@ public class CarDTO {
         this.customer = customer;
     }
 
+    public CarDTO(long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }

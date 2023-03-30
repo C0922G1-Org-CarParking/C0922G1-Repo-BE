@@ -1,4 +1,4 @@
-package com.example.service.car_in_out;
+package com.example.service;
 
 import com.example.dto.ICarInOutDTO;
 import com.example.model.CarInOut;
@@ -12,12 +12,22 @@ public class CarInOutService implements ICarInOutService {
     private ICarInOutRepository iCarInOutRepository;
 
     @Override
-    public void saveCarInOut(CarInOut carInOut) {
-        iCarInOutRepository.saveCarInOut(carInOut.getCar().getId(), carInOut.getTimeIn(), carInOut.getTimeOut());
+    public void saveCarIn(CarInOut carInOut) {
+        iCarInOutRepository.saveCarIn(carInOut.getCar().getId(), carInOut.getTimeIn(), carInOut.isParked());
     }
 
     @Override
     public ICarInOutDTO searchCarInOutDTO(String plateNumber) {
         return iCarInOutRepository.searchCarInOutDTO(plateNumber);
+    }
+
+    @Override
+    public void saveCarOut(CarInOut carInOut) {
+        iCarInOutRepository.saveCarOut(carInOut.getTimeOut(), carInOut.getId(), carInOut.isParked());
+    }
+
+    @Override
+    public CarInOut findCarInByCarId(Long id) {
+        return iCarInOutRepository.findCarInByCarId(id);
     }
 }

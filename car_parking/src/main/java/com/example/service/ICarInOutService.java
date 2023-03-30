@@ -1,11 +1,14 @@
-package com.example.service.car_in_out;
+package com.example.service;
 
 import com.example.dto.ICarInOutDTO;
 import com.example.model.CarInOut;
 
 public interface ICarInOutService {
-    void saveCarInOut(CarInOut carInOut);
+    void saveCarIn(CarInOut carInOut);
 
     ICarInOutDTO searchCarInOutDTO(String plateNumber);
 
+    void saveCarOut(CarInOut carInOut);
+
+    CarInOut findCarInByCarId(Long id);
 }

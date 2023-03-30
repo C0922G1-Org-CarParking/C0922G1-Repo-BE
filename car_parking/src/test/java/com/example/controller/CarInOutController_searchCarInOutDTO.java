@@ -1,4 +1,4 @@
-package com.example.controller.car_in_out;
+package com.example.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +30,12 @@ public class CarInOutController_searchCarInOutDTO {
     /**
      * Created: NamLQN
      * Date: 30/03/2023
-     * Test searchCar by scanning with id not existing
+     * Test searchCar by scanning the plate number not existing in database
      * Expect to return error status 404 with Http.NOT_FOUND
      * @Param: image file
      */
     @Test
-    public void searchCarInOutDTO_99() throws Exception {
+    public void searchCarInOutDTO_99_1() throws Exception {
         File plateNumberImage = ResourceUtils.getFile("classpath:snapshot/test_002.jpg");
         MockMultipartFile mockMultipartFile = new MockMultipartFile(
                 "plateNumberImage",
@@ -56,7 +56,7 @@ public class CarInOutController_searchCarInOutDTO {
      * Expect to return error 406 Http.NotAcceptable
      */
     @Test
-    public void searchCarInOutDTO_blurredPlateNumber_99() throws Exception {
+    public void searchCarInOutDTO_blurredPlateNumber_99_2() throws Exception {
         File plateNumberImage = ResourceUtils.getFile("classpath:snapshot/blurred-plate-image.png");
         MockMultipartFile mockMultipartFile = new MockMultipartFile(
                 "plateNumberImage",
@@ -76,7 +76,7 @@ public class CarInOutController_searchCarInOutDTO {
      * Expect to return status 200 Http.status.OK with the CarInOutDTO instance that includes all non-nullable fields
      */
     @Test
-    public void searchCarInOutDTO_existingInDatabase_99() throws Exception {
+    public void searchCarInOutDTO_existingInDatabase_99_3() throws Exception {
         File plateNumberImage = ResourceUtils.getFile("classpath:snapshot/test_097.jpg");
         MockMultipartFile mockMultipartFile = new MockMultipartFile(
                 "plateNumberImage",
@@ -100,6 +100,7 @@ public class CarInOutController_searchCarInOutDTO {
                         jsonPath("ticket_effective_date").value("2023-03-26")
                 );
     }
+
 
 
 

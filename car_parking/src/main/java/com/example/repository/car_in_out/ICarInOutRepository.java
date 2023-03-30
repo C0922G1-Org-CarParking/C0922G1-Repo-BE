@@ -27,9 +27,18 @@ public interface ICarInOutRepository extends JpaRepository<CarInOut, Long> {
     ICarInOutDTO searchCarInOutDTO(@Param("plateNumber") String plateNumber);
 
     @Transactional
-    @Query(value = "insert into car_in_out values (:carId, :timeIn, :timeOut)", nativeQuery = true)
+    @Query(value = "INSERT INTO `c0922g1_car_parking`.`car_in_out` (`is_parked`, `time_in`, `car_id`) VALUES (:isParked, :timeIn, :carId);", nativeQuery = true)
     @Modifying
-    void saveCarInOut(@Param("carId") long carId,
-                      @Param("timeIn") String timeIn,
-                      @Param("timeOut") String timeOut);
+    void saveCarIn(@Param("carId") long carId,
+                   @Param("timeIn") String timeIn,
+                   @Param("isParked") boolean isParked);
+
+    @Transactional
+    @Query(value = "UPDATE `c0922g1_car_parking`.`car_in_out` SET `is_parked` = :isParked, `time_out` = :timeOut WHERE id = :id;", nativeQuery = true)
+    @Modifying
+    void saveCarOut(@Param("timeOut") String timeOut, @Param("id") Long id,@Param("isParked") boolean isParked);
+
+
+    @Query(value = "select * from car_in_out where car_id = :id and is_parked = 1;", nativeQuery = true)
+    CarInOut findCarInByCarId(@Param("id") Long id);
 }

@@ -14,9 +14,20 @@ public class CarInOut {
     @Column(columnDefinition = "datetime", length = 45)
     private String timeOut;
 
+    private boolean isParked;
+
+    public boolean isParked() {
+        return isParked;
+    }
+
+    public void setParked(boolean parked) {
+        isParked = parked;
+    }
+
     @ManyToOne
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     private Car car;
+
 
     public CarInOut() {
     }
