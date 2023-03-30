@@ -11,15 +11,15 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IParkingNewsRepository extends JpaRepository<ParkingNews, Integer> {
-    String Get_All_Parking_News = "select pn.id as parkingNewsId, pn.title, pn.description, pn.image_url as imageUrl, pn.posting_date as postingDate" +
-            " from parking_news pn" +
-            " where pn.is_deleted = 0 and" +
-            " (pn.title like concat('%', :keyword '%') or pn.description like concat('%', :keyword '%') or" +
-            " pn.content like concat('%', :keyword '%'))";
+    String Get_All_Parking_News = "select pn.parking_news_id as parkingNewsId, pn.title, pn.description, pn.image_url as imageUrl, pn.posting_date as postingDate " +
+            "from parking_news pn " +
+            "where pn.is_deleted = 0 and " +
+            "(pn.title like concat('%', :keyword '%') or pn.description like concat('%', :keyword '%') or " +
+            "pn.content like concat('%', :keyword '%'))";
 
-    String Find_By_Id = "select pn.id, pn.title, pn.description, pn.image_url as imageUrl ,pn.posting_date as postingDate, pn.content" +
-            " from parking_news pn" +
-            " where pn.is_deleted = 0 and pn.id = :id";
+    String Find_By_Id = "select pn.parking_news_id as parkingNewsId, pn.title, pn.description, pn.image_url as imageUrl ,pn.posting_date as postingDate, pn.content " +
+            "from parking_news pn " +
+            "where pn.is_deleted = 0 and pn.parking_news_id = :id";
 
     @Query(value = Get_All_Parking_News, countQuery = "select count(*) from parking_news", nativeQuery = true)
     Page<IParkingNewsDto> findAll(Pageable pageable, @Param("keyword") String keyword);

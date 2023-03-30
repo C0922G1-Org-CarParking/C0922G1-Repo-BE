@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class ParkingNews {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "parking_news_id")
     private Integer parkingNewsId;
 
     @Column(name = "title", length = 255, nullable = false)

@@ -1,10 +1,11 @@
-package com.example.controller.parking_new;
+package com.example.controller.parking_news;
 
 import com.example.dto.IParkingNewsDto;
 import com.example.service.parking_news.IParkingNewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/parking_news")
-public class ParkingNewsController {
+public class ParkingNewsRestController {
     @Autowired
     private IParkingNewsService parkingNewsService;
 
@@ -26,7 +27,7 @@ public class ParkingNewsController {
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
      */
     @GetMapping("")
-    public ResponseEntity<Page<IParkingNewsDto>> findAllParkingNews(@PageableDefault(size = 2, sort = "posting_date") Pageable pageable,
+    public ResponseEntity<Page<IParkingNewsDto>> getListParkingNews(@PageableDefault(size = 3, sort = "posting_date", direction = Sort.Direction.DESC) Pageable pageable,
                                                                     @RequestParam(name = "keyword", defaultValue = "") String keyWord) {
         Page<IParkingNewsDto> parkingNewsPage = parkingNewsService.findAll(pageable, keyWord);
         if (parkingNewsPage.isEmpty()) {
@@ -42,13 +43,13 @@ public class ParkingNewsController {
      * Function: find parking news by id
      *
      * @param id
-     * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
+     * @return HttpStatus.BAB_REQUEST if result is null or HttpStatus.OK is result is not error
      */
-    @GetMapping("/{id}")
-    public ResponseEntity<IParkingNewsDto> findById(@PathVariable(name = "id") int id) {
+    @GetMapping("/detail/{parkingNewsId}")
+    public ResponseEntity<IParkingNewsDto> getDetailParkingNews(@PathVariable(name = "parkingNewsId") int id) {
         IParkingNewsDto parkingNews = parkingNewsService.findById(id);
         if (parkingNews == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
         return new ResponseEntity<>(parkingNews, HttpStatus.OK);
