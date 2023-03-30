@@ -18,7 +18,7 @@ public interface ILocationRepository extends JpaRepository<Location, Integer> {
 
     @Query(value = " select location.name as locationName , floor.name as floorName, section.name as sectionName,\n" +
             " customer.name as customerName, car.name as nameCar,car_type.name as nameCarType,car.plate_number as plateNumber,\n" +
-            " customer.email as customerEmail, customer.phone_number as customerPhoneNumber from location\n" +
+            " customer.email as customerEmail,customer.date_of_birth as dateOfBirth, customer.phone_number as customerPhoneNumber from location\n" +
             " left join floor on floor.id=location.floor_id\n" +
             " left join section on section.id= location.section_id\n" +
             " left join ticket on location.id=ticket.location_id\n" +

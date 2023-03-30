@@ -65,7 +65,8 @@ public class LocationController_findByIdLocation {
                         jsonPath("locationName").value("1"),
                         jsonPath("plateNumber").value("92B-99999"),
                         jsonPath("customerPhoneNumber").value("1234567893"),
-                        jsonPath("nameCarType").value("4 Chỗ"));
+                        jsonPath("nameCarType").value("4 Chỗ"),
+                        jsonPath("dateOfBirth").value("1994-12-25"));
 
     }
 

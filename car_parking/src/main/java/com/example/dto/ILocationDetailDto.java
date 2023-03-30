@@ -17,4 +17,5 @@ public interface ILocationDetailDto {
 
     String getPlateNumber();
     String getNameCar();
+    String getDateOfBirth();
 }
