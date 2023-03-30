@@ -19,6 +19,7 @@ public class Employee {
 
     @Column(nullable = false)
     private boolean gender;
+    private String phoneNumber;
 
     @OneToOne
     @JoinColumn(name = "email", referencedColumnName = "employeeEmail")
@@ -38,6 +39,10 @@ public class Employee {
 
     private boolean isDeleted;
 
+    public Employee() {
+
+    }
+
     public boolean isDeleted() {
         return isDeleted;
     }
@@ -55,7 +60,8 @@ public class Employee {
     @JsonIgnore
     private Set<Ticket> ticketSet;
 
-    public Employee() {
+    public Employee(long id) {
+        this.id=id;
     }
 
     public Long getId() {
@@ -152,5 +158,13 @@ public class Employee {
 
     public void setTicketSet(Set<Ticket> ticketSet) {
         this.ticketSet = ticketSet;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

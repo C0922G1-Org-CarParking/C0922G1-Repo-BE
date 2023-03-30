@@ -43,6 +43,10 @@ public class Location {
 
     private boolean isDeleted;
 
+    public Location() {
+
+    }
+
     public boolean isDeleted() {
         return isDeleted;
     }
@@ -51,7 +55,8 @@ public class Location {
         isDeleted = deleted;
     }
 
-    public Location() {
+    public Location(long id) {
+        this.id= id;
     }
 
     public Long getId() {

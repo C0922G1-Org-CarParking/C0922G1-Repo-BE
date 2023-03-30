@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/ticket")
+@RequestMapping("/api")
 @CrossOrigin("*")
 public class TicketController {
     @Autowired
@@ -36,14 +36,19 @@ public class TicketController {
         return new ResponseEntity<>(ticket, HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update")
     private ResponseEntity<?> updateTicket(@Validated @RequestBody EditTicketDto editTicketDto,
-                                           BindingResult bindingResult, @PathVariable Long id) {
-//        int a = id;
+                                           BindingResult bindingResult) {
         new TicketDto().validate(editTicketDto, bindingResult);
         Ticket ticket = new Ticket();
-        BeanUtils.copyProperties(editTicketDto, ticket);
-        ticketService.updateTicket(ticket.getTicketType().getId(), ticket.getLocation().getFloor().getId(), ticket.getLocation().getSection().getId(), ticket.getExpiryDate(), ticket.getId());
+//        BeanUtils.copyProperties(editTicketDto, ticket);
+        ticketService.updateTicket(
+                editTicketDto.getTicketTypeId(),
+                editTicketDto.getFloorId(),
+                editTicketDto.getSectionId(),
+                editTicketDto.getExpiryDate(),
+                editTicketDto.getId()
+        );
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

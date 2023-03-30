@@ -5,6 +5,8 @@ import com.example.model.CarInOut;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.Optional;
+
 public interface ICarInOutService {
     void saveCarInOut(CarInOut carInOut);
 
@@ -12,6 +14,6 @@ public interface ICarInOutService {
 
 //    Create: HuyNL
     Page<ICarInOutDTO> searchCar(String plate, String phone, String name, Pageable pageable);
-
+    Optional<ICarInOutDTO> findCarById(Long id);
 
 }

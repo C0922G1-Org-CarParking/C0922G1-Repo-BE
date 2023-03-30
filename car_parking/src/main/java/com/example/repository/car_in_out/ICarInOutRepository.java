@@ -10,6 +10,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 public interface ICarInOutRepository extends JpaRepository<CarInOut, Long> {
     @Query(value = "select" +
             "car.name as car_name, car.brand as car_brand,    " +
@@ -41,44 +43,25 @@ public interface ICarInOutRepository extends JpaRepository<CarInOut, Long> {
      * Function: searchCar and showList Car
      */
 //    Create:HuyNL
-    @Query(value = "select" +
-            "    car.id as car_id," +
-            "    car.plate_number as plate_number," +
-            "    customer.phone_number as customer_phone_number," +
-            "    customer.id_card as customer_id_card," +
-            "    car.name as car_name, car.brand as car_brand," +
-            "    car_type.name as car_type_name, customer.name as customer_name," +
-            " car_type.id as car_type_id," +
-            "    concat(section.name, location.name) as location_name," +
-            "    floor.name as floor_name, ticket.effective_date as ticket_effective_date, ticket.expiry_date as ticket_expiry_date" +
-            "from" +
-            "    car" +
-            "        join customer on car.customer_id = customer.id" +
-            "        join car_type on car.car_type_id = car_type.id" +
-            "        join ticket on ticket.car_id = car.id" +
-            "        join location on location.id = ticket.location_id" +
-            "        join floor on location.floor_id = floor.id" +
-            "        join section on location.section_id = section.id" +
-            "where car.plate_number like concat('%',:plate,'%') and customer.phone_number like concat('%',:phone,'%') and customer.name like concat('%',:name,'%') and ticket.is_deleted = false;",
-            countQuery = "select" +
-                    "    car.id as car_id," +
-                    "    car.plate_number as plate_number," +
-                    "    customer.phone_number as customer_phone_number," +
-                    "    customer.id_card as customer_id_card," +
-                    "    car.name as car_name, car.brand as car_brand," +
-                    "    car_type.name as car_type_name, customer.name as customer_name," +
-                    " car_type.id as car_type_id," +
-                    "    concat(section.name, location.name) as location_name," +
-                    "    floor.name as floor_name, ticket.effective_date as ticket_effective_date, ticket.expiry_date as ticket_expiry_date" +
-                    "from" +
-                    "    car" +
-                    "        join customer on car.customer_id = customer.id" +
-                    "        join car_type on car.car_type_id = car_type.id" +
-                    "        join ticket on ticket.car_id = car.id" +
-                    "        join location on location.id = ticket.location_id" +
-                    "        join floor on location.floor_id = floor.id" +
-                    "        join section on location.section_id = section.id" +
-                    "where car.plate_number like concat('%',:plate,'%') and customer.phone_number like concat('%',:phone,'%') and customer.name like concat('%',:name,'%') and ticket.is_deleted = false;"
+    @Query(value = "select \n" +
+            "            car.id as car_id,\n" +
+            "            car.plate_number as car_plate_number, customer.id_card as customer_id_card, \n" +
+            "            car.name as car_name, car.brand as car_brand,  \n" +
+            "            car_type.name as car_type_name, customer.name as customer_name,\n" +
+            "            customer.phone_number as customer_phone_number, concat(section.name, location.name) as location_name, \n" +
+            "            floor.name as floor_name, ticket.effective_date as ticket_effective_date, ticket.expiry_date as ticket_expiry_date\n" +
+            "            from \n" +
+            "            car \n" +
+            "            join customer on car.customer_id = customer.id \n" +
+            "            join car_type on car.car_type_id = car_type.id \n" +
+            "            join ticket on ticket.car_id = car.id\n" +
+            "            join location on location.id = ticket.location_id\n" +
+            "            join floor on location.floor_id = floor.id\n" +
+            "            join section on location.section_id = section.id\n" +
+            "            where car.plate_number like :plateNumber and customer.name like :customerName and customer.phone_number like :customerPhoneNumber", nativeQuery = true)
+    Page<ICarInOutDTO> searchCarDto(@Param("plateNumber") String plateNumber, @Param("customerPhoneNumber") String customerPhoneNumber, @Param("customerName") String customerName, Pageable pageable);
+
+    @Query(value = "select * from car where car.id = :id"
             , nativeQuery = true)
-    Page<ICarInOutDTO> searchCarDto(@Param("plate") String plate, @Param("phone") String phone, @Param("name") String name, Pageable pageable);
+    Optional<ICarInOutDTO> findCarById(@Param("id") Long id);
 }

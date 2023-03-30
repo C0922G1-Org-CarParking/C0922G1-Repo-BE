@@ -19,7 +19,8 @@ public class Section {
     private Set<Location> locationSet;
 
 
-    public Section() {
+    public Section(long id) {
+        this.id = id;
     }
 
     public Long getId() {

@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CarInOutService implements ICarInOutService {
     @Autowired
@@ -30,6 +32,11 @@ public class CarInOutService implements ICarInOutService {
      */
     @Override
     public Page<ICarInOutDTO> searchCar(String plate, String phone, String name, Pageable pageable) {
-        return carInOutRepository.searchCarDto(plate, phone, name,pageable);
+        return carInOutRepository.searchCarDto("%" + plate + "%", "%" + phone + "%", "%" + name + "%", pageable);
+    }
+
+    @Override
+    public Optional<ICarInOutDTO> findCarById(Long id) {
+        return carInOutRepository.findCarById(id);
     }
 }

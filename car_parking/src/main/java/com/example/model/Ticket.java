@@ -32,6 +32,8 @@ public class Ticket {
     private Location location;
 
     private boolean isDeleted;
+    @Column(nullable = false)
+    private double price;
 
     public boolean isDeleted() {
         return isDeleted;
@@ -107,5 +109,13 @@ public class Ticket {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

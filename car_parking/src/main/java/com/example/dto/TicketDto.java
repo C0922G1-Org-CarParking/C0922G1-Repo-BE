@@ -9,7 +9,7 @@ public class TicketDto implements Validator {
     private Long id;
     private String effectiveDate;
     private String expiryDate;
-    private String totalPrice;
+    private double totalPrice;
     private Car car;
     private Customer customer;
     private Employee employee;
@@ -24,21 +24,6 @@ public class TicketDto implements Validator {
     public TicketDto() {
     }
 
-    public TicketDto(Long id, String effectiveDate, String expiryDate, String totalPrice, Car car, Customer customer, Employee employee, Location location, Floor floor, Section section, TicketType ticketType, String extension_date, boolean isDeleted) {
-        this.id = id;
-        this.effectiveDate = effectiveDate;
-        this.expiryDate = expiryDate;
-        this.totalPrice = totalPrice;
-        this.car = car;
-        this.customer = customer;
-        this.employee = employee;
-        this.location = location;
-        this.floor = floor;
-        this.section = section;
-        this.ticketType = ticketType;
-        this.extension_date = extension_date;
-        this.isDeleted = isDeleted;
-    }
 
     public Long getId() {
         return id;
@@ -64,11 +49,11 @@ public class TicketDto implements Validator {
         this.expiryDate = expiryDate;
     }
 
-    public String getTotalPrice() {
+    public double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(String totalPrice) {
+    public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -143,6 +128,7 @@ public class TicketDto implements Validator {
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
     }
+
 
 
     @Override
