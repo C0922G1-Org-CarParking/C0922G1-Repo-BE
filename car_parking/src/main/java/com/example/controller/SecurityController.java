@@ -82,7 +82,7 @@ public class SecurityController {
      */
 
     @GetMapping("/reset-password/{email}")
-    public ResponseEntity<?> resetPassword(@PathVariable String email) {
+    public ResponseEntity<?> resetPassword(@Valid @PathVariable String email) {
         Account account= accountService.findAccountByEmployeeEmail(email);
         if (account != null) {
             SimpleMailMessage message = new SimpleMailMessage();
@@ -103,28 +103,6 @@ public class SecurityController {
         return ResponseEntity
                 .badRequest()
                 .body(new MessageResponse("Tài khoản không đúng hoặc chưa đăng ký."));
-    }
-
-
-    /**
-     * Created by: HoangNM
-     * Date created: 29/03/2023
-     * Function: change password
-     */
-
-    @GetMapping("/change-password")
-    public ResponseEntity<?> changePassword(@Valid @RequestBody ResetPasswordRequest resetPasswordRequest){
-        Account account = accountService.findAccountByEmployeeEmail(resetPasswordRequest.getUsername());
-        if(account == null){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        boolean checkValidOldPassword = BCrypt.checkpw(resetPasswordRequest.getOldPassword(),account.getPassword());
-        boolean checkValidNewPassword = (Objects.equals(resetPasswordRequest.getNewPassword(), resetPasswordRequest.getConfirmNewPassword()));
-        if(checkValidOldPassword && checkValidNewPassword){
-            accountService.saveNewPassword(resetPasswordRequest.getNewPassword(), account.getId());
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
 
