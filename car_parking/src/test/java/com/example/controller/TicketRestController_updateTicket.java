@@ -210,26 +210,26 @@ public class TicketRestController_updateTicket {
     /**
      * This function is used to check an input totalPrice is empty
      */
-//    @Test
-//    public void updateTicket_totalPrice_23() throws Exception {
-//        TicketDto ticketDto = new TicketDto();
-//        ticketDto.setEffectiveDate("2019-10-06");
-//        ticketDto.setFloor(new Floor(1L));
-//        ticketDto.setSection(new Section(1L));
-//        ticketDto.setExpiryDate("06-11-2020");
-//        ticketDto.setTotalPrice("");
-//        ticketDto.setDeleted(false);
-//        ticketDto.setCar(new Car(1L));
-//        ticketDto.setLocation(new Location(1L));
-//        ticketDto.setEmployee(new Employee(1L));
-//        ticketDto.setTicketType(new TicketType(1L));
-//
-//        this.mockMvc
-//                .perform(MockMvcRequestBuilders
-//                        .put("/api/ticket")
-//                        .content(this.objectMapper.writeValueAsString(ticketDto))
-//                        .contentType(MediaType.APPLICATION_JSON_VALUE))
-//                .andDo(print())
-//                .andExpect(status().is4xxClientError());
-//    }
+    @Test
+    public void updateTicket_totalPrice_23() throws Exception {
+        TicketDto ticketDto = new TicketDto();
+        ticketDto.setEffectiveDate("2019-10-06");
+        ticketDto.setFloor(new Floor(1L));
+        ticketDto.setSection(new Section(1L));
+        ticketDto.setExpiryDate("06-11-2020");
+        ticketDto.setTotalPrice("");
+        ticketDto.setDeleted(false);
+        ticketDto.setCar(new Car(1L));
+        ticketDto.setLocation(new Location(1L));
+        ticketDto.setEmployee(new Employee(1L));
+        ticketDto.setTicketType(new TicketType(1L));
+
+        this.mockMvc
+                .perform(MockMvcRequestBuilders
+                        .put("/api/ticket")
+                        .content(this.objectMapper.writeValueAsString(ticketDto))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
 }
