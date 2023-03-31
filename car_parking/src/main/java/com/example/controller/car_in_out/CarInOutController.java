@@ -48,15 +48,29 @@ public class CarInOutController {
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
      */
 
-    @GetMapping("/find")
-    private ResponseEntity<?> showListAndSearch(
+    @GetMapping("/findCarIn")
+    private ResponseEntity<?> showListAndSearchCarIn(
+            @RequestParam(required = false, defaultValue = "") String plate,
+            @RequestParam(required = false, defaultValue = "") String phone,
+            @RequestParam(required = false, defaultValue = "") String name,
+            @RequestParam(required = false, defaultValue = "0") int page) {
+        Pageable pageable = PageRequest.of(page, 3);
+        Page<ICarInOutDTO> carPage = carInOutService.searchCarIn(plate, name, phone, pageable);
+        if (carPage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(carPage, HttpStatus.OK);
+    }
+
+    @GetMapping("/findCarOut")
+    private ResponseEntity<?> showListAndSearchCarOut(
             @RequestParam(required = false, defaultValue = "") String plate,
             @RequestParam(required = false, defaultValue = "") String phone,
             @RequestParam(required = false, defaultValue = "") String name,
             @PageableDefault(page = 0, size = 3) Pageable pageable,
             @RequestParam(required = false, defaultValue = "0") int page) {
         pageable = PageRequest.of(page, 3);
-        Page<ICarInOutDTO> carPage = carInOutService.searchCar(plate, phone, name, pageable);
+        Page<ICarInOutDTO> carPage = carInOutService.searchCarOut(plate, phone, name, pageable);
         if (carPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -72,7 +86,7 @@ public class CarInOutController {
      * @return HttpStatus.NOT_FOUND if result is error, id null or id not in database. HttpStatus.OK if result is not error.
      */
     @GetMapping("{id}")
-    public ResponseEntity<Optional<ICarInOutDTO>> getCommodityById(@PathVariable("id") Long id) {
+    public ResponseEntity<Optional<ICarInOutDTO>> getCarById(@PathVariable("id") Long id) {
         Optional<ICarInOutDTO> carInOutDTO;
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -13,7 +13,8 @@ public interface ICarInOutService {
     ICarInOutDTO searchCarInOut(String plateNumber);
 
 //    Create: HuyNL
-    Page<ICarInOutDTO> searchCar(String plate, String phone, String name, Pageable pageable);
+    Page<ICarInOutDTO> searchCarIn(String plate, String phone, String name, Pageable pageable);
+    Page<ICarInOutDTO> searchCarOut(String plate, String phone, String name, Pageable pageable);
     Optional<ICarInOutDTO> findCarById(Long id);
 
 }

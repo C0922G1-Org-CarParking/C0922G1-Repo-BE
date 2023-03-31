@@ -42,26 +42,78 @@ public interface ICarInOutRepository extends JpaRepository<CarInOut, Long> {
      * Date created: 29/03/2023
      * Function: searchCar and showList Car
      */
-//    Create:HuyNL
-    @Query(value = "select \n" +
-            "            car.id as car_id,\n" +
-            "            car.plate_number as car_plate_number, customer.id_card as customer_id_card, \n" +
-            "            car.name as car_name, car.brand as car_brand,  \n" +
-            "            car_type.name as car_type_name, customer.name as customer_name,\n" +
-            "            customer.phone_number as customer_phone_number, concat(section.name, location.name) as location_name, \n" +
-            "            floor.name as floor_name, ticket.effective_date as ticket_effective_date, ticket.expiry_date as ticket_expiry_date\n" +
-            "            from \n" +
-            "            car \n" +
-            "            join customer on car.customer_id = customer.id \n" +
-            "            join car_type on car.car_type_id = car_type.id \n" +
-            "            join ticket on ticket.car_id = car.id\n" +
-            "            join location on location.id = ticket.location_id\n" +
-            "            join floor on location.floor_id = floor.id\n" +
-            "            join section on location.section_id = section.id\n" +
-            "            where car.plate_number like :plateNumber and customer.name like :customerName and customer.phone_number like :customerPhoneNumber", nativeQuery = true)
-    Page<ICarInOutDTO> searchCarDto(@Param("plateNumber") String plateNumber, @Param("customerPhoneNumber") String customerPhoneNumber, @Param("customerName") String customerName, Pageable pageable);
 
     @Query(value = "select * from car where car.id = :id"
             , nativeQuery = true)
     Optional<ICarInOutDTO> findCarById(@Param("id") Long id);
+
+
+    @Query(value = " select " +
+            "ticket.id AS ticket_id, " +
+            "car.id AS carId, " +
+            "car.plate_number AS carPlateNumber, " +
+            "customer.id_card AS customerIdCard, " +
+            "car.name AS carName, " +
+            "car.brand AS carBrand, " +
+            "car_type.name AS carTypeName, " +
+            "customer.name AS customerName, " +
+            "customer.phone_number AS customerPhoneNumber, " +
+            "CONCAT(section.name, location.name) AS locationName, " +
+            "floor.name AS floorName, " +
+            "ticket.effective_date AS ticketEffectiveDate, " +
+            "ticket.expiry_date AS ticketExpiryDate " +
+            "FROM car " +
+            "JOIN ticket ON ticket.car_id = car.id " +
+            "JOIN customer ON car.customer_id = customer.id " +
+            "JOIN car_type ON car.car_type_id = car_type.id " +
+            "JOIN location ON location.id = ticket.location_id " +
+            "JOIN floor ON location.floor_id = floor.id " +
+            "JOIN section ON location.section_id = section.id " +
+            "JOIN car_in_out cio ON car.id = cio.car_id " +
+            "WHERE ticket.expiry_date >= CURRENT_DATE() " +
+            "AND car.plate_number LIKE %:plateNumber% " +
+            "AND cio.is_parked = 1 " +
+            "AND car.is_deleted = 0 " +
+            "AND customer.name like %:customerName% " +
+            "AND customer.phone_number like %:customerPhoneNumber%", nativeQuery = true)
+    Page<ICarInOutDTO> searchCarIn(@Param("plateNumber") String plateNumber,
+                                   @Param("customerName") String customerName,
+                                   @Param("customerPhoneNumber") String customerPhoneNumber,
+                                   Pageable pageable);
+
+    @Query(value = "SELECT " +
+            "    cio.id," +
+            "    ticket.id AS ticket_id," +
+            "    cio.time_in AS timeIn," +
+            "    car.id AS carId," +
+            "    car.plate_number AS carPlateNumber," +
+            "    customer.id_card AS customerIdCard, " +
+            "    car.name AS carName," +
+            "    car.brand AS carBrand,  " +
+            "    car_type.name AS carTypeName," +
+            "    customer.name AS customerName," +
+            "    customer.phone_number AS customerPhoneNumber," +
+            "    CONCAT(section.name, location.name) AS locationName, " +
+            "    floor.name AS floorName," +
+            "    ticket.effective_date AS ticketEffectiveDate," +
+            "    ticket.expiry_date AS ticketExpiryDate" +
+            "FROM " +
+            "    car " +
+            "    JOIN ticket ON ticket.car_id = car.id" +
+            "    JOIN customer ON car.customer_id = customer.id " +
+            "    JOIN car_type ON car.car_type_id = car_type.id " +
+            "    JOIN location ON location.id = ticket.location_id" +
+            "    JOIN floor ON location.floor_id = floor.id" +
+            "    JOIN section ON location.section_id = section.id" +
+            "    JOIN car_in_out cio ON car.id = cio.car_id" +
+            "WHERE " +
+            "    ticket.expiry_date >= CURRENT_DATE() " +
+            "    AND car.plate_number LIKE '%%' " +
+            "    AND cio.is_parked = 1 " +
+            "    AND car.is_deleted = 0" +
+            "    AND customer.name like '%%'" +
+            "    AND customer.phone_number like '%%'",nativeQuery = true)
+
+    Page<ICarInOutDTO> searchCarOutDto(@Param("plateNumber") String plateNumber, @Param("customerName") String customerName,@Param("customerPhoneNumber") String customerPhoneNumber, Pageable pageable);
+
 }

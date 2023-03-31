@@ -23,6 +23,10 @@ public class Floor {
 
     }
 
+    public Floor(Long id) {
+        this.id = id;
+    }
+
     public Set<Location> getLocationSet() {
         return locationSet;
     }

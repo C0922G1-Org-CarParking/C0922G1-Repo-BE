@@ -31,12 +31,18 @@ public class CarInOutService implements ICarInOutService {
      * Function: searchCar and showList Car
      */
     @Override
-    public Page<ICarInOutDTO> searchCar(String plate, String phone, String name, Pageable pageable) {
-        return carInOutRepository.searchCarDto("%" + plate + "%", "%" + phone + "%", "%" + name + "%", pageable);
+    public Page<ICarInOutDTO> searchCarIn(String plateNumber, String customerName, String customerPhoneNumber, Pageable pageable) {
+        return carInOutRepository.searchCarIn(plateNumber, customerName, customerPhoneNumber, pageable);
+    }
+
+    @Override
+    public Page<ICarInOutDTO> searchCarOut(String plate, String phone, String name, Pageable pageable) {
+        return carInOutRepository.searchCarOutDto("%" + plate + "%", "%" + phone + "%", "%" + name + "%", pageable);
     }
 
     @Override
     public Optional<ICarInOutDTO> findCarById(Long id) {
         return carInOutRepository.findCarById(id);
     }
+
 }

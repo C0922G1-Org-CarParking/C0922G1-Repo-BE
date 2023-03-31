@@ -3,12 +3,17 @@ package com.example.dto;
 import com.example.model.*;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 public class TicketDto implements Validator {
     private Long id;
+    @Pattern(regexp = "^\\d{4}/\\d{2}/\\d{2}$", message = "Nhập đúng định dạng yyyy-mm-dd")
     private String effectiveDate;
     private String expiryDate;
+    @Min(value = 0, message = "Nhỏ nhất là 0")
     private double totalPrice;
     private Car car;
     private Customer customer;
@@ -53,7 +58,7 @@ public class TicketDto implements Validator {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
 

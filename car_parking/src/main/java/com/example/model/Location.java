@@ -47,6 +47,10 @@ public class Location {
 
     }
 
+    public Location(Long id) {
+        this.id =id;
+    }
+
     public boolean isDeleted() {
         return isDeleted;
     }
