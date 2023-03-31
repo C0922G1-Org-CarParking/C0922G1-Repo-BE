@@ -137,7 +137,7 @@ public class CarResController_findCar {
      * @Date 30/03/2023
      */
     @Test
-    public void getPageCar_8() throws Exception {
+    public void getPageCar_11() throws Exception {
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders
