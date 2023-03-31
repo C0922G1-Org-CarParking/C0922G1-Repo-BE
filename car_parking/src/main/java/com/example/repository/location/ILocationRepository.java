@@ -13,12 +13,12 @@ import java.util.List;
 @Repository
 public interface ILocationRepository extends JpaRepository<Location,Long> {
 
-    @Query(value = "select f.id as id_floor, f.name as ten_tang from floor as f",
+    @Query(value = "select f.id as id, f.name as name from floor as f",
             nativeQuery = true)
     List<IFloorDto> getListNameFloor();
 
 
-    @Query(value = "select location.id as Id, location.name as NameLocation  from location",
+    @Query(value = "select location.id as id, location.name as name  from location",
             nativeQuery = true)
     List<ILocationDto> getListNameLocation();
 

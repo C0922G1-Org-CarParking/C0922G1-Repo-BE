@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ITicketService {
 
-    void addTicket(String effectiveDate, String expiryDate, boolean deleted, double totalPrice, Long id, Long id1, Long id2, Long id3,double price);
+    void addTicket(String effectiveDate, String expiryDate, boolean deleted, double totalPrice, Long id, Long id1, Long id2, Long id3,Double price);
 
     List<ITicketDto> statisticalChart(int sinceMonth, int toMonth);
 

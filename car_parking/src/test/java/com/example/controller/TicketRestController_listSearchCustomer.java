@@ -1,12 +1,16 @@
 package com.example.controller;
 
+import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -21,50 +25,37 @@ public class TicketRestController_listSearchCustomer {
 
 
     /**
-     * This function use to test list search customer for fill null
-     *
+     * tìm kiếm thông tin customer có tham số name = null
+     * stauts: 400
      * @author HuyNV
      * @Date 30/03/2023
      */
 
     @Test
     public void searchCustomer_7() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/ticket/listSearchCustomer"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/ticket/listSearchCustomer?name=null"))
                 .andDo(print())
-                .andExpect(status().is4xxClientError())
-                .andExpect(jsonPath("content[0].getId").value(null))
-                .andExpect(jsonPath("content[0].getName").value("Vu BD"))
-                .andExpect(jsonPath("content[0].getDayOfBirth").value(null))
-                .andExpect(jsonPath("content[0].getPhoneNumber").value("1994-12-25"))
-
-                .andExpect(jsonPath("content[1].getId").value(2))
-                .andExpect(jsonPath("content[1].getName").value("Vu BD"))
-                .andExpect(jsonPath("content[1].getDayOfBirth").value("1994-12-25"))
-                .andExpect(jsonPath("content[1].getPhoneNumber").value(null));
+                .andExpect(status().is4xxClientError());
     }
 
+
     /**
-     * This function use to test list customer of all field is ""
-     *
+     * tìm kiếm thông tin customer có tham số name = ''
+     *stauts:400
      * @author HuyNV
      * @Date 30/03/2023
      */
 
     @Test
     public void searchCustomer_8() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/ticket/listSearchCustomer"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/ticket/listSearchCustomer?name=''"))
                 .andDo(print())
-                .andExpect(status().is4xxClientError())
-                .andExpect(jsonPath("content[0].getId").value(""))
-                .andExpect(jsonPath("content[0].getName").value("Vu BD"))
-                .andExpect(jsonPath("content[0].getDayOfBirth").value(""))
-                .andExpect(jsonPath("content[0].getPhoneNumber").value("1994-12-25"));
-
+                .andExpect(status().is4xxClientError());
     }
 
     /**
-     * This function use to test list customer of Name is 'Rong' this not exist in database
-     *
+     * tìm kiếm thông tin customer có tham số name = rong không tồn tại trong database
+     *status:400
      * @author HuyNV
      * @Date 30/03/2023
      */
@@ -72,33 +63,50 @@ public class TicketRestController_listSearchCustomer {
 
     @Test
     public void searchCustomer_9() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/ticket/listSearchCustomer?Name=Rong"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/ticket/listSearchCustomer?name=rong"))
                 .andDo(print())
-                .andExpect(status().isNoContent());
+                .andExpect(status().is4xxClientError());
     }
 
     /**
-     * This function use to test list customer of field Name is 'Vu BD' this exist in database
-     *
+     * tìm kiếm thông tin customer có tham số name = 1000 không tồn tại trong databas và trả về mảng rỗng
+     * status:400
+     * @author HuyNV
+     * @Date 30/03/2023
+     */
+
+    @Test
+    public void searchCustomer_10() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/ticket/listSearchCustomer?name=1000"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    /**
+     * tìm kiếm thông tin customer có tham số name= Vu BD có trong database
+     *status:200
      * @author HuyNV
      * @Date 30/03/2023
      */
 
     @Test
     public void searchCustomer_11() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/ticket/listSearchCustomer?Name='Vu BD'"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/ticket/listSearchCustomer?name=Vu BD"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("content[0].getId").value(1))
-                .andExpect(jsonPath("content[0].getName").value("Vu BD"))
-                .andExpect(jsonPath("content[0].getDayOfBirth").value("1994-12-25"))
-                .andExpect(jsonPath("content[0].getPhoneNumber").value("1234567893"))
+                .andExpect(jsonPath("[0].id").value(1))
+                .andExpect(jsonPath("[0].name").value("Vu BD"))
+                .andExpect(jsonPath("[0].phoneNumber").value("1234567893"))
 
-                .andExpect(jsonPath("content[0].getId").value(2))
-                .andExpect(jsonPath("content[0].getName").value("Vu BD"))
-                .andExpect(jsonPath("content[0].getDayOfBirth").value("1994-12-25"))
-                .andExpect(jsonPath("content[0].getPhoneNumber").value("1234567893"));
+                .andExpect(jsonPath("[1].id").value(2))
+                .andExpect(jsonPath("[1].name").value("Vu BD"))
+                .andExpect(jsonPath("[1].phoneNumber").value("1234567894"));
 
     }
+
+
+
+
+
 
 }

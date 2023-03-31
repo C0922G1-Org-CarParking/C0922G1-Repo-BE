@@ -9,6 +9,7 @@ import com.example.service.ticket.ITicketService;
 import com.example.service.ticket_type.ITicketTypeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -148,7 +149,6 @@ public class TicketController {
         Customer customer = new Customer();
         customer.setId(iCustomerDto.getId());
         customer.setName(iCustomerDto.getName());
-        customer.setDateOfBirth(iCustomerDto.getDayOfBirth());
         customer.setPhoneNumber(iCustomerDto.getPhoneNumber());
         if (customer == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

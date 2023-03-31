@@ -12,11 +12,11 @@ import java.util.List;
 @Repository
 public interface ICustomerRepository extends JpaRepository<Customer,Long> {
 
-    @Query(value = "select customer.id as Id , customer.date_of_birth as DayOfBirth, customer.name as Name , customer.phone_number as PhoneNumber from customer " +
+    @Query(value = "select customer.id as id , customer.date_of_birth as dayOfBirth, customer.name as name , customer.phone_number as phoneNumber from customer " +
             "where customer.name like concat ('%',:name ,'%')", nativeQuery = true)
     List<ICustomerDto> getListCustomerByName(String name);
 
-    @Query(value = "select  customer.name as Name, customer.date_of_birth as DayOfBirth , customer.phone_number as getPhoneNumber from customer  where customer.id = :id",
+    @Query(value = "select customer.id as id,customer.name as name, customer.date_of_birth as dayOfBirth , customer.phone_number as phoneNumber from customer  where customer.id = :id",
             nativeQuery = true)
     ICustomerDto getCustomerById(int id);
 

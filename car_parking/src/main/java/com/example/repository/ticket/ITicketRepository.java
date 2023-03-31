@@ -24,7 +24,7 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
                    @Param("carId") Long carId, @Param("employeeId") Long employeeId,
                    @Param("locationId") Long locationId,
                    @Param("ticketTypeId") Long ticketTypeId,
-                   @Param("price") double price);
+                   @Param("price") Double price);
 
 
     @Query(value = "select count(ticket.id) from car join ticket on car.id = ticket.car_id" +

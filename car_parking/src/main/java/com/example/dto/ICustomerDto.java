@@ -9,8 +9,6 @@ public interface ICustomerDto {
 
     public String getName();
 
-    public String getDayOfBirth();
-
     public String getPhoneNumber() ;
 
 

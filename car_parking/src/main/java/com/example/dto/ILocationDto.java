@@ -2,5 +2,5 @@ package com.example.dto;
 
 public interface ILocationDto {
     public Long getId();
-    public String getNameLocation();
+    public String getName();
 }

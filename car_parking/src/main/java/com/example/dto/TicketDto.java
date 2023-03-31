@@ -4,22 +4,21 @@ import com.example.model.Car;
 import com.example.model.Employee;
 import com.example.model.Location;
 import com.example.model.TicketType;
-import javafx.beans.binding.MapExpression;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import javax.persistence.*;
 import javax.validation.constraints.*;
 
 public class TicketDto implements Validator {
 
     private Long id;
-
+    @Size(max = 20 , min = 2 , message = "dài nhất 12 kí tự , ngắn nhất 2 kí tự")
     @NotBlank(message = "Không được để trống")
-    @Pattern(regexp = "^[1-9]\\d*$",message = "Không được chứa số âm" )
+    @Pattern(regexp = "^\\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\\d|3[01])$",message = "Đúng định dạng dd/mm/yyyy" )
     private String effectiveDate;
+    @Pattern(regexp = "^\\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\\d|3[01])$",message = "Đúng định dạng dd/mm/yyyy" )
     @NotBlank(message = "Không được để trống")
-    @Size(max = 20,min = 2 , message = "Dài nhất 20 kí tự , ít nhất 2 kí tự ")
+    @Size(max = 20,min = 2 , message = "Dài nhất 12 kí tự , ít nhất 2 kí tự ")
     private String expiryDate;
     @NotNull(message = "Không được để trống")
     private TicketType ticketType;
@@ -28,11 +27,13 @@ public class TicketDto implements Validator {
     @NotNull(message = "Không được để trống")
     private Employee employee;
     @NotNull(message = "Không được để trống")
+    @Min(value = 0 , message = "Nhỏ nhất là 0")
     private Double totalPrice;
     @NotNull(message = "Không được để trống")
     private Location location;
     private boolean isDeleted = false;
     @NotNull(message = "Không được để trống")
+    @Min(value = 0 , message = "Nhỏ nhất là 0")
     private Double price;
 
 
@@ -115,7 +116,7 @@ public class TicketDto implements Validator {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
