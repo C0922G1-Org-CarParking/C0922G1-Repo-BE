@@ -2,7 +2,6 @@ package com.example.controller.employee;
 
 
 import com.example.dto.EmployeeDto;
-import com.example.dto.IPositionDto;
 import com.example.model.Employee;
 import com.example.model.Position;
 import com.example.service.employee.IEmployeeService;
@@ -16,9 +15,10 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/api")
 public class EmployeeRestController {
     @Autowired
@@ -70,11 +70,23 @@ public class EmployeeRestController {
     @PostMapping("/create-employee")
     public ResponseEntity<?> createEmployee(@Validated @RequestBody EmployeeDto employeeDto,
                                          BindingResult bindingResult) {
-        Employee employee = new Employee();
-        BeanUtils.copyProperties(employeeDto, employee);
+//        new EmployeeDto().validate(employeeDto, bindingResult);
+//        Map<String, String> check = employeeService.checkCreate(employeeDto);
+//
+//        if (check.get("errorPhone") != null) {
+//            bindingResult.rejectValue("phoneNumber", "phoneNumber", check.get("errorPhone"));
+//        }
+//
+//        if (check.get("errorEmail") != null) {
+//            bindingResult.rejectValue("email", "email", check.get("errorEmail"));
+//        }
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(),HttpStatus.BAD_REQUEST);
         }
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeDto, employee);
+
+
         employeeService.addEmployee(employee.getCommune(), employee.getDateOfBirth(), employee.getDistrict(), employee.isGender(),
                 employee.getIdCard(), employee.getName(), employee.getProvince(), employee.getStreet(),
                 employee.getEmail(), employee.getPosition().getId(), employee.getPhoneNumber());
@@ -89,7 +101,7 @@ public class EmployeeRestController {
      * @return if has errors then return HttpStatus.Not_FOUND else add data into DB
      */
 
-    @PutMapping("/update-employee/{id}")
+    @PatchMapping("/update-employee/{id}")
         public ResponseEntity<?> updateEmployee(@PathVariable("id") Long id, @Validated @RequestBody EmployeeDto employeeDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);

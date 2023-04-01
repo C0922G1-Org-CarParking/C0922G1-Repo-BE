@@ -1,9 +1,13 @@
 package com.example.service.employee;
 
+import com.example.dto.EmployeeDto;
 import com.example.model.Employee;
 import com.example.repository.employee.IEmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class EmployeeService implements IEmployeeService {
@@ -41,5 +45,26 @@ public class EmployeeService implements IEmployeeService {
                             Long positionId, String phoneNumber) {
         employeeRepository.addEmployee(commune, dateOfBirth, district, gender, idCard, name, province, street, email, positionId, phoneNumber);
     }
+
+//    @Override
+//    public Map<String, String> checkCreate(EmployeeDto employeeDto) {
+//        Map<String, String> checkMap = new HashMap<>();
+//
+//        for (int i = 0; i < employeeRepository.employeeList().size(); i++) {
+//
+//            if (employeeRepository.employeeList().get(i).getPhoneNumber().equals(employeeDto.getPhoneNumber())) {
+//                checkMap.put("errorPhone", "Số điện thoại đã tồn tại trong hệ thống.");
+//            }
+//            if (employeeRepository.employeeList().get(i).getEmail().equals(employeeDto.getEmail())) {
+//                checkMap.put("errorEmail", "Email đã tồn tại trong hệ thống.");
+//            }
+//        }
+//        return checkMap;
+//    }
+//
+//    @Override
+//    public Map<String, String> updateCreate(EmployeeDto employeeDto) {
+//        return null;
+//    }
 }
 

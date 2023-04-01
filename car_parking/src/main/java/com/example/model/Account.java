@@ -30,11 +30,6 @@ public class Account {
         return this.employee.getEmail();
     }
 
-//    public void setUsername() {
-//        this.username = this.employee.getEmail();
-//    }
-
-
     public Long getId() {
         return id;
     }

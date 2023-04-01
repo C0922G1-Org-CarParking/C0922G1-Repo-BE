@@ -2,24 +2,28 @@ package com.example.dto;
 
 
 import com.example.model.Position;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
-import javax.persistence.Column;
+
 import javax.validation.constraints.*;
 
 
-public class EmployeeDto {
+
+public class EmployeeDto implements Validator {
     private Long id;
-    @NotBlank(message = "tên khách hàng không được để trống")
-    @Pattern(regexp = "^([\\p{Lu}][\\p{Ll}]{1,8})(\\s([\\p{Lu}]|[\\p{Lu}][\\p{Ll}]{1,10})){0,5}$",message = "Tên khách hàng không thể chứa ký tự đặc biệt và không thể chứa số")
+    @Size(max = 100, message = "Tên nhà cung cấp không được quá 30 ký tự.")
+    @NotBlank(message = "tên nhân viên không được để trống")
+//    @Pattern(regexp = "^[A-Za-z]+(?:\\s+[A-Za-z]+)*$",message = "Tên khách hàng không thể chứa ký tự đặc biệt và không thể chứa số")
     private String name;
     @NotBlank(message = "Nhập ngày sinh")
     private String dateOfBirth;
     private boolean gender;
-    @NotBlank(message = "Nhập số điện thoại")
-    @Pattern(regexp = "[0][1-9]{9}", message = "Số điện thoại phải có 10 số và bắt đầu bằng 0")
+    @NotBlank(message = "Không được để trống.")
+//    @Pattern(regexp = "^(0|\\+84)\\d{9}$", message = "Số điện thoại không đúng định dạng (Ví dụ: +84937110xxx / 0937110xxx).")
     private String phoneNumber;
     @NotBlank(message = "số cmnd không được để trống")
-    @Pattern(regexp = "(\\d{9})|(\\d{12})",message = "số cmnd phải đúng định dạng,vd:XXXXXXXXX hoặc XXXXXXXXXXXX (X là số 0-9).")
+//    @Pattern(regexp = "(\\d{9})|(\\d{12})",message = "số cmnd phải đúng định dạng,vd:XXXXXXXXX hoặc XXXXXXXXXXXX (X là số 0-9).")
     private String idCard;
     @Min(value = 1)
     private int district;
@@ -28,11 +32,12 @@ public class EmployeeDto {
     private int province;
     @Min(value = 1)
     private int commune;
-    @NotBlank(message = "Nhập địa chỉ")
+    @Size(max = 200, message = "Địa chỉ không được quá 200 ký tự.")
+    @NotBlank(message = "Không được để trống.")
     private String street;
     private Position position;
-    @NotBlank(message = "email không được để trống")
-    @Pattern(regexp = "[a-zA-Z]+\\w+@\\w+(\\.\\w+)+", message = "email phải đúng định dạng, vd: abc123@gmail.com")
+    @NotBlank(message = "Không được để trống.")
+//    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Email không đúng định dạng (Ví dụ: employee-email@email.com).")
     private String email;
     private boolean isDeleted;
 
@@ -141,5 +146,15 @@ public class EmployeeDto {
 
     public void setPosition(Position position) {
         this.position = position;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+
     }
 }
