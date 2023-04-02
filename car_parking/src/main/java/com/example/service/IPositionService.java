@@ -1,6 +1,5 @@
-package com.example.service.employee;
+package com.example.service;
 
-import com.example.dto.IPositionDto;
 import com.example.model.Position;
 
 import java.util.List;

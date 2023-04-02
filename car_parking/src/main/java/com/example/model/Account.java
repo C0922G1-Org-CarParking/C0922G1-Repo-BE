@@ -26,9 +26,11 @@ public class Account {
     public Account() {
     }
 
+
     public String getUsername() {
         return this.employee.getEmail();
     }
+
 
     public Long getId() {
         return id;
@@ -45,7 +47,6 @@ public class Account {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
-
 
     public String getPassword() {
         return password;

@@ -1,6 +1,5 @@
-package com.example.repository.employee;
+package com.example.repository;
 
-import com.example.dto.IPositionDto;
 import com.example.model.Position;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
