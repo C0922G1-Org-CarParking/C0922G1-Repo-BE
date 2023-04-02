@@ -128,7 +128,7 @@ public class EmployeeRestController_getListEmployee {
 
         this.mockMvc.perform(
                         MockMvcRequestBuilders
-                                .get("/api/list-employee?page=0&size=0"))
+                                .get("/api/list-employee?page=0&size=2"))
                 .andDo(print())
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("totalPages").value(1))

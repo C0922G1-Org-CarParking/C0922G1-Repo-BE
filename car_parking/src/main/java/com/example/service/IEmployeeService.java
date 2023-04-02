@@ -6,33 +6,30 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 
 public interface IEmployeeService {
-    /**
-     * Created by: TaiLH
-     * Date created: 29/03/2022
-     * function: get the list employee
-     * @param pageable
-     * @return
-     */
-    Page<Employee> findAll(Pageable pageable);
 
     /**
      * Created by: TaiLH
      * Date created: 29/03/2022
-     * function: employee search
+     * function: employee search all field
      * @param pageable
      * @param name
-     * @param dateOfBirth
+     * @param startDate
+     * @param endDate
      * @return
      */
-    Page<Employee> searchEmployee(Pageable pageable, String name, String dateOfBirth);
+    Page<Employee> searchAll(Pageable pageable, String name, String startDate, String endDate);
 
     /**
      * Created by: TaiLH
      * Date created: 29/03/2022
-     * function: delete employee by id
-     * @param id
+     * function: staff searched all fields but found only start or end date
+     * @param pageable
+     * @param name
+     * @param startDate
+     * @param endDate
+     * @return
      */
-    void deleteEmployeeById(@Param("id") Long id);
+    Page<Employee> searchDateOfBirth(Pageable pageable, String name, String startDate, String endDate);
 
     /**
      * Created by: TaiLH
@@ -50,4 +47,13 @@ public interface IEmployeeService {
      * @return
      */
     Page<Employee> findAllByDeletedFalse(Pageable pageable);
+
+    /**
+     * Created by: TaiLH
+     * Date created: 29/03/2022
+     * function: delete employee by id
+     * @param id
+     */
+    void deleteEmployeeById(@Param("id") Long id);
+
 }
