@@ -43,7 +43,7 @@ public class EmployeeService implements IEmployeeService {
     public void addEmployee(int commune, String dateOfBirth, int district, boolean gender, String idCard,
                              String name, int province, String street, String email,
                             Long positionId, String phoneNumber) {
-        employeeRepository.addEmployee(commune, dateOfBirth, district, gender, idCard, name, province, street, email, positionId, phoneNumber);
+            employeeRepository.addEmployee(commune, dateOfBirth, district, gender, idCard, name, province, street, email, positionId, phoneNumber);
     }
 
 //    @Override

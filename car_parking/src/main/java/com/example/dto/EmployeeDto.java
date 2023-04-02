@@ -12,23 +12,23 @@ import javax.validation.constraints.*;
 
 public class EmployeeDto implements Validator {
     private Long id;
-    @Size(max = 100, message = "Tên nhà cung cấp không được quá 30 ký tự.")
+    @Size(max = 100, message = "Tên nhân viên không được quá 30 ký tự.")
     @NotBlank(message = "tên nhân viên không được để trống")
-//    @Pattern(regexp = "^[A-Za-z]+(?:\\s+[A-Za-z]+)*$",message = "Tên khách hàng không thể chứa ký tự đặc biệt và không thể chứa số")
+    @Pattern(regexp = "^[a-zA-ZÀ-ỹ\\s]*$",message = "Tên nhân viên không thể chứa ký tự đặc biệt và không thể chứa số")
     private String name;
     @NotBlank(message = "Nhập ngày sinh")
+//    @Pattern(regexp = "^(0?[1-9]|[12][0-9]|3[01])[\\\\/\\\\-](0?[1-9]|1[012])[\\\\/\\\\-]\\\\d{4}$",message = "không đúng định dạng")
     private String dateOfBirth;
     private boolean gender;
     @NotBlank(message = "Không được để trống.")
-//    @Pattern(regexp = "^(0|\\+84)\\d{9}$", message = "Số điện thoại không đúng định dạng (Ví dụ: +84937110xxx / 0937110xxx).")
+    @Pattern(regexp = "^(0|\\+84)\\d{9}$", message = "Số điện thoại không đúng định dạng (Ví dụ: +84937110xxx / 0937110xxx).")
     private String phoneNumber;
     @NotBlank(message = "số cmnd không được để trống")
-//    @Pattern(regexp = "(\\d{9})|(\\d{12})",message = "số cmnd phải đúng định dạng,vd:XXXXXXXXX hoặc XXXXXXXXXXXX (X là số 0-9).")
+    @Pattern(regexp = "^(\\d{9})|(\\d{12})$",message = "số cmnd phải đúng định dạng,vd:XXXXXXXXX hoặc XXXXXXXXXXXX (X là số 0-9).")
     private String idCard;
     @Min(value = 1)
     private int district;
     @Min(value = 1)
-    @Max(value = 63)
     private int province;
     @Min(value = 1)
     private int commune;
@@ -37,7 +37,7 @@ public class EmployeeDto implements Validator {
     private String street;
     private Position position;
     @NotBlank(message = "Không được để trống.")
-//    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Email không đúng định dạng (Ví dụ: employee-email@email.com).")
+    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Email không đúng định dạng (Ví dụ: employee-email@email.com).")
     private String email;
     private boolean isDeleted;
 
