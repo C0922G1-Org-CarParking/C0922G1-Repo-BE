@@ -1,4 +1,4 @@
-package com.example.controller.customer;
+package com.example.controller;
 
 import com.example.dto.ICustomerDTO;
 import com.example.service.ICustomerService;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/customerReast")
+@RequestMapping("/customerRest")
 public class CustomerRestController {
     /**
      * Create by: VuBD
@@ -41,8 +41,9 @@ public class CustomerRestController {
                                                               @RequestParam(required = false, defaultValue = "") String phoneNumber,
                                                               @RequestParam(required = false, defaultValue = "") String starDate,
                                                               @RequestParam(required = false, defaultValue = "") String endDate,
-                                                              @RequestParam(required = false, defaultValue = "0") int page) {
-        Pageable pageable = PageRequest.of(page, 2);
+                                                              @RequestParam(required = false, defaultValue = "0") int page,
+                                                              @RequestParam(required = false, defaultValue = "2") int pageSize) {
+        Pageable pageable = PageRequest.of(page, pageSize);
         Page<ICustomerDTO> customerPage = this.customerService.getListCustomer(name, idCard, phoneNumber, starDate, endDate, pageable);
         if (customerPage.getContent().isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -52,24 +53,37 @@ public class CustomerRestController {
 
     /**
      * Create by: VuBD
+     * Date create: 01/04/2023
+     * Function: connect service to get data a customer with corresponding id
+     *
+     * @param
+     */
+    @GetMapping("{id}")
+    public ResponseEntity<ICustomerDTO> getCustomer(@PathVariable int id) {
+        if (customerService.findById(id) != null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(customerService.findById(id), HttpStatus.OK);
+    }
+
+    /**
+     * Create by: VuBD
      * Date create: 29/03/2023
      * Function: connect service to delete a customer with corresponding id
      *
      * @param id
-     * @return: If successful, return ResponseEntity<>("Xoá khách hàng thành công", HttpStatus.OK), if unsuccessful,
-     * return ResponseEntity<>("Xóa khách hàng không thành công, khách hàng đã bị xóa hoặc không tồn tại", HttpStatus.NOT_FOUND)
-     * if the customer is still valid for tickets ResponseEntity<>("Khách hàng này còn thời hạn vé, không được phép xoá",
-     * HttpStatus.NOT_FOUND)
+     * @return: If successful, return ResponseEntity<>(HttpStatus.OK), if unsuccessful,
+     * return ResponseEntity<>(HttpStatus.NOT_FOUND)
+     * if the customer is still valid for tickets ResponseEntity<>(HttpStatus.NOT_FOUND)
      */
     @DeleteMapping("/{id}/delete")
-    public ResponseEntity<String> deleteCustomer(@PathVariable int id) {
-        if (customerService.deleteCustomer(id) == 1) {
-            return new ResponseEntity<>("Xoá khách hàng thành công", HttpStatus.OK);
-        } else if (customerService.deleteCustomer(id) == 0) {
-            return new ResponseEntity<>("Khách hàng này còn thời hạn vé, không được phép xoá",
-                    HttpStatus.METHOD_NOT_ALLOWED);
+    public ResponseEntity deleteCustomer(@PathVariable int id) {
+        long status = customerService.deleteCustomer(id);
+        if (status == 1) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else if (status == 0) {
+            return new ResponseEntity<>(HttpStatus.METHOD_NOT_ALLOWED);
         }
-        return new ResponseEntity<>("Xóa khách hàng không thành công, khách hàng đã bị xóa hoặc không tồn tại",
-                HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

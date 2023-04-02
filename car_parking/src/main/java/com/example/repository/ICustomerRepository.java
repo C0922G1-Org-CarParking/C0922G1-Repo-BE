@@ -1,4 +1,4 @@
-package com.example.repository.customer;
+package com.example.repository;
 
 import com.example.dto.ICustomerDTO;
 import com.example.model.Customer;
@@ -25,11 +25,21 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
      * @param pageable
      * @return
      */
-    @Query(value = "SELECT customer.id, customer.name, customer.date_of_birth, customer.id_card, customer.gender, " +
-            "customer.phone_number, customer.email FROM c0922g1_car_parking.customer WHERE is_deleted = 0 and " +
-            "name like %:name% AND id_card like %:idCard% AND phone_number like %:phoneNumber% AND " +
-            "date_of_birth >= COALESCE(NULLIF(:starDate, ''), date_of_birth) AND " +
-            "date_of_birth <= COALESCE(NULLIF(:endDate, ''), date_of_birth)", nativeQuery = true)
+    @Query(value = "SELECT " +
+            "customer.id, " +
+            "customer.name, " +
+            "customer.date_of_birth as dateOfBirth, " +
+            "customer.id_card as idCard, " +
+            "customer.gender, " +
+            "customer.phone_number as phoneNumber, " +
+            "customer.email " +
+            "FROM c0922g1_car_parking.customer " +
+            "WHERE is_deleted = 0 " +
+            "AND name like %:name% " +
+            "AND id_card like %:idCard% " +
+            "AND phone_number like %:phoneNumber% " +
+            "AND date_of_birth >= COALESCE(NULLIF(:starDate, ''), date_of_birth) " +
+            "AND date_of_birth <= COALESCE(NULLIF(:endDate, ''), date_of_birth)", nativeQuery = true)
     Page<ICustomerDTO> getListCustomer(@Param("name") String name,
                                        @Param("idCard") String idCard,
                                        @Param("phoneNumber") String phoneNumber,
@@ -56,8 +66,16 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
      *
      * @param id
      */
-    @Query(value = "SELECT customer.id, customer.name, customer.date_of_birth, customer.id_card, customer.gender, " +
-            "customer.phone_number, customer.email FROM c0922g1_car_parking.customer WHERE id = :id AND is_deleted = 0", nativeQuery = true)
+    @Query(value = "SELECT " +
+            "customer.id, " +
+            "customer.name, " +
+            "customer.date_of_birth as dateOfBirth, " +
+            "customer.id_card as idCard, " +
+            "customer.gender, " +
+            "customer.phone_number as phoneNumber, " +
+            "customer.email " +
+            "FROM c0922g1_car_parking.customer " +
+            "WHERE id = :id AND is_deleted = 0", nativeQuery = true)
     ICustomerDTO findCustomerById(@Param("id") int id);
 
 

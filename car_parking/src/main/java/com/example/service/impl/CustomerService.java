@@ -2,9 +2,9 @@ package com.example.service.impl;
 
 import com.example.dto.ICustomerDTO;
 import com.example.model.Ticket;
-import com.example.repository.customer.ICarRepository;
-import com.example.repository.customer.ICustomerRepository;
-import com.example.repository.customer.ITicketRepository;
+import com.example.repository.ICarRepository;
+import com.example.repository.ICustomerRepository;
+import com.example.repository.ITicketRepository;
 import com.example.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -70,5 +70,17 @@ public class CustomerService implements ICustomerService {
             return 1;
         }
         return -1;
+    }
+
+    /**
+     * Create by: VuBD
+     * Date create: 01/04/2023
+     * Function: connect repository to get data a customer with corresponding id
+     *
+     * @param id
+     */
+    @Override
+    public ICustomerDTO findById(int id) {
+        return customerRepository.findCustomerById(id);
     }
 }

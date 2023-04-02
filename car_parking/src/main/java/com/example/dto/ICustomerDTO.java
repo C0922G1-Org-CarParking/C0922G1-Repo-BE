@@ -13,13 +13,13 @@ public interface ICustomerDTO {
 
     String getName();
 
-    Date getDate_of_birth();
+    Date getDateOfBirth();
 
-    String getId_card();
+    String getIdCard();
 
     boolean isGender();
 
-    String getPhone_number();
+    String getPhoneNumber();
 
     String getEmail();
 }

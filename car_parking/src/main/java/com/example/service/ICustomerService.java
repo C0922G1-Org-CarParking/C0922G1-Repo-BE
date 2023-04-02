@@ -30,4 +30,13 @@ public interface ICustomerService {
      * @return
      */
     long deleteCustomer(int id);
+
+    /**
+     * Create by: VuBD
+     * Date create: 01/04/2023
+     * Function: connect repository to get data a customer with corresponding id
+     *
+     * @param id
+     */
+    ICustomerDTO findById(int id);
 }
