@@ -46,25 +46,25 @@ public class EmployeeService implements IEmployeeService {
             employeeRepository.addEmployee(commune, dateOfBirth, district, gender, idCard, name, province, street, email, positionId, phoneNumber);
     }
 
-//    @Override
-//    public Map<String, String> checkCreate(EmployeeDto employeeDto) {
-//        Map<String, String> checkMap = new HashMap<>();
-//
-//        for (int i = 0; i < employeeRepository.employeeList().size(); i++) {
-//
-//            if (employeeRepository.employeeList().get(i).getPhoneNumber().equals(employeeDto.getPhoneNumber())) {
-//                checkMap.put("errorPhone", "Số điện thoại đã tồn tại trong hệ thống.");
-//            }
-//            if (employeeRepository.employeeList().get(i).getEmail().equals(employeeDto.getEmail())) {
-//                checkMap.put("errorEmail", "Email đã tồn tại trong hệ thống.");
-//            }
-//        }
-//        return checkMap;
-//    }
-//
-//    @Override
-//    public Map<String, String> updateCreate(EmployeeDto employeeDto) {
-//        return null;
-//    }
+    @Override
+    public Map<String,String> checkCreate(EmployeeDto employeeDto) {
+        Map<String, String> checkMap = new HashMap<>();
+
+        for (int i = 0; i < employeeRepository.employeeList().size(); i++) {
+
+            if (employeeRepository.employeeList().get(i).getPhoneNumber().equals(employeeDto.getPhoneNumber())) {
+                checkMap.put("errorPhone", "Số điện thoại đã tồn tại trong hệ thống.");
+            }
+            if (employeeRepository.employeeList().get(i).getEmail().equals(employeeDto.getEmail())) {
+                checkMap.put("errorEmail", "Email đã tồn tại trong hệ thống.");
+            }
+        }
+        return checkMap;
+    }
+
+    @Override
+    public Map<String, String> updateCreate(EmployeeDto employeeDto) {
+        return null;
+    }
 }
 

@@ -17,6 +17,6 @@ public interface IEmployeeService {
                       String name, int province, String street, String email,
                      Long positionId, String phoneNumber);
 
-//    Map<String, String> checkCreate(EmployeeDto employeeDto);
-//    Map<String, String> updateCreate(EmployeeDto employeeDto);
+    Map<String, String> checkCreate(EmployeeDto employeeDto);
+    Map<String, String> updateCreate(EmployeeDto employeeDto);
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 @Transactional
 @Repository
@@ -86,4 +87,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee,Long> {
             @Param("id") Long id
     );
 
+    @Query(value = "select * from employee", nativeQuery = true)
+    List<Employee> employeeList();
 }

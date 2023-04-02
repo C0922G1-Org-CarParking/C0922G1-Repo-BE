@@ -71,16 +71,18 @@ public class EmployeeRestController {
     @PostMapping("/create-employee")
     public ResponseEntity<?> createEmployee(@Validated @RequestBody EmployeeDto employeeDto,
                                          BindingResult bindingResult) {
-//        new EmployeeDto().validate(employeeDto, bindingResult);
-//        Map<String, String> check = employeeService.checkCreate(employeeDto);
-//
-//        if (check.get("errorPhone") != null) {
-//            bindingResult.rejectValue("phoneNumber", "phoneNumber", check.get("errorPhone"));
-//        }
-//
-//        if (check.get("errorEmail") != null) {
-//            bindingResult.rejectValue("email", "email", check.get("errorEmail"));
-//        }
+        new EmployeeDto().validate(employeeDto, bindingResult);
+        Map<String, String> check = employeeService.checkCreate(employeeDto);
+        if (check.get("errorIdCard") != null) {
+            bindingResult.rejectValue("idCard", "idCard", check.get("errorIdCard"));
+        }
+        if (check.get("errorPhone") != null) {
+            bindingResult.rejectValue("phoneNumber", "phoneNumber", check.get("errorPhone"));
+        }
+
+        if (check.get("errorEmail") != null) {
+            bindingResult.rejectValue("email", "email", check.get("errorEmail"));
+        }
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(),HttpStatus.BAD_REQUEST);
         }
