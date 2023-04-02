@@ -1,56 +1,47 @@
-package com.example.model;
+package com.example.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.model.CarInOut;
+import com.example.model.CarType;
+import com.example.model.Customer;
+import com.example.model.Ticket;
 
-import javax.persistence.*;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
-@Entity
-public class Car {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CarDto {
+private Long id;
 
-    private Long id;
+    @NotBlank(message = "Vui lòng nhập vào đây")
+    @Size(max = 20 ,message = "Tên không được quá 20 ký tự")
+    @Pattern(regexp = "^[a-zA-z0-9]+$", message = "Tên không được nhập số và ký tự đặc biệt.")
 
-    @Column(length = 45,nullable = false)
     private String name;
 
-    @Column(length = 45,nullable = false, unique = true)
+        @NotBlank(message = "Vui lòng nhập vào đây")
     private String plateNumber;
 
-
-    @Column(length = 45,nullable = false)
+    @NotBlank(message = "Vui lòng nhập vào đây")
+    @Size(max = 20 ,message = "Tên không được quá 20 ký tự")
+    @Pattern(regexp = "[a-zA-z0-9 ]+", message = "Tên không được nhập số và ký tự đặc biệt.")
     private String brand;
 
     private boolean isDeleted;
 
-    @ManyToOne
-    @JoinColumn(name = "car_type_id",referencedColumnName = "id")
     private CarType carType;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+
     private Customer customer;
 
 
-    @OneToMany(mappedBy = "car")
-    @JsonIgnore
     private Set<CarInOut> carInOutSet;
 
-    @OneToMany(mappedBy = "car")
-    @JsonIgnore
+
     private Set<Ticket> ticketSet;
 
-
-    public Car() {
-    }
-
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
+    public CarDto() {
     }
 
     public Long getId() {
@@ -59,14 +50,6 @@ public class Car {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
     }
 
     public String getName() {
@@ -83,6 +66,22 @@ public class Car {
 
     public void setPlateNumber(String plateNumber) {
         this.plateNumber = plateNumber;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 
     public CarType getCarType() {
@@ -117,4 +116,5 @@ public class Car {
         this.ticketSet = ticketSet;
     }
 
-}
+    }
+
