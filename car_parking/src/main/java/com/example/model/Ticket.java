@@ -15,6 +15,9 @@ public class Ticket {
     @Column(nullable = false)
     private double totalPrice;
 
+    @Column(nullable = false)
+    private double price;
+
     @ManyToOne
     @JoinColumn(name = "ticket_type_id", referencedColumnName = "id")
     private TicketType ticketType;
@@ -44,6 +47,13 @@ public class Ticket {
     public Ticket() {
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     public Long getId() {
         return id;
