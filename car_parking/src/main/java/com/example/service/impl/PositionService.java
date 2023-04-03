@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class PositionService implements IPositionService {
     @Autowired
-    private IPositionRepository positionRepository;
+    private IPositionRepository iPositionRepository;
     /**
      * Created by: DinhNTC
      * Date created: 29/03/2023
@@ -20,6 +20,6 @@ public class PositionService implements IPositionService {
      */
     @Override
     public List<Position> getAllPosition() {
-        return positionRepository.getAllPosition();
+        return iPositionRepository.getAllPosition();
     }
 }
