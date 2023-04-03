@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.dto.ICarTicketDto;
 import com.example.model.Car;
 import org.springframework.stereotype.Repository;
 
@@ -7,6 +8,29 @@ import java.util.List;
 
 @Repository
 public interface ICarService {
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 29/03/2023
+     * Function: createCar
+     *
+     */
+
+    void createCar(String brand, String name, String plateNumber, Long carTypeId, Long customerId);
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 29/03/2023
+     * Function: infoCar
+     *
+     * @Param: customerId
+     * Return: infoCustomer and listCar
+     */
+
+//    List<ICarDto> findCarById(Long id);
+
+    List<ICarTicketDto> findCarTicketByCustomerId(Long id);
+
     /**
      * Create by: VuTN,
      * Date create : 29/03/2023

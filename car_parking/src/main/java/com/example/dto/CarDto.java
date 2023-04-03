@@ -36,10 +36,10 @@ private Long id;
     private Customer customer;
 
 
-    private Set<CarInOut> carInOutSet;
-
-
-    private Set<Ticket> ticketSet;
+//    private Set<CarInOut> carInOutSet;
+//
+//
+//    private Set<Ticket> ticketSet;
 
     public CarDto() {
     }
@@ -94,21 +94,21 @@ private Long id;
         this.customer = customer;
     }
 
-    public Set<CarInOut> getCarInOutSet() {
-        return carInOutSet;
-    }
-
-    public void setCarInOutSet(Set<CarInOut> carInOutSet) {
-        this.carInOutSet = carInOutSet;
-    }
-
-    public Set<Ticket> getTicketSet() {
-        return ticketSet;
-    }
-
-    public void setTicketSet(Set<Ticket> ticketSet) {
-        this.ticketSet = ticketSet;
-    }
+//    public Set<CarInOut> getCarInOutSet() {
+//        return carInOutSet;
+//    }
+//
+//    public void setCarInOutSet(Set<CarInOut> carInOutSet) {
+//        this.carInOutSet = carInOutSet;
+//    }
+//
+//    public Set<Ticket> getTicketSet() {
+//        return ticketSet;
+//    }
+//
+//    public void setTicketSet(Set<Ticket> ticketSet) {
+//        this.ticketSet = ticketSet;
+//    }
 
     }
 

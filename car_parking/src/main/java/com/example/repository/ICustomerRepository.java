@@ -19,6 +19,46 @@ import java.util.List;
 @Repository
 @Transactional
 public interface ICustomerRepository extends JpaRepository<Customer, Long> {
+
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 29/03/2023
+     * Function: createCustomer
+     */
+
+    @Modifying
+    @Query(value = "insert into customer (commune, date_of_birth, district, email, gender, id_card, is_deleted, name, phone_number, province, street)value(:commune, :dateOfBirth, :district, :email, :gender, :idCard, false, :name, :phoneNumber, :province, :street)", nativeQuery = true)
+    void createCustomer(@Param("commune") int commune,
+                        @Param("dateOfBirth") String dateOfBirth,
+                        @Param("district") int district,
+                        @Param("email") String email,
+                        @Param("gender") boolean gender,
+                        @Param("idCard") String idCard,
+                        @Param("name") String name,
+                        @Param("phoneNumber") String phoneNumber,
+                        @Param("province") int province,
+                        @Param("street") String street);
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 03/04/2023
+     * Function: findByCustomerIdCard
+     */
+
+    @Query(value = "select id, commune, date_of_birth, district, email, gender, id_card, is_deleted, name, phone_number, province, street from customer where id_card =:idCard", nativeQuery = true)
+    Customer findCustomerByIdCard(@Param("idCard") String idCard);
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 03/04/2023
+     * Function: findByCustomerId
+     */
+
+    @Query(value = "select id as id, commune as commune, date_of_birth as dateOfBirth, district as district, email as email, gender as isGender, id_card as idCard, is_deleted as idDeleted, name as name, phone_number as phoneNumber, province as province, street as street from customer where id =:id", nativeQuery = true)
+    ICustomerDTO findByCustomerId(@Param("id") Long id);
+
+
     /**
      * Create by: VuTN,
      * Date create : 29/03/2023

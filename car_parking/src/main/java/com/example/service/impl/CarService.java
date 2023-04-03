@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import com.example.dto.ICarTicketDto;
 import com.example.model.Car;
 import com.example.repository.ICarRepository;
 import com.example.service.ICarService;
@@ -11,8 +12,27 @@ import java.util.List;
 
 @Service
 public class CarService implements ICarService {
+
+
     @Autowired
     private ICarRepository carRepository;
+
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 29/03/2023
+     * Function: createCar
+     *
+     */
+
+    public void createCar(String brand, String name, String plateNumber, Long carTypeId, Long customerId) {
+        carRepository.createCar(brand, name, plateNumber, carTypeId, customerId);
+    }
+
+    @Override
+    public List<ICarTicketDto> findCarTicketByCustomerId(Long id) {
+        return carRepository.findCarTicketByCustomerId(id);
+    }
 
 
     @Override

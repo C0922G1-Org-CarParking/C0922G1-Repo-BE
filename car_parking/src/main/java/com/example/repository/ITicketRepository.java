@@ -19,4 +19,5 @@ public interface ITicketRepository extends JpaRepository<Ticket, Integer> {
             "and is_deleted = 0 " +
             "and expiry_date >= CURRENT_DATE()", nativeQuery = true)
     Ticket findTicketByCarId(@Param("carId") int carId);
+
 }
