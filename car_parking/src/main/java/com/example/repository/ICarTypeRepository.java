@@ -1,4 +1,4 @@
-package com.example.repository.customer_car;
+package com.example.repository;
 
 import com.example.model.CarType;
 import org.springframework.data.jpa.repository.JpaRepository;

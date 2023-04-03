@@ -1,4 +1,4 @@
-package com.example.repository.customer_car;
+package com.example.repository;
 
 import com.example.model.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -54,5 +54,6 @@ public interface ICarRepository extends JpaRepository<Car, Long> {
             "VALUES (:name,:car_type_id,:brand,:plate_number,false,:customer_id)", nativeQuery = true)
     void createCar(@Param("name") String name, @Param("car_type_id") Long car_type_id, @Param("brand") String brand, @Param("plate_number") String plate_number,
                    @Param("customer_id") Long customer_id);
-
+ @Query(value = "select * from car where car.id=:id", nativeQuery = true)
+    List<Car> carList (Long id);
 }

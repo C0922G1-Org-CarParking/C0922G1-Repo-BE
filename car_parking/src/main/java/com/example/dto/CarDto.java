@@ -14,21 +14,21 @@ import java.util.Set;
 public class CarDto {
 private Long id;
 
-    @NotBlank(message = "Vui lòng nhập vào đây")
-    @Size(max = 20 ,message = "Tên không được quá 20 ký tự")
-    @Pattern(regexp = "^[a-zA-z0-9]+$", message = "Tên không được nhập số và ký tự đặc biệt.")
+//    @NotBlank(message = "Vui lòng nhập vào đây")
+//    @Size(max = 20 ,message = "Tên không được quá 20 ký tự")
+//    @Pattern(regexp = "^[a-zA-z0-9]+$", message = "Tên không được nhập số và ký tự đặc biệt.")
 
     private String name;
 
-        @NotBlank(message = "Vui lòng nhập vào đây")
+//        @NotBlank(message = "Vui lòng nhập vào đây")
     private String plateNumber;
 
-    @NotBlank(message = "Vui lòng nhập vào đây")
-    @Size(max = 20 ,message = "Tên không được quá 20 ký tự")
-    @Pattern(regexp = "[a-zA-z0-9 ]+", message = "Tên không được nhập số và ký tự đặc biệt.")
+//    @NotBlank(message = "Vui lòng nhập vào đây")
+//    @Size(max = 20 ,message = "Tên không được quá 20 ký tự")
+//    @Pattern(regexp = "[a-zA-z0-9 ]+", message = "Tên không được nhập số và ký tự đặc biệt.")
     private String brand;
 
-    private boolean isDeleted;
+
 
     private CarType carType;
 
@@ -76,13 +76,7 @@ private Long id;
         this.brand = brand;
     }
 
-    public boolean isDeleted() {
-        return isDeleted;
-    }
 
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
 
     public CarType getCarType() {
         return carType;

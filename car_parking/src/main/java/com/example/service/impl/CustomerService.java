@@ -1,31 +1,31 @@
-package com.example.service.customer_car;
+package com.example.service.impl;
 
 
-import com.example.dto.ICarDto;
 import com.example.model.Customer;
-import com.example.repository.customer_car.ICustomerRepository;
+import com.example.repository.ICustomerRepository;
 
+import com.example.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CustomerService implements ICustomerService {
     @Autowired
     private ICustomerRepository customerRepository;
-
-
+    /**
+     * Create by: VuTN,
+     * Date create : 29/03/2023
+     * function find customer by id
+     */
     @Override
-    public List<ICarDto> findCustomerById(Long id) {
-        List<ICarDto> customerList = this.customerRepository.findCustomerCarById(id);
-        if (customerList == null) {
-            return null;
-        } else {
-            return customerList;
-        }
+    public Customer findCustomerById(Long id) {
+        return this.customerRepository.findCustomerById(id);
     }
-
+    /**
+     * Create by: VuTN,
+     * Date create : 29/03/2023
+     * function update customer
+     */
     @Override
     public void updateCustomer(String name, String id_card, String date_of_birth, boolean gender, String email, String phone, int province, int district, int commune, String street, Long id) {
         Customer customer = this.customerRepository.findCustomerById(id);

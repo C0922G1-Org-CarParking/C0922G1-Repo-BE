@@ -12,7 +12,7 @@ public class Location {
     private Long id;
 
     @Column(length = 45, nullable = false)
-    private String name;
+    private Long name;
 
     private boolean isOccupied;
 
@@ -62,11 +62,12 @@ public class Location {
         this.id = id;
     }
 
-    public String getName() {
+
+    public Long getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Long name) {
         this.name = name;
     }
 

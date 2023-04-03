@@ -1,5 +1,6 @@
-package com.example.repository.customer_car;
+package com.example.repository;
 
+import com.example.dto.CustomerCarDto;
 import com.example.dto.ICarDto;
 import com.example.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,18 +15,6 @@ import java.util.List;
 @Repository
 @Transactional
 public interface ICustomerRepository extends JpaRepository<Customer, Long> {
-    /**
-     * Create by: VuTN,
-     * Date create : 29/03/2023
-     * Function : connect database to information customer join car  with corresponding id of customer
-     *
-     * @return List<ICarDto>
-     * @Param id
-     */
-    @Modifying
-    @Query(value = "select c.name as name, c.id as id, c.id_card as idCard, c.gender as isGender, c.phone_number as phoneNumber, c.email as email, c.commune, c.district, c.province, c.street as street, car.id as carId, car.car_type_id as carTypeId, car.name as carName, car.plate_number as plateNumber from car join customer c on c.id = car.customer_id where c.id = :id and c.is_deleted = false and car.is_deleted = false ", nativeQuery = true)
-    List<ICarDto> findCustomerCarById(@Param("id") Long id);
-
     /**
      * Create by: VuTN,
      * Date create : 29/03/2023
@@ -51,4 +40,5 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
      */
     @Query(value = "select * from customer where customer.id=:id", nativeQuery = true)
     Customer findCustomerById(Long id);
+
 }
