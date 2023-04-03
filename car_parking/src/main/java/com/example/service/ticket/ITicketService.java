@@ -11,5 +11,7 @@ public interface ITicketService {
 
     List<ITicketDto> statisticalChart(int sinceMonth, int toMonth);
 
-    Ticket getPriceOfTicket();
+    Integer getPriceOfTicket(String expiryDate, String effectiveDate , double rate);
+
+    List<ITicketDto> displayMonth(int sinceMonth, int toMonth);
 }

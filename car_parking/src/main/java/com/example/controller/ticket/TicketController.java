@@ -9,7 +9,6 @@ import com.example.service.ticket.ITicketService;
 import com.example.service.ticket_type.ITicketTypeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -144,7 +143,7 @@ public class TicketController {
 
 
     @GetMapping("/chooseCustomer/{id}")
-    public ResponseEntity<ICustomerDto> getNameCustomerChooseById(@PathVariable("id") int id) {
+    public ResponseEntity<?> getNameCustomerChooseById(@PathVariable("id") int id) {
         ICustomerDto iCustomerDto = iCustomerService.findCustomerId(id);
         Customer customer = new Customer();
         customer.setId(iCustomerDto.getId());
@@ -153,7 +152,7 @@ public class TicketController {
         if (customer == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(iCustomerDto, HttpStatus.OK);
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
 
@@ -165,10 +164,9 @@ public class TicketController {
      * @param
      * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
      */
-    @GetMapping("/statisticalTicketChart")
-    public ResponseEntity<List<ITicketDto>> getStatisticalTicketChart(int sinceMonth, int toMonth) {
+    @GetMapping("/statisticalTicketChart/{sinceMonth}/{toMonth}")
+    public ResponseEntity<List<ITicketDto>> getStatisticalTicketChart(@PathVariable int sinceMonth,@PathVariable int toMonth) {
         List<ITicketDto> tickets = iTicketService.statisticalChart(sinceMonth, toMonth);
-
         if (tickets.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -183,15 +181,14 @@ public class TicketController {
      * @param
      * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
      */
-    @GetMapping("/statisticalCustomerChart")
-    public ResponseEntity<List<ICustomerDto>> getStatisticalCustomerChart(int sinceMonth, int toMonth) {
+    @GetMapping("/statisticalCustomerChart/{sinceMonth}/{toMonth}")
+    public ResponseEntity<List<ICustomerDto>> getStatisticalCustomerChart(@PathVariable int sinceMonth, @PathVariable int toMonth) {
         List<ICustomerDto> customerDtoList = iCustomerService.statisticalChart(sinceMonth, toMonth);
         if (customerDtoList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(customerDtoList, HttpStatus.OK);
     }
-
 
     /**
      * Created by: HuyNV
@@ -202,12 +199,47 @@ public class TicketController {
      * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
      */
     @GetMapping("/getPrice")
-    public ResponseEntity<Ticket> getPriceOfTicket(){
-        Ticket price = iTicketService.getPriceOfTicket();
+    public ResponseEntity<Integer> getPriceOfTicket(@RequestParam(value = "expiryDate", defaultValue = "") String expiryDate
+            ,@RequestParam(value = "effectiveDate",defaultValue = "") String effectiveDate
+            ,@RequestParam(value = "rate",defaultValue = "") Double rate){
+        Integer price = null;
+        if (!effectiveDate.equals("") && !expiryDate.equals("") && !(rate == 0)) {
+             price = iTicketService.getPriceOfTicket(expiryDate,effectiveDate,rate);
+        }
+
         if (price == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(price, HttpStatus.OK);
+    }
+
+    @GetMapping("/findCarListOfCustomerId/{id}")
+    public ResponseEntity<List<ICarDto>> findCarListOfCustomerId(@PathVariable("id") int id) {
+        List<ICarDto> iCarDto = iCustomerService.findCarListOfCustomerId(id);
+        if (iCarDto == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(iCarDto, HttpStatus.OK);
+    }
+
+    @GetMapping("/displayMonth/{sinceMonth}/{toMonth}")
+    public ResponseEntity<?> getMonth(@PathVariable int sinceMonth,@PathVariable int toMonth) {
+        List<ITicketDto> tickets = iTicketService.displayMonth(sinceMonth, toMonth);
+        if (tickets.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(tickets, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/rate/{id}")
+    public ResponseEntity<Double> getRate(@PathVariable("id") int id) {
+        double rate = iCustomerService.findRateById(id);
+
+        if (rate == 0 ) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(rate, HttpStatus.OK);
     }
 
 }

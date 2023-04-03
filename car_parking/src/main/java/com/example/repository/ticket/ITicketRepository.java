@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
 import java.util.List;
 
 
@@ -27,12 +27,21 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
                    @Param("price") Double price);
 
 
-    @Query(value = "select count(ticket.id) from car join ticket on car.id = ticket.car_id" +
-            " where (month(ticket.effective_date) =:sinceMonth) <= (month(ticket.expiry_date =:toMonth) ", nativeQuery = true)
+    @Query(value = "SELECT COUNT(ticket.id) " +
+            "FROM car " +
+            "JOIN ticket ON car.id = ticket.car_id " +
+            "WHERE MONTH(ticket.effective_date) >= :sinceMonth " +
+            "  AND MONTH(ticket.expiry_date) <= :toMonth " +
+            "  AND YEAR(ticket.effective_date) = YEAR(ticket.expiry_date)", nativeQuery = true)
     List<ITicketDto> statisticalChart(@Param("sinceMonth") int sinceMonth, @Param("toMonth") int toMonth);
 
 
-    @Query(value = "SELECT DATEDIFF(day, ticket.effective_date, ticket.expiry_date) * ticket.price * car_type.rate " +
-            "from ticket join car on  ticket.car_id = car.id join car.car_type_id = car_type.id;", nativeQuery = true)
-    Ticket getPriceOfTicket();
+    @Query(value = "SELECT DATEDIFF(:expiry_date, :effective_date ) * 15000 * :rate ", nativeQuery = true)
+    Integer getPriceOfTicket(@Param("expiry_date") Date expiry_date
+            , @Param("effective_date") Date effective_date,
+                            @Param("rate") double rate);
+
+
+    @Query(value = "SELECT DISTINCT MONTH(expiry_date) AS month FROM ticket WHERE MONTH(expiry_date) BETWEEN :sinceMonth AND :toMonth ORDER BY month ASC",nativeQuery = true)
+    List<ITicketDto> displayMonth(@Param("sinceMonth") int sinceMonth,@Param("toMonth") int toMonth);
 }

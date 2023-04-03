@@ -1,5 +1,6 @@
 package com.example.service.customer;
 
+import com.example.dto.ICarDto;
 import com.example.dto.ICustomerDto;
 import com.example.repository.customer.ICustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,16 @@ public class CustomerService implements ICustomerService{
 
     @Override
     public List<ICustomerDto> statisticalChart(int sinceMonth, int toMonth) {
-        return iCustomerRepository.getstatisticalChart(sinceMonth,toMonth);
+        return iCustomerRepository.getStatisticalChart(sinceMonth,toMonth);
+    }
+
+    @Override
+    public List<ICarDto> findCarListOfCustomerId(int id) {
+        return iCustomerRepository.findCarListOfCustomerId(id);
+    }
+
+    @Override
+    public double findRateById(int id) {
+        return iCustomerRepository.findRateByIdCar(id);
     }
 }

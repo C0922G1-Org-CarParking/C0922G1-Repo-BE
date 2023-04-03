@@ -11,6 +11,8 @@ public interface ICustomerDto {
 
     public String getPhoneNumber() ;
 
+    public String getStatisticalTicket() ;
+
 
 
 
