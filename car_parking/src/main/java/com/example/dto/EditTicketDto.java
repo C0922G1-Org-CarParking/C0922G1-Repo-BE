@@ -15,8 +15,6 @@ public class EditTicketDto {
     private String totalPrice;
 
 
-
-
     public EditTicketDto() {
     }
 

@@ -22,6 +22,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/car-in-out")
@@ -147,7 +149,28 @@ public class CarInOutRestController {
     )
     @ExceptionHandler(Exception.class)
     public void handleException(Exception e) {
+
+    }
+    @GetMapping("/list-car-in")
+    public ResponseEntity<List<ICarInOutDTO>> searchCarInDtoByNameByCustomerNameByPhoneNumber(@RequestParam(defaultValue = "") String carPlateNumber,
+                                                                                                 @RequestParam(defaultValue = "") String customerName,
+                                                                                                 @RequestParam(defaultValue = "") String customerPhoneNumber) {
+        List<ICarInOutDTO> carInDTOList = iCarInOutService.searchCarInDtoByNameByCustomerNameByPhoneNumber(carPlateNumber, customerName, customerPhoneNumber);
+        if (carInDTOList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(carInDTOList, HttpStatus.OK);
     }
 
+    @GetMapping("/list-car-out")
+    public ResponseEntity<List<ICarInOutDTO>> searchCarOutDtoByNameByCustomerNameByPhoneNumber(@RequestParam(defaultValue = "") String carPlateNumber,
+                                                                                                 @RequestParam(defaultValue = "") String customerName,
+                                                                                                 @RequestParam(defaultValue = "") String customerPhoneNumber) {
+        List<ICarInOutDTO> carOutDTOList = iCarInOutService.searchCarOutDTOByCustomerNameByPhoneNumberByPlateNumber(carPlateNumber, customerName, customerPhoneNumber);
+        if (carOutDTOList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(carOutDTOList, HttpStatus.OK);
+    }
 
 }

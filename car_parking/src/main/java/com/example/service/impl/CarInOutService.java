@@ -1,11 +1,11 @@
 package com.example.service.impl;
-
 import com.example.dto.ICarInOutDTO;
 import com.example.model.CarInOut;
 import com.example.repository.ICarInOutRepository;
 import com.example.service.ICarInOutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class CarInOutService implements ICarInOutService {
@@ -32,6 +32,17 @@ public class CarInOutService implements ICarInOutService {
     @Override
     public ICarInOutDTO searchCarOutDTO(String plateNumber) {
         return iCarInOutRepository.searchCarOutDTOByScanning(plateNumber);
+    }
+
+
+    @Override
+    public List<ICarInOutDTO> searchCarInDtoByNameByCustomerNameByPhoneNumber(String carPlateNumber, String customerName, String customerPhoneNumber) {
+        return iCarInOutRepository.searchCarInDTOByCustomerNameByPhoneNumberByPlateNumber("%" + carPlateNumber + "%", "%" + customerName + "%", "%" + customerPhoneNumber + "%");
+    }
+
+    @Override
+    public List<ICarInOutDTO> searchCarOutDTOByCustomerNameByPhoneNumberByPlateNumber(String carPlateNumber, String customerName, String customerPhoneNumber) {
+        return iCarInOutRepository.searchCarOutDTOByCustomerNameByPhoneNumberByPlateNumber("%" + carPlateNumber + "%", "%" + customerName + "%", "%" + customerPhoneNumber + "%");
     }
 
 }

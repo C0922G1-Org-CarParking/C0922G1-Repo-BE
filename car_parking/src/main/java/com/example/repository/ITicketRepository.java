@@ -15,6 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 
+import java.util.List;
+
+import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public interface ITicketRepository extends JpaRepository<Ticket, Long> {
@@ -25,17 +28,19 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
      * Function: editTicket and
      */
 
-    @Query(value = "select \n" +
-            "ticket.id as ticketId, ct.rate as rate, c.name as customerName, c2.plate_number as plateNumber,c.phone_number as phoneNumber,\n" +
-            "ticket.effective_date as effectiveDate, ticket.expiry_date as expiryDate, f.id as floorId,l.id as locationId, \n" +
-            "s.id as sectionId, ticket.total_price as totalPrice, tt.id as ticketTypeId \n" +
-            "from ticket \n" +
-            "join car c2 on c2.id = ticket.car_id \n" +
-            "join car_type ct on ct.id = c2.car_type_id \n" +
-            "join customer c on c.id = c2.customer_id join location l on l.id = ticket.location_id \n" +
-            "join section s on s.id = l.section_id join floor f on f.id = l.floor_id \n" +
-            "join ticket_type tt on tt.id = ticket.ticket_type_id where ticket.id = 1 and ticket.is_deleted = false", nativeQuery = true)
+    @Query(value = " select \n" +
+            "ticket.id as TicketId, ct.rate as rate, c.name as CustomerName, c2.plate_number as PlateNumber,c.phone_number as PhoneNumber,\n" +
+            "ticket.effective_date as EffectiveDate, ticket.expiry_date as ExpiryDate, f.id as FloorId,l.id as LocationId, \n" +
+            "s.id as SectionId, ticket.total_price as TotalPrice, tt.id as TicketTypeId \n" +
+            " from `ticket` \n" +
+            " join `car` c2 on c2.id = ticket.car_id \n" +
+            " join `car_type` ct on ct.id = c2.car_type_id \n" +
+            " join `customer` c on c.id = c2.customer_id join `location` l on l.id = ticket.location_id \n" +
+            " join `section` s on s.id = l.section_id join `floor` f on f.id = l.floor_id \n" +
+            " join `ticket_type` tt on tt.id = ticket.ticket_type_id where ticket.id = :id and ticket.is_deleted = false", nativeQuery = true)
     ITicketDto findTicket(@Param("id") Long id);
+
+
 
     /**
      * Created by: HuyNL
@@ -47,6 +52,7 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
     void updateTicket(@Param("ticketTypeId") Long ticketTypeId, @Param("floorId") Long floorId, @Param("sectionId") Long sectionId, @Param("expiryDate") String expiryDate, @Param("id") Long id);
 
 
+    @Transactional
     @Modifying
     @Query(value = "INSERT INTO `c0922g1_car_parking`.`ticket` (`effective_date`, `expiry_date`, `is_deleted`, `total_price`, `car_id`, `employee_id`, `location_id`, `ticket_type_id`,`price`)" +
             " VALUES (:effectiveDate, :expiryDate, :isDeleted,:totalPrice, :carId, :employeeId, :locationId,:ticketTypeId,:price )", nativeQuery = true)
@@ -61,10 +67,13 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
 
 
     @Query(value = "SELECT DATEDIFF(:expiry_date, :effective_date ) * 15000 * :rate ", nativeQuery = true)
-    Integer getPriceOfTicket(@Param("expiry_date") Date expiry_date
+    Double getPriceOfTicket(@Param("expiry_date") Date expiry_date
             , @Param("effective_date") Date effective_date,
                              @Param("rate") double rate);
 
+
+    @Query(value = "SELECT DISTINCT MONTH(expiry_date) AS month FROM ticket WHERE MONTH(expiry_date) BETWEEN :sinceMonth AND :toMonth ORDER BY month ASC", nativeQuery = true)
+    List<ITicketDto> displayMonth(@Param("sinceMonth") int sinceMonth, @Param("toMonth") int toMonth);
 
     @Query(nativeQuery = true, value = "select t.id as TicketId, c.plate_number as PlateNumber, cus.name as CustomerName, cus.phone_number as CustomerPhoneNumber,\n" +
             "            e.name as EmployeeName, e.phone_number as EmployeePhoneNumber, tt.name as TicketType, \n" +
@@ -143,7 +152,6 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
                                               @Param("employeePhone") String employeePhone,
                                               @Param("floor") String floor,
                                               @Param("ticketType") String ticketType, Pageable pageable);
-//}
 
 
     /**

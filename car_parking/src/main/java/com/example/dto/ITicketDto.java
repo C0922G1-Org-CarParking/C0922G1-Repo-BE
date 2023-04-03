@@ -19,4 +19,5 @@ public interface ITicketDto {
     int  getMonth();
 
 
+
 }

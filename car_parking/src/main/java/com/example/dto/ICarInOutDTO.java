@@ -25,12 +25,13 @@ public interface ICarInOutDTO {
 
     String getCustomerIdCard();
 
-    Long getCarInOutId();
+    String getCarInOutId();
 
     String getTimeIn();
 
     String getUrlCarInImage();
 
     String getUrlCarOutImage();
+    String getUrlCarOuImage();
 
 }

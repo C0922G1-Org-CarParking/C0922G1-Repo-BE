@@ -3,11 +3,16 @@
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <data-source source="LOCAL" name="c0922g1_car_parking@localhost" uuid="8ad6bdc6-8b24-454a-bff6-d237972fbff9">
+=======
+    <data-source source="LOCAL" name="c0922g1_car_parking@localhost" uuid="62ba9da0-d3ca-4a07-9811-3ceeb7e857c1">
+>>>>>>> 925f847d24e9c048437c8ec3e240eb269cab1411
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/c0922g1_car_parking</jdbc-url>
+<<<<<<< HEAD
 =======
     <data-source source="LOCAL" name="@localhost" uuid="7f3c3d7b-3e4d-434f-8ecc-2ce34d5143e1">
 =======
@@ -28,6 +33,8 @@
 >>>>>>> bb4a1b827dbaa434dad33431930819dea590965c
 =======
 >>>>>>> 253d2d0faf6f78b1beca0fd5c0ba9e144811155d
+=======
+>>>>>>> 925f847d24e9c048437c8ec3e240eb269cab1411
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

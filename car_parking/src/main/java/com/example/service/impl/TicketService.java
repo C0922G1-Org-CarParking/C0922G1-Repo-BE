@@ -1,11 +1,14 @@
 package com.example.service.impl;
+
 import com.example.dto.ITicketDto;
 import com.example.repository.ITicketRepository;
 import com.example.service.ITicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
 import java.util.List;
+
 import com.example.dto.TicketOfListDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,7 +35,7 @@ public class TicketService implements ITicketService {
 //    }
 
     @Override
-    public Integer getPriceOfTicket(String expiryDate, String effectiveDate, double rate) {
+    public Double getPriceOfTicket(String expiryDate, String effectiveDate, double rate) {
         LocalDate localDate = LocalDate.parse(expiryDate); // Chuyển đổi chuỗi thành đối tượng LocalDate
         LocalDate localDate1 = LocalDate.parse(effectiveDate); // Chuyển đổi chuỗi thành đối tượng LocalDate
         java.sql.Date sqlDate = java.sql.Date.valueOf(localDate);
@@ -56,8 +59,14 @@ public class TicketService implements ITicketService {
 //    }
 
     @Override
+    public Page<TicketOfListDto> searchTicketList(String customerName, String customerPhone, String employeeName, String employeePhone, String floor, String expiryDate, String ticketType, int status, Pageable pageable) {
+        return iTicketRepository.search(customerName, customerPhone, employeeName, employeePhone, floor, expiryDate, ticketType, status, pageable);
+    }
+
+
+    @Override
     public ITicketDto findTicket(Long id) {
-        return null;
+        return iTicketRepository.findTicket(id);
     }
 
     @Override
@@ -66,10 +75,6 @@ public class TicketService implements ITicketService {
 
     }
 
-    @Override
-    public Page<TicketOfListDto> searchTicketList(String customerName, String customerPhone, String employeeName, String employeePhone, String floor, String expiryDate, String ticketType, int status, Pageable pageable) {
-        return iTicketRepository.search(customerName, customerPhone, employeeName, employeePhone, floor, expiryDate, ticketType, status, pageable);
-    }
 
     @Override
     public Page<TicketOfListDto> searchTicketExpired(String customerName, String customerPhone, String employeeName, String employeePhone, String floor, String ticketType, Pageable pageable) {
@@ -90,6 +95,11 @@ public class TicketService implements ITicketService {
 
     @Override
     public TicketOfListDto findTicketDetailById(int id) {
+        return iTicketRepository.findById(id);
+    }
+
+
+    public TicketOfListDto findById(int id) {
         return iTicketRepository.findById(id);
     }
 }
