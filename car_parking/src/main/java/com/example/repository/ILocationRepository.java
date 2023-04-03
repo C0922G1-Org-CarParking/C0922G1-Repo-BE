@@ -1,10 +1,8 @@
 package com.example.repository;
 
 
-import com.example.dto.ILocationDetailDto;
-import com.example.dto.CheckLocation;
-import com.example.dto.ILocationDto;
-import com.example.dto.ILocationView;
+
+import com.example.dto.*;
 import com.example.model.Location;
 
 import org.springframework.data.domain.Page;
@@ -94,7 +92,7 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
     List<Location> locationList();
 
 
-    @Transactional
+
     @Modifying
     @Query(value = "update location  set name = :name,width = :width, height = :height, length = :length, floor_id = :floor_id,section_id = :section_id where id = :id",
             nativeQuery = true)
@@ -109,17 +107,17 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
 
 
     @Modifying
-    @Transactional
+
     @Query(value = "select count(floor_id) from location where floor_id = :floor_id ", nativeQuery = true)
     void checkFloor(@Param("floor_id") Long floorId);
 
     @Modifying
-    @Transactional
+
     @Query(value = "select count(section_id) from  location where floor_id = :floor_id and section_id = :section_id ", nativeQuery = true)
     void checkSection(@Param("floor_id") Long floorId, @Param("section_id") Long sectionId);
 
     @Modifying
-    @Transactional
+
     @Query(value = "select max(name) as name from location", nativeQuery = true)
     CheckLocation checkName();
 
@@ -132,7 +130,7 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
     @Modifying
     @Query(value = "update `location` as l set l.is_deleted = true where l.id= :id", nativeQuery = true)
     void deleteLocation(@Param("id") Long id);
-
+//    BaoHX
 
     @Query(value =
             "select l.id as id, \n" +
@@ -164,5 +162,20 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
                             "                                                        and l.is_deleted = false ",
             nativeQuery = true )
     Page<ILocationDto>showListT(Pageable pageable, @Param("search") String search);
+
+
+
+
+//@Repository
+//public interface ILocationRepository extends JpaRepository<Location,Long> {
+
+    @Query(value = "select f.id as id, f.name as name from floor as f",
+            nativeQuery = true)
+    List<IFloorDto> getListNameFloor();
+
+
+    @Query(value = "select location.id as id, location.name as name  from location",
+            nativeQuery = true)
+    List<ILocationOfFloor> getListNameLocation();
 
 }

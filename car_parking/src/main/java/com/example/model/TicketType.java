@@ -11,16 +11,13 @@ public class TicketType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 45, nullable = false,unique = true)
+    @Column(length = 45, nullable = false, unique = true)
     private String name;
-    @Column(nullable = false)
-    private double price;
 
 
     public TicketType(Long id, String name, double price, Set<Ticket> ticketSet) {
         this.id = id;
         this.name = name;
-        this.price = price;
         this.ticketSet = ticketSet;
     }
 
@@ -29,7 +26,17 @@ public class TicketType {
     @JsonIgnore
     private Set<Ticket> ticketSet;
 
+    public TicketType(long id) {
+        this.id = id;
+
+    }
+
     public TicketType() {
+
+    }
+
+    public TicketType(Long id) {
+        this.id = id;
     }
 
     public Long getId() {
@@ -54,16 +61,6 @@ public class TicketType {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
 }

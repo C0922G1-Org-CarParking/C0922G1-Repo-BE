@@ -41,6 +41,7 @@ public class Car {
     private Set<Ticket> ticketSet;
 
 
+
     public Car(Long id, String name, String plateNumber, String brand, boolean isDeleted, CarType carType, Customer customer, Set<CarInOut> carInOutSet, Set<Ticket> ticketSet) {
         this.id = id;
         this.name = name;
@@ -54,7 +55,15 @@ public class Car {
     }
 
 
+
+    public Car(long id) {
+        this.id = id;
+    }
+
+
     public Car() {
+
+
     }
 
     public boolean isDeleted() {

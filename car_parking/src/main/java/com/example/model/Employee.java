@@ -36,8 +36,6 @@ public class Employee {
     private int commune;
     @Column(nullable = false)
     private String street;
-
-
     private boolean isDeleted;
     @Column(length = 20, nullable = false, unique = true)
     private String phoneNumber;
@@ -89,6 +87,7 @@ public class Employee {
         return email;
     }
 
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -99,7 +98,6 @@ public class Employee {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-
     }
 
     public Long getId() {
@@ -132,14 +130,6 @@ public class Employee {
 
     public void setGender(boolean gender) {
         this.gender = gender;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 
     public String getIdCard() {
@@ -180,6 +170,14 @@ public class Employee {
 
     public void setStreet(String street) {
         this.street = street;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public Position getPosition() {

@@ -18,6 +18,9 @@ public class Section {
     @JsonIgnore
     private Set<Location> locationSet;
 
+    public Section(long id) {
+        this.id = id;
+    }
 
 
     public Section(Long id, String name, Set<Location> locationSet) {

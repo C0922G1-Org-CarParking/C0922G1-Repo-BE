@@ -24,6 +24,14 @@ public class Floor {
     @JsonIgnore
     private Set<Location> locationSet;
 
+    public Floor() {
+
+    }
+
+    public Floor(Long id) {
+        this.id = id;
+    }
+
     public Set<Location> getLocationSet() {
         return locationSet;
     }
@@ -32,7 +40,8 @@ public class Floor {
         this.locationSet = locationSet;
     }
 
-    public Floor() {
+    public Floor(long id) {
+        this.id = id;
     }
 
     public Long getId() {

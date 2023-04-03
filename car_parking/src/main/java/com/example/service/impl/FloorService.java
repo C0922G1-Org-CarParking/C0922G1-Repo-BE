@@ -13,8 +13,14 @@ public class FloorService implements IFloorService {
     @Autowired
     private IFloorRepository iFloorRepository;
 
+
     @Override
     public List<Floor> FloorList() {
         return iFloorRepository.FloorList();
+    }
+    @Override
+    public List<Floor> getAllFloor() {
+        return iFloorRepository.findAllForTicket();
+
     }
 }

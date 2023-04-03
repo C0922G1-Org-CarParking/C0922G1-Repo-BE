@@ -1,10 +1,7 @@
 package com.example.service;
 
-import com.example.dto.ILocationDetailDto;
-import com.example.dto.ILocationView;
+import com.example.dto.*;
 import com.example.model.Location;
-import com.example.dto.ILocationDto;
-import com.example.dto.LocationDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
@@ -32,7 +29,9 @@ public interface ILocationService {
     ILocationView findLocationById(Long id);
     void deleteLocation(Long id);
     Location findLocationId(Long id);
-
-
     Page<ILocationDto>showList(Pageable pageable, @Param("search") String search);
+
+    List<IFloorDto> getListNameFloor();
+
+    List<ILocationOfFloor> getListNameLocation();
 }

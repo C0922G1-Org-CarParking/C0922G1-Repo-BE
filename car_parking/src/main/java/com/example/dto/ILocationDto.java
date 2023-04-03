@@ -12,4 +12,6 @@ public interface ILocationDto {
     String getNameFloor();
     String getNameSection();
 
+
+
 }

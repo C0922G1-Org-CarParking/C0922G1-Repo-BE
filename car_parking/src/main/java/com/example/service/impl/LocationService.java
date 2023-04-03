@@ -1,11 +1,5 @@
 package com.example.service.impl;
-
-
-import com.example.dto.ILocationDetailDto;
-
-import com.example.dto.ILocationDto;
-import com.example.dto.ILocationView;
-import com.example.dto.LocationDto;
+import com.example.dto.*;
 
 import com.example.model.Location;
 import com.example.repository.ILocationRepository;
@@ -17,12 +11,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import java.util.List;
 
 @Service
 public class LocationService implements ILocationService {
     @Autowired
     private ILocationRepository iLocationRepository;
+
     @Autowired
     private ILocationRepository locationRepository;
 
@@ -178,5 +174,14 @@ public class LocationService implements ILocationService {
     @Override
     public Page<ILocationDto> showList(Pageable pageable, String search) {
         return locationRepository.showListT(pageable, search);
+    }
+    @Override
+    public List<IFloorDto> getListNameFloor() {
+       return iLocationRepository.getListNameFloor();
+    }
+
+    @Override
+    public List<ILocationOfFloor> getListNameLocation() {
+       return iLocationRepository.getListNameLocation();
     }
 }

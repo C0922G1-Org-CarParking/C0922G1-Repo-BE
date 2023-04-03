@@ -11,7 +11,6 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(length = 45, nullable = false)
-
     private Long name;
 
     private boolean isOccupied;
@@ -55,6 +54,15 @@ public class Location {
         this.ticketSet = ticketSet;
         this.isDeleted = isDeleted;
     }
+
+    public String getPermissionCarTypeLocations() {
+        return permissionCarTypeLocations;
+    }
+
+    public void setPermissionCarTypeLocations(String permissionCarTypeLocations) {
+        this.permissionCarTypeLocations = permissionCarTypeLocations;
+    }
+
     private boolean isDeleted;
 
     public boolean isDeleted() {
@@ -65,14 +73,6 @@ public class Location {
         isDeleted = deleted;
     }
 
-
-    public String getPermissionCarTypeLocations() {
-        return permissionCarTypeLocations;
-    }
-
-    public void setPermissionCarTypeLocations(String permissionCarTypeLocations) {
-        this.permissionCarTypeLocations = permissionCarTypeLocations;
-    }
     public Long getId() {
         return id;
     }
@@ -85,6 +85,9 @@ public class Location {
         return name;
     }
 
+    public void setName(Long name) {
+        this.name = name;
+    }
 
 
     public boolean isOccupied() {
@@ -137,9 +140,6 @@ public class Location {
         this.ticketSet = ticketSet;
     }
 
-    public void setName(Long name) {
-        this.name = name;
-    }
 
     public double getHeight() {
         return height;
@@ -149,3 +149,5 @@ public class Location {
         this.height = height;
     }
 }
+
+
