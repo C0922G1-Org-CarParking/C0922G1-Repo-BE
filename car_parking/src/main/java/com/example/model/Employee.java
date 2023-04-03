@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.hibernate.annotations.Where;
 
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -35,14 +34,12 @@ public class Employee {
     @JsonIgnore
     private Account account;
 
-
     @Column(length = 45, nullable = false, unique = true)
     private String email;
 
     @Column(length = 45, nullable = false, unique = true)
     private String idCard;
 
-    private boolean isDeleted;
 
     @Column(nullable = false)
     private int district;
@@ -56,6 +53,9 @@ public class Employee {
     @Column(nullable = false)
     private String street;
 
+
+    private boolean isDeleted;
+
     @OneToMany(mappedBy = "employee")
     @JsonIgnore
     private Set<Ticket> ticketSet;
@@ -64,13 +64,16 @@ public class Employee {
     }
 
 
-    public boolean isDeleted() {
-        return isDeleted;
+
+
+    public Long getId() {
+        return id;
     }
 
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
+    public void setId(Long id) {
+        this.id = id;
     }
+
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -80,20 +83,9 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
-
 
     public void setName(String name) {
         this.name = name;
@@ -130,7 +122,6 @@ public class Employee {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
     public String getIdCard() {
         return idCard;
@@ -172,7 +163,6 @@ public class Employee {
         this.street = street;
     }
 
-
     public Position getPosition() {
         return position;
     }
@@ -188,5 +178,11 @@ public class Employee {
     public void setTicketSet(Set<Ticket> ticketSet) {
         this.ticketSet = ticketSet;
     }
+    public boolean isDeleted() {
+        return isDeleted;
+    }
 
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
 }

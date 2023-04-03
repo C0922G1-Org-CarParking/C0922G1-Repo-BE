@@ -37,9 +37,10 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
 
     @Transactional
     @Query(value = "select * from `employee` e where  lower(e.name) like lower(concat('%', :name, '%')) and e.date_of_birth >= COALESCE(NULLIF(:startDate, ''), date_of_birth)" +
-            "and e.date_of_birth <= COALESCE(NULLIF(:endDate, ''), date_of_birth) and e.is_deleted = false", nativeQuery = true)
+            "and e.date_of_birth <= COALESCE(NULLIF(:endDate, ''), date_of_birth) " +
+            "and lower(e.street) like lower(concat('%', :street, '%')) and e.is_deleted = false", nativeQuery = true)
     Page<Employee> searchAll(Pageable pageable,@Param("name") String name, @Param("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy")  String startDate,
-                                       @Param("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate);
+                                       @Param("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate, @Param("street") String street);
 
     /**
      * Created by: TaiLH
@@ -53,9 +54,10 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
      */
     @Transactional
     @Query(value = "select * from c0922g1_car_parking.`employee` e where  lower(e.name) like lower(concat('%', :name, '%')) and e.date_of_birth = COALESCE(NULLIF(:startDate, ''), date_of_birth)\n" +
-            "and e.date_of_birth = COALESCE(NULLIF(:endDate, ''), date_of_birth) and e.is_deleted = false", nativeQuery = true)
+            "and e.date_of_birth = COALESCE(NULLIF(:endDate, ''), date_of_birth) " +
+            "and lower(e.street) like lower(concat('%', :street, '%')) and e.is_deleted = false", nativeQuery = true)
     Page<Employee> searchDateOfBirth(Pageable pageable,@Param("name") String name,@Param("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy")  String startDate,
-                                       @Param("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate);
+                                       @Param("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate, @Param("street") String street);
 
 
     /**
@@ -105,6 +107,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
      * Function: add  data employee   to data employee in database
      * @return
      */
+
     @Transactional
     @Modifying
     @Query(value = "INSERT INTO employee (commune, date_of_birth, district,gender,id_card,is_deleted,name,province,street,email,position_id,phone_number)" +
@@ -122,6 +125,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
                      @Param("positionId") Long positionId,
                      @Param("phoneNumber") String phoneNumber
     );
+
     @Transactional
     @Modifying
     @Query(value = "UPDATE employee " +

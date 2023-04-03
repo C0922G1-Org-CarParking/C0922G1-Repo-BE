@@ -18,14 +18,12 @@ public class Position {
     @JsonIgnore
     private Set<Employee> employeeSet;
 
-
     public Position() {
     }
 
     public Position(Long id) {
         this.id = id;
     }
-
 
     public Long getId() {
         return id;
@@ -51,3 +49,4 @@ public class Position {
         this.employeeSet = employeeSet;
     }
 }
+

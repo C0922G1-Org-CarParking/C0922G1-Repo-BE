@@ -26,8 +26,10 @@ import java.util.Map;
 public class EmployeeRestController {
     @Autowired
     private IEmployeeService employeeService;
+
     @Autowired
     private IPositionService positionService;
+
     /**
      * Created by: TaiLH
      * Date created: 29/03/2022
@@ -45,14 +47,15 @@ public class EmployeeRestController {
             @RequestParam(required = false, defaultValue = "20") int size,
             @RequestParam(required = false, defaultValue = "") String name,
             @RequestParam(required = false, defaultValue = "") @DateTimeFormat(pattern = "dd-MM-yyyy") String startDate,
-            @RequestParam(required = false, defaultValue = "") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate
+            @RequestParam(required = false, defaultValue = "") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate,
+            @RequestParam(required = false, defaultValue = "") String street
     ) {
         Page<Employee> employeePage;
         Pageable pageable = PageRequest.of(page, size);
         if (!startDate.equals("") && !endDate.equals("")) {
-            employeePage = employeeService.searchAll(pageable, name, startDate, endDate);
+            employeePage = employeeService.searchAll(pageable, name, startDate, endDate, street);
         } else {
-            employeePage = employeeService.searchDateOfBirth(pageable, name, startDate, endDate);
+            employeePage = employeeService.searchDateOfBirth(pageable, name, startDate, endDate,street);
         }
         if (employeePage.isEmpty()) {
             return new ResponseEntity<>("Không tìm thấy dữ liệu!", HttpStatus.NOT_FOUND);
@@ -93,6 +96,7 @@ public class EmployeeRestController {
         }
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
+
 
     /**
      * Created by: DinhNTC
@@ -173,7 +177,6 @@ public class EmployeeRestController {
 
     @PatchMapping("/update-employee/{id}")
     public ResponseEntity<?> updateEmployee(@PathVariable("id") Long id, @Validated @RequestBody EmployeeDto employeeDto, BindingResult bindingResult) {
-
         new EmployeeDto().validate(employeeDto, bindingResult);
         Map<String, String> check = employeeService.checkUpdate(employeeDto);
         if (check.get("errorIdCard") != null) {
@@ -186,8 +189,6 @@ public class EmployeeRestController {
         if (check.get("errorEmail") != null) {
             bindingResult.rejectValue("email", "email", check.get("errorEmail"));
         }
-
-
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
