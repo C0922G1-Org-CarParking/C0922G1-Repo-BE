@@ -125,7 +125,13 @@ public class EmployeeService implements IEmployeeService {
                             Long positionId, String phoneNumber) {
         employeeRepository.addEmployee(commune, dateOfBirth, district, gender, idCard, name, province, street, email, positionId, phoneNumber);
     }
-
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2022
+     * function: check exist add  Employee
+     * @param employeeDto
+     * @return
+     */
     @Override
     public Map<String,String> checkCreate(EmployeeDto employeeDto) {
         Map<String, String> checkMap = new HashMap<>();
@@ -143,7 +149,13 @@ public class EmployeeService implements IEmployeeService {
         }
         return checkMap;
     }
-
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2022
+     * function: check exist update Employee
+     * @param employeeDto
+     * @return
+     */
     @Override
     public Map<String, String> checkUpdate(EmployeeDto employeeDto) {
         Map<String, String> checkMap = new HashMap<>();

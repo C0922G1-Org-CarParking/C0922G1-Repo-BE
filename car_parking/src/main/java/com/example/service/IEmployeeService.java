@@ -60,19 +60,73 @@ public interface IEmployeeService {
     void deleteEmployeeById(@Param("id") Long id);
 
 
-
+    /**
+     * Created by: DInhNTC
+     * Date created: 29/03/2022
+     * function: find employee by id
+     * @param id
+     */
 
     Employee findEmployeeById(Long id);
+
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2022
+     * function:update Employee
+     * @param name
+     * @param dateOfBirth
+     * @param gender
+     * @param phoneNumber
+     * @param positionId
+     * @param email
+     * @param idCard
+     * @param district
+     * @param province
+     * @param commune
+     * @param street
+     * @param id
+     */
 
     void updateEmployee(String name,String dateOfBirth,boolean gender,String phoneNumber,Long positionId,
                         String email,String idCard,int district,int province,int commune,String street,
                         Long id);
 
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2022
+     * function: add Employee
+     * @param commune
+     * @param dateOfBirth
+     * @param district
+     * @param gender
+     * @param idCard
+     * @param name
+     * @param province
+     * @param street
+     * @param email
+     * @param positionId
+     * @param phoneNumber
+     */
     void addEmployee(int commune, String dateOfBirth, int district,boolean gender, String idCard,
                      String name, int province, String street, String email,
                      Long positionId, String phoneNumber);
 
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2022
+     * function: check exist add  Employee
+     * @param employeeDto
+     * @return
+     */
     Map<String, String> checkCreate(EmployeeDto employeeDto);
+
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2022
+     * function: check exist update Employee
+     * @param employeeDto
+     * @return
+     */
     Map<String, String> checkUpdate(EmployeeDto employeeDto);
 
 
