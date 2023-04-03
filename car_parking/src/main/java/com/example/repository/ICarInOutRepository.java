@@ -10,8 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.validation.OverridesAttribute;
-
+@Transactional
 public interface ICarInOutRepository extends JpaRepository<CarInOut, Long> {
     @Query(value = "select\n" +
             "car.id as carId, car.plate_number as carPlateNumber, \t\t\n" +
@@ -48,7 +47,8 @@ public interface ICarInOutRepository extends JpaRepository<CarInOut, Long> {
             "join floor on location.floor_id = floor.id\t\t\n" +
             "join section on location.section_id = section.id\n" +
             "join car_in_out on car_in_out.car_id = car.id\t\t\n" +
-            "where car.plate_number = :plateNumber and car_in_out.is_parked = true", nativeQuery = true)
+            "where car.plate_number = :plateNumber and car_in_out.is_parked = true " +
+            "and ticket.expiry_date >= now()", nativeQuery = true)
     ICarInOutDTO searchCarOutDTOByScanning(@Param("plateNumber") String plateNumber);
 
 

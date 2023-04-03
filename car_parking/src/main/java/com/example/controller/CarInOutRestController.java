@@ -8,9 +8,6 @@ import com.example.service.ICarInOutService;
 import net.sf.javaanpr.intelligence.Intelligence;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +25,7 @@ import java.io.InputStream;
 @RestController
 @CrossOrigin
 @RequestMapping("/car-in-out")
-public class CarInOutController {
+public class CarInOutRestController {
     @Autowired
     private ICarInOutService iCarInOutService;
 
@@ -45,20 +42,6 @@ public class CarInOutController {
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Object> searchCarInDTOByScanning(@RequestParam(value = "plateNumberImage") MultipartFile plateNumberImage) throws IOException {
 
-//        String uploadDir = "./src/main/resources/car-images/";
-//
-//        Path uploadPath = Paths.get(uploadDir);
-//        if (!Files.exists(uploadPath)) {
-//            Files.createDirectories(uploadPath);
-//        }
-//
-//        try {
-//            InputStream inputStream = plateNumberImage.getInputStream();
-//            Path filePath = uploadPath.resolve(plateNumberImage.getOriginalFilename());
-//            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-//        } catch (IOException e) {
-//            throw new IOException("could not save" + plateNumberImage.getOriginalFilename());
-//        }
         InputStream plateNumberIS = null;
         try {
             plateNumberIS = plateNumberImage.getInputStream();
@@ -165,5 +148,6 @@ public class CarInOutController {
     @ExceptionHandler(Exception.class)
     public void handleException(Exception e) {
     }
+
 
 }
