@@ -25,9 +25,7 @@ public class Location {
     @Column(nullable = false)
     private double length;
 
-    @OneToMany(mappedBy = "location")
-    @JsonIgnore
-    private Set<PermissionCarTypeLocation> permissionCarTypeLocations;
+    private String permissionCarTypeLocations;
 
     @ManyToOne
     @JoinColumn(name = "section_id", referencedColumnName = "id")
@@ -40,6 +38,14 @@ public class Location {
     @OneToMany(mappedBy = "location")
     @JsonIgnore
     private Set<Ticket> ticketSet;
+
+    public String getPermissionCarTypeLocations() {
+        return permissionCarTypeLocations;
+    }
+
+    public void setPermissionCarTypeLocations(String permissionCarTypeLocations) {
+        this.permissionCarTypeLocations = permissionCarTypeLocations;
+    }
 
     private boolean isDeleted;
 
@@ -100,14 +106,6 @@ public class Location {
 
     public void setLength(double length) {
         this.length = length;
-    }
-
-    public Set<PermissionCarTypeLocation> getPermissionCarTypeLocations() {
-        return permissionCarTypeLocations;
-    }
-
-    public void setPermissionCarTypeLocations(Set<PermissionCarTypeLocation> permissionCarTypeLocations) {
-        this.permissionCarTypeLocations = permissionCarTypeLocations;
     }
 
     public Floor getFloor() {
