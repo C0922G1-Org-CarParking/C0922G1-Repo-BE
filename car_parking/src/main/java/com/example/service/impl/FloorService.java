@@ -12,9 +12,9 @@ import java.util.List;
 public class FloorService implements IFloorService {
 
     @Autowired
-    private IFloorRepository floorRepository;
+    private IFloorRepository iFloorRepository;
     @Override
     public List<Floor> findAll() {
-        return floorRepository.findAllForTicket();
+        return iFloorRepository.findAllForTicket();
     }
 }

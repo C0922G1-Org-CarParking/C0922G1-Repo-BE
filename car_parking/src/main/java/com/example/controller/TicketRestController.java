@@ -23,11 +23,11 @@ import java.util.List;
 public class TicketRestController {
 
     @Autowired
-    private ITicketService ticketService;
+    private ITicketService ITicketService;
     @Autowired
-    private ITicketTypeService ticketTypeService;
+    private ITicketTypeService iTicketTypeService;
     @Autowired
-    private IFloorService floorService;
+    private IFloorService iFloorService;
 
     /**
      * Created by: NhanPT
@@ -63,9 +63,9 @@ public class TicketRestController {
         Pageable pageable = PageRequest.of(page, size, sort);
         Page<TicketOfListDto> ticketPage;
         if (status == 3) {
-            ticketPage = ticketService.searchTicketExpired(customerName, customerPhone, employeeName, employeePhone, floor, ticketType, pageable);
+            ticketPage = ITicketService.searchTicketExpired(customerName, customerPhone, employeeName, employeePhone, floor, ticketType, pageable);
         } else {
-            ticketPage = ticketService.search(customerName, customerPhone, employeeName, employeePhone, floor, expiryDate, ticketType, status, pageable);
+            ticketPage = ITicketService.searchTicketList(customerName, customerPhone, employeeName, employeePhone, floor, expiryDate, ticketType, status, pageable);
         }
         if (!ticketPage.hasContent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -80,13 +80,12 @@ public class TicketRestController {
      * Function: findAllFloor
      *
      * @param: not parameter
-     *
      * @return: HttpStatus.NO_CONTENT when not has content or List<Floor> and HttpStatus.Ok when has content
      */
 
     @GetMapping("/floor")
     public ResponseEntity<List<Floor>> findAllFloor() {
-        List<Floor> floorList = floorService.findAll();
+        List<Floor> floorList = iFloorService.findAll();
         if (floorList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
@@ -105,7 +104,7 @@ public class TicketRestController {
 
     @GetMapping("/ticketType")
     public ResponseEntity<List<TicketType>> findAllTicketType() {
-        List<TicketType> ticketTypeList = ticketTypeService.findAll();
+        List<TicketType> ticketTypeList = iTicketTypeService.findAll();
         if (ticketTypeList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
@@ -124,7 +123,7 @@ public class TicketRestController {
 
     @GetMapping("detail/{id}")
     public ResponseEntity<TicketOfListDto> detailTicket(@PathVariable("id") int id) {
-        TicketOfListDto ticket = ticketService.findById(id);
+        TicketOfListDto ticket = ITicketService.findTicketDetailById(id);
         if (ticket == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
@@ -143,7 +142,7 @@ public class TicketRestController {
 
     @DeleteMapping("delete/{idDelete}")
     public ResponseEntity<Boolean> deleteTicket(@PathVariable("idDelete") int idDelete) {
-        if (ticketService.delete(idDelete)) {
+        if (ITicketService.delete(idDelete)) {
             return new ResponseEntity<>(true, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

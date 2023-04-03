@@ -12,21 +12,21 @@ import org.springframework.stereotype.Service;
 public class TicketService implements ITicketService {
 
     @Autowired
-    private ITicketRepository ticketRepository;
+    private ITicketRepository iTicketRepository;
     @Override
-    public Page<TicketOfListDto> search(String customerName, String customerPhone, String employeeName, String employeePhone, String floor, String expiryDate, String ticketType, int status, Pageable pageable) {
-        return ticketRepository.search(customerName, customerPhone, employeeName, employeePhone, floor, expiryDate, ticketType, status, pageable);
+    public Page<TicketOfListDto> searchTicketList(String customerName, String customerPhone, String employeeName, String employeePhone, String floor, String expiryDate, String ticketType, int status, Pageable pageable) {
+        return iTicketRepository.search(customerName, customerPhone, employeeName, employeePhone, floor, expiryDate, ticketType, status, pageable);
     }
 
     @Override
     public Page<TicketOfListDto> searchTicketExpired(String customerName, String customerPhone, String employeeName, String employeePhone, String floor, String ticketType, Pageable pageable) {
-        return ticketRepository.searchTicketExpired(customerName, customerPhone, employeeName, employeePhone, floor, ticketType, pageable);
+        return iTicketRepository.searchTicketExpired(customerName, customerPhone, employeeName, employeePhone, floor, ticketType, pageable);
     }
 
     @Override
     public boolean delete(int idDelete) {
         try {
-            ticketRepository.delete(idDelete);
+            iTicketRepository.delete(idDelete);
             return true;
         } catch (Exception e) {
             System.out.println("Lỗi");
@@ -35,7 +35,7 @@ public class TicketService implements ITicketService {
     }
 
     @Override
-    public TicketOfListDto findById(int id) {
-        return ticketRepository.findById(id);
+    public TicketOfListDto findTicketDetailById(int id) {
+        return iTicketRepository.findById(id);
     }
 }

@@ -12,9 +12,9 @@ import java.util.List;
 public class TicketTypeService implements ITicketTypeService {
 
     @Autowired
-    private ITicketTypeRepository ticketTypeRepository;
+    private ITicketTypeRepository iTicketTypeRepository;
     @Override
     public List<TicketType> findAll() {
-        return ticketTypeRepository.findAll();
+        return iTicketTypeRepository.findAll();
     }
 }
