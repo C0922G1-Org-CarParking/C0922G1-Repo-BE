@@ -5,27 +5,39 @@ import com.example.model.Section;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import java.util.List;
+import javax.validation.constraints.Pattern;
+
 
 public class LocationDto implements Validator {
 
     private Long id;
-
+    @NotBlank(message = "không được để trống")
+    @Min(value = 0 , message = "không được nhập số âm")
+    @Pattern(regexp = "^[a-vxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđA-Z ]*$", message = "Vị trí không được nhập chữ")
     private Long name;
 
     private boolean isOccupied;
+    @NotBlank(message = "không được để trống")
+    @Min(value = 0 , message = "không được nhập số âm")
+    @Pattern(regexp = "^[a-vxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđA-Z ]*$", message = " Chiều rộng không được nhập chữ")
 
     private double width;
+    @NotBlank(message = "không được để trống")
+    @Min(value = 0 , message = "không được nhập số âm")
+    @Pattern(regexp = "^[a-vxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđA-Z ]*$", message = "Chiều cao không được nhập chữ")
 
     private double height;
-
+    @NotBlank(message = "không được để trống")
+    @Min(value = 0 , message = "không được nhập số âm")
+    @Pattern(regexp = "^[a-vxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđA-Z ]*$", message = "Chiều dài không được nhập chữ")
     private double length;
 
-    private String permissionCarTypeLocations;
-
+    private String[] permissionCarTypeLocations;
+    @NotBlank(message = "không được để trống")
     private Section section;
-
+    @NotBlank(message = "không được để trống")
     private Floor floor;
 
     private boolean isDeleted;
@@ -81,11 +93,11 @@ public class LocationDto implements Validator {
         this.length = length;
     }
 
-    public String getPermissionCarTypeLocations() {
+    public String[] getPermissionCarTypeLocations() {
         return permissionCarTypeLocations;
     }
 
-    public void setPermissionCarTypeLocations(String permissionCarTypeLocations) {
+    public void setPermissionCarTypeLocations(String[] permissionCarTypeLocations) {
         this.permissionCarTypeLocations = permissionCarTypeLocations;
     }
 

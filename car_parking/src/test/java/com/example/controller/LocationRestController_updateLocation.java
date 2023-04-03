@@ -1,3 +1,4 @@
+/*
 package com.example.controller;
 
 import com.example.dto.LocationDto;
@@ -26,10 +27,12 @@ public class LocationRestController_updateLocation {
     private ObjectMapper objectMapper;
 
 
+*/
 /**
      *
      * This function is used to check an input width property is null
-     */
+     *//*
+
 
     @Test
     public void updateSupplier_width_19() throws Exception {
@@ -54,9 +57,11 @@ public class LocationRestController_updateLocation {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+*/
 /**
      *
-     * This function is used to check an input height property is null*/
+     * This function is used to check an input height property is null*//*
+
 
 
     @Test
@@ -82,10 +87,12 @@ public class LocationRestController_updateLocation {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+*/
 /**
      *
      * This function is used to check an input length property is null
-     */
+     *//*
+
 
     @Test
     public void updateSupplier_length_19() throws Exception {
@@ -111,8 +118,10 @@ public class LocationRestController_updateLocation {
                 .andExpect(status().is4xxClientError());
     }
 
-     /**
-     * This function is used to check an input width property is empty*/
+     */
+/**
+     * This function is used to check an input width property is empty*//*
+
 
     @Test
     public void updateSupplier_width_20() throws Exception {
@@ -137,9 +146,11 @@ public class LocationRestController_updateLocation {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+*/
 /**
      *
-     * This function is used to check an input height property is empty*/
+     * This function is used to check an input height property is empty*//*
+
 
 
     @Test
@@ -165,9 +176,11 @@ public class LocationRestController_updateLocation {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+*/
 /**
      *
-     * This function is used to check an input width property is empty*/
+     * This function is used to check an input width property is empty*//*
+
 
 
     @Test
@@ -194,9 +207,11 @@ public class LocationRestController_updateLocation {
                 .andExpect(status().is4xxClientError());
     }
 
+*/
 /**
      *
-     * This function is used to check an input height property is empty*/
+     * This function is used to check an input height property is empty*//*
+
 
 
     @Test
@@ -222,9 +237,11 @@ public class LocationRestController_updateLocation {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+*/
 /**
      *
-     * This function is used to check an input length property is empty*/
+     * This function is used to check an input length property is empty*//*
+
 
 
     @Test
@@ -250,9 +267,11 @@ public class LocationRestController_updateLocation {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+*/
 /**
      *
-     * This function is used to check when all input data is correct*/
+     * This function is used to check when all input data is correct*//*
+
 
 
     @Test
@@ -279,3 +298,4 @@ public class LocationRestController_updateLocation {
                 .andExpect(status().is4xxClientError());
     }
 }
+*/

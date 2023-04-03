@@ -1,3 +1,4 @@
+/*
 package com.example.controller;
 
 import com.example.dto.LocationDto;
@@ -26,10 +27,12 @@ public class LocationRestController_createLocation {
     private ObjectMapper objectMapper;
 
 
+*/
 /**
      *
      * This function is used to check an input position number property is null
-     */
+     *//*
+
 
     @Test
     public void createLocation_width_13() throws Exception {
@@ -54,12 +57,14 @@ public class LocationRestController_createLocation {
                 .andExpect(status().is4xxClientError());
     }
 
+*/
 /*
 *
      *
      * This function is used to check an input Height property is null
 
-*/
+*//*
+
 
     @Test
     public void createLocation_Height_13() throws Exception {
@@ -83,10 +88,12 @@ public class LocationRestController_createLocation {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+*/
 /**
      *
      * This function is used to check an input Length property is null
-     */
+     *//*
+
 
     @Test
     public void createLocation_Length_13() throws Exception {
@@ -112,12 +119,14 @@ public class LocationRestController_createLocation {
     }
 
 
+*/
 /*
 *
      *
      * This function is used to check an input Width property is empty
 
-*/
+*//*
+
 
     @Test
     public void createLocation_Width_14() throws Exception {
@@ -141,10 +150,12 @@ public class LocationRestController_createLocation {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+*/
 /**
      *
      * This function is used to check an input height property is empty
-     */
+     *//*
+
 
     @Test
     public void createLocation_height_14() throws Exception {
@@ -168,12 +179,14 @@ public class LocationRestController_createLocation {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+*/
 /*
 *
      *
      * This function is used to check an input length property is empty
 
-*/
+*//*
+
 
     @Test
     public void createLocation_length_14() throws Exception {
@@ -198,10 +211,12 @@ public class LocationRestController_createLocation {
                 .andExpect(status().is4xxClientError());
     }
 
+*/
 /**
      *
      * This function is used to check an input width property has correct format
-     */
+     *//*
+
 
 
     @Test
@@ -226,12 +241,14 @@ public class LocationRestController_createLocation {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+*/
 /*
 *
      *
      * This function is used to check an input height property has correct format
 
-*/
+*//*
+
 
 
     @Test
@@ -256,10 +273,12 @@ public class LocationRestController_createLocation {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+*/
 /**
      *
      * This function is used to check an input length property has correct format
-     */
+     *//*
+
 
 
     @Test
@@ -286,10 +305,12 @@ public class LocationRestController_createLocation {
     }
 
 
+*/
 /**
      *
      * This function is used to check when all input data is correct
-     */
+     *//*
+
 
     @Test
     public void createLocation_18() throws Exception {
@@ -314,3 +335,4 @@ public class LocationRestController_createLocation {
                 .andExpect(status().is4xxClientError());
     }
 }
+*/

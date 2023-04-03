@@ -1,5 +1,7 @@
 package com.example.controller.car_in_out;
 
+import com.example.dto.CheckLocation;
+import com.example.dto.ILocationDto;
 import com.example.dto.LocationDto;
 import com.example.model.Location;
 import com.example.service.car_in_out.ILocationService;
@@ -10,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
 import java.util.Map;
 
 @RestController
@@ -25,29 +29,33 @@ public class LocationController {
     public ResponseEntity<?> createLocation(@RequestBody @Validated LocationDto locationDto, BindingResult bindingResult) {
         new LocationDto().validate(locationDto, bindingResult);
         Map<String, String> check = iLocationService.checkCreate(locationDto);
-
-
-        if (check.get("errorDãy") != null) {
-            bindingResult.rejectValue("Dãy", "dãy", check.get("errorDãy"));
-        }
-
-        if (check.get("errorSố vị trí") != null) {
-            bindingResult.rejectValue("Số vị trí", "Số vị trí", check.get("errorSố vị trí"));
-        }
+        LocationDto locationDto1 = locationDto;
+          if (locationDto1.getName() > 10){
+              locationDto1.setName(1L);
+              iLocationService.addLocation(
+                      locationDto1.getName(),
+                      locationDto1.getWidth(),
+                      locationDto1.getHeight(),
+                      locationDto1.getLength(),
+                      Arrays.toString(locationDto1.getPermissionCarTypeLocations()),
+                      locationDto1.getFloor().getId(),
+                      locationDto1.getSection().getId());
+          }else {
+              iLocationService.addLocation(
+                      locationDto.getName(),
+                      locationDto.getWidth(),
+                      locationDto.getHeight(),
+                      locationDto.getLength(),
+                      Arrays.toString(locationDto.getPermissionCarTypeLocations()),
+                      locationDto.getFloor().getId(),
+                      locationDto.getSection().getId());
+          }
 
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
         Location location = new Location();
         BeanUtils.copyProperties(locationDto, location);
-        iLocationService.addLocation(
-                locationDto.getName(),
-                locationDto.getWidth(),
-                locationDto.getHeight(),
-                locationDto.getLength(),
-                locationDto.getPermissionCarTypeLocations(),
-                locationDto.getFloor().getId(),
-                locationDto.getSection().getId());
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -55,24 +63,11 @@ public class LocationController {
     @PatchMapping("/edit/{id}")
     public ResponseEntity<?> updateLocation(@PathVariable(value = "id") Long Id, @RequestBody @Validated LocationDto locationDto, BindingResult bindingResult) {
         Location location = new Location();
-        Map<String, String> check = iLocationService.checkUpdate(locationDto);
-        if (check.get("errorDãy") != null) {
-            bindingResult.rejectValue("Dãy", "Dãy", check.get("errorDãy"));
-        }
-        if (check.get("errorSố vị trí") != null) {
-            bindingResult.rejectValue("Số vị trí", "Số vị trí", check.get("errorSố vị trí"));
-        }
-        if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.NOT_MODIFIED);
-        }
-        if (location == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
         BeanUtils.copyProperties(locationDto, location);
-        iLocationService.updateLocation(location.getName(), location.getWidth(), location.getHeight(), location.getLength(), location.getPermissionCarTypeLocations(), location.getFloor().getId(), location.getSection().getId(), Id);
+        iLocationService. updateLocation(location.getName(), location.getWidth(), location.getHeight(), location.getLength(),location.getFloor().getId(), location.getSection().getId(), Id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
+// Arrays.toString(locationDto.getPermissionCarTypeLocations())
     @GetMapping("/{id}")
     public ResponseEntity<Location> findById(@PathVariable("id") Long id) {
         Location location = iLocationService.findLocation(id);
@@ -80,6 +75,15 @@ public class LocationController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(location, HttpStatus.OK);
+    }
+
+    @GetMapping("/info/{id}")
+    public ResponseEntity<ILocationDto> findLocationById(@PathVariable("id") Long id) {
+        ILocationDto iLocationDto = iLocationService.findLocationById(id);
+        if (iLocationDto == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(iLocationDto, HttpStatus.OK);
     }
 
 }
