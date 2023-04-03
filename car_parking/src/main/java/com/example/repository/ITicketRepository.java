@@ -5,14 +5,15 @@ import com.example.model.Ticket;
 import com.example.dto.TicketOfListDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import com.example.model.Ticket;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import org.springframework.transaction.annotation.Transactional;
-import java.sql.Date;
 
+import java.sql.Date;
 
 
 @Transactional
@@ -112,9 +113,10 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
             "\tjoin section as s on s.id = lc.section_id\n" +
             "where t.id = :id")
     TicketOfListDto findById(@Param("id") int id);
+
     /**
      * this method no param expiredDate and status
-     * */
+     */
     @Query(nativeQuery = true, value = "select t.id as TicketId, c.plate_number as PlateNumber, cus.name as CustomerName, cus.phone_number as CustomerPhoneNumber,\n" +
             "            e.name as EmployeeName, e.phone_number as EmployeePhoneNumber, tt.name as TicketType, \n" +
             "             DATEDIFF(t.expiry_date , t.effective_date) * t.price * ct.rate as TotalPrice, \n" +
@@ -135,11 +137,39 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
             "            t.expiry_date < curdate() and\n" +
             "            tt.name like concat('%',:ticketType,'%') and\n" +
             "            t.is_deleted = 0")
-    Page<TicketOfListDto> searchTicketExpired(@Param("customerName")String customerName,
-                                              @Param("customerPhone")String customerPhone,
-                                              @Param("employeeName")String employeeName,
-                                              @Param("employeePhone")String employeePhone,
-                                              @Param("floor")String floor,
-                                              @Param("ticketType")String ticketType, Pageable pageable);
+    Page<TicketOfListDto> searchTicketExpired(@Param("customerName") String customerName,
+                                              @Param("customerPhone") String customerPhone,
+                                              @Param("employeeName") String employeeName,
+                                              @Param("employeePhone") String employeePhone,
+                                              @Param("floor") String floor,
+                                              @Param("ticketType") String ticketType, Pageable pageable);
 //}
+
+
+    /**
+     * Create by: VuBD
+     * Date create: 30/03/2023
+     * Function: connect database to get data a ticket with corresponding id
+     *
+     * @param carId
+     * @return
+     */
+    @Query(value = "SELECT ticket.id FROM c0922g1_car_parking.ticket where car_id = :carId " +
+            "and is_deleted = 0 " +
+            "and expiry_date >= CURRENT_DATE()", nativeQuery = true)
+    int[] findTicketByCarId(@Param("carId") int carId);
+
+    /**
+     * Create by: VuBD
+     * Date create: 03/04/2023
+     * Function: connect database to delete a ticket with corresponding id
+     *
+     * @param carId
+     */
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE c0922g1_car_parking.ticket SET is_deleted = 1  WHERE car_id = :carId", nativeQuery = true)
+    void deleteTicketByCarId(@Param("carId") int carId);
+
 }
+

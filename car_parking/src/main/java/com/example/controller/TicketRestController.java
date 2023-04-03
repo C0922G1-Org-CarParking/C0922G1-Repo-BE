@@ -31,10 +31,9 @@ public class TicketRestController {
     @Autowired
     private IEmployeeService iEmployeeService;
     @Autowired
-    private ICustomerService iCustomerService;
-    @Autowired
     private IFloorService iFloorService;
-
+    @Autowired
+    private ICustomerService customerService;
 
     /**
      * Created by: HuyNV
@@ -137,8 +136,8 @@ public class TicketRestController {
      * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
      */
     @GetMapping("/listSearchCustomer")
-    public ResponseEntity<List<ICustomerDto>> getListCustomer(@RequestParam(defaultValue = "") String name) {
-        List<ICustomerDto> customerDtoList = iCustomerService.getListCustomerByName(name);
+    public ResponseEntity<List<ICustomerDTO>> getListCustomer(@RequestParam(defaultValue = "") String name) {
+        List<ICustomerDTO> customerDtoList = customerService.getListCustomerByName(name);
         if (customerDtoList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -148,7 +147,7 @@ public class TicketRestController {
 
     @GetMapping("/chooseCustomer/{id}")
     public ResponseEntity<?> getNameCustomerChooseById(@PathVariable("id") int id) {
-        ICustomerDto iCustomerDto = iCustomerService.findCustomerId(id);
+        ICustomerDTO iCustomerDto = customerService.findCustomerId(id);
         Customer customer = new Customer();
         customer.setId(iCustomerDto.getId());
         customer.setName(iCustomerDto.getName());
@@ -183,8 +182,8 @@ public class TicketRestController {
     }
 
     @GetMapping("/findCarListOfCustomerId/{id}")
-    public ResponseEntity<List<ICarTicketDTO>> findCarListOfCustomerId(@PathVariable("id") int id) {
-        List<ICarTicketDTO> iCarTicketDTO = iCustomerService.findCarListOfCustomerId(id);
+    public ResponseEntity<List<ICarTicketDto>> findCarListOfCustomerId(@PathVariable("id") int id) {
+        List<ICarTicketDto> iCarTicketDTO = customerService.findCarListOfCustomerId(id);
         if (iCarTicketDTO == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -194,7 +193,7 @@ public class TicketRestController {
 
     @GetMapping("/rate/{id}")
     public ResponseEntity<Double> getRate(@PathVariable("id") int id) {
-        double rate = iCustomerService.findRateById(id);
+        double rate = customerService.findRateById(id);
 
         if (rate == 0 ) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
