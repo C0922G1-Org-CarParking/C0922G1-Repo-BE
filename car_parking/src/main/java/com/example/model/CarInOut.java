@@ -8,13 +8,27 @@ public class CarInOut {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "datetime", length = 45)
+    @Column(columnDefinition = "varchar(45)")
     private String timeIn;
 
-    @Column(columnDefinition = "datetime", length = 45)
+    @Column(columnDefinition = "varchar(45)")
     private String timeOut;
 
+    private String urlCarInImage;
+
+    private String urlCarOutImage;
+
     private boolean isParked;
+
+    public String getUrlCarInImage() {
+        return urlCarInImage;
+    }
+
+
+    public void setUrlCarInImage(String originalImageName) {
+        this.urlCarInImage = originalImageName;
+    }
+
 
     public boolean isParked() {
         return isParked;
@@ -30,6 +44,14 @@ public class CarInOut {
 
 
     public CarInOut() {
+    }
+
+    public String getUrlCarOutImage() {
+        return urlCarOutImage;
+    }
+
+    public void setUrlCarOutImage(String urlCarInOutImage) {
+        this.urlCarOutImage = urlCarInOutImage;
     }
 
     public Long getId() {

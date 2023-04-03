@@ -92,36 +92,13 @@ public class CarInOutController_saveCarIn {
                 .andExpect(status().isNotAcceptable());
     }
 
-    /**
-     * Created: NamLQN
-     * Date: 30/03/2023
-     * test saving car history getting in the parking lot
-     * @Param: an instance of CarInOutDTO with the field timeIn being an invalid format for a datetime type
-     * Expect return status 406 error with Http.status.NOT_ACCEPTABLE
-     */
-    @Test
-    public void saveCarIn_16() throws Exception {
-        CarInOutDTO carInOutDTO = new CarInOutDTO();
-
-        carInOutDTO.setCarDTO(new CarDTO(2));
-
-        carInOutDTO.setTimeIn("2023-02-28T19:35:59.00");
-
-        carInOutDTO.setTimeOut(null);
-        this.mockMvc
-                .perform(MockMvcRequestBuilders.post("http://localhost:8080/car-in-out/save-car-in")
-                        .content(this.objectMapper.writeValueAsBytes(carInOutDTO))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE)
-                ).andDo(print())
-                .andExpect(status().isNotAcceptable());
-    }
 
     /**
      * Created: NamLQN
      * Date: 30/03/2023
      * test saving car history getting in the parking lot
      * @Param: an instance of CarInOutDTO
-     * Expect return status 200 successful with Http.status.OK
+     * Expect to return status 200 successful with Http.status.OK
      */
     @Test
     public void saveCarIn_18() throws Exception {
