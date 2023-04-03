@@ -73,4 +73,5 @@ public interface ICustomerService {
      * @param id
      */
     ICustomerDTO findById(int id);
+    void deleteCustomerAndTicket(int id);
 }

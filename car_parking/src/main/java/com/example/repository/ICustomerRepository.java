@@ -55,7 +55,20 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
      * Function: findByCustomerId
      */
 
-    @Query(value = "select id as id, commune as commune, date_of_birth as dateOfBirth, district as district, email as email, gender as isGender, id_card as idCard, is_deleted as idDeleted, name as name, phone_number as phoneNumber, province as province, street as street from customer where id =:id", nativeQuery = true)
+    @Query(value = "select " +
+            "id as id, " +
+            "commune as commune, " +
+            "date_of_birth as dateOfBirth, " +
+            "district as district, " +
+            "email as email, " +
+            "gender as isGender, " +
+            "id_card as idCard, " +
+            "is_deleted as idDeleted, " +
+            "name as name, " +
+            "phone_number as phoneNumber, " +
+            "province as province, " +
+            "street as street " +
+            "from customer where id =:id", nativeQuery = true)
     ICustomerDTO findByCustomerId(@Param("id") Long id);
 
 
@@ -108,6 +121,11 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
             "customer.id_card as idCard, " +
             "customer.gender, " +
             "customer.phone_number as phoneNumber, " +
+            "customer.is_deleted as idDeleted, " +
+            "customer.district as district, " +
+            "customer.province as province, " +
+            "customer.commune as commune, " +
+            "customer.street as street, " +
             "customer.email " +
             "FROM c0922g1_car_parking.customer " +
             "WHERE is_deleted = 0 " +

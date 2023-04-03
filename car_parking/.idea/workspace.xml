@@ -4,19 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="639b82d6-a563-4b51-84a3-59af7a96d877" name="Changes" comment="">
+=======
     <list default="true" id="773a2f80-050d-4838-9c7b-37377ea2a0eb" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/CarRestRepository.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/CarCustomerDto.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/CustomerDto.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarTicketDto.java" afterDir="false" />
+>>>>>>> origin/customer-car
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/ITicketRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/ITicketRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CustomerService.java" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/1b17f78f-611b-4287-ab5e-980077322157.xml" beforeDir="false" />
@@ -35,6 +44,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CarService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CustomerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+>>>>>>> origin/customer-car
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +85,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="customer-car" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="JpbToolWindowState">
@@ -102,6 +117,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelOrder2&quot;: &quot;2&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth2&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/codegym/test/ben_xe&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;8b813644e54a34321b3ce14b11b55c0d&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+=======
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RequestMappingsPanelOrder0" value="0" />
@@ -115,10 +157,14 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
+>>>>>>> origin/customer-car
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\CodeGym\car-parking-BE\C0922G1-Repo-BE\car_parking\src\main\java\com\example\dto" />
       <recent name="D:\Car_parking\C0922G1-Repo-BE\car_parking\src\main" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.service.impl" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.CarParkingApplication">
@@ -246,18 +292,26 @@
     </configuration>
     <recent_temporary>
       <list>
+<<<<<<< HEAD
+        <item itemvalue="Gradle.CustomerRestController_updateCustomer.updateCustomer_province_21" />
+        <item itemvalue="Gradle.CustomerRestController_updateCustomer.updateCustomer_name_car_21" />
+        <item itemvalue="Gradle.CustomerRestController_updateCustomer.updateCustomer_name1_car_21" />
+        <item itemvalue="Gradle.CustomerRestController_updateCustomer.updateCustomer_email_21" />
+        <item itemvalue="Gradle.CustomerRestController_updateCustomer.updateCustomer_brand2_car_21" />
+=======
         <item itemvalue="Gradle.CustomerRestController_updateCustomer.updateCustomer_phone_19" />
         <item itemvalue="Gradle.CustomerRestController_updateCustomer.updateCustomer_email_21" />
         <item itemvalue="Gradle.CustomerRestController_updateCustomer.updateCustomer_province_21" />
         <item itemvalue="Gradle.CustomerRestController_updateCustomer.updateCustomer_brand2_car_21" />
         <item itemvalue="Gradle.CustomerRestController_updateCustomer.updateCustomer_name1_car_21" />
+>>>>>>> origin/customer-car
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="773a2f80-050d-4838-9c7b-37377ea2a0eb" name="Changes" comment="" />
+      <changelist id="639b82d6-a563-4b51-84a3-59af7a96d877" name="Changes" comment="" />
       <created>1679995982621</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -274,6 +328,11 @@
       <workItem from="1680162725431" duration="9713000" />
       <workItem from="1680179670928" duration="14703000" />
       <workItem from="1680194431431" duration="3889000" />
+<<<<<<< HEAD
+      <workItem from="1680443072045" duration="647000" />
+      <workItem from="1680486591280" duration="5616000" />
+      <workItem from="1680500620246" duration="5565000" />
+=======
       <workItem from="1680225875255" duration="139000" />
       <workItem from="1680231572668" duration="8317000" />
       <workItem from="1680310085464" duration="19155000" />
@@ -283,6 +342,7 @@
       <workItem from="1680486669843" duration="2682000" />
       <workItem from="1680489388284" duration="2600000" />
       <workItem from="1680497236670" duration="6036000" />
+>>>>>>> origin/customer-car
     </task>
     <servers />
   </component>
@@ -305,15 +365,26 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
+<<<<<<< HEAD
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/service/impl/CustomerService.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="10" />
+=======
           <url>file://$PROJECT_DIR$/src/main/java/com/example/controller/CustomerRestController.java</url>
           <line>75</line>
           <option name="timeStamp" value="2" />
+>>>>>>> origin/customer-car
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+<<<<<<< HEAD
+        <PinnedItemInfo parentTag="org.springframework.aop.framework.ProxyFactory" memberName="advisorChainFactory" />
+        <PinnedItemInfo parentTag="com.sun.proxy.$Proxy132" memberName="h" />
+=======
         <PinnedItemInfo parentTag="com.example.dto.CustomerCarDto" memberName="cars" />
+>>>>>>> origin/customer-car
         <PinnedItemInfo parentTag="com.example.model.CarType" memberName="id" />
         <PinnedItemInfo parentTag="com.example.model.Car" memberName="customer" />
         <PinnedItemInfo parentTag="com.example.dto.CarDto" memberName="customer" />

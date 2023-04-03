@@ -20,6 +20,9 @@ dependencies {
     runtimeOnly 'com.mysql:mysql-connector-j'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    //----------gửi mail--------
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'com.sun.mail:javax.mail:1.6.2'
 }
 
 tasks.named('test') {

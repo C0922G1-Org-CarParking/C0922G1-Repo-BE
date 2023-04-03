@@ -27,7 +27,7 @@ public interface ICustomerDTO {
     String getName();
     Long getId();
     String getIdCard();
-    boolean getIsGender();
+    boolean isGender();
     String getDateOfBirth();
     String getPhoneNumber();
     String getEmail();
