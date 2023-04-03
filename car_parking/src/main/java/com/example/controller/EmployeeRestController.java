@@ -25,10 +25,10 @@ import java.util.Map;
 @RequestMapping("/api")
 public class EmployeeRestController {
     @Autowired
-    private IEmployeeService employeeService;
+    private IEmployeeService iEmployeeService;
 
     @Autowired
-    private IPositionService positionService;
+    private IPositionService iPositionService;
 
     /**
      * Created by: TaiLH
@@ -53,9 +53,9 @@ public class EmployeeRestController {
         Page<Employee> employeePage;
         Pageable pageable = PageRequest.of(page, size);
         if (!startDate.equals("") && !endDate.equals("")) {
-            employeePage = employeeService.searchAll(pageable, name, startDate, endDate, street);
+            employeePage = iEmployeeService.searchAll(pageable, name, startDate, endDate, street);
         } else {
-            employeePage = employeeService.searchDateOfBirth(pageable, name, startDate, endDate,street);
+            employeePage = iEmployeeService.searchDateOfBirth(pageable, name, startDate, endDate,street);
         }
         if (employeePage.isEmpty()) {
             return new ResponseEntity<>("Không tìm thấy dữ liệu!", HttpStatus.NOT_FOUND);
@@ -72,7 +72,7 @@ public class EmployeeRestController {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<?> softDeleteEmployeeById(@PathVariable("id") Long id) {
-        employeeService.softDeleteById(id);
+        iEmployeeService.softDeleteById(id);
         return ResponseEntity.ok().build();
     }
 
@@ -90,7 +90,7 @@ public class EmployeeRestController {
             @RequestParam(required = false, defaultValue = "10") int size
     ) {
         Pageable pageable = PageRequest.of(page, size);
-        Page<Employee> employees = employeeService.findAllByDeletedFalse(pageable);
+        Page<Employee> employees = iEmployeeService.findAllByDeletedFalse(pageable);
         if (employees.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -107,7 +107,7 @@ public class EmployeeRestController {
      */
     @GetMapping("list-position")
     public ResponseEntity getAllPosition() {
-        List<Position> positionList = positionService.getAllPosition();
+        List<Position> positionList = iPositionService.getAllPosition();
         if (positionList == null) {
             return new ResponseEntity(positionList, HttpStatus.NO_CONTENT);
         }
@@ -125,7 +125,7 @@ public class EmployeeRestController {
     @GetMapping("/{id}")
     public ResponseEntity<Employee> findEmployeeById(@PathVariable Long id) {
 
-        Employee employee = employeeService.findEmployeeById(id);
+        Employee employee = iEmployeeService.findEmployeeById(id);
         if(employee == null){
             return  new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -143,7 +143,7 @@ public class EmployeeRestController {
     public ResponseEntity<?> createEmployee(@Validated @RequestBody EmployeeDto employeeDto,
                                             BindingResult bindingResult) {
         new EmployeeDto().validate(employeeDto, bindingResult);
-        Map<String, String> check = employeeService.checkCreate(employeeDto);
+        Map<String, String> check = iEmployeeService.checkCreate(employeeDto);
         if (check.get("errorIdCard") != null) {
             bindingResult.rejectValue("idCard", "idCard", check.get("errorIdCard"));
         }
@@ -161,7 +161,7 @@ public class EmployeeRestController {
         BeanUtils.copyProperties(employeeDto, employee);
 
 
-        employeeService.addEmployee(employee.getCommune(), employee.getDateOfBirth(), employee.getDistrict(), employee.isGender(),
+        iEmployeeService.addEmployee(employee.getCommune(), employee.getDateOfBirth(), employee.getDistrict(), employee.isGender(),
                 employee.getIdCard(), employee.getName(), employee.getProvince(), employee.getStreet(),
                 employee.getEmail(), employee.getPosition().getId(), employee.getPhoneNumber());
         return new ResponseEntity<>(HttpStatus.OK);
@@ -178,7 +178,7 @@ public class EmployeeRestController {
     @PatchMapping("/update-employee/{id}")
     public ResponseEntity<?> updateEmployee(@PathVariable("id") Long id, @Validated @RequestBody EmployeeDto employeeDto, BindingResult bindingResult) {
         new EmployeeDto().validate(employeeDto, bindingResult);
-        Map<String, String> check = employeeService.checkUpdate(employeeDto);
+        Map<String, String> check = iEmployeeService.checkUpdate(employeeDto);
         if (check.get("errorIdCard") != null) {
             bindingResult.rejectValue("idCard", "idCard", check.get("errorIdCard"));
         }
@@ -192,11 +192,11 @@ public class EmployeeRestController {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
-        Employee employee = employeeService.findEmployeeById(id);
+        Employee employee = iEmployeeService.findEmployeeById(id);
         if (employee == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
-            employeeService.updateEmployee(employeeDto.getName(), employeeDto.getDateOfBirth(), employeeDto.isGender(), employeeDto.getPhoneNumber(),
+            iEmployeeService.updateEmployee(employeeDto.getName(), employeeDto.getDateOfBirth(), employeeDto.isGender(), employeeDto.getPhoneNumber(),
                     employeeDto.getPosition().getId(), employeeDto.getEmail(), employeeDto.getIdCard(), employeeDto.getDistrict(), employeeDto.getProvince(),
                     employeeDto.getCommune(), employeeDto.getStreet(), id);
             return new ResponseEntity<>(HttpStatus.OK);

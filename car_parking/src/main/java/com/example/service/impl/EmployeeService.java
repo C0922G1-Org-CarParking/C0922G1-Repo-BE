@@ -15,7 +15,7 @@ import java.util.Map;
 @Service
 public class EmployeeService implements IEmployeeService {
     @Autowired
-    private IEmployeeRepository employeeRepository;
+    private IEmployeeRepository iEmployeeRepository;
 
     /**
      * Created by: TaiLH
@@ -28,13 +28,13 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public Page<Employee> searchAll(Pageable pageable, String name, String startDate, String endDate,String street) {
-        return employeeRepository.searchAll(pageable, name, startDate, endDate,street);
+        return iEmployeeRepository.searchAll(pageable, name, startDate, endDate,street);
     }
 
 
     @Override
     public Page<Employee> searchDateOfBirth(Pageable pageable, String name, String startDate, String endDate,String street ) {
-        return employeeRepository.searchDateOfBirth(pageable, name, startDate, endDate,street);
+        return iEmployeeRepository.searchDateOfBirth(pageable, name, startDate, endDate,street);
     }
 
     /**
@@ -62,7 +62,7 @@ public class EmployeeService implements IEmployeeService {
      */
     @Override
     public void deleteEmployeeById(Long id) {
-        employeeRepository.deleteEmployeeById(id);
+        iEmployeeRepository.deleteEmployeeById(id);
     }
 
     /**
@@ -74,7 +74,7 @@ public class EmployeeService implements IEmployeeService {
      */
     @Override
     public void softDeleteById(Long id) {
-        employeeRepository.softDeleteById(id);
+        iEmployeeRepository.softDeleteById(id);
     }
 
     /**
@@ -88,7 +88,7 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public Page<Employee> findAllByDeletedFalse(Pageable pageable) {
-        return employeeRepository.findAllByDeletedFalse(pageable);
+        return iEmployeeRepository.findAllByDeletedFalse(pageable);
     }
 
 
@@ -98,7 +98,7 @@ public class EmployeeService implements IEmployeeService {
     @Override
 
     public Employee findEmployeeById(Long id) {
-        return employeeRepository.findEmployeeById(id);
+        return iEmployeeRepository.findEmployeeById(id);
 
     }
 
@@ -112,7 +112,7 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void updateEmployee(String name, String dateOfBirth, boolean gender, String phoneNumber, Long positionId,
                                String email, String idCard, int district, int province, int commune, String street, Long id) {
-        employeeRepository.updateEmployee(name, dateOfBirth, gender, phoneNumber, positionId, email, idCard,
+        iEmployeeRepository.updateEmployee(name, dateOfBirth, gender, phoneNumber, positionId, email, idCard,
                 district, province, commune, street, id);
     }
 
@@ -127,7 +127,7 @@ public class EmployeeService implements IEmployeeService {
     public void addEmployee(int commune, String dateOfBirth, int district, boolean gender, String idCard,
                             String name, int province, String street, String email,
                             Long positionId, String phoneNumber) {
-        employeeRepository.addEmployee(commune, dateOfBirth, district, gender, idCard, name, province, street, email, positionId, phoneNumber);
+        iEmployeeRepository.addEmployee(commune, dateOfBirth, district, gender, idCard, name, province, street, email, positionId, phoneNumber);
     }
 
     /**
@@ -143,14 +143,14 @@ public class EmployeeService implements IEmployeeService {
     public Map<String, String> checkCreate(EmployeeDto employeeDto) {
         Map<String, String> checkMap = new HashMap<>();
 
-        for (int i = 0; i < employeeRepository.employeeList().size(); i++) {
-            if (employeeRepository.employeeList().get(i).getIdCard().equals(employeeDto.getIdCard())) {
+        for (int i = 0; i < iEmployeeRepository.employeeList().size(); i++) {
+            if (iEmployeeRepository.employeeList().get(i).getIdCard().equals(employeeDto.getIdCard())) {
                 checkMap.put("errorIdCard", "Số CMND đã tồn tại trong hệ thống.");
             }
-            if (employeeRepository.employeeList().get(i).getPhoneNumber().equals(employeeDto.getPhoneNumber())) {
+            if (iEmployeeRepository.employeeList().get(i).getPhoneNumber().equals(employeeDto.getPhoneNumber())) {
                 checkMap.put("errorPhone", "Số điện thoại đã tồn tại trong hệ thống.");
             }
-            if (employeeRepository.employeeList().get(i).getEmail().equals(employeeDto.getEmail())) {
+            if (iEmployeeRepository.employeeList().get(i).getEmail().equals(employeeDto.getEmail())) {
                 checkMap.put("errorEmail", "Email đã tồn tại trong hệ thống.");
             }
         }
@@ -170,14 +170,14 @@ public class EmployeeService implements IEmployeeService {
     public Map<String, String> checkUpdate(EmployeeDto employeeDto) {
         Map<String, String> checkMap = new HashMap<>();
         Employee employee = findEmployeeById(employeeDto.getId());
-        for (int i = 0; i < employeeRepository.employeeList().size(); i++) {
-            if (!employee.getIdCard().equals(employeeDto.getIdCard()) && employeeRepository.employeeList().get(i).getIdCard().equals(employeeDto.getIdCard())) {
+        for (int i = 0; i < iEmployeeRepository.employeeList().size(); i++) {
+            if (!employee.getIdCard().equals(employeeDto.getIdCard()) && iEmployeeRepository.employeeList().get(i).getIdCard().equals(employeeDto.getIdCard())) {
                 checkMap.put("errorIdCard", "Số CMND đã tồn tại trong hệ thống.");
             }
-            if (!employee.getPhoneNumber().equals(employeeDto.getPhoneNumber()) && employeeRepository.employeeList().get(i).getPhoneNumber().equals(employeeDto.getPhoneNumber())) {
+            if (!employee.getPhoneNumber().equals(employeeDto.getPhoneNumber()) && iEmployeeRepository.employeeList().get(i).getPhoneNumber().equals(employeeDto.getPhoneNumber())) {
                 checkMap.put("errorPhone", "Số điện thoại đã tồn tại trong hệ thống.");
             }
-            if (!employee.getEmail().equals(employeeDto.getEmail()) && employeeRepository.employeeList().get(i).getEmail().equals(employeeDto.getEmail())) {
+            if (!employee.getEmail().equals(employeeDto.getEmail()) && iEmployeeRepository.employeeList().get(i).getEmail().equals(employeeDto.getEmail())) {
 
                 checkMap.put("errorEmail", "Email đã tồn tại trong hệ thống.");
             }
