@@ -1,34 +1,44 @@
 package com.example.dto;
 
-import com.example.model.*;
+
+import com.example.model.Car;
+import com.example.model.Employee;
+import com.example.model.Location;
+import com.example.model.TicketType;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 
 public class TicketDto implements Validator {
+
     private Long id;
-    @Pattern(regexp = "^\\d{4}/\\d{2}/\\d{2}$", message = "Nhập đúng định dạng yyyy-mm-dd")
+    @Size(max = 20 , min = 2 , message = "dài nhất 12 kí tự , ngắn nhất 2 kí tự")
+    @NotBlank(message = "Không được để trống")
+    @Pattern(regexp = "^\\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\\d|3[01])$",message = "Đúng định dạng dd/mm/yyyy" )
     private String effectiveDate;
+    @Pattern(regexp = "^\\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\\d|3[01])$",message = "Đúng định dạng dd/mm/yyyy" )
+    @NotBlank(message = "Không được để trống")
+    @Size(max = 20,min = 2 , message = "Dài nhất 12 kí tự , ít nhất 2 kí tự ")
     private String expiryDate;
-    @Min(value = 0, message = "Nhỏ nhất là 0")
-    private double totalPrice;
-    private Car car;
-    private Customer customer;
-    private Employee employee;
-    private Location location;
-    private Floor floor;
-    private Section section;
+    @NotNull(message = "Không được để trống")
     private TicketType ticketType;
-    private String extension_date;
-    @NotBlank(message = "Ngày gia hạn không được để trống, ngày gia hạn phải lớn hơn ngày kết thúc.")
-    private boolean isDeleted;
+    @NotNull(message = "Không được để trống")
+    private Car car;
+    @NotNull(message = "Không được để trống")
+    private Employee employee;
+    @NotNull(message = "Không được để trống")
+    @Min(value = 0 , message = "Nhỏ nhất là 0")
+    private Double totalPrice;
+    @NotNull(message = "Không được để trống")
+    private Location location;
+    private boolean isDeleted = false;
+    @NotNull(message = "Không được để trống")
+    @Min(value = 0 , message = "Nhỏ nhất là 0")
+    private Double price;
 
     public TicketDto() {
     }
-
 
     public Long getId() {
         return id;
@@ -54,12 +64,12 @@ public class TicketDto implements Validator {
         this.expiryDate = expiryDate;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
+    public TicketType getTicketType() {
+        return ticketType;
     }
 
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTicketType(TicketType ticketType) {
+        this.ticketType = ticketType;
     }
 
     public Car getCar() {
@@ -70,20 +80,20 @@ public class TicketDto implements Validator {
         this.car = car;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     public Employee getEmployee() {
         return employee;
     }
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Location getLocation() {
@@ -94,38 +104,6 @@ public class TicketDto implements Validator {
         this.location = location;
     }
 
-    public Floor getFloor() {
-        return floor;
-    }
-
-    public void setFloor(Floor floor) {
-        this.floor = floor;
-    }
-
-    public Section getSection() {
-        return section;
-    }
-
-    public void setSection(Section section) {
-        this.section = section;
-    }
-
-    public TicketType getTicketType() {
-        return ticketType;
-    }
-
-    public void setTicketType(TicketType ticketType) {
-        this.ticketType = ticketType;
-    }
-
-    public String getExtension_date() {
-        return extension_date;
-    }
-
-    public void setExtension_date(String extension_date) {
-        this.extension_date = extension_date;
-    }
-
     public boolean isDeleted() {
         return isDeleted;
     }
@@ -134,7 +112,13 @@ public class TicketDto implements Validator {
         isDeleted = deleted;
     }
 
+    public Double getPrice() {
+        return price;
+    }
 
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 
     @Override
     public boolean supports(Class<?> clazz) {

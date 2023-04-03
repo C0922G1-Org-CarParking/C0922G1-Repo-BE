@@ -47,6 +47,7 @@ public class Car {
 
     public Car() {
 
+
     }
 
     public boolean isDeleted() {

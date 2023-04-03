@@ -15,7 +15,6 @@ public interface ICarInOutDTO {
     String getCustomerIdCard();
     Long getTicketId();
     String getSectionName();
-
     String getTimeIn();
     String getTimeOut();
 }
