@@ -18,12 +18,39 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CustomerService implements ICustomerService {
+
+
+
     @Autowired
     private ICustomerRepository customerRepository;
     @Autowired
     private ICarRepository carRepository;
     @Autowired
     private ITicketRepository ticketRepository;
+
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 29/03/2023
+     * Function: createCustomer
+     */
+
+    @Override
+    public void createCustomer(int commune, String dateOfBirth, int district, String email, boolean gender, String idCard, String name, String phoneNumber, int province, String street) {
+        customerRepository.createCustomer(commune, dateOfBirth, district, email, gender, idCard, name, phoneNumber, province, street);
+    }
+
+    @Override
+    public Customer findCustomerByIdCard(String idCard) {
+        return customerRepository.findCustomerByIdCard(idCard);
+    }
+
+    @Override
+    public ICustomerDTO findByCustomerId(Long id) {
+        return customerRepository.findByCustomerId(id);
+    }
+
+
 
     /**
      * Create by: VuTN,

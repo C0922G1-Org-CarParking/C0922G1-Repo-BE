@@ -11,6 +11,20 @@ import java.util.List;
 
 @Repository
 public interface ICustomerService {
+
+    /**
+            * Created by: MinhCDK
+   * Date created: 29/03/2023
+            * Function: createCustomer
+   *
+           */
+
+    void createCustomer(int commune, String dateOfBirth, int district, String email, boolean gender, String idCard, String name, String phoneNumber, int province, String street);
+
+    Customer findCustomerByIdCard(String idCard);
+
+    ICustomerDTO findByCustomerId(Long id);
+
     /**
      * Create by: VuTN,
      * Date create : 29/03/2023

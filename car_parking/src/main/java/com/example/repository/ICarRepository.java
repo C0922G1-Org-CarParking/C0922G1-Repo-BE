@@ -1,5 +1,6 @@
 package com.example.repository;
 
+import com.example.dto.ICarTicketDto;
 import com.example.model.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -11,7 +12,39 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
+@Transactional
 public interface ICarRepository extends JpaRepository<Car, Long> {
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 29/03/2023
+     * Function: createCar
+     */
+
+    @Modifying
+    @Query(value = "insert into car (brand, is_deleted, name, plate_number, car_type_id, customer_id)value(:brand, " +
+            "false, :name, :plateNumber, :carTypeId, :customerId)", nativeQuery = true)
+    void createCar(@Param("brand") String brand,
+                   @Param("name") String name,
+                   @Param("plateNumber") String plateNumber,
+                   @Param("carTypeId") Long carTypeId,
+                   @Param("customerId") Long customerId);
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 29/03/2023
+     * Function: infoCar
+     *
+     * @Param: customerId
+     * Return: infoCustomer and listCar
+     * @return
+     */
+
+
+    @Modifying
+    @Query(value = "select car.id as carId, ct.name as carTypeName, car.name as carName, car.plate_number as plateNumber, tt.name as ticketTypeName, t.expiry_date as expiryDate, f.name as floorName, s.name as sectionName, l.name as locationName from car join customer c on c.id = car.customer_id join ticket t on car.id = t.car_id join location l on l.id = t.location_id join car_type ct on ct.id = car.car_type_id join ticket_type tt on tt.id = t.ticket_type_id join floor f on l.floor_id = f.id join section s on l.section_id = s.id where c.id = :id and c.is_deleted = false and car.is_deleted = false and t.is_deleted = false", nativeQuery = true)
+    List<ICarTicketDto> findCarTicketByCustomerId(@Param("id") Long id);
+
     /**
      * Create by: VuTN,
      * Date create : 29/03/2023

@@ -1,11 +1,9 @@
 package com.example.controller;
 
+import com.example.dto.*;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
-import com.example.dto.CarDto;
-import com.example.dto.CustomerCarDto;
-import com.example.dto.ICustomerDTO;
 import com.example.model.Car;
 import com.example.model.CarType;
 import com.example.model.Customer;
@@ -35,23 +33,79 @@ public class CustomerRestController {
     @Autowired
     private ICarTypeService carTypeService;
 
+
     /**
-     *  Create by: VuTN,
-     *  Date create : 29/03/2023
-     *  Function : get all carType
-     *
-     *  @Param
-     *  @return  HttpStatus.NO_CONTENT if result= isEmpty else then return carTypeList  and HttpStatus.OK
-     * */
-    @GetMapping("carType")
+     * Created by: MinhCDK
+     * Date created: 03/04/2023
+     * Function: getListCarType
+     */
+
+    @GetMapping("/carType")
     public ResponseEntity<List<CarType>> getAllCarType() {
-        List<CarType> carTypeList = this.carTypeService.getAllCarType();
+        List<CarType> carTypeList = carTypeService.getAllCarType();
         if (carTypeList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(carTypeList, HttpStatus.OK);
         }
     }
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 03/04/2023
+     * Function: findByCustomerId
+     */
+
+    @GetMapping("/info/{customerId}")
+    public ResponseEntity<?> findByCustomerId(@PathVariable("customerId") Long customerId) {
+        ICustomerDTO icustomerDto = customerService.findByCustomerId(customerId);
+        if (customerId == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(icustomerDto, HttpStatus.OK);
+    }
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 29/03/2023
+     * Function: createCustomer
+     */
+
+    @PostMapping("/create")
+    public ResponseEntity<?> createCustomer(@Validated @RequestBody CarCustomerDto carCustomerDto, BindingResult bindingResult) {
+        CustomerDto customerDto = carCustomerDto.getCustomerDto();
+        List<CarDto> carDtos = carCustomerDto.getCarDtos();
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
+        } else {
+            customerService.createCustomer(customerDto.getCommune(), customerDto.getDateOfBirth(), customerDto.getDistrict(),
+                    customerDto.getEmail(), customerDto.isGender(), customerDto.getIdCard(), customerDto.getName(), customerDto.getPhoneNumber(),
+                    customerDto.getProvince(), customerDto.getStreet());
+            Customer customer = customerService.findCustomerByIdCard(customerDto.getIdCard());
+            for (CarDto car : carDtos) {
+                carService.createCar(car.getBrand(), car.getName(), car.getPlateNumber(), car.getCarType().getId(), customer.getId());
+            }
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+//    /**
+//     *  Create by: VuTN,
+//     *  Date create : 29/03/2023
+//     *  Function : get all carType
+//     *
+//     *  @Param
+//     *  @return  HttpStatus.NO_CONTENT if result= isEmpty else then return carTypeList  and HttpStatus.OK
+//     * */
+//    @GetMapping("carType")
+//    public ResponseEntity<List<CarType>> getAllCarType() {
+//        List<CarType> carTypeList = this.carTypeService.getAllCarType();
+//        if (carTypeList.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        } else {
+//            return new ResponseEntity<>(carTypeList, HttpStatus.OK);
+//        }
+//    }
 
     /**
      * Create by: VuTN,
@@ -215,6 +269,8 @@ public  ResponseEntity<List<Car>> findCarById(@PathVariable Long id){
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+
 }
 //=======
 //import com.example.dto.ICustomerDTO;
