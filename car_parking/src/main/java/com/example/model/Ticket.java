@@ -18,6 +18,7 @@ public class Ticket {
 
     @Column(nullable = false)
     private double price;
+
     @ManyToOne
     @JoinColumn(name = "ticket_type_id", referencedColumnName = "id")
     private TicketType ticketType;
@@ -35,6 +36,7 @@ public class Ticket {
     private Location location;
 
     private boolean isDeleted;
+
     @Column(nullable = false)
 
     public boolean isDeleted() {

@@ -56,6 +56,4 @@ public class Position {
         this.employeeSet = employeeSet;
     }
 
-
 }
-

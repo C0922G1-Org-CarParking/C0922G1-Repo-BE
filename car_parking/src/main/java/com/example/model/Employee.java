@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Where(clause = "is_deleted = false")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,41 +22,33 @@ public class Employee {
     @Column(nullable = false)
     private boolean gender;
 
-
-    @Column(length = 20, nullable = false, unique = true)
-    private String phoneNumber;
-
-
-    @ManyToOne
-    @JoinColumn(name = "position_id", referencedColumnName = "id")
-    private Position position;
-
-    @OneToOne(mappedBy = "employee")
-    @JsonIgnore
-    private Account account;
-
-    @Column(length = 45, nullable = false, unique = true)
+    @Column(length = 45,nullable = false,unique = true)
     private String email;
 
     @Column(length = 45, nullable = false, unique = true)
     private String idCard;
 
-
     @Column(nullable = false)
     private int district;
-
     @Column(nullable = false)
     private int province;
-
     @Column(nullable = false)
     private int commune;
-
     @Column(nullable = false)
     private String street;
 
+    @Column(length = 20, nullable = false, unique = true)
+    private String phoneNumber;
 
     private boolean isDeleted;
 
+    @OneToOne(mappedBy = "employee")
+    @JsonIgnore
+    private Account account;
+
+    @ManyToOne
+    @JoinColumn(name = "position_id", referencedColumnName = "id")
+    private Position position;
 
     @OneToMany(mappedBy = "employee")
     @JsonIgnore
@@ -67,6 +58,13 @@ public class Employee {
     public Employee() {
     }
 
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
 
     public String getEmail() {
         return email;
@@ -76,6 +74,13 @@ public class Employee {
         this.email = email;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public Long getId() {
         return id;
@@ -83,15 +88,6 @@ public class Employee {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public String getName() {
@@ -118,6 +114,13 @@ public class Employee {
         this.gender = gender;
     }
 
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 
     public String getIdCard() {
         return idCard;
@@ -159,14 +162,6 @@ public class Employee {
         this.street = street;
     }
 
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
     public Position getPosition() {
         return position;
     }
@@ -182,12 +177,5 @@ public class Employee {
     public void setTicketSet(Set<Ticket> ticketSet) {
         this.ticketSet = ticketSet;
     }
-
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
 }
+

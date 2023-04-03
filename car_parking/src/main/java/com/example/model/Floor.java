@@ -11,7 +11,7 @@ public class Floor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 45,nullable = false,unique = true)
+    @Column(length = 45, nullable = false, unique = true)
     private String name;
 
     public Floor(Long id, String name, Set<Location> locationSet) {
@@ -61,4 +61,5 @@ public class Floor {
     }
 
 }
+
 

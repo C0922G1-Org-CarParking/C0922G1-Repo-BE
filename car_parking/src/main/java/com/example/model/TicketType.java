@@ -13,6 +13,7 @@ public class TicketType {
     private Long id;
     @Column(length = 45, nullable = false, unique = true)
     private String name;
+
     @OneToMany(mappedBy = "ticketType")
     @JsonIgnore
     private Set<Ticket> ticketSet;
@@ -54,5 +55,5 @@ public class TicketType {
         this.name = name;
     }
 
-}
 
+}

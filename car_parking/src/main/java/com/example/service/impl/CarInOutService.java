@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CarInOutService implements ICarInOutService {
     @Autowired
+
     private ICarInOutRepository iCarInOutRepository;
 
     @Override
