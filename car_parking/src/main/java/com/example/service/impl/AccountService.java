@@ -22,4 +22,10 @@ public class AccountService implements IAccountService {
         accountRepository.saveNewPassword(BCrypt.hashpw(newPassword, BCrypt.gensalt(12)),accountId);
     }
 
+    @Override
+    public boolean checkPassword(String password, String oldPassword) {
+        return BCrypt.checkpw(password,oldPassword);
+    }
+
+
 }
