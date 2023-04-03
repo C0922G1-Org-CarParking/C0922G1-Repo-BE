@@ -1,4 +1,4 @@
-package com.example.service.impl;
+package com.example.security_authentication.service;
 
 import com.example.model.Account;
 import com.example.repository.IAccountRepository;

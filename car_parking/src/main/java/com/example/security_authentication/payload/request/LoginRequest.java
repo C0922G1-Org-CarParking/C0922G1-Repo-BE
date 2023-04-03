@@ -1,4 +1,4 @@
-package com.example.payload.request;
+package com.example.security_authentication.payload.request;
 
 public class LoginRequest {
 

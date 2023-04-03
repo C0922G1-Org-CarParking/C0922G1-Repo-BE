@@ -1,6 +1,6 @@
-package com.example.jwt;
+package com.example.security_authentication.jwt;
 
-import com.example.service.impl.AccountDetailService;
+import com.example.security_authentication.service.AccountDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -45,7 +45,7 @@ public class JwtFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    private String parseJwt(HttpServletRequest request) {
+    public static String parseJwt(HttpServletRequest request) {
         String headerAuth = request.getHeader("Authorization");
 
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {

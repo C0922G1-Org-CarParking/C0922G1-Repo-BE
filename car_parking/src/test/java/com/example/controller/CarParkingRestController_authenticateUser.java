@@ -1,5 +1,5 @@
 package com.example.controller;
-import com.example.payload.request.LoginRequest;
+import com.example.security_authentication.payload.request.LoginRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

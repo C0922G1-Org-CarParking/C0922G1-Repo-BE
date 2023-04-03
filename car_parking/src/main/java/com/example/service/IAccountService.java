@@ -8,4 +8,5 @@ public interface IAccountService {
 
     void saveNewPassword(String newPassword,Long accountId);
 
+    boolean checkPassword(String password, String oldPassword);
 }

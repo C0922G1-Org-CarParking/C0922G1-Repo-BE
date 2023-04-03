@@ -1,4 +1,4 @@
-package com.example.payload.reponse;
+package com.example.security_authentication.payload.reponse;
 
 public class MessageResponse {
 

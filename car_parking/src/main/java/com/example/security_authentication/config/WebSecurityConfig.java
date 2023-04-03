@@ -1,8 +1,8 @@
-package com.example.config;
+package com.example.security_authentication.config;
 
 
-import com.example.jwt.JwtFilter;
-import com.example.service.impl.AccountDetailService;
+import com.example.security_authentication.jwt.JwtFilter;
+import com.example.security_authentication.service.AccountDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,6 +43,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf()
                 .disable()
+                .cors()
+                .and()
                 .authorizeRequests()
                 .antMatchers("/api/public/**")
                 .permitAll()

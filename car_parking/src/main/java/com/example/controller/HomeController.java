@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/admin")
+@RequestMapping("/api/admin")
 @CrossOrigin
 public class HomeController {
 
-    @GetMapping("add")
+    @GetMapping("/add")
     public ResponseEntity<?> get(){
         return new ResponseEntity<>(HttpStatus.OK);
     }

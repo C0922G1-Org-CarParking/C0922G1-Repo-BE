@@ -1,4 +1,4 @@
-package com.example.service.impl;
+package com.example.security_authentication.service;
 
 import com.example.model.Account;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -11,9 +11,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-/**
- * Nguyen Van Linh made it
- */
 public class AccountDetails implements UserDetails {
 
     private static final long serialVersionUID = 1L;
