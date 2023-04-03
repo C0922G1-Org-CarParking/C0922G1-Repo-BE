@@ -58,8 +58,8 @@ public class CustomerService implements ICustomerService {
         if (customerRepository.findCustomerById(id) != null) {
             int[] carIds = carRepository.findCarByCustomerId(id);
             for (int i = 0; i < carIds.length; i++) {
-                Ticket ticket = ticketRepository.findTicketByCarId(carIds[i]);
-                if (ticket != null) {
+                int[] ticketIds = ticketRepository.findTicketByCarId(carIds[i]);
+                if (ticketIds.length != 0) {
                     return 0;
                 }
             }

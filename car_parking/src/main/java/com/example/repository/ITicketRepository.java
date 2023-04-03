@@ -15,10 +15,10 @@ public interface ITicketRepository extends JpaRepository<Ticket, Integer> {
      * @param carId
      * @return
      */
-    @Query(value = "SELECT * FROM c0922g1_car_parking.ticket where car_id = :carId " +
+    @Query(value = "SELECT ticket.id FROM c0922g1_car_parking.ticket where car_id = :carId " +
             "and is_deleted = 0 " +
             "and expiry_date >= CURRENT_DATE()", nativeQuery = true)
-    Ticket findTicketByCarId(@Param("carId") int carId);
+    int[] findTicketByCarId(@Param("carId") int carId);
 
     /**
      * Create by: VuBD
