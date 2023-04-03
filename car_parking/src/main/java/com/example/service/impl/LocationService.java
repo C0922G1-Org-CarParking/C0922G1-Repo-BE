@@ -87,32 +87,4 @@ public class LocationService implements ILocationService {
         return iLocationRepository.findLocationById(id);
     }
 
-   /* CheckLocation checkLocation = iLocationRepository.checkName();
-        if (checkLocation == null){
-        checkLocation.setName(1);
-        checkLocation.setFloorId(1);
-        checkLocation.setSectionId(1);
-        iLocationRepository.addLocation(checkLocation.getName(), width, height, length, permissionCarTypeLocations, checkLocation.getFloorId(), checkLocation.getSectionId());
-        return true;
-    }
-
-        if (checkLocation.getName() > 10){
-        checkLocation.setName(1);
-        checkLocation.setSectionId(checkLocation.getSectionId()+1);
-        if (checkLocation.getSectionId() > 4){
-            checkLocation.setFloorId(checkLocation.getFloorId()+1);
-            if (checkLocation.getFloorId() > 4){
-
-            }else {
-                iLocationRepository.addLocation(checkLocation.getName(), width, height, length, permissionCarTypeLocations, checkLocation.getFloorId(), checkLocation.getSectionId());
-                return true;
-            }
-        }else {
-            iLocationRepository.addLocation(checkLocation.getName(), width, height, length, permissionCarTypeLocations, checkLocation.getFloorId(), checkLocation.getSectionId());
-            return true;
-        }
-    }else {
-        iLocationRepository.addLocation(checkLocation.getName(), width, height, length, permissionCarTypeLocations, checkLocation.getFloorId(), checkLocation.getSectionId());
-        return true;
-    }*/
 }

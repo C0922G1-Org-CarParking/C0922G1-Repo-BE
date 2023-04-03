@@ -63,7 +63,7 @@ public class LocationController {
     public ResponseEntity<?> updateLocation(@PathVariable(value = "id") Long Id, @RequestBody @Validated LocationDto locationDto, BindingResult bindingResult) {
         Location location = new Location();
         BeanUtils.copyProperties(locationDto, location);
-        iLocationService. updateLocation(location.getName(), location.getWidth(), location.getHeight(), location.getLength(),location.getFloor().getId(), location.getSection().getId(), Id);
+        iLocationService. updateLocation(location.getName(), location.getWidth(), location.getHeight(), location.getLength(),location.getFloor().getId(), location.getSection().getId(),Id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 // Arrays.toString(locationDto.getPermissionCarTypeLocations())

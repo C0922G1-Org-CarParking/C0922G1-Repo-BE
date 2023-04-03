@@ -13,31 +13,51 @@ import javax.validation.constraints.Pattern;
 public class LocationDto implements Validator {
 
     private Long id;
+/*
     @NotBlank(message = "không được để trống")
+*/
     @Min(value = 0 , message = "không được nhập số âm")
+/*
     @Pattern(regexp = "^[a-vxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđA-Z ]*$", message = "Vị trí không được nhập chữ")
+*/
     private Long name;
 
     private boolean isOccupied;
+/*
     @NotBlank(message = "không được để trống")
+*/
     @Min(value = 0 , message = "không được nhập số âm")
+/*
     @Pattern(regexp = "^[a-vxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđA-Z ]*$", message = " Chiều rộng không được nhập chữ")
+*/
 
     private double width;
+/*
     @NotBlank(message = "không được để trống")
+*/
     @Min(value = 0 , message = "không được nhập số âm")
+/*
     @Pattern(regexp = "^[a-vxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđA-Z ]*$", message = "Chiều cao không được nhập chữ")
+*/
 
     private double height;
+/*
     @NotBlank(message = "không được để trống")
+*/
     @Min(value = 0 , message = "không được nhập số âm")
+/*
     @Pattern(regexp = "^[a-vxyỳọáầảấờễàạằệếýộậốũứĩõúữịỗìềểẩớặòùồợãụủíỹắẫựỉỏừỷởóéửỵẳẹèẽổẵẻỡơôưăêâđA-Z ]*$", message = "Chiều dài không được nhập chữ")
+*/
     private double length;
 
     private String[] permissionCarTypeLocations;
+/*
     @NotBlank(message = "không được để trống")
+*/
     private Section section;
+/*
     @NotBlank(message = "không được để trống")
+*/
     private Floor floor;
 
     private boolean isDeleted;

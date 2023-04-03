@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @Repository
-public interface ILocationRepository extends JpaRepository<Location, Integer> {
+public interface ILocationRepository extends JpaRepository<Location, Long> {
      @Modifying
     @Transactional
     @Query(value = "insert into location(\n" +
