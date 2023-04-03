@@ -26,7 +26,6 @@ public class Account {
     public Account() {
     }
 
-
     public String getUsername() {
         return this.employee.getEmail();
     }
