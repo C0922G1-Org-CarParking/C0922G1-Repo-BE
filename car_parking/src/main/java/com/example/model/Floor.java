@@ -47,11 +47,9 @@ public class Floor {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String nameFloor) {
         this.name = name;
     }
-
-
 
 }
 

@@ -1,9 +1,14 @@
 package com.example.service;
 
 import com.example.dto.ILocationDetailDto;
+import com.example.dto.ILocationView;
 import com.example.model.Location;
 import com.example.dto.ILocationDto;
 import com.example.dto.LocationDto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
+
 import java.util.List;
 import java.util.Map;
 public interface ILocationService {
@@ -24,6 +29,10 @@ public interface ILocationService {
     void checkFloor(Long floorId);
     void checkSection(Long floorId, Long sectionId);
     void checkName(Long floorId,Long sectionId);
-    ILocationDto findLocationById(Long id);
+    ILocationView findLocationById(Long id);
+    void deleteLocation(Long id);
+    Location findLocationId(Long id);
 
+
+    Page<ILocationDto>showList(Pageable pageable, @Param("search") String search);
 }

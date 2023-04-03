@@ -1,9 +1,13 @@
 package com.example.controller;
 
 import com.example.dto.ILocationDetailDto;
+import com.example.dto.ILocationView;
 import com.example.model.Location;
 import com.example.service.ILocationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -123,12 +127,43 @@ public class LocationController {
 
 
     @GetMapping("/info/{id}")
-    public ResponseEntity<ILocationDto> findLocationById(@PathVariable("id") Long id) {
-        ILocationDto iLocationDto = locationService.findLocationById(id);
-        if (iLocationDto == null) {
+    public ResponseEntity<ILocationView> findLocationById(@PathVariable("id") Long id) {
+        ILocationView iLocationView = locationService.findLocationById(id);
+        if (iLocationView == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(iLocationDto, HttpStatus.OK);
+        return new ResponseEntity<>(iLocationView, HttpStatus.OK);
     }
+    /**
+     * Created by: BaoHX
+     * Date created: 29/03/2023
+     * Function: list location and delete location
+     *
+     * @param "pageable, keyword"
+     * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
+     */
+
+    @DeleteMapping("/delete/{id}")
+    private ResponseEntity<?> delete(@PathVariable("id") Long id) {
+        try {
+            locationService.deleteLocation(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+
+    @GetMapping("/list")
+    public ResponseEntity<Page<ILocationDto>> showList(
+            @RequestParam(defaultValue = "") String search,
+            @PageableDefault(value = 5) Pageable pageable) {
+        Page<ILocationDto> locationDto = locationService.showList(pageable, search);
+        if (locationDto.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(locationDto, HttpStatus.OK);
+    }
+
 
 }

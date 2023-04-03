@@ -29,6 +29,7 @@ public class CarInOut {
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     private Car car;
 
+
     public CarInOut() {
     }
 

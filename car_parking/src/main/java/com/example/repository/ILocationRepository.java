@@ -1,15 +1,22 @@
 package com.example.repository;
 
+
 import com.example.dto.ILocationDetailDto;
 import com.example.dto.CheckLocation;
 import com.example.dto.ILocationDto;
+import com.example.dto.ILocationView;
 import com.example.model.Location;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.stereotype.Repository;
+
 
 import java.util.List;
 
@@ -117,6 +124,45 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
     CheckLocation checkName();
 
     @Query(value = "select f.name as floorName, s.name as sectionName, location.name as locationName from location join floor f on f.id = location.floor_id join section s on s.id = location.section_id  where location.id =:id", nativeQuery = true)
-    ILocationDto findLocationById(@Param("id") Long id);
+    ILocationView findLocationById(@Param("id") Long id);
     // Created by: TanTH
+
+
+//    BaoHX
+    @Modifying
+    @Query(value = "update `location` as l set l.is_deleted = true where l.id= :id", nativeQuery = true)
+    void deleteLocation(@Param("id") Long id);
+
+
+    @Query(value =
+            "select l.id as id, \n" +
+                    "                                    f.name as nameFloor, \n" +
+                    "                                   l.floor_id as floorId, \n" +
+                    "                                   l.section_id as sectionId, \n" +
+                    "                                   l.length as length, \n" +
+                    "                                   l.width as width, \n" +
+                    "                                   l.height as height,\n" +
+                    "                                    s.name as nameSection\n" +
+                    "                                    from `c0922g1_car_parking`.location l \n" +
+                    "                                    join floor f on f.id = l.floor_id \n" +
+                    "                                    join section s on l.section_id = s.id\n" +
+                    "                            where f.name like concat('%', :search , '%') \n" +
+                    "                                                        and l.is_deleted = false ",
+            countQuery =
+                    "select l.id as id, \n" +
+                            "                                    f.name as nameFloor, \n" +
+                            "                                   l.floor_id as floorId, \n" +
+                            "                                   l.section_id as sectionId, \n" +
+                            "                                   l.length as length, \n" +
+                            "                                   l.width as width, \n" +
+                            "                                   l.height as height,\n" +
+                            "                                    s.name as nameSection\n" +
+                            "                                    from `c0922g1_car_parking`.location l \n" +
+                            "                                    join floor f on f.id = l.floor_id \n" +
+                            "                                    join section s on l.section_id = s.id\n" +
+                            "                            where f.name like concat('%', :search , '%') \n" +
+                            "                                                        and l.is_deleted = false ",
+            nativeQuery = true )
+    Page<ILocationDto>showListT(Pageable pageable, @Param("search") String search);
+
 }
