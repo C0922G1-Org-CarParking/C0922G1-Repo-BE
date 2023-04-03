@@ -39,31 +39,31 @@ public interface ILocationRepository extends JpaRepository<Location,Long> {
 
     @Query(value =
             "select l.id as id, \n" +
-                    "                                    f.name_floor as nameFloor, \n" +
+                    "                                    f.name as nameFloor, \n" +
                     "                                   l.floor_id as floorId, \n" +
                     "                                   l.section_id as sectionId, \n" +
                     "                                   l.length as length, \n" +
                     "                                   l.width as width, \n" +
                     "                                   l.height as height,\n" +
-                    "                                    s.name_section as nameSection\n" +
+                    "                                    s.name as nameSection\n" +
                     "                                    from `c0922g1_car_parking`.location l \n" +
                     "                                    join floor f on f.id = l.floor_id \n" +
                     "                                    join section s on l.section_id = s.id\n" +
-                    "                            where f.name_floor like concat('%', :search , '%') \n" +
+                    "                            where f.name like concat('%', :search , '%') \n" +
                     "                                                        and l.is_deleted = false ",
             countQuery =
                     "select l.id as id, \n" +
-                            "                                    f.name_floor as nameFloor, \n" +
+                            "                                    f.name as nameFloor, \n" +
                             "                                   l.floor_id as floorId, \n" +
                             "                                   l.section_id as sectionId, \n" +
                             "                                   l.length as length, \n" +
                             "                                   l.width as width, \n" +
                             "                                   l.height as height,\n" +
-                            "                                    s.name_section as nameSection\n" +
+                            "                                    s.name as nameSection\n" +
                             "                                    from `c0922g1_car_parking`.location l \n" +
                             "                                    join floor f on f.id = l.floor_id \n" +
                             "                                    join section s on l.section_id = s.id\n" +
-                            "                            where f.name_floor like concat('%', :search , '%') \n" +
+                            "                            where f.name like concat('%', :search , '%') \n" +
                             "                                                        and l.is_deleted = false ",
             nativeQuery = true )
     Page<ILocationDto>showListT(Pageable pageable, @Param("search") String search);

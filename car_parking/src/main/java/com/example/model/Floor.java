@@ -12,7 +12,7 @@ public class Floor {
     private Long id;
 
     @Column(length = 45,nullable = false,unique = true)
-    private String nameFloor;
+    private String name;
 
 
     @OneToMany(mappedBy = "floor")
@@ -38,11 +38,11 @@ public class Floor {
         this.id = id;
     }
 
-    public String getNameFloor() {
-        return nameFloor;
+    public String getName() {
+        return name;
     }
 
-    public void setNameFloor(String nameFloor) {
-        this.nameFloor = nameFloor;
+    public void setName(String nameFloor) {
+        this.name = name;
     }
 }
