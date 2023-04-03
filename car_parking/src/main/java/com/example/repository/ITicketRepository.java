@@ -1,6 +1,6 @@
 package com.example.repository;
 
-import com.example.dto.TicketDto;
+import com.example.dto.TicketOfListDto;
 import com.example.model.Ticket;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,14 +31,15 @@ public interface ITicketRepository extends JpaRepository<Ticket, Integer> {
             "            f.name like concat('%',:floor,'%') and\n" +
             "            t.expiry_date = coalesce(nullif(:expiryDate,''), t.expiry_date) and\n" +
             "            tt.name like concat('%',:ticketType,'%') and\n" +
-            "            t.is_deleted = 0")
-    Page<TicketDto> search(@Param("customerName")String customerName,
-                           @Param("customerPhone")String customerPhone,
-                           @Param("employeeName")String employeeName,
-                           @Param("employeePhone")String employeePhone,
-                           @Param("floor")String floor,
-                           @Param("expiryDate")String expiryDate,
-                           @Param("ticketType")String ticketType, Pageable pageable);
+            "            t.is_deleted = :status")
+    Page<TicketOfListDto> search(@Param("customerName")String customerName,
+                                 @Param("customerPhone")String customerPhone,
+                                 @Param("employeeName")String employeeName,
+                                 @Param("employeePhone")String employeePhone,
+                                 @Param("floor")String floor,
+                                 @Param("expiryDate")String expiryDate,
+                                 @Param("ticketType")String ticketType,
+                                 @Param("status") int status, Pageable pageable);
     @Modifying
     @Query(nativeQuery = true, value = "delete from ticket as t where t.id = :idDelete")
     void delete(@Param("idDelete")int idDelete);
@@ -56,5 +57,34 @@ public interface ITicketRepository extends JpaRepository<Ticket, Integer> {
             "\tjoin floor as f on f.id = lc.floor_id\n" +
             "\tjoin section as s on s.id = lc.section_id\n" +
             "where t.id = :id")
-    TicketDto findById(@Param("id") int id);
+    TicketOfListDto findById(@Param("id") int id);
+    /**
+     * this method no param expiredDate and status
+    * */
+    @Query(nativeQuery = true, value = "select t.id as TicketId, c.plate_number as PlateNumber, cus.name as CustomerName, cus.phone_number as CustomerPhoneNumber,\n" +
+            "            e.name as EmployeeName, e.phone_number as EmployeePhoneNumber, tt.name as TicketType, \n" +
+            "             DATEDIFF(t.expiry_date , t.effective_date) * t.price * ct.rate as TotalPrice, \n" +
+            "            f.name as Floor, lc.name as Location,  t.expiry_date as ExpiryDate\n" +
+            "            from `ticket` as t\n" +
+            "            join `car` as c on t.car_id = c.id\n" +
+            "            join `car_type` as ct on c.car_type_id = ct.id\n" +
+            "            join  `customer` as cus on  c.customer_id = cus.id\n" +
+            "            join `ticket_type` as tt on t.ticket_type_id = tt.id\n" +
+            "            join `employee` as e on e.id = t.employee_id\n" +
+            "            join `location` as lc on lc.id = t.location_id \n" +
+            "            join `floor` as f on f.id = lc.floor_id\n" +
+            "            where cus.name like concat('%',:customerName,'%') and\n" +
+            "            cus.phone_number = coalesce(nullif(:customerPhone,''), cus.phone_number) and\n" +
+            "            e.name like concat('%',:employeeName,'%') and\n" +
+            "            e.phone_number = coalesce(nullif(:employeePhone,''), e.phone_number) and \n" +
+            "            f.name like concat('%',:floor,'%') and\n" +
+            "            t.expiry_date < curdate() and\n" +
+            "            tt.name like concat('%',:ticketType,'%') and\n" +
+            "            t.is_deleted = 0")
+    Page<TicketOfListDto> searchTicketExpired(@Param("customerName")String customerName,
+                                              @Param("customerPhone")String customerPhone,
+                                              @Param("employeeName")String employeeName,
+                                              @Param("employeePhone")String employeePhone,
+                                              @Param("floor")String floor,
+                                              @Param("ticketType")String ticketType, Pageable pageable);
 }

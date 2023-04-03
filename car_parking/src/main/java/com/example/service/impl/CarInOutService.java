@@ -1,6 +1,6 @@
 package com.example.service.impl;
 
-import com.example.dto.ICarInOutDTO;
+import com.example.dto.ICarInOutDto;
 import com.example.model.CarInOut;
 import com.example.repository.ICarInOutRepository;
 import com.example.service.ICarInOutService;
@@ -18,7 +18,7 @@ public class CarInOutService implements ICarInOutService {
     }
 
     @Override
-    public ICarInOutDTO searchCarInOut(String plateNumber) {
+    public ICarInOutDto searchCarInOut(String plateNumber) {
         return carInOutRepository.searchCarInOutDTO(plateNumber);
     }
 }

@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.dto.ICarInOutDTO;
+import com.example.dto.ICarInOutDto;
 import com.example.model.CarInOut;
 import com.example.service.ICarInOutService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +19,11 @@ public class CarInOutController {
     private ICarInOutService carInOutService;
 
     @GetMapping("/{plateNumber}")
-    public ResponseEntity<ICarInOutDTO> findICarInOut(@PathVariable("plateNumber") String plateNumber) {
+    public ResponseEntity<ICarInOutDto> findICarInOut(@PathVariable("plateNumber") String plateNumber) {
         if (carInOutService.searchCarInOut(plateNumber) == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        ICarInOutDTO carInOutDTO = carInOutService.searchCarInOut(plateNumber);
+        ICarInOutDto carInOutDTO = carInOutService.searchCarInOut(plateNumber);
         return new ResponseEntity<>(carInOutDTO, HttpStatus.OK);
     }
 
