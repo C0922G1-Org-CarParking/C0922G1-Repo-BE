@@ -10,12 +10,14 @@ public class CarInOut {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     public CarInOut(Long id, String timeIn, String timeOut, Car car) {
         this.id = id;
         this.timeIn = timeIn;
         this.timeOut = timeOut;
         this.car = car;
     }
+
 
     @Column(columnDefinition = "date", length = 45)
     private String timeIn;

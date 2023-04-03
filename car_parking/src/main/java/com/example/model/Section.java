@@ -19,6 +19,7 @@ public class Section {
     private Set<Location> locationSet;
 
 
+
     public Section(Long id, String name, Set<Location> locationSet) {
         this.id = id;
         this.name = name;
@@ -51,4 +52,6 @@ public class Section {
     public void setLocationSet(Set<Location> locationSet) {
         this.locationSet = locationSet;
     }
+
 }
+

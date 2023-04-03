@@ -40,6 +40,7 @@ public class Car {
     @JsonIgnore
     private Set<Ticket> ticketSet;
 
+
     public Car(Long id, String name, String plateNumber, String brand, boolean isDeleted, CarType carType, Customer customer, Set<CarInOut> carInOutSet, Set<Ticket> ticketSet) {
         this.id = id;
         this.name = name;
@@ -51,6 +52,7 @@ public class Car {
         this.carInOutSet = carInOutSet;
         this.ticketSet = ticketSet;
     }
+
 
     public Car() {
     }
@@ -126,4 +128,5 @@ public class Car {
     public void setTicketSet(Set<Ticket> ticketSet) {
         this.ticketSet = ticketSet;
     }
+
 }

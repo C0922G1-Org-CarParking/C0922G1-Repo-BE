@@ -24,6 +24,7 @@ public class Position {
         this.employeeSet = employeeSet;
     }
 
+
     public Position() {
     }
 
@@ -50,4 +51,7 @@ public class Position {
     public void setEmployeeSet(Set<Employee> employeeSet) {
         this.employeeSet = employeeSet;
     }
+
+
 }
+

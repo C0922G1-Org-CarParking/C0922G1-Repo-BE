@@ -10,9 +10,9 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(length = 45, nullable = false)
-    private int name;
+
+    private Long name;
 
     private boolean isOccupied;
 
@@ -27,7 +27,6 @@ public class Location {
 
     private String permissionCarTypeLocations;
 
-
     @ManyToOne
     @JoinColumn(name = "section_id", referencedColumnName = "id")
     private Section section;
@@ -39,15 +38,23 @@ public class Location {
     @OneToMany(mappedBy = "location")
     @JsonIgnore
     private Set<Ticket> ticketSet;
-
-    public String getPermissionCarTypeLocations() {
-        return permissionCarTypeLocations;
+    public Location() {
     }
 
-    public void setPermissionCarTypeLocations(String permissionCarTypeLocations) {
+    public Location(Long id, Long name, boolean isOccupied, double width, double height,
+                    double length, String permissionCarTypeLocations, Section section, Floor floor, Set<Ticket> ticketSet, boolean isDeleted) {
+        this.id = id;
+        this.name = name;
+        this.isOccupied = isOccupied;
+        this.width = width;
+        this.height = height;
+        this.length = length;
         this.permissionCarTypeLocations = permissionCarTypeLocations;
+        this.section = section;
+        this.floor = floor;
+        this.ticketSet = ticketSet;
+        this.isDeleted = isDeleted;
     }
-
     private boolean isDeleted;
 
     public boolean isDeleted() {
@@ -58,9 +65,14 @@ public class Location {
         isDeleted = deleted;
     }
 
-    public Location() {
+
+    public String getPermissionCarTypeLocations() {
+        return permissionCarTypeLocations;
     }
 
+    public void setPermissionCarTypeLocations(String permissionCarTypeLocations) {
+        this.permissionCarTypeLocations = permissionCarTypeLocations;
+    }
     public Long getId() {
         return id;
     }
@@ -69,13 +81,11 @@ public class Location {
         this.id = id;
     }
 
-    public int getName() {
+    public Long getName() {
         return name;
     }
 
-    public void setName(int name) {
-        this.name = name;
-    }
+
 
     public boolean isOccupied() {
         return isOccupied;
@@ -91,14 +101,6 @@ public class Location {
 
     public void setWidth(double width) {
         this.width = width;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
     }
 
     public double getLength() {
@@ -125,20 +127,7 @@ public class Location {
         this.section = section;
     }
 
-    public Location(Long id, int name, boolean isOccupied, double width, double height,
-                    double length, String permissionCarTypeLocations, Section section, Floor floor, Set<Ticket> ticketSet, boolean isDeleted) {
-        this.id = id;
-        this.name = name;
-        this.isOccupied = isOccupied;
-        this.width = width;
-        this.height = height;
-        this.length = length;
-        this.permissionCarTypeLocations = permissionCarTypeLocations;
-        this.section = section;
-        this.floor = floor;
-        this.ticketSet = ticketSet;
-        this.isDeleted = isDeleted;
-    }
+
 
     public Set<Ticket> getTicketSet() {
         return ticketSet;
@@ -146,5 +135,17 @@ public class Location {
 
     public void setTicketSet(Set<Ticket> ticketSet) {
         this.ticketSet = ticketSet;
+    }
+
+    public void setName(Long name) {
+        this.name = name;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
     }
 }

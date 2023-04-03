@@ -16,6 +16,7 @@ public class Customer {
     @Column(columnDefinition = "date", nullable = false)
     private String dateOfBirth;
 
+
     public Customer(Long id, String name, String dateOfBirth, String idCard, String phoneNumber, String email, boolean gender, int district, int province, int commune, String street, Set<Car> carSet, boolean isDeleted) {
         this.id = id;
         this.name = name;
@@ -164,3 +165,5 @@ public class Customer {
         this.carSet = carSet;
     }
 }
+
+

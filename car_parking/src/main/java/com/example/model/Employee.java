@@ -21,9 +21,9 @@ public class Employee {
     private boolean gender;
 
 
+
     @Column(length = 45,nullable = false,unique = true)
     private String email;
-
 
     @Column(length = 45, nullable = false, unique = true)
     private String idCard;
@@ -37,10 +37,10 @@ public class Employee {
     @Column(nullable = false)
     private String street;
 
+
     private boolean isDeleted;
     @Column(length = 20, nullable = false, unique = true)
     private String phoneNumber;
-
 
     @OneToOne(mappedBy = "employee")
     private Account account;
@@ -72,6 +72,7 @@ public class Employee {
         this.ticketSet = ticketSet;
     }
 
+
     public Employee() {
     }
 
@@ -83,7 +84,6 @@ public class Employee {
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
     }
-
 
     public String getEmail() {
         return email;

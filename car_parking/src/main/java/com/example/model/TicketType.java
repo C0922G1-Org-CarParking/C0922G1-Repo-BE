@@ -24,6 +24,7 @@ public class TicketType {
         this.ticketSet = ticketSet;
     }
 
+
     @OneToMany(mappedBy = "ticketType")
     @JsonIgnore
     private Set<Ticket> ticketSet;
@@ -54,6 +55,7 @@ public class TicketType {
     public void setName(String name) {
         this.name = name;
     }
+
 
 
     public double getPrice() {
