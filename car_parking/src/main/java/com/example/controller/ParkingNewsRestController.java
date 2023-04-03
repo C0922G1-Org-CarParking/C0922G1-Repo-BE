@@ -1,7 +1,7 @@
-package com.example.controller.parking_news;
+package com.example.controller;
 
 import com.example.dto.IParkingNewsDto;
-import com.example.service.parking_news.IParkingNewsService;
+import com.example.service.IParkingNewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/parking_news")
+@RequestMapping("/api/parking_news")
 public class ParkingNewsRestController {
     @Autowired
     private IParkingNewsService parkingNewsService;

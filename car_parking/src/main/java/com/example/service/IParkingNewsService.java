@@ -1,4 +1,4 @@
-package com.example.service.parking_news;
+package com.example.service;
 
 import com.example.dto.IParkingNewsDto;
 import org.springframework.data.domain.Page;

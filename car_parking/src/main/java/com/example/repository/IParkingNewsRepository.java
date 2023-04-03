@@ -1,4 +1,4 @@
-package com.example.repository.parking_news;
+package com.example.repository;
 
 import com.example.dto.IParkingNewsDto;
 import com.example.model.ParkingNews;

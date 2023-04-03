@@ -1,4 +1,4 @@
-package com.example.repository.car_in_out;
+package com.example.repository;
 
 import com.example.dto.ICarInOutDTO;
 import com.example.model.CarInOut;

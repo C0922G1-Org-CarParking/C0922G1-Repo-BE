@@ -1,14 +1,15 @@
-package com.example.service.parking_news;
+package com.example.service.impl;
 
 import com.example.dto.IParkingNewsDto;
-import com.example.repository.parking_news.IParkingNewsRepository;
+import com.example.repository.IParkingNewsRepository;
+import com.example.service.IParkingNewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ParkingNewsService implements IParkingNewsService{
+public class ParkingNewsService implements IParkingNewsService {
     @Autowired
     private IParkingNewsRepository parkingNewsRepository;
 
