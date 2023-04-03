@@ -26,15 +26,15 @@ public class EmployeeService implements IEmployeeService {
      * @return method findAll
      */
 
-
     @Override
-    public Page<Employee> searchAll(Pageable pageable, String name, String startDate, String endDate) {
-        return employeeRepository.searchAll(pageable,name,startDate,endDate);
+    public Page<Employee> searchAll(Pageable pageable, String name, String startDate, String endDate,String street) {
+        return employeeRepository.searchAll(pageable, name, startDate, endDate,street);
     }
 
+
     @Override
-    public Page<Employee> searchDateOfBirth(Pageable pageable, String name, String startDate, String endDate) {
-        return employeeRepository.searchDateOfBirth(pageable, name, startDate, endDate);
+    public Page<Employee> searchDateOfBirth(Pageable pageable, String name, String startDate, String endDate,String street ) {
+        return employeeRepository.searchDateOfBirth(pageable, name, startDate, endDate,street);
     }
 
     /**
@@ -93,28 +93,34 @@ public class EmployeeService implements IEmployeeService {
 
 
 //    dinh
+
+
     @Override
+
     public Employee findEmployeeById(Long id) {
         return employeeRepository.findEmployeeById(id);
 
     }
+
     /**
      * Created by: DinhNTC
      * Date created: 29/03/2023
      * Function: update  data employee to DB at id
-     * @return  call to updateEmployee in employeeRepository
+     *
+     * @return call to updateEmployee in employeeRepository
      */
     @Override
     public void updateEmployee(String name, String dateOfBirth, boolean gender, String phoneNumber, Long positionId,
-                               String email, String idCard, int district, int province, int commune, String street,Long id) {
-        employeeRepository.updateEmployee(name, dateOfBirth, gender, phoneNumber, positionId,email, idCard,
-                district, province,commune, street,id);
+                               String email, String idCard, int district, int province, int commune, String street, Long id) {
+        employeeRepository.updateEmployee(name, dateOfBirth, gender, phoneNumber, positionId, email, idCard,
+                district, province, commune, street, id);
     }
 
     /**
      * Created by: DinhNTC
      * Date created: 29/03/2023
      * Function: add data employee to DB
+     *
      * @return call to addEmployee in employeeRepository
      */
     @Override
@@ -124,24 +130,58 @@ public class EmployeeService implements IEmployeeService {
         employeeRepository.addEmployee(commune, dateOfBirth, district, gender, idCard, name, province, street, email, positionId, phoneNumber);
     }
 
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2022
+     * function: check exist add  Employee
+     *
+     * @param employeeDto
+     * @return
+     */
+
     @Override
-    public Map<String,String> checkCreate(EmployeeDto employeeDto) {
+    public Map<String, String> checkCreate(EmployeeDto employeeDto) {
         Map<String, String> checkMap = new HashMap<>();
 
-        for (int i = 0; i < employeeRepository.findAll().size(); i++) {
-
-            if (employeeRepository.findAll().get(i).getPhoneNumber().equals(employeeDto.getPhoneNumber())) {
+        for (int i = 0; i < employeeRepository.employeeList().size(); i++) {
+            if (employeeRepository.employeeList().get(i).getIdCard().equals(employeeDto.getIdCard())) {
+                checkMap.put("errorIdCard", "Số CMND đã tồn tại trong hệ thống.");
+            }
+            if (employeeRepository.employeeList().get(i).getPhoneNumber().equals(employeeDto.getPhoneNumber())) {
                 checkMap.put("errorPhone", "Số điện thoại đã tồn tại trong hệ thống.");
             }
-            if (employeeRepository.findAll().get(i).getEmail().equals(employeeDto.getEmail())) {
+            if (employeeRepository.employeeList().get(i).getEmail().equals(employeeDto.getEmail())) {
                 checkMap.put("errorEmail", "Email đã tồn tại trong hệ thống.");
             }
         }
         return checkMap;
     }
 
+
+    /**
+     * Created by: DinhNTC
+     * Date created: 29/03/2022
+     * function: check exist update Employee
+     *
+     * @param employeeDto
+     * @return
+     */
     @Override
-    public Map<String, String> updateCreate(EmployeeDto employeeDto) {
-        return null;
+    public Map<String, String> checkUpdate(EmployeeDto employeeDto) {
+        Map<String, String> checkMap = new HashMap<>();
+        Employee employee = findEmployeeById(employeeDto.getId());
+        for (int i = 0; i < employeeRepository.employeeList().size(); i++) {
+            if (!employee.getIdCard().equals(employeeDto.getIdCard()) && employeeRepository.employeeList().get(i).getIdCard().equals(employeeDto.getIdCard())) {
+                checkMap.put("errorIdCard", "Số CMND đã tồn tại trong hệ thống.");
+            }
+            if (!employee.getPhoneNumber().equals(employeeDto.getPhoneNumber()) && employeeRepository.employeeList().get(i).getPhoneNumber().equals(employeeDto.getPhoneNumber())) {
+                checkMap.put("errorPhone", "Số điện thoại đã tồn tại trong hệ thống.");
+            }
+            if (!employee.getEmail().equals(employeeDto.getEmail()) && employeeRepository.employeeList().get(i).getEmail().equals(employeeDto.getEmail())) {
+
+                checkMap.put("errorEmail", "Email đã tồn tại trong hệ thống.");
+            }
+        }
+        return checkMap;
     }
 }

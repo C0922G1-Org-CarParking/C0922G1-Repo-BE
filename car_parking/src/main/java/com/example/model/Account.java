@@ -48,7 +48,6 @@ public class Account {
         this.employee = employee;
     }
 
-
     public String getPassword() {
         return password;
     }

@@ -11,19 +11,20 @@ public class Position {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 45,nullable = false,unique = true)
+    @Column(length = 45, nullable = false, unique = true)
     private String name;
 
     @OneToMany(mappedBy = "position")
     @JsonIgnore
     private Set<Employee> employeeSet;
 
-
-
     public Position() {
     }
-    public Position(Long l) {
+
+    public Position(Long id) {
+        this.id = id;
     }
+
     public Long getId() {
         return id;
     }
