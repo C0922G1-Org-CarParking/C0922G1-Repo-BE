@@ -8,10 +8,11 @@ import java.util.List;
 public interface ILocationService {
     List<Location> listMapParking(int idFloor);
 
-    ILocationDetailDto findByIdLocation(int id);
+    ILocationDetailDto findLocationById(int id);
 
     void resetIsOccupiedLocationToFalse();
 
     void resetIsOccupiedLocationToTrue();
+    Location findLocationEmptyById(int id);
 
 }

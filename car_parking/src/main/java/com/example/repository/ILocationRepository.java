@@ -13,8 +13,8 @@ import java.util.List;
 public interface ILocationRepository extends JpaRepository<Location, Integer> {
     @Query(value = "select * from location\n" +
             " left join floor on floor.id=location.floor_id\n" +
-            " left join section on section.id= location.section_id where floor_id=:id", nativeQuery = true)
-    List<Location> listMapParking(@Param("id") int id);
+            " left join section on section.id= location.section_id where floor_id=:id and location.is_deleted=false order by location.section_id ,location.name", nativeQuery = true)
+    List<Location> listLocation(@Param("id") int id);
 
     @Query(value = " select location.name as locationName , floor.name as floorName, section.name as sectionName,\n" +
             " customer.name as customerName, car.name as nameCar,car_type.name as nameCarType,car.plate_number as plateNumber,\n" +
@@ -24,8 +24,8 @@ public interface ILocationRepository extends JpaRepository<Location, Integer> {
             " left join ticket on location.id=ticket.location_id\n" +
             " left join car on car.id=ticket.car_id\n" +
             " left join car_type on car_type.id=car.car_type_id\n" +
-            " left join customer on car.customer_id=customer.id where location.id=1  and ticket.expiry_date >=curdate()  ", nativeQuery = true)
-    ILocationDetailDto findByIdLocation(@Param("id") int id);
+            " left join customer on car.customer_id=customer.id where location.id=:id  and ticket.expiry_date >=curdate()    ", nativeQuery = true)
+    ILocationDetailDto findLocationById(@Param("id") int id);
 
 
     @Modifying
@@ -34,4 +34,6 @@ public interface ILocationRepository extends JpaRepository<Location, Integer> {
     @Modifying
     @Query(value = "update location join ticket on location.id = ticket.location_id set location.is_occupied=1 where ticket.expiry_date >= curdate()",nativeQuery = true)
     void resetIsOccupiedLocationToTrue();
+    @Query(value = "select * from location where location.id=:id", nativeQuery = true)
+    Location findLocationEmptyById(@Param("id") int id);
 }

@@ -17,28 +17,30 @@ public class LocationService implements ILocationService {
      * Date created: 29/03/2023
      * Function: find all Location  in floor
      *
-     * @param   idFloor
+     * @param   "idFloor"
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
      **/
     @Override
     public List<Location> listMapParking(int idFloor) {
         resetIsOccupiedLocationToFalse();
         resetIsOccupiedLocationToTrue();
-        List<Location> listMapParking=locationRepository.listMapParking(idFloor);
-        return listMapParking;
+        List<Location> listLocation=locationRepository.listLocation(idFloor);
+        return listLocation;
     }
+
+
 
     /**
      * Created by: TheNV
      * Date created: 29/03/2023
      * Function: find Location  in floor
      *
-     * @param   idLocation
+     * @param  " idLocation"
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
      */
     @Override
-    public ILocationDetailDto findByIdLocation(int id) {
-        return locationRepository.findByIdLocation(id);
+    public ILocationDetailDto findLocationById(int id) {
+        return locationRepository.findLocationById(id);
     }
     /*
      * Created by: TheNV
@@ -57,12 +59,17 @@ public class LocationService implements ILocationService {
      * Date created: 29/03/2023
      * Function: reset is_occupied location to true
      *
-     * @param   id Location
+     * @param   " idLocation"
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
      */
 
     @Override
     public void resetIsOccupiedLocationToTrue() {
         locationRepository.resetIsOccupiedLocationToTrue();
+    }
+
+    @Override
+    public Location findLocationEmptyById(int id) {
+        return locationRepository.findLocationEmptyById(id);
     }
 }
