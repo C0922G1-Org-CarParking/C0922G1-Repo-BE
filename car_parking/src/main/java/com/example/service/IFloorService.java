@@ -1,4 +1,4 @@
-package com.example.service.car_in_out;
+package com.example.service;
 
 import com.example.model.Floor;
 

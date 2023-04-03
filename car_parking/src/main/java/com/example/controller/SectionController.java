@@ -1,9 +1,7 @@
-package com.example.controller.car_in_out;
+package com.example.controller;
 
-import com.example.model.Floor;
 import com.example.model.Section;
-import com.example.service.car_in_out.IFloorService;
-import com.example.service.car_in_out.ISectionService;
+import com.example.service.ISectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

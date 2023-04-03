@@ -1,13 +1,11 @@
-package com.example.service.car_in_out;
+package com.example.service.impl;
 
-import com.example.dto.CheckLocation;
 import com.example.dto.ILocationDto;
 import com.example.dto.LocationDto;
 import com.example.model.Location;
-import com.example.repository.car_in_out.ILocationRepository;
-import com.sun.javafx.iio.gif.GIFImageLoaderFactory;
+import com.example.repository.ILocationRepository;
+import com.example.service.ILocationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

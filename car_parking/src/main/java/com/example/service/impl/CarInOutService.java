@@ -1,8 +1,9 @@
-package com.example.service.car_in_out;
+package com.example.service.impl;
 
 import com.example.dto.ICarInOutDTO;
 import com.example.model.CarInOut;
-import com.example.repository.car_in_out.ICarInOutRepository;
+import com.example.repository.ICarInOutRepository;
+import com.example.service.ICarInOutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

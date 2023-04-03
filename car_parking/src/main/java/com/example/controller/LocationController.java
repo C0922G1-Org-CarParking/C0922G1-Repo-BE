@@ -1,10 +1,9 @@
-package com.example.controller.car_in_out;
+package com.example.controller;
 
-import com.example.dto.CheckLocation;
 import com.example.dto.ILocationDto;
 import com.example.dto.LocationDto;
 import com.example.model.Location;
-import com.example.service.car_in_out.ILocationService;
+import com.example.service.ILocationService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
