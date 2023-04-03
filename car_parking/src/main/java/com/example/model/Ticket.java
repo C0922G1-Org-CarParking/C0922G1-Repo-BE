@@ -13,22 +13,11 @@ public class Ticket {
     @Column(nullable = false, columnDefinition = "date")
     private String expiryDate;
 
-    private Double totalPrice;
-    @Column(nullable = false)
-    private Double price;
 
-    public Ticket(Long id, String effectiveDate, String expiryDate, double totalPrice, double price, TicketType ticketType, Car car, Employee employee, Location location, boolean isDeleted) {
-        this.id = id;
-        this.effectiveDate = effectiveDate;
-        this.expiryDate = expiryDate;
-        this.totalPrice = totalPrice;
-        this.price = price;
-        this.ticketType = ticketType;
-        this.car = car;
-        this.employee = employee;
-        this.location = location;
-        this.isDeleted = isDeleted;
-    }
+    private double totalPrice;
+
+    @Column(nullable = false)
+    private double price;
     @ManyToOne
     @JoinColumn(name = "ticket_type_id", referencedColumnName = "id")
     private TicketType ticketType;

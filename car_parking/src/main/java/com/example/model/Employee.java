@@ -20,8 +20,6 @@ public class Employee {
     @Column(nullable = false)
     private boolean gender;
 
-
-
     @Column(length = 45,nullable = false,unique = true)
     private String email;
 
@@ -36,6 +34,7 @@ public class Employee {
     private int commune;
     @Column(nullable = false)
     private String street;
+
     private boolean isDeleted;
     @Column(length = 20, nullable = false, unique = true)
     private String phoneNumber;
@@ -74,7 +73,6 @@ public class Employee {
     public Employee() {
     }
 
-
     public boolean isDeleted() {
         return isDeleted;
     }
@@ -87,14 +85,15 @@ public class Employee {
         return email;
     }
 
-
     public void setEmail(String email) {
         this.email = email;
     }
 
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;

@@ -13,15 +13,6 @@ public class TicketType {
     private Long id;
     @Column(length = 45, nullable = false, unique = true)
     private String name;
-
-
-    public TicketType(Long id, String name, double price, Set<Ticket> ticketSet) {
-        this.id = id;
-        this.name = name;
-        this.ticketSet = ticketSet;
-    }
-
-
     @OneToMany(mappedBy = "ticketType")
     @JsonIgnore
     private Set<Ticket> ticketSet;

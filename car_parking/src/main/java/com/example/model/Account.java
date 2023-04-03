@@ -25,13 +25,6 @@ public class Account {
     private Set<AccountRole> accountRoleSet;
 
 
-    public Account(Long id, Employee employee, String password, Set<AccountRole> accountRoleSet) {
-        this.id = id;
-        this.employee = employee;
-        this.password = password;
-        this.accountRoleSet = accountRoleSet;
-    }
-
     public Account() {
     }
 
@@ -43,6 +36,7 @@ public class Account {
 
     public Long getId() {
         return id;
+
     }
 
     public void setId(Long id) {
@@ -56,6 +50,7 @@ public class Account {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
+
 
     public String getPassword() {
         return password;

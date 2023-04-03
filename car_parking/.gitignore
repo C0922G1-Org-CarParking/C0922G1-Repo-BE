@@ -1,6 +1,7 @@
 HELP.md
 build.grable
 .gradle
+buid.gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
@@ -38,6 +39,10 @@ out/
 .vscode/
 application.properties
 
+<<<<<<< HEAD
 src/test
 
 
+=======
+src/test
+>>>>>>> 4e2c034939dc721d65c23f900c4983c201c07243
