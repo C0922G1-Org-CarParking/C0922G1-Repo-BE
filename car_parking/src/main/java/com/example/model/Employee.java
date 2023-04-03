@@ -2,7 +2,6 @@ package com.example.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Where;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -22,7 +21,17 @@ public class Employee {
     @Column(nullable = false)
     private boolean gender;
 
-    @Column(length = 45,nullable = false,unique = true)
+
+    @Column(length = 20, nullable = false, unique = true)
+    private String phoneNumber;
+    @ManyToOne
+    @JoinColumn(name = "position_id", referencedColumnName = "id")
+    private Position position;
+
+    @OneToOne(mappedBy = "employee")
+    @JsonIgnore
+    private Account account;
+
     private String email;
 
     @Column(length = 45, nullable = false, unique = true)
@@ -37,18 +46,26 @@ public class Employee {
     @Column(nullable = false)
     private String street;
 
-    @Column(length = 20, nullable = false, unique = true)
-    private String phoneNumber;
-
     private boolean isDeleted;
 
-    @OneToOne(mappedBy = "employee")
-    @JsonIgnore
-    private Account account;
+    public boolean isDeleted() {
+        return isDeleted;
+    }
 
-    @ManyToOne
-    @JoinColumn(name = "position_id", referencedColumnName = "id")
-    private Position position;
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 
     @OneToMany(mappedBy = "employee")
     @JsonIgnore
@@ -57,6 +74,7 @@ public class Employee {
     public Employee() {
     }
 
+
     public Long getId() {
         return id;
     }
@@ -64,6 +82,16 @@ public class Employee {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+
 
     public String getName() {
         return name;
@@ -97,13 +125,6 @@ public class Employee {
         this.account = account;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getIdCard() {
         return idCard;
@@ -145,13 +166,7 @@ public class Employee {
         this.street = street;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 
     public Position getPosition() {
         return position;
@@ -169,11 +184,4 @@ public class Employee {
         this.ticketSet = ticketSet;
     }
 
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
 }
