@@ -2,7 +2,7 @@ package com.example.service.location;
 
 import com.example.dto.ILocationDto;
 import com.example.model.Location;
-import com.example.repository.location.ILocationRepository;
+import com.example.repository.ILocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

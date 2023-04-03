@@ -1,5 +1,6 @@
 package com.example.repository.car_in_out;
 
+
 import com.example.dto.ICarInOutDTO;
 import com.example.model.CarInOut;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -31,4 +32,6 @@ public interface ICarInOutRepository extends JpaRepository<CarInOut, Long> {
     void saveCarInOut(@Param("carId") long carId,
                       @Param("timeIn") String timeIn,
                       @Param("timeOut") String timeOut);
+
+
 }

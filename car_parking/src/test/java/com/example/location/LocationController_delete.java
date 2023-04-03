@@ -33,6 +33,7 @@ public class LocationController_delete {
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
     }
+
     @Test
     public void delete_26() throws Exception {
 

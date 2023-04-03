@@ -22,6 +22,14 @@ public class Section {
     public Section() {
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }
@@ -30,13 +38,6 @@ public class Section {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public Set<Location> getLocationSet() {
         return locationSet;

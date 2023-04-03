@@ -8,4 +8,7 @@ public interface ILocationDto {
     Double getLength();
     Double getWidth();
     Double getHeight();
+    String getNameFloor();
+    String getNameSection();
+
 }
