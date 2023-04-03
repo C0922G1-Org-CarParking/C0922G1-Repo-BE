@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+@Transactional
 public interface ICarInOutRepository extends JpaRepository<CarInOut, Long> {
     @Query(value = "select" +
             "car.name as car_name, car.brand as car_brand,    " +
@@ -43,48 +44,37 @@ public interface ICarInOutRepository extends JpaRepository<CarInOut, Long> {
      * Function: searchCar and showList Car
      */
 
-    @Query(value = "select * from car where car.id = :id"
+    @Query(value = "select car.id as carId," +
+            "car.plate_number as carPlateNumber," +
+            "car.name as carName," +
+            "car.brand as carBrand," +
+            "ct.name as cartypeName," +
+            " c.name as customerName," +
+            "c.phone_number as customerPhoneNumber," +
+            " c.id_card as customerIdCard," +
+            " t.effective_date as ticketEffectiveDate," +
+            "t.expiry_date as ticketExpiryDarte," +
+            "t.id as ticketId," +
+            "l.name as locationName," +
+            " s.name as sectionName," +
+            "f.name as floorName from car " +
+            "join car_type ct on ct.id = car.car_type_id " +
+            "join customer c on c.id = car.customer_id " +
+            "join ticket t on car.id = t.car_id " +
+            "join location l on t.location_id = l.id " +
+            "join section s on s.id = l.section_id " +
+            "join floor f on f.id = l.floor_id  where car.id = :id"
             , nativeQuery = true)
-    Optional<ICarInOutDTO> findCarById(@Param("id") Long id);
+//    Optional<ICarInOutDTO> findCarById(@Param("id") Long id);
+    ICarInOutDTO findCarById(@Param("id") Long id);
 
-
-    @Query(value = " select " +
-            "ticket.id AS ticket_id, " +
-            "car.id AS carId, " +
-            "car.plate_number AS carPlateNumber, " +
-            "customer.id_card AS customerIdCard, " +
-            "car.name AS carName, " +
-            "car.brand AS carBrand, " +
-            "car_type.name AS carTypeName, " +
-            "customer.name AS customerName, " +
-            "customer.phone_number AS customerPhoneNumber, " +
-            "CONCAT(section.name, location.name) AS locationName, " +
-            "floor.name AS floorName, " +
-            "ticket.effective_date AS ticketEffectiveDate, " +
-            "ticket.expiry_date AS ticketExpiryDate " +
-            "FROM car " +
-            "JOIN ticket ON ticket.car_id = car.id " +
-            "JOIN customer ON car.customer_id = customer.id " +
-            "JOIN car_type ON car.car_type_id = car_type.id " +
-            "JOIN location ON location.id = ticket.location_id " +
-            "JOIN floor ON location.floor_id = floor.id " +
-            "JOIN section ON location.section_id = section.id " +
-            "JOIN car_in_out cio ON car.id = cio.car_id " +
-            "WHERE ticket.expiry_date >= CURRENT_DATE() " +
-            "AND car.plate_number LIKE %:plateNumber% " +
-            "AND cio.is_parked = 1 " +
-            "AND car.is_deleted = 0 " +
-            "AND customer.name like %:customerName% " +
-            "AND customer.phone_number like %:customerPhoneNumber%", nativeQuery = true)
-    Page<ICarInOutDTO> searchCarIn(@Param("plateNumber") String plateNumber,
-                                   @Param("customerName") String customerName,
-                                   @Param("customerPhoneNumber") String customerPhoneNumber,
-                                   Pageable pageable);
-
+    //    -----------------------------
     @Query(value = "SELECT " +
             "    cio.id," +
-            "    ticket.id AS ticket_id," +
+            "    ticket.id AS ticketId," +
             "    cio.time_in AS timeIn," +
+            "    cio.time_out AS timeOut," +
+            "    section.name as sectionName," +
             "    car.id AS carId," +
             "    car.plate_number AS carPlateNumber," +
             "    customer.id_card AS customerIdCard, " +
@@ -97,23 +87,24 @@ public interface ICarInOutRepository extends JpaRepository<CarInOut, Long> {
             "    floor.name AS floorName," +
             "    ticket.effective_date AS ticketEffectiveDate," +
             "    ticket.expiry_date AS ticketExpiryDate" +
-            "FROM " +
+            " FROM " +
             "    car " +
-            "    JOIN ticket ON ticket.car_id = car.id" +
-            "    JOIN customer ON car.customer_id = customer.id " +
-            "    JOIN car_type ON car.car_type_id = car_type.id " +
-            "    JOIN location ON location.id = ticket.location_id" +
-            "    JOIN floor ON location.floor_id = floor.id" +
-            "    JOIN section ON location.section_id = section.id" +
-            "    JOIN car_in_out cio ON car.id = cio.car_id" +
-            "WHERE " +
+            "    right join ticket ON ticket.car_id = car.id" +
+            "    right JOIN customer ON car.customer_id = customer.id " +
+            "    right JOIN car_type ON car.car_type_id = car_type.id " +
+            "    right JOIN location ON location.id = ticket.location_id" +
+            "    right JOIN floor ON location.floor_id = floor.id" +
+            "    right JOIN section ON location.section_id = section.id" +
+            "    right join car_in_out cio ON car.id = cio.car_id" +
+            " WHERE " +
             "    ticket.expiry_date >= CURRENT_DATE() " +
-            "    AND car.plate_number LIKE '%%' " +
-            "    AND cio.is_parked = 1 " +
             "    AND car.is_deleted = 0" +
-            "    AND customer.name like '%%'" +
-            "    AND customer.phone_number like '%%'",nativeQuery = true)
-
-    Page<ICarInOutDTO> searchCarOutDto(@Param("plateNumber") String plateNumber, @Param("customerName") String customerName,@Param("customerPhoneNumber") String customerPhoneNumber, Pageable pageable);
-
+            "    AND cio.is_parked = 1 " +
+            "    AND customer.name LIKE %:customerName% " +
+            "    AND customer.phone_number LIKE %:customerPhoneNumber% " +
+            "    AND car.plate_number LIKE %:carPlateNumber% ", nativeQuery = true)
+    Page<ICarInOutDTO> searchCarInOutListDto(@Param("carPlateNumber") String carPlateNumber,
+                                             @Param("customerName") String customerName,
+                                             @Param("customerPhoneNumber") String customerPhoneNumber,
+                                             Pageable pageable);
 }

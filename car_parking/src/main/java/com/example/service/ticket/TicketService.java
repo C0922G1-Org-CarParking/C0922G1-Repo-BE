@@ -1,5 +1,7 @@
 package com.example.service.ticket;
 
+import com.example.dto.EditTicketDto;
+import com.example.dto.ITicketDto;
 import com.example.dto.TicketDto;
 import com.example.model.Ticket;
 import com.example.repository.ticket.ITicketRepository;
@@ -15,7 +17,7 @@ public class TicketService implements ITicketService {
     private ITicketRepository ticketRepository;
 
     @Override
-    public Ticket findTicket(Long id) {
+    public ITicketDto findTicket(Long id) {
         return ticketRepository.findTicket(id);
     }
 

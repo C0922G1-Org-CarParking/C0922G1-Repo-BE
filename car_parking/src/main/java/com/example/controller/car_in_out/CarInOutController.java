@@ -48,29 +48,14 @@ public class CarInOutController {
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
      */
 
-    @GetMapping("/findCarIn")
-    private ResponseEntity<?> showListAndSearchCarIn(
-            @RequestParam(required = false, defaultValue = "") String plate,
-            @RequestParam(required = false, defaultValue = "") String phone,
-            @RequestParam(required = false, defaultValue = "") String name,
+    @GetMapping("/searchCarInOut")
+    private ResponseEntity<?> showListAndSearchCarInOut(
+            @RequestParam(required = false, defaultValue = "") String carPlateNumber,
+            @RequestParam(required = false, defaultValue = "") String customerPhoneNumber,
+            @RequestParam(required = false, defaultValue = "") String customerName,
             @RequestParam(required = false, defaultValue = "0") int page) {
-        Pageable pageable = PageRequest.of(page, 3);
-        Page<ICarInOutDTO> carPage = carInOutService.searchCarIn(plate, name, phone, pageable);
-        if (carPage.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(carPage, HttpStatus.OK);
-    }
-
-    @GetMapping("/findCarOut")
-    private ResponseEntity<?> showListAndSearchCarOut(
-            @RequestParam(required = false, defaultValue = "") String plate,
-            @RequestParam(required = false, defaultValue = "") String phone,
-            @RequestParam(required = false, defaultValue = "") String name,
-            @PageableDefault(page = 0, size = 3) Pageable pageable,
-            @RequestParam(required = false, defaultValue = "0") int page) {
-        pageable = PageRequest.of(page, 3);
-        Page<ICarInOutDTO> carPage = carInOutService.searchCarOut(plate, phone, name, pageable);
+        Pageable pageable = PageRequest.of(page, 4);
+        Page<ICarInOutDTO> carPage = carInOutService.searchCarInOut(carPlateNumber,customerName, customerPhoneNumber, pageable);
         if (carPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -78,21 +63,25 @@ public class CarInOutController {
     }
 
     /**
-     * Created by: HuyNL
+     * Created by: HuyNL\
      * Date created: 30/3/2023
      * Function: get car by id
      *
      * @param id
      * @return HttpStatus.NOT_FOUND if result is error, id null or id not in database. HttpStatus.OK if result is not error.
      */
-    @GetMapping("{id}")
-    public ResponseEntity<Optional<ICarInOutDTO>> getCarById(@PathVariable("id") Long id) {
-        Optional<ICarInOutDTO> carInOutDTO;
+    @GetMapping("/id={id}")
+    public ResponseEntity<ICarInOutDTO> getCarById(@PathVariable("id") Long id) {
         if (id == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            carInOutDTO = carInOutService.findCarById(id);
-            return new ResponseEntity<>(carInOutDTO, HttpStatus.OK);
+            ICarInOutDTO carInOutDTO = carInOutService.findCarById(id);
+            if (carInOutDTO == null) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            } else {
+                return new ResponseEntity<>(carInOutDTO, HttpStatus.OK);
+            }
         }
     }
+
 }
