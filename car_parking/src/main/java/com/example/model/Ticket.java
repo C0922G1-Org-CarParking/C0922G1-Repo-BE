@@ -13,11 +13,11 @@ public class Ticket {
     @Column(nullable = false, columnDefinition = "date")
     private String expiryDate;
 
+
     private double totalPrice;
 
     @Column(nullable = false)
     private double price;
-
     @ManyToOne
     @JoinColumn(name = "ticket_type_id", referencedColumnName = "id")
     private TicketType ticketType;
@@ -35,6 +35,7 @@ public class Ticket {
     private Location location;
 
     private boolean isDeleted;
+    @Column(nullable = false)
 
     public boolean isDeleted() {
         return isDeleted;
@@ -118,4 +119,5 @@ public class Ticket {
     public void setLocation(Location location) {
         this.location = location;
     }
+
 }

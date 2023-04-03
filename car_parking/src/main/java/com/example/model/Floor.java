@@ -14,10 +14,23 @@ public class Floor {
     @Column(length = 45,nullable = false,unique = true)
     private String name;
 
+    public Floor(Long id, String name, Set<Location> locationSet) {
+        this.id = id;
+        this.name = name;
+        this.locationSet = locationSet;
+    }
 
     @OneToMany(mappedBy = "floor")
     @JsonIgnore
     private Set<Location> locationSet;
+
+    public Floor() {
+
+    }
+
+    public Floor(Long id) {
+        this.id = id;
+    }
 
     public Set<Location> getLocationSet() {
         return locationSet;
@@ -27,7 +40,8 @@ public class Floor {
         this.locationSet = locationSet;
     }
 
-    public Floor() {
+    public Floor(long id) {
+        this.id = id;
     }
 
     public Long getId() {
@@ -42,9 +56,9 @@ public class Floor {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String nameFloor) {
         this.name = name;
     }
 
-
 }
+

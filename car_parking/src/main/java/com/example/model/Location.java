@@ -12,6 +12,8 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 45, nullable = false)
+
     private Long name;
 
     private boolean isOccupied;
@@ -38,6 +40,24 @@ public class Location {
     @OneToMany(mappedBy = "location")
     @JsonIgnore
     private Set<Ticket> ticketSet;
+    public Location() {
+    }
+
+    public Location(Long id, Long name, boolean isOccupied, double width, double height,
+                    double length, String permissionCarTypeLocations, Section section, Floor floor, Set<Ticket> ticketSet, boolean isDeleted) {
+        this.id = id;
+        this.name = name;
+        this.isOccupied = isOccupied;
+        this.width = width;
+        this.height = height;
+        this.length = length;
+        this.permissionCarTypeLocations = permissionCarTypeLocations;
+        this.section = section;
+        this.floor = floor;
+        this.ticketSet = ticketSet;
+        this.isDeleted = isDeleted;
+    }
+
 
     public String getPermissionCarTypeLocations() {
         return permissionCarTypeLocations;
@@ -57,9 +77,6 @@ public class Location {
         isDeleted = deleted;
     }
 
-    public Location() {
-    }
-
     public Long getId() {
         return id;
     }
@@ -76,6 +93,7 @@ public class Location {
         this.name = name;
     }
 
+
     public boolean isOccupied() {
         return isOccupied;
     }
@@ -90,14 +108,6 @@ public class Location {
 
     public void setWidth(double width) {
         this.width = width;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
     }
 
     public double getLength() {
@@ -124,6 +134,8 @@ public class Location {
         this.section = section;
     }
 
+
+
     public Set<Ticket> getTicketSet() {
         return ticketSet;
     }
@@ -131,4 +143,15 @@ public class Location {
     public void setTicketSet(Set<Ticket> ticketSet) {
         this.ticketSet = ticketSet;
     }
+
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
 }
+
+

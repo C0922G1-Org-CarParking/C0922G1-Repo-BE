@@ -24,6 +24,7 @@ public class Account {
     @JsonIgnore
     private Set<AccountRole> accountRoleSet;
 
+
     public Account() {
     }
 
@@ -32,8 +33,10 @@ public class Account {
     }
 
 
+
     public Long getId() {
         return id;
+
     }
 
     public void setId(Long id) {
@@ -65,3 +68,4 @@ public class Account {
         this.accountRoleSet = accountRoleSet;
     }
 }
+

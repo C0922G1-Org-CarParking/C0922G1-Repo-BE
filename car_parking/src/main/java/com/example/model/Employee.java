@@ -35,10 +35,9 @@ public class Employee {
     @Column(nullable = false)
     private String street;
 
+    private boolean isDeleted;
     @Column(length = 20, nullable = false, unique = true)
     private String phoneNumber;
-
-    private boolean isDeleted;
 
     @OneToOne(mappedBy = "employee")
     private Account account;
@@ -50,6 +49,25 @@ public class Employee {
     @OneToMany(mappedBy = "employee")
     @JsonIgnore
     private Set<Ticket> ticketSet;
+
+    public Employee(Long id, String name, String dateOfBirth, boolean gender, String email, String idCard, int district, int province, int commune, String street,
+                    boolean isDeleted, String phoneNumber, Account account, Position position, Set<Ticket> ticketSet) {
+        this.id = id;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.email = email;
+        this.idCard = idCard;
+        this.district = district;
+        this.province = province;
+        this.commune = commune;
+        this.street = street;
+        this.isDeleted = isDeleted;
+        this.phoneNumber = phoneNumber;
+        this.account = account;
+        this.position = position;
+        this.ticketSet = ticketSet;
+    }
 
 
     public Employee() {
@@ -71,9 +89,11 @@ public class Employee {
         this.email = email;
     }
 
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
@@ -109,14 +129,6 @@ public class Employee {
 
     public void setGender(boolean gender) {
         this.gender = gender;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 
     public String getIdCard() {
@@ -157,6 +169,14 @@ public class Employee {
 
     public void setStreet(String street) {
         this.street = street;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public Position getPosition() {
