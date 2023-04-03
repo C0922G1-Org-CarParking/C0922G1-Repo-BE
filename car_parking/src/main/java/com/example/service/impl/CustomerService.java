@@ -83,4 +83,14 @@ public class CustomerService implements ICustomerService {
     public ICustomerDTO findById(int id) {
         return customerRepository.findCustomerById(id);
     }
+
+    @Override
+    public void deleteCustomerAndTicket(int id) {
+        int[] carIds = carRepository.findCarByCustomerId(id);
+        for (int i = 0; i < carIds.length; i++) {
+            ticketRepository.deleteTicketByCarId(carIds[i]);
+        }
+        carRepository.deleteCarByCustomerId(id);
+        customerRepository.deleteCustomer(id);
+    }
 }

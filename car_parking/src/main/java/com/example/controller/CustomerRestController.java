@@ -8,17 +8,16 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/customerRest")
 public class CustomerRestController {
-    /**
-     * Create by: VuBD
-     * Date create: 29/03/2023
-     * injection interface serviceCustomer
-     */
+    @Autowired
+    private JavaMailSender javaMailSender;
     @Autowired
     private ICustomerService customerService;
 
@@ -85,5 +84,44 @@ public class CustomerRestController {
             return new ResponseEntity<>(HttpStatus.METHOD_NOT_ALLOWED);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+
+    /**
+     * VuBD
+     * Date create: 03/04/2023
+     * Function: send email to customer when deleting a customer with ticket validity
+     *
+     * @param to
+     * @param id
+     * @return
+     */
+    @PostMapping("/send")
+    public ResponseEntity<String> sendEmail(@RequestParam String to, @RequestBody Integer id) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject("Xác nhận xóa khách hàng.");
+        message.setText("Vé của bạn còn thời hạn, có nên xóa hay không. Nếu muốn xóa thì bấm vào link này: " +
+                "http://localhost:8080/customerRest/delete/" + id);
+        try {
+            javaMailSender.send(message);
+            return  new ResponseEntity<>("Mail của bạn đã được gửi.", HttpStatus.OK);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send email: " + e.getMessage());
+        }
+    }
+
+    /**
+     * VuBD
+     * Date create: 03/04/2023
+     * Function: delete customers with valid tickets when customers decide to click on the delete link
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping("/delete/{id}")
+    public ResponseEntity<String> deleteCustomerAndTicket(@PathVariable int id){
+        customerService.deleteCustomerAndTicket(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
