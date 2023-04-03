@@ -1,4 +1,4 @@
-package com.example.controller.ticket;
+package com.example.controller;
 
 import com.example.dto.*;
 import com.example.model.*;
@@ -33,6 +33,7 @@ public class TicketController {
     @Autowired
     private ICustomerService iCustomerService;
 
+
     /**
      * Created by: HuyNV
      * Date created: 29/03/2023
@@ -64,7 +65,7 @@ public class TicketController {
      */
     @GetMapping("/listTicketType")
     public ResponseEntity<List<ITicketTypeDto>> getListNameTicketType() {
-        List<ITicketTypeDto> iTicketTypes = iTicketTypeService.getListNameTicketType();
+        List<ITicketTypeDto> iTicketTypes = iTicketTypeService.getAllTicketTypes();
         if (iTicketTypes.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -240,6 +241,45 @@ public class TicketController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(rate, HttpStatus.OK);
+    }
+
+
+
+    /**
+     * Created by: HuyNL
+     * Date created: 29/03/2023
+     * Function: edit Ticket
+     * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
+     */
+    @GetMapping("/{id}")
+    private ResponseEntity<ITicketDto> findTicketById(@PathVariable("id") Long id) {
+        ITicketDto editTicketDto = iTicketService.findTicket(id);
+        if (editTicketDto == null || id == null || id == -1) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(editTicketDto, HttpStatus.OK);
+    }
+
+    /**
+     * Created by: HuyNL
+     * Date created: 29/03/2023
+     * Function: edit Ticket
+     * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
+     */
+    @PutMapping("/update/{id}")
+    private ResponseEntity<?> updateTicket(@Validated @RequestBody EditTicketDto editTicketDto,
+                                           BindingResult bindingResult) {
+        if (bindingResult.hasErrors()){
+            return new ResponseEntity<>(bindingResult.getAllErrors(),HttpStatus.BAD_REQUEST);
+        }
+        iTicketService.updateTicket(
+                editTicketDto.getTicketTypeId(),
+                editTicketDto.getFloorId(),
+                editTicketDto.getSectionId(),
+                editTicketDto.getExpiryDate(),
+                editTicketDto.getId()
+        );
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

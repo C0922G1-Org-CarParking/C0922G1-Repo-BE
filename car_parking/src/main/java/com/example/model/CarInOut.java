@@ -11,15 +11,18 @@ public class CarInOut {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "date", length = 45)
+    @Column(columnDefinition = "datetime", length = 45)
     private String timeIn;
 
-    @Column(columnDefinition = "date", length = 45)
+    @Column(columnDefinition = "datetime", length = 45)
     private String timeOut;
 
     @ManyToOne
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     private Car car;
+
+    private  boolean isParked;
+    private String originalImageName;
 
     public CarInOut() {
     }
@@ -54,5 +57,21 @@ public class CarInOut {
 
     public void setCar(Car car) {
         this.car = car;
+    }
+
+    public boolean isParked() {
+        return isParked;
+    }
+
+    public void setParked(boolean parked) {
+        isParked = parked;
+    }
+
+    public String getOriginalImageName() {
+        return originalImageName;
+    }
+
+    public void setOriginalImageName(String originalImageName) {
+        this.originalImageName = originalImageName;
     }
 }

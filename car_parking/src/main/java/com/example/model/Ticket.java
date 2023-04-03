@@ -34,6 +34,7 @@ public class Ticket {
     private Location location;
 
     private boolean isDeleted;
+    @Column(nullable = false)
 
     public boolean isDeleted() {
         return isDeleted;

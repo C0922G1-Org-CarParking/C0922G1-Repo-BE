@@ -39,6 +39,7 @@ public class Employee {
     @Column(nullable = false)
     private String street;
     private boolean isDeleted;
+
     @ManyToOne
     @JoinColumn(name = "position_id", referencedColumnName = "id")
     private Position position;
@@ -49,15 +50,18 @@ public class Employee {
     private Set<Ticket> ticketSet;
 
     public Employee(long id) {
-        this.id = id;
+
+
+    }
+
+
+
+    public Employee(Long id) {
+        this.id= id;
     }
 
     public Employee() {
 
-    }
-
-    public Employee(Long id) {
-        this.id= id;
     }
 
 
@@ -165,11 +169,6 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
-    public boolean isDeleted() {
-        return isDeleted;
-    }
 
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
+
 }

@@ -1,5 +1,6 @@
 package com.example.dto;
 
+
 import com.example.model.Car;
 import com.example.model.Employee;
 import com.example.model.Location;
@@ -35,7 +36,6 @@ public class TicketDto implements Validator {
     @NotNull(message = "Không được để trống")
     @Min(value = 0 , message = "Nhỏ nhất là 0")
     private Double price;
-
 
     public TicketDto() {
     }
@@ -88,6 +88,14 @@ public class TicketDto implements Validator {
         this.employee = employee;
     }
 
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
     public Location getLocation() {
         return location;
     }
@@ -104,15 +112,7 @@ public class TicketDto implements Validator {
         isDeleted = deleted;
     }
 
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 

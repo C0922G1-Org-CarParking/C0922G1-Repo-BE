@@ -13,7 +13,7 @@ public class TicketTypeService implements ITicketTypeService {
     @Autowired
     private ITicketTypeRepository iTicketTypeRepository;
     @Override
-    public List<ITicketTypeDto> getListNameTicketType() {
+    public List<ITicketTypeDto> getAllTicketTypes() {
         return iTicketTypeRepository.getListNameTicketType();
     }
 }

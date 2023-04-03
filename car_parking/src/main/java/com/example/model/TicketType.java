@@ -11,7 +11,7 @@ public class TicketType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 45, nullable = false,unique = true)
+    @Column(length = 45, nullable = false, unique = true)
     private String name;
 
 
@@ -21,6 +21,7 @@ public class TicketType {
 
     public TicketType(long id) {
         this.id = id;
+
     }
 
     public TicketType() {
@@ -54,7 +55,6 @@ public class TicketType {
     public void setName(String name) {
         this.name = name;
     }
-
 
 }
 
