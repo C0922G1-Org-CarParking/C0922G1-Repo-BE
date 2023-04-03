@@ -38,4 +38,8 @@ out/
 .vscode/
 application.properties
 
+<<<<<<< HEAD
 src/test
+=======
+src/test
+>>>>>>> 0909bfd4b2012de6466d25e1126115ec5438c4b6

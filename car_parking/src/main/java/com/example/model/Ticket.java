@@ -13,10 +13,10 @@ public class Ticket {
     @Column(nullable = false, columnDefinition = "date")
     private String expiryDate;
     @Column(nullable = false)
-    private double totalPrice;
-
+    private Double totalPrice;
     @Column(nullable = false)
-    private double price;
+    private Double price;
+
 
     @ManyToOne
     @JoinColumn(name = "ticket_type_id", referencedColumnName = "id")
@@ -35,6 +35,7 @@ public class Ticket {
     private Location location;
 
     private boolean isDeleted;
+    @Column(nullable = false)
 
     public boolean isDeleted() {
         return isDeleted;

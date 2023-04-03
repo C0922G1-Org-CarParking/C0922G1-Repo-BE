@@ -11,14 +11,24 @@ public class TicketType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 45, nullable = false,unique = true)
+    @Column(length = 45, nullable = false, unique = true)
     private String name;
 
     @OneToMany(mappedBy = "ticketType")
     @JsonIgnore
     private Set<Ticket> ticketSet;
 
+    public TicketType(long id) {
+        this.id = id;
+
+    }
+
     public TicketType() {
+
+    }
+
+    public TicketType(Long id) {
+        this.id = id;
     }
 
     public Long getId() {

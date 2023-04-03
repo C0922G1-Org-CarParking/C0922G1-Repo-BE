@@ -41,7 +41,13 @@ public class Car {
     private Set<Ticket> ticketSet;
 
 
+    public Car(long id) {
+        this.id = id;
+    }
+
     public Car() {
+
+
     }
 
     public boolean isDeleted() {

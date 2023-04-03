@@ -10,11 +10,10 @@ import java.util.List;
 
 @Service
 public class FloorService implements IFloorService {
-
     @Autowired
     private IFloorRepository iFloorRepository;
     @Override
-    public List<Floor> findAll() {
+    public List<Floor> getAllFloor() {
         return iFloorRepository.findAllForTicket();
     }
 }

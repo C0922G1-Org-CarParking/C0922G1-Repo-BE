@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import com.example.dto.ITicketTypeDto;
 import com.example.model.TicketType;
 import com.example.repository.ITicketTypeRepository;
 import com.example.service.ITicketTypeService;
@@ -10,9 +11,14 @@ import java.util.List;
 
 @Service
 public class TicketTypeService implements ITicketTypeService {
-
     @Autowired
     private ITicketTypeRepository iTicketTypeRepository;
+
+    @Override
+    public List<ITicketTypeDto> getAllTicketTypes() {
+        return iTicketTypeRepository.getListNameTicketType();
+    }
+
     @Override
     public List<TicketType> findAll() {
         return iTicketTypeRepository.findAll();

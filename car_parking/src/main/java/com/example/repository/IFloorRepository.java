@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface IFloorRepository extends JpaRepository<Floor, Integer> {
+public interface IFloorRepository extends JpaRepository<Floor, Long> {
     @Query(nativeQuery = true, value = "select f.* from floor as f")
     List<Floor> findAllForTicket();
 }
