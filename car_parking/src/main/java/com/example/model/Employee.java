@@ -55,9 +55,8 @@ public class Employee {
     }
 
 
-
     public Employee(Long id) {
-        this.id= id;
+        this.id = id;
     }
 
     public Employee() {
@@ -168,7 +167,4 @@ public class Employee {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-
-
 }

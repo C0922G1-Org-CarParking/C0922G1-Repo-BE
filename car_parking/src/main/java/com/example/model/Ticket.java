@@ -17,6 +17,7 @@ public class Ticket {
     @Column(nullable = false)
     private Double price;
 
+
     @ManyToOne
     @JoinColumn(name = "ticket_type_id", referencedColumnName = "id")
     private TicketType ticketType;
