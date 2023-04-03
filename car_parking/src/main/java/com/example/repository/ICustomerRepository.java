@@ -1,5 +1,8 @@
 package com.example.repository;
 
+import com.example.dto.CustomerCarDto;
+import com.example.dto.ICarDto;
+import com.example.model.Customer;
 import com.example.dto.ICustomerDTO;
 import com.example.model.Customer;
 import org.springframework.data.domain.Page;
@@ -8,10 +11,96 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 
-public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
+@Repository
+@Transactional
+public interface ICustomerRepository extends JpaRepository<Customer, Long> {
+
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 29/03/2023
+     * Function: createCustomer
+     */
+
+    @Modifying
+    @Query(value = "insert into customer (commune, date_of_birth, district, email, gender, id_card, is_deleted, name, phone_number, province, street)value(:commune, :dateOfBirth, :district, :email, :gender, :idCard, false, :name, :phoneNumber, :province, :street)", nativeQuery = true)
+    void createCustomer(@Param("commune") int commune,
+                        @Param("dateOfBirth") String dateOfBirth,
+                        @Param("district") int district,
+                        @Param("email") String email,
+                        @Param("gender") boolean gender,
+                        @Param("idCard") String idCard,
+                        @Param("name") String name,
+                        @Param("phoneNumber") String phoneNumber,
+                        @Param("province") int province,
+                        @Param("street") String street);
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 03/04/2023
+     * Function: findByCustomerIdCard
+     */
+
+    @Query(value = "select id, commune, date_of_birth, district, email, gender, id_card, is_deleted, name, phone_number, province, street from customer where id_card =:idCard", nativeQuery = true)
+    Customer findCustomerByIdCard(@Param("idCard") String idCard);
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 03/04/2023
+     * Function: findByCustomerId
+     */
+
+    @Query(value = "select " +
+            "id as id, " +
+            "commune as commune, " +
+            "date_of_birth as dateOfBirth, " +
+            "district as district, " +
+            "email as email, " +
+            "gender as isGender, " +
+            "id_card as idCard, " +
+            "is_deleted as idDeleted, " +
+            "name as name, " +
+            "phone_number as phoneNumber, " +
+            "province as province, " +
+            "street as street " +
+            "from customer where id =:id", nativeQuery = true)
+    ICustomerDTO findByCustomerId(@Param("id") Long id);
+
+
+    /**
+     * Create by: VuTN,
+     * Date create : 29/03/2023
+     * Function : connect database to update customer  with corresponding id of customer
+     *
+     * @Param name, id_card,date_of_birth,gender,email,phone,province,district,commune,street,id)
+     */
+    @Modifying
+    @Query(value = "UPDATE `customer` c SET c.name = :name,c.id_card = :id_card,c.date_of_birth = :date_of_birth," +
+            "c.gender = :gender,c.email = :email, c.phone_number =:phone,c.province = :province," +
+            "c.district = :district,c.commune = :commune, c.street=:street WHERE c.id =:id", nativeQuery = true)
+    void updateCustomer(@Param("name") String name, @Param("id_card") String id_card, @Param("date_of_birth") String date_of_birth,
+                        @Param("gender") boolean gender, @Param("email") String email, @Param("phone") String phone,
+                        @Param("province") int province, @Param("district") int district, @Param("commune") int commune,
+                        @Param("street") String street, @Param("id") Long id);
+
+    /**
+     * Create by: VuTN,
+     * Date create : 29/03/2023
+     * Function : connect database to find  customer with corresponding id of customer
+     *
+     * @Param id
+     */
+    @Query(value = "select * from customer where customer.id=:id", nativeQuery = true)
+    Customer findCustomerById(Long id);
+
+
+
+
     /**
      * Create by: VuBD
      * Date create: 29/03/2023
@@ -32,6 +121,11 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
             "customer.id_card as idCard, " +
             "customer.gender, " +
             "customer.phone_number as phoneNumber, " +
+            "customer.is_deleted as idDeleted, " +
+            "customer.district as district, " +
+            "customer.province as province, " +
+            "customer.commune as commune, " +
+            "customer.street as street, " +
             "customer.email " +
             "FROM c0922g1_car_parking.customer " +
             "WHERE is_deleted = 0 " +
@@ -77,6 +171,5 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
             "FROM c0922g1_car_parking.customer " +
             "WHERE id = :id AND is_deleted = 0", nativeQuery = true)
     ICustomerDTO findCustomerById(@Param("id") int id);
-
 
 }

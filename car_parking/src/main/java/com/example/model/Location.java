@@ -11,6 +11,8 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 45, nullable = false)
+
     private Long name;
 
     private boolean isOccupied;

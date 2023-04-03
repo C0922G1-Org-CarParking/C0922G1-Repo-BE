@@ -1,25 +1,196 @@
 package com.example.controller;
 
-import com.example.dto.ICustomerDTO;
-import com.example.service.ICustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import com.example.dto.*;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+
+import com.example.model.Car;
+import com.example.model.CarType;
+import com.example.model.Customer;
+import com.example.service.ICarService;
+import com.example.service.ICarTypeService;
+import com.example.service.ICustomerService;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
-@CrossOrigin
-@RequestMapping("/customerRest")
+@CrossOrigin("*")
+@RequestMapping("/customer")
 public class CustomerRestController {
     @Autowired
     private JavaMailSender javaMailSender;
+
     @Autowired
     private ICustomerService customerService;
+    @Autowired
+    private ICarService carService;
+    @Autowired
+    private ICarTypeService carTypeService;
+
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 03/04/2023
+     * Function: getListCarType
+     */
+
+    @GetMapping("/carType")
+    public ResponseEntity<List<CarType>> getAllCarType() {
+        List<CarType> carTypeList = carTypeService.getAllCarType();
+        if (carTypeList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(carTypeList, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 03/04/2023
+     * Function: findByCustomerId
+     */
+
+    @GetMapping("/info/{customerId}")
+    public ResponseEntity<?> findByCustomerId(@PathVariable("customerId") Long customerId) {
+        ICustomerDTO icustomerDto = customerService.findByCustomerId(customerId);
+        if (customerId == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(icustomerDto, HttpStatus.OK);
+    }
+
+    /**
+     * Created by: MinhCDK
+     * Date created: 29/03/2023
+     * Function: createCustomer
+     */
+
+    @PostMapping("/create")
+    public ResponseEntity<?> createCustomer(@Validated @RequestBody CarCustomerDto carCustomerDto, BindingResult bindingResult) {
+        CustomerDto customerDto = carCustomerDto.getCustomerDto();
+        List<CarDto> carDtos = carCustomerDto.getCarDtos();
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
+        } else {
+            customerService.createCustomer(customerDto.getCommune(), customerDto.getDateOfBirth(), customerDto.getDistrict(),
+                    customerDto.getEmail(), customerDto.isGender(), customerDto.getIdCard(), customerDto.getName(), customerDto.getPhoneNumber(),
+                    customerDto.getProvince(), customerDto.getStreet());
+            Customer customer = customerService.findCustomerByIdCard(customerDto.getIdCard());
+            for (CarDto car : carDtos) {
+                carService.createCar(car.getBrand(), car.getName(), car.getPlateNumber(), car.getCarType().getId(), customer.getId());
+            }
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * Create by: VuTN,
+     * Date create : 29/03/2023
+     * Function : find customer by id
+     *
+     * @return HttpStatus.NOT_FOUND if result= null else then return customerCarDto and HttpStatus.OK
+     * @Param id
+     */
+    @GetMapping("/findCustomer/{id}")
+    public ResponseEntity<Customer> findCustomerById(@PathVariable Long id) {
+        Customer customer = this.customerService.findCustomerById(id);
+        if (customer == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(customer, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * Create by: VuTN,
+     * Date create : 29/03/2023
+     * Function : find car by id
+     *
+     * @return HttpStatus.NOT_FOUND if result= null else then return customerCarDto and HttpStatus.OK
+     * @Param id
+     */
+@GetMapping("/car/{id}")
+public  ResponseEntity<List<Car>> findCarById(@PathVariable Long id){
+        List<Car> carList = this.carService.findCarById(id);
+        if (carList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }else {
+            return new ResponseEntity<>(carList,HttpStatus.OK);
+        }
+}
+    /**
+     * Create by: VuTN,
+     * Date create : 29/03/2023
+     * Function : update customer
+     *
+     * @return HttpStatus.EXPECTATION_FAILED if result is error else then return customerCarDto object
+     * @Param id_customer
+     * @RequestBody CustomerCarDto includes the customer object and the car object list
+     */
+    @PutMapping("/update/{id}")
+    public ResponseEntity<CustomerCarDto> updateCustomer(@PathVariable Long id, @RequestBody @Validated CustomerCarDto customerCarDto,
+                                            BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+        }
+        CustomerCarDto customerDto = customerCarDto;
+        List<CarDto> carDtos = customerCarDto.getCarList();
+        Customer customer = new Customer();
+        List<Car> carList = new ArrayList<>();
+
+        BeanUtils.copyProperties(customerDto, customer);
+        this.customerService.updateCustomer(customer.getName(), customer.getIdCard(), customer.getDateOfBirth(), customer.isGender(), customer.getEmail(), customer.getPhoneNumber(), customer.getProvince(),
+                customer.getDistrict(), customer.getCommune(), customer.getStreet(), id);
+
+
+        List<Car> existingCars = carService.listCar(id);
+            if (existingCars.isEmpty()) {
+                for (int i = 0; i < carDtos.size(); i++) {
+                    Car car2 = new Car();
+                    BeanUtils.copyProperties(carDtos.get(i), car2);
+                    carList.add(car2);
+                }
+                for (int i = 0; i < carList.size(); i++) {
+                    Car car = new Car();
+                    car = carList.get(i);
+                    this.carService.createCar(car.getName(), car.getCarType().getId(), car.getBrand(), car.getPlateNumber(), car.getCustomer().getId());
+                }
+            } else {
+                existingCars.stream()
+                        .filter(car -> carDtos.stream()
+                                .noneMatch(carDto -> carDto.getPlateNumber().equals(car.getPlateNumber())))
+                        .forEach(car -> carService.deleteCar(car.getPlateNumber()));
+
+                for (CarDto carDto : carDtos) {
+                    boolean carExists = false;
+                    for (Car existingCar : existingCars) {
+                        if (existingCar.getPlateNumber().equals(carDto.getPlateNumber())) {
+                            carExists = true;
+                            break;
+                        }
+                    }
+                    if (!carExists) {
+                        Car car = new Car();
+                        BeanUtils.copyProperties(carDto, car);
+                        this.carService.createCar(car.getName(), car.getCarType().getId(), car.getBrand(), car.getPlateNumber(), car.getCustomer().getId());
+                    }
+                }
+            }
+
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     /**
      * Create by: VuBD
@@ -86,7 +257,6 @@ public class CustomerRestController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-
     /**
      * VuBD
      * Date create: 03/04/2023
@@ -102,7 +272,7 @@ public class CustomerRestController {
         message.setTo(to);
         message.setSubject("Xác nhận xóa khách hàng.");
         message.setText("Vé của bạn còn thời hạn, có nên xóa hay không. Nếu muốn xóa thì bấm vào link này: " +
-                "http://localhost:8080/customerRest/delete/" + id);
+                "http://localhost:8080/customer/delete/" + id);
         try {
             javaMailSender.send(message);
             return  new ResponseEntity<>("Mail của bạn đã được gửi.", HttpStatus.OK);
@@ -125,3 +295,4 @@ public class CustomerRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
+

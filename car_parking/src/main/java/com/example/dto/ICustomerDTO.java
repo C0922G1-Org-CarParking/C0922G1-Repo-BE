@@ -9,17 +9,36 @@ public interface ICustomerDTO {
      *
      * @return
      */
-    int getId();
+//    Long getId();
+//
+//    String getName();
+//
+//    Date getDateOfBirth();
+//
+//    String getIdCard();
+//
+//    boolean isGender();
+//
+//    String getPhoneNumber();
+//
+//    String getEmail();
+
 
     String getName();
-
-    Date getDateOfBirth();
-
+    Long getId();
     String getIdCard();
-
     boolean isGender();
-
+    String getDateOfBirth();
     String getPhoneNumber();
-
     String getEmail();
+    String getStreet();
+    Long getCarId();
+    Long getCarTypeId();
+    String getCarName();
+    String getPlateNumber();
+    Long getTicketTypeId();
+    String getExpiryDate();
+    int getCommune();
+    int getDistrict();
+    int getProvince();
 }

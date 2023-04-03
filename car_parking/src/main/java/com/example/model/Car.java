@@ -9,7 +9,6 @@ import java.util.Set;
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
 
     @Column(length = 45,nullable = false)
@@ -116,5 +115,4 @@ public class Car {
     public void setTicketSet(Set<Ticket> ticketSet) {
         this.ticketSet = ticketSet;
     }
-
 }

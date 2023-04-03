@@ -3,8 +3,42 @@ package com.example.service;
 import com.example.dto.ICustomerDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import com.example.dto.CustomerCarDto;
+import com.example.dto.ICarDto;
+import com.example.model.Customer;
+import org.springframework.stereotype.Repository;
+import java.util.List;
 
+@Repository
 public interface ICustomerService {
+
+    /**
+            * Created by: MinhCDK
+   * Date created: 29/03/2023
+            * Function: createCustomer
+   *
+           */
+
+    void createCustomer(int commune, String dateOfBirth, int district, String email, boolean gender, String idCard, String name, String phoneNumber, int province, String street);
+
+    Customer findCustomerByIdCard(String idCard);
+
+    ICustomerDTO findByCustomerId(Long id);
+
+    /**
+     * Create by: VuTN,
+     * Date create : 29/03/2023
+     * function find customer by id
+     */
+    Customer findCustomerById(Long id);
+    /**
+     * Create by: VuTN,
+     * Date create : 29/03/2023
+     * function update customer
+     */
+    void updateCustomer(String name,String id_card,String date_of_birth,boolean gender,String email,String phone,
+                        int province,int district,int commune,String street,Long id);
+
     /**
      * Create by: VuBD
      * Date create: 29/03/2023

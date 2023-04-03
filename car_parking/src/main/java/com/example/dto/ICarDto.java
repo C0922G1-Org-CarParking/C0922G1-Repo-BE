@@ -5,6 +5,7 @@ public interface ICarDto {
     Long getId();
     String getIdCard();
     boolean getIsGender();
+    String getDateOfBirth();
     String getPhoneNumber();
     String getEmail();
     String getStreet();

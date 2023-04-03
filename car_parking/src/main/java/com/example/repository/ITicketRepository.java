@@ -30,4 +30,5 @@ public interface ITicketRepository extends JpaRepository<Ticket, Integer> {
     @Modifying
     @Query(value = "UPDATE c0922g1_car_parking.ticket SET is_deleted = 1  WHERE car_id = :carId", nativeQuery = true)
     void deleteTicketByCarId(@Param("carId") int carId);
+
 }

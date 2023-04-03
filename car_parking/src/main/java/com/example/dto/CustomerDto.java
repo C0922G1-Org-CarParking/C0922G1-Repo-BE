@@ -1,39 +1,38 @@
 package com.example.dto;
 
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
-
 public class CustomerDto {
-
     private Long id;
-    @NotBlank(message = "Vui lòng nhập vào đây")
+//    @NotBlank(message = "Tên không đươc để trống.")
+//    @Pattern(regexp = "[a-zA-z ]+", message = "Tên không được nhập số và ký tự đặc biệt.")
     private String name;
-    @NotBlank(message = "Vui lòng nhập vào đây")
 
+//    @NotBlank(message = "Ngày sinh không đươc để trống")
+//    @Pattern(regexp = "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[0-1])$",
+//            message = "Ngày sinh phải đúng định dạng DD/MM/YYYY.")
     private String dateOfBirth;
 
-    @NotBlank(message = "Vui lòng nhập vào đây")
+//    @NotBlank(message = "Số CCCD không được để trống.")
 //    @Pattern(regexp = "^(\\d{9}|\\d{12})| *$",
 //            message = "Số CCCD phải đúng định dạng XXXXXXXXX hoặc XXXXXXXXXXXX (X là số 0-9).")
     private String idCard;
-    @Pattern(message = "Số điện thoại không đúng định dạng.", regexp = "^(((\\\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})$")
-    @NotBlank(message = "Vui lòng nhập vào đây")
+
+//    @NotBlank(message = "Số điện thoại không được để trống.")
+//    @Pattern(message = "Số điện thoại không đúng định dạng.", regexp = "^(((\\\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})$")
     private String phoneNumber;
 
-    @NotBlank(message = "Vui lòng nhập vào đây")
-    @Pattern(message = "Email không đúng định dạng.", regexp = "[\\w]+[@][\\w]+.[\\w]+")
+//    @NotBlank(message = "Email không được để trống.")
+//    @Pattern(message = "Email không đúng định dạng.", regexp = "[\\w]+[@][\\w]+.[\\w]+")
     private String email;
-    private boolean gender;
 
+    private boolean gender;
 
     private int district;
 
     private int province;
-
     private int commune;
-    @NotBlank(message = "Vui lòng nhập vào đây")
     private String street;
 
     private boolean isDeleted;
@@ -44,9 +43,6 @@ public class CustomerDto {
 
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
-    }
-
-    public CustomerDto() {
     }
 
     public Long getId() {
@@ -136,5 +132,4 @@ public class CustomerDto {
     public void setStreet(String street) {
         this.street = street;
     }
-
 }
