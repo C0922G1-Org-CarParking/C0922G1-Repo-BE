@@ -45,8 +45,8 @@ public class SecurityController {
     @Autowired
     private IAccountService accountService;
 
-    @Autowired
-    private IEmployeeService employeeService;
+//    @Autowired
+//    private IEmployeeService employeeService;
 
     @Autowired
     private JavaMailSender emailSender;
@@ -59,7 +59,6 @@ public class SecurityController {
      * @param loginRequest
      * @return HttpStatus.No_Content if result is error or HttpStatus.OK is result is not error
      */
-
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword());
@@ -76,7 +75,8 @@ public class SecurityController {
                         jwt,
                         userDetails.getUsername(),
                         //inject employeeService để lấy tên
-                        employeeService.findByEmail(loginRequest.getUsername()).getName(),
+                        "sdsd",
+//                        employeeService.findByEmail(loginRequest.getUsername()).getName(),
                         roles)
         );
     }
@@ -86,7 +86,6 @@ public class SecurityController {
      * Date created: 29/03/2023
      * Function: reset password (forgot password)
      */
-
     @GetMapping("/reset-password/{username}")
     public ResponseEntity<?> resetPassword(@Valid @PathVariable String username) {
         Account account = accountService.findAccountByEmployeeEmail(username);
@@ -114,7 +113,6 @@ public class SecurityController {
      * Date created: 29/03/2023
      * Function: change password
      */
-
     @PostMapping("/change-password")
     public ResponseEntity<?> changePassword(@Valid @RequestBody ResetPasswordRequest resetPasswordRequest, BindingResult bindingResult,
                                                            HttpServletRequest httpServletRequest) {
@@ -143,6 +141,9 @@ public class SecurityController {
         return new ResponseEntity<>(new MessageResponse("Thay đổi mật khẩu thất bại."),HttpStatus.BAD_REQUEST);
     }
 
+    /**
+     * HoangNM
+     */
     @GetMapping("add")
     public ResponseEntity<?> get(){
         return new ResponseEntity<>(HttpStatus.OK);
