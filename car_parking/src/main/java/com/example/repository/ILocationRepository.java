@@ -1,4 +1,4 @@
-package com.example.repository.location;
+package com.example.repository;
 
 import com.example.dto.IFloorDto;
 import com.example.dto.ILocationDto;

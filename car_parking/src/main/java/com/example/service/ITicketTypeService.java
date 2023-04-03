@@ -1,4 +1,4 @@
-package com.example.service.ticket_type;
+package com.example.service;
 
 import com.example.dto.ITicketTypeDto;
 

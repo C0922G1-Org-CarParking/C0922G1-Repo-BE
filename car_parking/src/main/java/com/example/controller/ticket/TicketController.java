@@ -2,11 +2,11 @@ package com.example.controller.ticket;
 
 import com.example.dto.*;
 import com.example.model.*;
-import com.example.service.customer.ICustomerService;
-import com.example.service.employee.IEmployeeService;
-import com.example.service.location.ILocationService;
-import com.example.service.ticket.ITicketService;
-import com.example.service.ticket_type.ITicketTypeService;
+import com.example.service.ICustomerService;
+import com.example.service.IEmployeeService;
+import com.example.service.ILocationService;
+import com.example.service.ITicketService;
+import com.example.service.ITicketTypeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

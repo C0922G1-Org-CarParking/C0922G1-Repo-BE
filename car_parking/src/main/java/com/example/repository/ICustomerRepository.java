@@ -1,4 +1,4 @@
-package com.example.repository.customer;
+package com.example.repository;
 
 import com.example.dto.ICarDto;
 import com.example.dto.ICustomerDto;

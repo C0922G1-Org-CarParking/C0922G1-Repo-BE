@@ -1,4 +1,4 @@
-package com.example.service.employee;
+package com.example.service;
 
 import com.example.dto.IEmployeeDto;
 import com.example.model.Employee;

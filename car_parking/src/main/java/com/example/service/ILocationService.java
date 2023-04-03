@@ -1,4 +1,4 @@
-package com.example.service.location;
+package com.example.service;
 
 import com.example.dto.IFloorDto;
 import com.example.dto.ILocationDto;

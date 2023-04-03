@@ -1,15 +1,15 @@
-package com.example.service.ticket_type;
+package com.example.service.impl;
 
 import com.example.dto.ITicketTypeDto;
-import com.example.repository.ticket_type.ITicketTypeRepository;
+import com.example.repository.ITicketTypeRepository;
+import com.example.service.ITicketTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class TicketTypeService implements ITicketTypeService{
+public class TicketTypeService implements ITicketTypeService {
     @Autowired
     private ITicketTypeRepository iTicketTypeRepository;
     @Override

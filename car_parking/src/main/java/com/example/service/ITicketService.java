@@ -1,4 +1,4 @@
-package com.example.service.ticket;
+package com.example.service;
 
 import com.example.dto.ITicketDto;
 import com.example.model.*;

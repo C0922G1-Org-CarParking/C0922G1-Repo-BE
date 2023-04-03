@@ -1,4 +1,4 @@
-package com.example.service.customer;
+package com.example.service;
 
 import com.example.dto.ICarDto;
 import com.example.dto.ICustomerDto;

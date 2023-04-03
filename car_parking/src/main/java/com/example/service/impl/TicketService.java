@@ -1,17 +1,16 @@
-package com.example.service.ticket;
+package com.example.service.impl;
 
 import com.example.dto.ITicketDto;
-import com.example.model.*;
-import com.example.repository.ticket.ITicketRepository;
+import com.example.repository.ITicketRepository;
+import com.example.service.ITicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
 
 @Service
-public class TicketService implements ITicketService{
+public class TicketService implements ITicketService {
     @Autowired
     private ITicketRepository iTicketRepository;
 
