@@ -1,10 +1,6 @@
 package com.example.service;
 
-import com.example.dto.EditTicketDto;
 import com.example.dto.ITicketDto;
-import com.example.model.Ticket;
-import com.example.dto.ITicketDto;
-import com.example.model.*;
 import com.example.dto.TicketOfListDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,7 +16,7 @@ public interface ITicketService {
 
     List<ITicketDto> statisticalChart(int sinceMonth, int toMonth);
 
-    Integer getPriceOfTicket(String expiryDate, String effectiveDate, double rate);
+    Double getPriceOfTicket(String expiryDate, String effectiveDate, double rate);
 
     List<ITicketDto> displayMonth(int sinceMonth, int toMonth);
 
@@ -34,6 +30,7 @@ public interface ITicketService {
                                            int status,
                                            Pageable pageable);
 
+
     Page<TicketOfListDto> searchTicketExpired(String customerName,
                                               String customerPhone,
                                               String employeeName,
@@ -45,4 +42,5 @@ public interface ITicketService {
     boolean delete(int idDelete);
 
     TicketOfListDto findTicketDetailById(int id);
+    TicketOfListDto findById(int id);
 }

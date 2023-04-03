@@ -25,16 +25,15 @@ public class TicketRestController {
     @Autowired
     private ITicketService iTicketService;
     @Autowired
-    private ITicketTypeService iTicketTypeService;
-    @Autowired
-    private ILocationService iLocationService;
+    private ITicketTypeService iticketTypeService;
     @Autowired
     private IEmployeeService iEmployeeService;
     @Autowired
     private ICustomerService iCustomerService;
     @Autowired
     private IFloorService iFloorService;
-
+    @Autowired
+    private ILocationService iLocationService;
 
     /**
      * Created by: HuyNV
@@ -67,7 +66,7 @@ public class TicketRestController {
      */
     @GetMapping("/listTicketType")
     public ResponseEntity<List<ITicketTypeDto>> getListNameTicketType() {
-        List<ITicketTypeDto> iTicketTypes = iTicketTypeService.getAllTicketTypes();
+        List<ITicketTypeDto> iTicketTypes = iticketTypeService.getAllTicketTypes();
         if (iTicketTypes.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -126,7 +125,6 @@ public class TicketRestController {
     }
 
 
-
     /**
      * Created by: HuyNV
      * Date created: 29/03/2023
@@ -168,7 +166,7 @@ public class TicketRestController {
      * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
      */
     @GetMapping("/statisticalTicketChart/{sinceMonth}/{toMonth}")
-    public ResponseEntity<List<ITicketDto>> getStatisticalTicketChart(@PathVariable int sinceMonth,@PathVariable int toMonth) {
+    public ResponseEntity<List<ITicketDto>> getStatisticalTicketChart(@PathVariable int sinceMonth, @PathVariable int toMonth) {
         List<ITicketDto> tickets = iTicketService.statisticalChart(sinceMonth, toMonth);
         if (tickets.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -202,12 +200,12 @@ public class TicketRestController {
      * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
      */
     @GetMapping("/getPrice")
-    public ResponseEntity<Integer> getPriceOfTicket(@RequestParam(value = "expiryDate", defaultValue = "") String expiryDate
-            ,@RequestParam(value = "effectiveDate",defaultValue = "") String effectiveDate
-            ,@RequestParam(value = "rate",defaultValue = "") Double rate){
-        Integer price = null;
+    public ResponseEntity<Double> getPriceOfTicket(@RequestParam(value = "expiryDate", defaultValue = "") String expiryDate
+            , @RequestParam(value = "effectiveDate", defaultValue = "") String effectiveDate
+            , @RequestParam(value = "rate", defaultValue = "") Double rate) {
+        Double price = null;
         if (!effectiveDate.equals("") && !expiryDate.equals("") && !(rate == 0)) {
-             price = iTicketService.getPriceOfTicket(expiryDate,effectiveDate,rate);
+            price = iTicketService.getPriceOfTicket(expiryDate, effectiveDate, rate);
         }
 
         if (price == null) {
@@ -226,7 +224,7 @@ public class TicketRestController {
     }
 
     @GetMapping("/displayMonth/{sinceMonth}/{toMonth}")
-    public ResponseEntity<?> getMonth(@PathVariable int sinceMonth,@PathVariable int toMonth) {
+    public ResponseEntity<?> getMonth(@PathVariable int sinceMonth, @PathVariable int toMonth) {
         List<ITicketDto> tickets = iTicketService.displayMonth(sinceMonth, toMonth);
         if (tickets.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -239,18 +237,18 @@ public class TicketRestController {
     public ResponseEntity<Double> getRate(@PathVariable("id") int id) {
         double rate = iCustomerService.findRateById(id);
 
-        if (rate == 0 ) {
+        if (rate == 0) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(rate, HttpStatus.OK);
     }
 
 
-
     /**
      * Created by: HuyNL
      * Date created: 29/03/2023
      * Function: edit Ticket
+     *
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
      */
     @GetMapping("/{id}")
@@ -266,13 +264,14 @@ public class TicketRestController {
      * Created by: HuyNL
      * Date created: 29/03/2023
      * Function: edit Ticket
+     *
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
      */
     @PutMapping("/update/{id}")
     private ResponseEntity<?> updateTicket(@Validated @RequestBody EditTicketDto editTicketDto,
                                            BindingResult bindingResult) {
-        if (bindingResult.hasErrors()){
-            return new ResponseEntity<>(bindingResult.getAllErrors(),HttpStatus.BAD_REQUEST);
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
         iTicketService.updateTicket(
                 editTicketDto.getTicketTypeId(),
@@ -322,6 +321,7 @@ public class TicketRestController {
             ticketPage = iTicketService.searchTicketExpired(customerName, customerPhone, employeeName, employeePhone, floor, ticketType, pageable);
         } else {
             ticketPage = iTicketService.searchTicketList(customerName, customerPhone, employeeName, employeePhone, floor, expiryDate, ticketType, status, pageable);
+
         }
         if (!ticketPage.hasContent()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -360,7 +360,7 @@ public class TicketRestController {
 
     @GetMapping("/ticketType")
     public ResponseEntity<List<TicketType>> findAllTicketType() {
-        List<TicketType> ticketTypeList = iTicketTypeService.findAll();
+        List<TicketType> ticketTypeList = iticketTypeService.findAll();
         if (ticketTypeList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
@@ -398,6 +398,7 @@ public class TicketRestController {
 
     @DeleteMapping("delete/{idDelete}")
     public ResponseEntity<Boolean> deleteTicket(@PathVariable("idDelete") int idDelete) {
+
         if (iTicketService.delete(idDelete)) {
             return new ResponseEntity<>(true, HttpStatus.OK);
         } else {
@@ -405,4 +406,14 @@ public class TicketRestController {
         }
     }
 
+    @GetMapping("/get-price")
+    public ResponseEntity<Double> getRenewalPrice(@RequestParam(value = "expiryDate", required = false) String expiryDate,
+                                                  @RequestParam(value = "effectiveDate", required = false) String effectiveDate,
+                                                  @RequestParam(value = "rate", required = false) Double rate) {
+        if (expiryDate == null || effectiveDate == null || rate == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+        Double price = this.iTicketService.getPriceOfTicket(expiryDate, effectiveDate, rate);
+        return new ResponseEntity<>(price, HttpStatus.OK);
+    }
 }
