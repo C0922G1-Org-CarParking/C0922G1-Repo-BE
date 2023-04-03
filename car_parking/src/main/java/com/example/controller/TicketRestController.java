@@ -183,12 +183,12 @@ public class TicketRestController {
     }
 
     @GetMapping("/findCarListOfCustomerId/{id}")
-    public ResponseEntity<List<ICarDto>> findCarListOfCustomerId(@PathVariable("id") int id) {
-        List<ICarDto> iCarDto = iCustomerService.findCarListOfCustomerId(id);
-        if (iCarDto == null) {
+    public ResponseEntity<List<ICarTicketDTO>> findCarListOfCustomerId(@PathVariable("id") int id) {
+        List<ICarTicketDTO> iCarTicketDTO = iCustomerService.findCarListOfCustomerId(id);
+        if (iCarTicketDTO == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(iCarDto, HttpStatus.OK);
+        return new ResponseEntity<>(iCarTicketDTO, HttpStatus.OK);
     }
 
 

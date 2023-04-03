@@ -3,16 +3,13 @@ package com.example.dto;
 import com.example.model.CarType;
 import com.example.model.Customer;
 
-import javax.persistence.*;
-
-public class CarDTO {
+public class CarScanningDTO {
 
     private Long id;
 
     private String name;
 
     private String plateNumber;
-
 
     private String brand;
 
@@ -22,10 +19,10 @@ public class CarDTO {
 
     private Customer customer;
 
-    public CarDTO() {
+    public CarScanningDTO() {
     }
 
-    public CarDTO(Long id, String name, String plateNumber, String brand, boolean isDeleted, CarType carType, Customer customer) {
+    public CarScanningDTO(Long id, String name, String plateNumber, String brand, boolean isDeleted, CarType carType, Customer customer) {
         this.id = id;
         this.name = name;
         this.plateNumber = plateNumber;
@@ -35,7 +32,7 @@ public class CarDTO {
         this.customer = customer;
     }
 
-    public CarDTO(long id) {
+    public CarScanningDTO(long id) {
         this.id = id;
     }
 

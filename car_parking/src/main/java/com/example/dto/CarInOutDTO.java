@@ -7,7 +7,7 @@ public class CarInOutDTO implements Validator {
 
     private Long id;
 
-    private CarDTO carDTO;
+    private CarScanningDTO carScanningDTO;
 
     private String timeIn;
 
@@ -28,9 +28,9 @@ public class CarInOutDTO implements Validator {
     public CarInOutDTO() {
     }
 
-    public CarInOutDTO(Long id, CarDTO carDTO, String timeIn, String timeOut, String urlCarInImage, String urlCarOutImage) {
+    public CarInOutDTO(Long id, CarScanningDTO carScanningDTO, String timeIn, String timeOut, String urlCarInImage, String urlCarOutImage) {
         this.id = id;
-        this.carDTO = carDTO;
+        this.carScanningDTO = carScanningDTO;
         this.timeIn = timeIn;
         this.timeOut = timeOut;
         this.urlCarInImage = urlCarInImage;
@@ -53,12 +53,12 @@ public class CarInOutDTO implements Validator {
         this.id = id;
     }
 
-    public CarDTO getCarDTO() {
-        return carDTO;
+    public CarScanningDTO getCarDTO() {
+        return carScanningDTO;
     }
 
-    public void setCarDTO(CarDTO carDTO) {
-        this.carDTO = carDTO;
+    public void setCarDTO(CarScanningDTO carScanningDTO) {
+        this.carScanningDTO = carScanningDTO;
     }
 
 

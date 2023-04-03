@@ -2,10 +2,13 @@ package com.example.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Where(clause = "is_deleted = false")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,66 +23,50 @@ public class Employee {
     @Column(nullable = false)
     private boolean gender;
 
-    @Column(length = 45,nullable = false,unique = true)
-    private String email;
 
-    @Column(length = 45, nullable = false, unique = true)
-    private String idCard;
-
-    @Column(nullable = false)
-    private int district;
-    @Column(nullable = false)
-    private int province;
-    @Column(nullable = false)
-    private int commune;
-    @Column(nullable = false)
-    private String street;
-
-    private boolean isDeleted;
     @Column(length = 20, nullable = false, unique = true)
     private String phoneNumber;
 
-    @OneToOne(mappedBy = "employee")
-    private Account account;
 
     @ManyToOne
     @JoinColumn(name = "position_id", referencedColumnName = "id")
     private Position position;
 
+    @OneToOne(mappedBy = "employee")
+    @JsonIgnore
+    private Account account;
+
+    @Column(length = 45, nullable = false, unique = true)
+    private String email;
+
+    @Column(length = 45, nullable = false, unique = true)
+    private String idCard;
+
+
+    @Column(nullable = false)
+    private int district;
+
+    @Column(nullable = false)
+    private int province;
+
+    @Column(nullable = false)
+    private int commune;
+
+    @Column(nullable = false)
+    private String street;
+
+
+    private boolean isDeleted;
+
+
     @OneToMany(mappedBy = "employee")
     @JsonIgnore
     private Set<Ticket> ticketSet;
-
-    public Employee(Long id, String name, String dateOfBirth, boolean gender, String email, String idCard, int district, int province, int commune, String street,
-                    boolean isDeleted, String phoneNumber, Account account, Position position, Set<Ticket> ticketSet) {
-        this.id = id;
-        this.name = name;
-        this.dateOfBirth = dateOfBirth;
-        this.gender = gender;
-        this.email = email;
-        this.idCard = idCard;
-        this.district = district;
-        this.province = province;
-        this.commune = commune;
-        this.street = street;
-        this.isDeleted = isDeleted;
-        this.phoneNumber = phoneNumber;
-        this.account = account;
-        this.position = position;
-        this.ticketSet = ticketSet;
-    }
 
 
     public Employee() {
     }
 
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
 
     public String getEmail() {
         return email;
@@ -90,21 +77,21 @@ public class Employee {
     }
 
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getName() {
@@ -130,6 +117,7 @@ public class Employee {
     public void setGender(boolean gender) {
         this.gender = gender;
     }
+
 
     public String getIdCard() {
         return idCard;
@@ -193,5 +181,13 @@ public class Employee {
 
     public void setTicketSet(Set<Ticket> ticketSet) {
         this.ticketSet = ticketSet;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }

@@ -1,6 +1,6 @@
 package com.example.service;
 
-import com.example.dto.ICarDto;
+import com.example.dto.ICarTicketDTO;
 import com.example.dto.ICustomerDto;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public interface ICustomerService {
 
     List<ICustomerDto> statisticalChart(int sinceMonth, int toMonth);
 
-    List<ICarDto> findCarListOfCustomerId(int id);
+    List<ICarTicketDTO> findCarListOfCustomerId(int id);
 
     double findRateById(int id);
 }
