@@ -38,9 +38,9 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
     @Transactional
     @Query(value = "select * from `employee` e where  lower(e.name) like lower(concat('%', :name, '%')) and e.date_of_birth >= COALESCE(NULLIF(:startDate, ''), date_of_birth)" +
             "and e.date_of_birth <= COALESCE(NULLIF(:endDate, ''), date_of_birth) " +
-            "and lower(e.street) like lower(concat('%', :street, '%')) and e.is_deleted = false", nativeQuery = true)
+            "and lower(e.street) like lower(concat('%', :street, '%')) and IF(:province = 0, true, e.province = :province)and e.is_deleted = false", nativeQuery = true)
     Page<Employee> searchAll(Pageable pageable,@Param("name") String name, @Param("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy")  String startDate,
-                                       @Param("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate, @Param("street") String street);
+                                       @Param("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate, @Param("street") String street, @Param("province") int province);
 
     /**
      * Created by: TaiLH
@@ -53,11 +53,11 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
      * @return
      */
     @Transactional
-    @Query(value = "select * from c0922g1_car_parking.`employee` e where  lower(e.name) like lower(concat('%', :name, '%')) and e.date_of_birth = COALESCE(NULLIF(:startDate, ''), date_of_birth)\n" +
+    @Query(value = "select * from `c0922g1_car_parking`.`employee` e where  lower(e.name) like lower(concat('%',:name, '%')) and e.date_of_birth = COALESCE(NULLIF(:startDate, ''), date_of_birth)\n" +
             "and e.date_of_birth = COALESCE(NULLIF(:endDate, ''), date_of_birth) " +
-            "and lower(e.street) like lower(concat('%', :street, '%')) and e.is_deleted = false", nativeQuery = true)
+            "and lower(e.street) like lower(concat('%', :street, '%')) and IF(:province = 0, true, e.province = :province) and e.is_deleted = false", nativeQuery = true)
     Page<Employee> searchDateOfBirth(Pageable pageable,@Param("name") String name,@Param("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy")  String startDate,
-                                       @Param("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate, @Param("street") String street);
+                                       @Param("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate, @Param("street") String street, @Param("province") int province);
 
 
     /**
@@ -99,7 +99,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
      * Function: find id employee
      * @return  call to updateEmployee in employeeRepository
      */
-    @Query(value = "select e.* from employee e join `position` p on p.id = e.position_id  where e.id =:id", nativeQuery = true)
+    @Query(value = "select e.* from employee e join `position` p on p.id = e.position_id  where is_deleted = 0 and e.id =:id", nativeQuery = true)
     Employee findEmployeeById(@Param("id") Long id);
     /**
      * Created by: DinhNTC

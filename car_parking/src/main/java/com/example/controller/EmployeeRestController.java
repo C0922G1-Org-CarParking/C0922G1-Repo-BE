@@ -34,6 +34,7 @@ public class EmployeeRestController {
      * Created by: TaiLH
      * Date created: 29/03/2022
      * function: get the list employee and search by field
+     *
      * @param page
      * @param size
      * @param name
@@ -48,14 +49,15 @@ public class EmployeeRestController {
             @RequestParam(required = false, defaultValue = "") String name,
             @RequestParam(required = false, defaultValue = "") @DateTimeFormat(pattern = "dd-MM-yyyy") String startDate,
             @RequestParam(required = false, defaultValue = "") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate,
-            @RequestParam(required = false, defaultValue = "") String street
+            @RequestParam(required = false, defaultValue = "") String street,
+            @RequestParam(required = false, defaultValue = "0") int province
     ) {
         Page<Employee> employeePage;
         Pageable pageable = PageRequest.of(page, size);
         if (!startDate.equals("") && !endDate.equals("")) {
-            employeePage = iEmployeeService.searchAll(pageable, name, startDate, endDate, street);
+            employeePage = iEmployeeService.searchAll(pageable, name, startDate, endDate, street, province);
         } else {
-            employeePage = iEmployeeService.searchDateOfBirth(pageable, name, startDate, endDate,street);
+            employeePage = iEmployeeService.searchDateOfBirth(pageable, name, startDate, endDate, street, province);
         }
         if (employeePage.isEmpty()) {
             return new ResponseEntity<>("Không tìm thấy dữ liệu!", HttpStatus.NOT_FOUND);
@@ -67,19 +69,23 @@ public class EmployeeRestController {
      * Created by: TaiLH
      * Date created: 29/03/2022
      * function: soft delete employee by id
+     *
      * @param id
      * @return HttpStatus.OK if result is not error
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<?> softDeleteEmployeeById(@PathVariable("id") Long id) {
-        iEmployeeService.softDeleteById(id);
-        return ResponseEntity.ok().build();
+        if (iEmployeeService.softDeleteById(id)){
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     /**
      * Created by: TaiLH
      * Date created: 29/03/2022
      * function: retrieve the list of soft-deleted employees
+     *
      * @param page
      * @param size
      * @return HttpStatus.NO_CONTENT if result is error or HttpStatus.OK if result is not error
@@ -126,8 +132,8 @@ public class EmployeeRestController {
     public ResponseEntity<Employee> findEmployeeById(@PathVariable Long id) {
 
         Employee employee = iEmployeeService.findEmployeeById(id);
-        if(employee == null){
-            return  new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (employee == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
@@ -155,7 +161,7 @@ public class EmployeeRestController {
             bindingResult.rejectValue("email", "email", check.get("errorEmail"));
         }
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(bindingResult.getAllErrors(),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDto, employee);
