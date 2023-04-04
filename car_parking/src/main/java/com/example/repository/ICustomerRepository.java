@@ -1,13 +1,10 @@
 package com.example.repository;
 
-import com.example.dto.ICarTicketDto;
-import com.example.dto.ICustomerDTO;
+import com.example.dto.*;
 import com.example.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import com.example.dto.CustomerCarDto;
-import com.example.dto.ICarDto;
 import com.example.model.Customer;
 import com.example.model.Customer;
 import org.springframework.data.domain.Page;
@@ -44,7 +41,6 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
             nativeQuery = true)
     ICustomerDTO getCustomerById(@Param("id") int id);
 
-
     /**
      * Huy NV
      * @param
@@ -60,17 +56,8 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
             "  AND YEAR(ticket.effective_date) = YEAR(ticket.expiry_date)"+
             " GROUP BY customer.name", nativeQuery = true)
     List<ICustomerDTO> getStatisticalChart(@Param("sinceMonth") int sinceMonth,@Param("toMonth") int toMonth);
-
-
-    /**
-     * Huy NV
-     * @param
-     * @param
-     * @return
-     */
-
     @Query(value = "select car.id as id , car.name as name from car join customer on car.customer_id = customer.id where customer.id = :id", nativeQuery = true)
-    List<ICarTicketDto> findCarListOfCustomerId(@Param("id") int id);
+    List<ICarOfTicketDTO> findCarListOfCustomerId(@Param("id") int id);
 
 
     /**
@@ -81,7 +68,6 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
      */
     @Query(value = "select car_type.rate from car_type join car on car.car_type_id = car_type.id where car.id = :id",nativeQuery = true)
     double findRateByIdCar(@Param("id") int id);
-
 
 
     /**

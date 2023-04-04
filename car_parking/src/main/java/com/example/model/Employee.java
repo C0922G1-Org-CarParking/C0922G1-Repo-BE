@@ -54,7 +54,6 @@ public class Employee {
     @JsonIgnore
     private Set<Ticket> ticketSet;
 
-
     public Employee() {
     }
 
