@@ -33,14 +33,14 @@ public class LocationController {
 
         LocationDto locationDto1 = locationDto;
 
-              iLocationService.addLocation(
-                     Long.parseLong(count+""),
-                      locationDto1.getWidth(),
-                      locationDto1.getHeight(),
-                      locationDto1.getLength(),
-                      Arrays.toString(locationDto1.getPermissionCarTypeLocations()),
-                      locationDto1.getFloor().getId(),
-                      locationDto1.getSection().getId());
+        iLocationService.addLocation(
+                Long.parseLong(count+""),
+                locationDto1.getWidth(),
+                locationDto1.getHeight(),
+                locationDto1.getLength(),
+                Arrays.toString(locationDto1.getPermissionCarTypeLocations()),
+                locationDto1.getFloor().getId(),
+                locationDto1.getSection().getId());
 
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
@@ -58,7 +58,7 @@ public class LocationController {
         iLocationService. updateLocation(location.getName(), location.getWidth(), location.getHeight(), location.getLength(),location.getFloor().getId(), location.getSection().getId(),Id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-// Arrays.toString(locationDto.getPermissionCarTypeLocations())
+    // Arrays.toString(locationDto.getPermissionCarTypeLocations())
     @GetMapping("/{id}")
     public ResponseEntity<Location> findById(@PathVariable("id") Long id) {
         Location location = iLocationService.findLocation(id);
