@@ -69,34 +69,29 @@ public class LocationController {
         return new ResponseEntity<>(location, HttpStatus.OK);
     }
 
-
-
-
+    /**
+     * Create: TanTH
+     * @param floorId
+     * @param sectionId
+     * @return
+     */
     @PostMapping("/create")
-    public ResponseEntity<?> createLocation(@RequestBody @Validated LocationDto locationDto, BindingResult bindingResult) {
+    public ResponseEntity<?> createLocation(@Validated @RequestBody  LocationDto locationDto, BindingResult bindingResult) {
         new LocationDto().validate(locationDto, bindingResult);
         Map<String, String> check = iLocationService.checkCreate(locationDto);
+        int count  = iLocationService.checkMaxName(locationDto.getFloor().getId(), locationDto.getSection().getId());
+        count++;
+
         LocationDto locationDto1 = locationDto;
-          if (locationDto1.getName() > 10){
-              locationDto1.setName(1L);
-              iLocationService.addLocation(
-                      locationDto1.getName(),
-                      locationDto1.getWidth(),
-                      locationDto1.getHeight(),
-                      locationDto1.getLength(),
-                      Arrays.toString(locationDto1.getPermissionCarTypeLocations()),
-                      locationDto1.getFloor().getId(),
-                      locationDto1.getSection().getId());
-          }else {
-              iLocationService.addLocation(
-                      locationDto.getName(),
-                      locationDto.getWidth(),
-                      locationDto.getHeight(),
-                      locationDto.getLength(),
-                      Arrays.toString(locationDto.getPermissionCarTypeLocations()),
-                      locationDto.getFloor().getId(),
-                      locationDto.getSection().getId());
-          }
+
+        iLocationService.addLocation(
+                Long.parseLong(count+""),
+                locationDto1.getWidth(),
+                locationDto1.getHeight(),
+                locationDto1.getLength(),
+                Arrays.toString(locationDto1.getPermissionCarTypeLocations()),
+                locationDto1.getFloor().getId(),
+                locationDto1.getSection().getId());
 
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
