@@ -1,13 +1,10 @@
 package com.example.repository;
 
-import com.example.dto.ICarTicketDto;
-import com.example.dto.ICustomerDTO;
+import com.example.dto.*;
 import com.example.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import com.example.dto.CustomerCarDto;
-import com.example.dto.ICarDto;
 import com.example.model.Customer;
 import com.example.model.Customer;
 import org.springframework.data.domain.Page;
@@ -21,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.List;
-
+@Transactional
 public interface ICustomerRepository extends JpaRepository<Customer,Long> {
 
     /**
@@ -70,7 +67,7 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
      */
 
     @Query(value = "select car.id as id , car.name as name from car join customer on car.customer_id = customer.id where customer.id = :id", nativeQuery = true)
-    List<ICarTicketDto> findCarListOfCustomerId(@Param("id") int id);
+    List<ICarTicketDTO> findCarListOfCustomerId(@Param("id") int id);
 
 
     /**
@@ -124,7 +121,7 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
             "date_of_birth as dateOfBirth, " +
             "district as district, " +
             "email as email, " +
-            "gender as isGender, " +
+            "gender as gender, " +
             "id_card as idCard, " +
             "is_deleted as idDeleted, " +
             "name as name, " +
@@ -184,25 +181,20 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
             "customer.id_card as idCard, " +
             "customer.gender, " +
             "customer.phone_number as phoneNumber, " +
-            "customer.is_deleted as idDeleted, " +
-            "customer.district as district, " +
-            "customer.province as province, " +
-            "customer.commune as commune, " +
-            "customer.street as street, " +
             "customer.email " +
-            "FROM c0922g1_car_parking.customer " +
-            "WHERE is_deleted = 0 " +
-            "AND name like %:name% " +
-            "AND id_card like %:idCard% " +
-            "AND phone_number like %:phoneNumber% " +
-            "AND date_of_birth >= COALESCE(NULLIF(:starDate, ''), date_of_birth) " +
-            "AND date_of_birth <= COALESCE(NULLIF(:endDate, ''), date_of_birth)", nativeQuery = true)
-    Page<ICustomerDTO> getListCustomer(@Param("name") String name,
-                                       @Param("idCard") String idCard,
-                                       @Param("phoneNumber") String phoneNumber,
-                                       @Param("starDate") String starDate,
-                                       @Param("endDate") String endDate,
-                                       Pageable pageable);
+            "FROM c0922g1_car_parking.`customer` " +
+            "WHERE customer.is_deleted = 0 " +
+            "AND customer.name like %:name% " +
+            "AND customer.id_card like %:idCard% " +
+            "AND customer.phone_number like %:phoneNumber% " +
+            "AND customer.date_of_birth >= COALESCE(NULLIF(:starDate, ''), date_of_birth) " +
+            "AND customer.date_of_birth <= COALESCE(NULLIF(:endDate, ''), date_of_birth)", nativeQuery = true)
+    Page<ICustomerListDTO> getListCustomer(@Param("name") String name,
+                                               @Param("idCard") String idCard,
+                                               @Param("phoneNumber") String phoneNumber,
+                                               @Param("starDate") String starDate,
+                                               @Param("endDate") String endDate,
+                                               Pageable pageable);
 
     /**
      * Create by: VuBD

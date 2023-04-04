@@ -216,8 +216,8 @@ public class TicketRestController {
     }
 
     @GetMapping("/findCarListOfCustomerId/{id}")
-    public ResponseEntity<List<ICarTicketDto>> findCarListOfCustomerId(@PathVariable("id") int id) {
-        List<ICarTicketDto> iCarTicketDTO = customerService.findCarListOfCustomerId(id);
+    public ResponseEntity<List<ICarTicketDTO>> findCarListOfCustomerId(@PathVariable("id") int id) {
+        List<ICarTicketDTO> iCarTicketDTO = customerService.findCarListOfCustomerId(id);
         if (iCarTicketDTO == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

@@ -9,11 +9,12 @@ public interface ICustomerDTO {
      */
 
 
-    String getName();
+
     Long getId();
+    String getName();
+    String getDateOfBirth();
     String getIdCard();
     boolean isGender();
-    String getDateOfBirth();
     String getPhoneNumber();
     String getEmail();
     String getStreet();
