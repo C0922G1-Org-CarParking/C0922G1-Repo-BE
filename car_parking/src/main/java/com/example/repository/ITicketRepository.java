@@ -19,6 +19,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public interface ITicketRepository extends JpaRepository<Ticket, Long> {
+    /**
+     * Created by: HuyNL
+     * Date created: 29/03/2023
+     * Function: editTicket and
+     */
+    @Modifying
+    @Query(value = "update ticket join location l on l.id = ticket.location_id set l.floor_id= :floorId,l.section_id= :sectionId, ticket.ticket_type_id= :ticketTypeId, ticket.expiry_date = :expiryDate where ticket.id =:id and ticket.is_deleted = false", nativeQuery = true)
+    void updateTicket(@Param("ticketTypeId") Long ticketTypeId, @Param("floorId") Long floorId, @Param("sectionId") Long sectionId, @Param("expiryDate") String expiryDate, @Param("id") Long id);
 
     /**
      * Created by: HuyNL
@@ -37,17 +45,6 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
             " join `section` s on s.id = l.section_id join `floor` f on f.id = l.floor_id \n" +
             " join `ticket_type` tt on tt.id = ticket.ticket_type_id where ticket.id = :id and ticket.is_deleted = false", nativeQuery = true)
     ITicketDto findTicket(@Param("id") Long id);
-
-
-
-    /**
-     * Created by: HuyNL
-     * Date created: 29/03/2023
-     * Function: editTicket and
-     */
-    @Modifying
-    @Query(value = "update ticket join location l on l.id = ticket.location_id set l.floor_id= :floorId,l.section_id= :sectionId, ticket.ticket_type_id= :ticketTypeId, ticket.expiry_date = :expiryDate where ticket.id =:id and ticket.is_deleted = false", nativeQuery = true)
-    void updateTicket(@Param("ticketTypeId") Long ticketTypeId, @Param("floorId") Long floorId, @Param("sectionId") Long sectionId, @Param("expiryDate") String expiryDate, @Param("id") Long id);
 
 
     @Transactional
@@ -76,7 +73,7 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
     @Query(value = "SELECT DATEDIFF(:expiry_date, :effective_date ) * 15000 * :rate ", nativeQuery = true)
     Double getPriceOfTicket(@Param("expiry_date") Date expiry_date
             , @Param("effective_date") Date effective_date,
-                             @Param("rate") double rate);
+                            @Param("rate") double rate);
 
 
     @Query(value = "SELECT DISTINCT MONTH(expiry_date) AS month FROM ticket WHERE MONTH(expiry_date) BETWEEN :sinceMonth AND :toMonth ORDER BY month ASC", nativeQuery = true)
