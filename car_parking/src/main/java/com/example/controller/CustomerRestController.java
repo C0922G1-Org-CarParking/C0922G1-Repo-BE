@@ -206,7 +206,7 @@ public  ResponseEntity<List<Car>> findCarById(@PathVariable Long id){
      * @return
      */
     @GetMapping("/list")
-    public ResponseEntity<Page<ICustomerDTO>> getListCustomer(@RequestParam(required = false, defaultValue = "") String name,
+    public ResponseEntity<Page<ICustomerListDTO>> getListCustomer(@RequestParam(required = false, defaultValue = "") String name,
                                                               @RequestParam(required = false, defaultValue = "") String idCard,
                                                               @RequestParam(required = false, defaultValue = "") String phoneNumber,
                                                               @RequestParam(required = false, defaultValue = "") String starDate,
@@ -214,7 +214,7 @@ public  ResponseEntity<List<Car>> findCarById(@PathVariable Long id){
                                                               @RequestParam(required = false, defaultValue = "0") int page,
                                                               @RequestParam(required = false, defaultValue = "2") int pageSize) {
         Pageable pageable = PageRequest.of(page, pageSize);
-        Page<ICustomerDTO> customerPage = this.customerService.getListCustomer(name, idCard, phoneNumber, starDate, endDate, pageable);
+        Page<ICustomerListDTO> customerPage = this.customerService.getListCustomer(name, idCard, phoneNumber, starDate, endDate, pageable);
         if (customerPage.getContent().isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -272,7 +272,7 @@ public  ResponseEntity<List<Car>> findCarById(@PathVariable Long id){
         message.setTo(to);
         message.setSubject("Xác nhận xóa khách hàng.");
         message.setText("Vé của bạn còn thời hạn, có nên xóa hay không. Nếu muốn xóa thì bấm vào link này: " +
-                "http://localhost:8080/customer/delete/" + id);
+                "http://localhost:4200/customer/delete/" + id);
         try {
             javaMailSender.send(message);
             return  new ResponseEntity<>("Mail của bạn đã được gửi.", HttpStatus.OK);

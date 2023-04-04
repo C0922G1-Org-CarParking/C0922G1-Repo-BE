@@ -1,7 +1,5 @@
 package com.example.dto;
 
-import java.sql.Date;
-
 public interface ICustomerDTO {
     /**
      * Created by: VuBD
@@ -11,11 +9,12 @@ public interface ICustomerDTO {
      */
 
 
-    String getName();
+
     Long getId();
+    String getName();
+    String getDateOfBirth();
     String getIdCard();
     boolean isGender();
-    String getDateOfBirth();
     String getPhoneNumber();
     String getEmail();
     String getStreet();
