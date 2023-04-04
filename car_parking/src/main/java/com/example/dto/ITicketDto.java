@@ -16,7 +16,6 @@ public interface ITicketDto {
     Long getTicketTypeId();
     String getTotalPrice();
     Double getRate();
-    int  getMonth();
 
 
 

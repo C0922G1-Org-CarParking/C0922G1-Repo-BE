@@ -252,14 +252,14 @@ public class TicketRestController {
      *
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
      */
-//    @GetMapping("/{id}")
-//    private ResponseEntity<ITicketDto> findTicketById(@PathVariable("id") Long id) {
-//        ITicketDto editTicketDto = iTicketService.findTicket(id);
-//        if (editTicketDto == null || id == null || id == -1) {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//        return new ResponseEntity<>(editTicketDto, HttpStatus.OK);
-//    }
+    @GetMapping("/{id}")
+    private ResponseEntity<ITicketDto> findTicketById(@PathVariable("id") Long id) {
+        ITicketDto editTicketDto = iTicketService.findTicket(id);
+        if (editTicketDto == null || id == null || id == -1) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(editTicketDto, HttpStatus.OK);
+    }
 
     /**
      * Created by: HuyNL
