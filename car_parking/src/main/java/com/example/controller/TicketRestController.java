@@ -230,6 +230,7 @@ public class TicketRestController {
     @GetMapping("/findCarListOfCustomerId/{id}")
     public ResponseEntity<List<ICarOfTicketDTO>> findCarListOfCustomerId(@PathVariable("id") int id) {
         List<ICarOfTicketDTO> iCarTicketDTO = customerService.findCarListOfCustomerId(id);
+
         if (iCarTicketDTO == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
