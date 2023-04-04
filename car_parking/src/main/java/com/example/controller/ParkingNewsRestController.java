@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/parking_news")
 public class ParkingNewsRestController {
     @Autowired
-    private IParkingNewsService parkingNewsService;
+    private IParkingNewsService iParkingNewsService;
 
     /**
      * Created by: QuynhND
@@ -29,7 +29,7 @@ public class ParkingNewsRestController {
     @GetMapping("")
     public ResponseEntity<Page<IParkingNewsDto>> getListParkingNews(@PageableDefault(size = 3, sort = "posting_date", direction = Sort.Direction.DESC) Pageable pageable,
                                                                     @RequestParam(name = "keyword", defaultValue = "") String keyWord) {
-        Page<IParkingNewsDto> parkingNewsPage = parkingNewsService.findAll(pageable, keyWord);
+        Page<IParkingNewsDto> parkingNewsPage = iParkingNewsService.findAll(pageable, keyWord);
         if (parkingNewsPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -47,7 +47,7 @@ public class ParkingNewsRestController {
      */
     @GetMapping("/detail/{parkingNewsId}")
     public ResponseEntity<IParkingNewsDto> getDetailParkingNews(@PathVariable(name = "parkingNewsId") int id) {
-        IParkingNewsDto parkingNews = parkingNewsService.findById(id);
+        IParkingNewsDto parkingNews = iParkingNewsService.findById(id);
         if (parkingNews == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

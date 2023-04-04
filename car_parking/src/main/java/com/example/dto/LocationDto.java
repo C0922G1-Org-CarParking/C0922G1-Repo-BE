@@ -4,30 +4,28 @@ import com.example.model.Floor;
 import com.example.model.Section;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class LocationDto implements Validator {
 
     private Long id;
-    @Min(value = 0 , message = "không được nhập số âm")
+    @Min(value = 0 , message = "Không được nhập số âm.")
     private Long name;
-
     private boolean isOccupied;
-    @Min(value = 0 , message = "không được nhập số âm")
-    private double width;
-    @Min(value = 0 , message = "không được nhập số âm")
-    private double height;
-    @Min(value = 0 , message = "không được nhập số âm")
-    private double length;
-
+    @Min(value = 0 , message = "Không được nhập số âm.")
+    @NotNull(message = "không được để trống")
+    private Double width;
+    @Min(value = 0 , message = "Không được nhập số âm.")
+    @NotNull(message = "không được để trống")
+    private Double height;
+    @Min(value = 0 , message = "Không được nhập số âm.")
+    @NotNull(message = "không được để trống")
+    private Double length;
     private String[] permissionCarTypeLocations;
-    @NotBlank(message = "không được để trống")
     private Section section;
-    @NotBlank(message = "không được để trống")
     private Floor floor;
 
     private boolean isDeleted;

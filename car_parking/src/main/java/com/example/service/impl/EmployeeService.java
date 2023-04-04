@@ -31,14 +31,14 @@ public class EmployeeService implements IEmployeeService {
      */
 
     @Override
-    public Page<Employee> searchAll(Pageable pageable, String name, String startDate, String endDate,String street) {
-        return iEmployeeRepository.searchAll(pageable, name, startDate, endDate,street);
+    public Page<Employee> searchAll(Pageable pageable, String name, String startDate, String endDate,String street, int province) {
+        return iEmployeeRepository.searchAll(pageable, name, startDate, endDate,street,province);
     }
 
 
     @Override
-    public Page<Employee> searchDateOfBirth(Pageable pageable, String name, String startDate, String endDate,String street ) {
-        return iEmployeeRepository.searchDateOfBirth(pageable, name, startDate, endDate,street);
+    public Page<Employee> searchDateOfBirth(Pageable pageable, String name, String startDate, String endDate,String street, int province ) {
+        return iEmployeeRepository.searchDateOfBirth(pageable, name, startDate, endDate,street,province);
     }
 
     /**
@@ -77,8 +77,12 @@ public class EmployeeService implements IEmployeeService {
      * @param id
      */
     @Override
-    public void softDeleteById(Long id) {
-        iEmployeeRepository.softDeleteById(id);
+    public boolean softDeleteById(Long id) {
+        if (iEmployeeRepository.findEmployeeById(id) != null){
+            iEmployeeRepository.softDeleteById(id);
+            return true;
+        }
+        return false;
     }
 
     /**

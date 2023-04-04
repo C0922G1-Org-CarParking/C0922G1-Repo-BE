@@ -1,7 +1,9 @@
 package com.example.service;
 
-import com.example.dto.ICarTicketDto;
+
+import com.example.dto.ICarOfTicketDTO;
 import com.example.dto.ICustomerDTO;
+import com.example.dto.ICustomerListDTO;
 import com.example.model.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,9 +19,11 @@ public interface ICustomerService {
 
     ICustomerDTO findCustomerId(int id);
 
+
     List<ICustomerDTO> statisticalChart(int sinceMonth, int toMonth);
 
-    List<ICarTicketDto> findCarListOfCustomerId(int id);
+    List<ICarOfTicketDTO> findCarListOfCustomerId(int id);
+
 
     double findRateById(int id);
 
@@ -64,8 +68,8 @@ public interface ICustomerService {
      * @param pageable
      * @return
      */
-    Page<ICustomerDTO> getListCustomer(String name, String idCard, String phoneNumber, String starDate, String endDate,
-                                       Pageable pageable);
+    Page<ICustomerListDTO> getListCustomer(String name, String idCard, String phoneNumber, String starDate, String endDate,
+                                           Pageable pageable);
 
     /**
      * Create by: VuBD
