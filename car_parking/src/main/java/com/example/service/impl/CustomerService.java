@@ -23,10 +23,6 @@ public class CustomerService implements ICustomerService {
         return iCustomerRepository.getCustomerById(id);
     }
 
-    @Override
-    public List<ICustomerDto> statisticalChart(int sinceMonth, int toMonth) {
-        return iCustomerRepository.getStatisticalChart(sinceMonth,toMonth);
-    }
 
     @Override
     public List<ICarDto> findCarListOfCustomerId(int id) {

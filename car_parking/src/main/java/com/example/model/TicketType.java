@@ -14,7 +14,6 @@ public class TicketType {
     @Column(length = 45, nullable = false, unique = true)
     private String name;
 
-
     @OneToMany(mappedBy = "ticketType")
     @JsonIgnore
     private Set<Ticket> ticketSet;

@@ -1,13 +1,14 @@
 package com.example.service.impl;
-
 import com.example.dto.ITicketDto;
 import com.example.repository.ITicketRepository;
 import com.example.service.ITicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.List;
+import com.example.dto.TicketOfListDto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 
 @Service
@@ -20,10 +21,6 @@ public class TicketService implements ITicketService {
         iTicketRepository.addTicket(effectiveDate, expiryDate, deleted, totalPrice, id, id1, id2, id3, price);
     }
 
-    @Override
-    public List<ITicketDto> statisticalChart(int sinceMonth, int toMonth) {
-        return iTicketRepository.statisticalChart(sinceMonth, toMonth);
-    }
 
     @Override
     public Integer getPriceOfTicket(String expiryDate, String effectiveDate, double rate) {
@@ -48,6 +45,63 @@ public class TicketService implements ITicketService {
     public void updateTicket(Long ticketTypeId, Long floorId, Long sectionId, String expiryDate, Long id) {
         iTicketRepository.updateTicket(ticketTypeId, floorId, sectionId, expiryDate, id);
 
+    }
 
+    @Override
+    public Page<TicketOfListDto> searchTicketList(String customerName, String customerPhone, String employeeName, String employeePhone, String floor, String expiryDate, String ticketType, int status, Pageable pageable) {
+        return iTicketRepository.search(customerName, customerPhone, employeeName, employeePhone, floor, expiryDate, ticketType, status, pageable);
+    }
+
+    @Override
+    public Page<TicketOfListDto> searchTicketExpired(String customerName, String customerPhone, String employeeName, String employeePhone, String floor, String ticketType, Pageable pageable) {
+        return iTicketRepository.searchTicketExpired(customerName, customerPhone, employeeName, employeePhone, floor, ticketType, pageable);
+    }
+
+    @Override
+    public boolean delete(int idDelete) {
+        try {
+            iTicketRepository.delete(idDelete);
+            return true;
+        } catch (Exception e) {
+            System.out.println("Lỗi");
+            return false;
+        }
+    }
+
+    @Override
+    public TicketOfListDto findTicketDetailById(int id) {
+        return iTicketRepository.findById(id);
+
+
+    }
+
+    @Override
+    public Integer getTotalStatisticalTicketChart(int sinceMonth, int toMonth, int month) {
+        return iTicketRepository.getTotalOfTicket(sinceMonth,toMonth,month);
+    }
+
+    @Override
+    public Integer getTotalStatisticalCustomerChart(int sinceMonth, int toMonth, int month) {
+        return iTicketRepository.getTotalOfCustomer(sinceMonth,toMonth,month);
+    }
+
+    @Override
+    public Integer[] getValue(int sinceMonth, int toMonth) {
+        Integer[] dd = new Integer[toMonth - sinceMonth + 1];
+        System.out.println(dd.toString());
+        for (int i = sinceMonth; i <= toMonth; i++) {
+            dd[i-sinceMonth] = iTicketRepository.getTotalOfCustomer(sinceMonth, toMonth, i);
+        }
+        return dd;
+    }
+
+    @Override
+    public Integer[] getTicketList(int sinceMonth, int toMonth) {
+        Integer[] dd = new Integer[toMonth - sinceMonth + 1];
+        System.out.println(dd.toString());
+        for (int i = sinceMonth; i <= toMonth; i++) {
+            dd[i-sinceMonth] = iTicketRepository.getTotalOfTicket(sinceMonth, toMonth, i);
+        }
+        return dd;
     }
 }

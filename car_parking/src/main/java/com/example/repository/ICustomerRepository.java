@@ -22,16 +22,6 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
     ICustomerDto getCustomerById(@Param("id") int id);
 
 
-    @Query(value = "SELECT COUNT(customer.id) " +
-            "FROM car " +
-            "JOIN ticket ON car.id = ticket.car_id " +
-            "JOIN customer ON customer.id = car.customer_id " +
-            "WHERE MONTH(ticket.effective_date) >= :sinceMonth " +
-            "  AND MONTH(ticket.expiry_date) <= :toMonth " +
-            "  AND YEAR(ticket.effective_date) = YEAR(ticket.expiry_date)"+
-            " GROUP BY customer.name", nativeQuery = true)
-    List<ICustomerDto> getStatisticalChart(@Param("sinceMonth") int sinceMonth,@Param("toMonth") int toMonth);
-
     @Query(value = "select car.id as id , car.name as name from car join customer on car.customer_id = customer.id where customer.id = :id", nativeQuery = true)
     List<ICarDto> findCarListOfCustomerId(@Param("id") int id);
 

@@ -56,14 +56,23 @@ public class Employee {
 
 
 
+
+
     public Employee(Long id) {
-        this.id= id;
+        this.id = id;
     }
 
     public Employee() {
 
     }
 
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
 
     public Long getId() {
         return id;
@@ -168,7 +177,4 @@ public class Employee {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-
-
 }

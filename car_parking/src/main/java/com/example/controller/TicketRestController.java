@@ -2,13 +2,13 @@ package com.example.controller;
 
 import com.example.dto.*;
 import com.example.model.*;
-import com.example.service.ICustomerService;
-import com.example.service.IEmployeeService;
-import com.example.service.ILocationService;
-import com.example.service.ITicketService;
-import com.example.service.ITicketTypeService;
+import com.example.service.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -21,7 +21,7 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/ticket")
-public class TicketController {
+public class TicketRestController {
     @Autowired
     private ITicketService iTicketService;
     @Autowired
@@ -32,6 +32,8 @@ public class TicketController {
     private IEmployeeService iEmployeeService;
     @Autowired
     private ICustomerService iCustomerService;
+    @Autowired
+    private IFloorService iFloorService;
 
 
     /**
@@ -45,7 +47,7 @@ public class TicketController {
     @PostMapping("/createTicket")
     public ResponseEntity<Ticket> createTicket(@Validated @RequestBody TicketDto ticketDto, BindingResult bindingResult) {
         new TicketDto().validate(ticketDto, bindingResult);
-        if (bindingResult.hasErrors()) {
+         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Ticket ticket = new Ticket();
@@ -71,6 +73,7 @@ public class TicketController {
         }
         return new ResponseEntity<>(iTicketTypes, HttpStatus.OK);
     }
+
 
     /**
      * Created by: HuyNV
@@ -156,6 +159,24 @@ public class TicketController {
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
+    /**
+     * Created by: HuyNV
+     * Date created: 29/03/2023
+     * Function: getStatisticalCustomerChart
+     *
+     * @param
+     * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
+     */
+    @GetMapping("/statisticalCustomerChart")
+    public ResponseEntity<Integer[]> getTotalStatisticalCustomerChart(@RequestParam(value = "sinceMonth", defaultValue = "") int sinceMonth
+            , @RequestParam(value = "toMonth",defaultValue = "") int toMonth) {
+        Integer[] customers = iTicketService.getValue(sinceMonth, toMonth);
+        if (customers == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
+
 
     /**
      * Created by: HuyNV
@@ -165,31 +186,18 @@ public class TicketController {
      * @param
      * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
      */
-    @GetMapping("/statisticalTicketChart/{sinceMonth}/{toMonth}")
-    public ResponseEntity<List<ITicketDto>> getStatisticalTicketChart(@PathVariable int sinceMonth,@PathVariable int toMonth) {
-        List<ITicketDto> tickets = iTicketService.statisticalChart(sinceMonth, toMonth);
-        if (tickets.isEmpty()) {
+    @GetMapping("/statisticalTicketChart")
+    public ResponseEntity<Integer[]> getTotalStatisticalTicketChart(
+            @RequestParam(value = "sinceMonth", defaultValue = "") int sinceMonth
+            , @RequestParam(value = "toMonth",defaultValue = "") int toMonth) {
+        Integer[] tickets = iTicketService.getTicketList(sinceMonth, toMonth);
+        if (tickets == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(tickets, HttpStatus.OK);
     }
 
-    /**
-     * Created by: HuyNV
-     * Date created: 29/03/2023
-     * Function: getStatisticalCustomerChart
-     *
-     * @param
-     * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
-     */
-    @GetMapping("/statisticalCustomerChart/{sinceMonth}/{toMonth}")
-    public ResponseEntity<List<ICustomerDto>> getStatisticalCustomerChart(@PathVariable int sinceMonth, @PathVariable int toMonth) {
-        List<ICustomerDto> customerDtoList = iCustomerService.statisticalChart(sinceMonth, toMonth);
-        if (customerDtoList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<>(customerDtoList, HttpStatus.OK);
-    }
+
 
     /**
      * Created by: HuyNV
@@ -214,6 +222,14 @@ public class TicketController {
         return new ResponseEntity<>(price, HttpStatus.OK);
     }
 
+    /**
+     * Created by: HuyNV
+     * Date created: 29/03/2023
+     * Function: getStatisticalCustomerChart
+     *
+     * @param
+     * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
+     */
     @GetMapping("/findCarListOfCustomerId/{id}")
     public ResponseEntity<List<ICarDto>> findCarListOfCustomerId(@PathVariable("id") int id) {
         List<ICarDto> iCarDto = iCustomerService.findCarListOfCustomerId(id);
@@ -223,16 +239,25 @@ public class TicketController {
         return new ResponseEntity<>(iCarDto, HttpStatus.OK);
     }
 
-    @GetMapping("/displayMonth/{sinceMonth}/{toMonth}")
-    public ResponseEntity<?> getMonth(@PathVariable int sinceMonth,@PathVariable int toMonth) {
-        List<ITicketDto> tickets = iTicketService.displayMonth(sinceMonth, toMonth);
-        if (tickets.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<>(tickets, HttpStatus.OK);
-    }
+
+    /**
+     * Created by: HuyNV
+     * Date created: 29/03/2023
+     * Function: getStatisticalCustomerChart
+     *
+     * @param
+     * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
+     */
 
 
+    /**
+     * Created by: HuyNV
+     * Date created: 29/03/2023
+     * Function: getStatisticalCustomerChart
+     *
+     * @param
+     * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
+     */
     @GetMapping("/rate/{id}")
     public ResponseEntity<Double> getRate(@PathVariable("id") int id) {
         double rate = iCustomerService.findRateById(id);
@@ -280,6 +305,127 @@ public class TicketController {
                 editTicketDto.getId()
         );
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+    /**
+     * Created by: NhanPT
+     * Date create: 29/02/2023
+     * Function: searchTicket
+     *
+     * @param: customerName,
+     * customerPhone,
+     * employeeName,
+     * employeePhone,
+     * floor,
+     * expiryDate,
+     * ticketType,
+     * status,
+     * page,
+     * size
+     * @return: HttpStatus.NO_CONTENT when not has content or Page<Ticket> and HttpStatus.Ok when has content
+     */
+
+    @GetMapping("/search")
+    public ResponseEntity<Page<TicketOfListDto>> searchTicket(@RequestParam(value = "customerName", defaultValue = "") String customerName,
+                                                              @RequestParam(value = "customerPhone", defaultValue = "") String customerPhone,
+                                                              @RequestParam(value = "employeeName", defaultValue = "") String employeeName,
+                                                              @RequestParam(value = "employeePhone", defaultValue = "") String employeePhone,
+                                                              @RequestParam(value = "floor", defaultValue = "") String floor,
+                                                              @RequestParam(value = "expiryDate", defaultValue = "") String expiryDate,
+                                                              @RequestParam(value = "ticketType", defaultValue = "") String ticketType,
+                                                              @RequestParam(value = "status", defaultValue = "0") int status,
+                                                              @RequestParam(value = "page", defaultValue = "0") int page,
+                                                              @RequestParam(value = "size", defaultValue = "5") int size) {
+        Sort sort = Sort.by(Sort.Direction.ASC, "TicketId");
+
+        Pageable pageable = PageRequest.of(page, size, sort);
+        Page<TicketOfListDto> ticketPage;
+        if (status == 3) {
+            ticketPage = iTicketService.searchTicketExpired(customerName, customerPhone, employeeName, employeePhone, floor, ticketType, pageable);
+        } else {
+            ticketPage = iTicketService.searchTicketList(customerName, customerPhone, employeeName, employeePhone, floor, expiryDate, ticketType, status, pageable);
+        }
+        if (!ticketPage.hasContent()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(ticketPage, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * Created by: NhanPT
+     * Date create: 29/02/2023
+     * Function: findAllFloor
+     *
+     * @param: not parameter
+     * @return: HttpStatus.NO_CONTENT when not has content or List<Floor> and HttpStatus.Ok when has content
+     */
+
+    @GetMapping("/floor")
+    public ResponseEntity<List<Floor>> findAllFloor() {
+        List<Floor> floorList = iFloorService.getAllFloor();
+        if (floorList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(floorList, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * Created by: NhanPT
+     * Date create: 29/02/2023
+     * Function: findAllTicketType
+     *
+     * @param: no parameter
+     * @return: HttpStatus.NO_CONTENT when not has content or List<Floor> and HttpStatus.Ok when has content
+     */
+
+    @GetMapping("/ticketType")
+    public ResponseEntity<List<TicketType>> findAllTicketType() {
+        List<TicketType> ticketTypeList = iTicketTypeService.findAll();
+        if (ticketTypeList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(ticketTypeList, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * Created by: NhanPT
+     * Date create: 29/02/2023
+     * Function: detailTicket
+     *
+     * @param: id
+     * @return: HttpStatus.NO_CONTENT when result null or Ticket and HttpStatus.Ok when result not null
+     */
+
+    @GetMapping("detail/{id}")
+    public ResponseEntity<TicketOfListDto> detailTicket(@PathVariable("id") int id) {
+        TicketOfListDto ticket = iTicketService.findTicketDetailById(id);
+        if (ticket == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(ticket, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * Created by: NhanPT
+     * Date create: 29/02/2023
+     * Function: deleteTicket
+     *
+     * @param: id
+     * @return: HttpStatus.INTERNAL_SERVER_ERROR when exception occurs or Ticket and HttpStatus.Ok when delete success
+     */
+
+    @DeleteMapping("delete/{idDelete}")
+    public ResponseEntity<Boolean> deleteTicket(@PathVariable("idDelete") int idDelete) {
+        if (iTicketService.delete(idDelete)) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }
