@@ -21,6 +21,13 @@ public class Role {
     public Role() {
     }
 
+
+    public Role(Long id, String name, Set<AccountRole> accountRoleSet) {
+        this.id = id;
+        this.name = name;
+        this.accountRoleSet = accountRoleSet;
+    }
+
     public Long getId() {
         return id;
     }
@@ -44,4 +51,6 @@ public class Role {
     public void setAccountRoleSet(Set<AccountRole> accountRoleSet) {
         this.accountRoleSet = accountRoleSet;
     }
+
 }
+
