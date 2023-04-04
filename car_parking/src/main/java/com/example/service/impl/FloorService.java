@@ -17,4 +17,13 @@ public class FloorService implements IFloorService {
     public List<Floor> FloorList() {
         return iFloorRepository.FloorList();
     }
+    @Override
+    public List<Floor> getAllFloor() {
+        return iFloorRepository.findAllForTicket();
+
+    }
+
+    public List<Floor> findAll() {
+        return iFloorRepository.findAllForTicket();
+    }
 }

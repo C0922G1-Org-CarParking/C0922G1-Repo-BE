@@ -3,9 +3,27 @@ package com.example.service;
 import com.example.dto.ICarInOutDTO;
 import com.example.model.CarInOut;
 
-public interface ICarInOutService {
-    void saveCarInOut(CarInOut carInOut);
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-    ICarInOutDTO searchCarInOut(String plateNumber);
+import java.util.List;
+
+public interface ICarInOutService {
+    void saveCarIn(CarInOut carInOut);
+
+    ICarInOutDTO searchCarInDto(String plateNumber);
+
+    void saveCarOut(CarInOut carOut);
+
+    ICarInOutDTO searchCarOutDTO(String plateNumber);
+
+    List<ICarInOutDTO> searchCarInDtoByNameByCustomerNameByPhoneNumber(String carPlateNumber,
+                                                                       String customerName,
+                                                                       String customerPhoneNumber);
+
+    List<ICarInOutDTO> searchCarOutDTOByCustomerNameByPhoneNumberByPlateNumber(String carPlateNumber,
+                                                                               String customerName,
+                                                                               String customerPhoneNumber);
+
 
 }
