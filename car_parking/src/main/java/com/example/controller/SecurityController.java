@@ -45,8 +45,8 @@ public class SecurityController {
     @Autowired
     private IAccountService accountService;
 
-//    @Autowired
-//    private IEmployeeService employeeService;
+    @Autowired
+    private IEmployeeService employeeService;
 
     @Autowired
     private JavaMailSender emailSender;
@@ -75,8 +75,7 @@ public class SecurityController {
                         jwt,
                         userDetails.getUsername(),
                         //inject employeeService để lấy tên
-                        "sdsd",
-//                        employeeService.findByEmail(loginRequest.getUsername()).getName(),
+                        employeeService.findByEmail(loginRequest.getUsername()).getName(),
                         roles)
         );
     }
@@ -130,15 +129,13 @@ public class SecurityController {
         }
         if(!checkNewPassword){
             bindingResult.rejectValue("confirmNewPassword","confirmNewPasswordError","Mật khẩu xác nhận phải giống mật khẩu mới.");
-        };
+        }
+        new ResetPasswordRequest().validate(resetPasswordRequest,bindingResult);
         if(bindingResult.hasErrors()){
             return new ResponseEntity<>(bindingResult.getFieldErrors(),HttpStatus.BAD_REQUEST);
-        }
-        if(checkPassword && checkNewPassword) {
-            accountService.saveNewPassword(resetPasswordRequest.getNewPassword(), account.getId());
+        }else {
             return new ResponseEntity<>(HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageResponse("Thay đổi mật khẩu thất bại."),HttpStatus.BAD_REQUEST);
     }
 
     /**

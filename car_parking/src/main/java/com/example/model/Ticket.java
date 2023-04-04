@@ -36,6 +36,8 @@ public class Ticket {
 
     private boolean isDeleted;
 
+    @Column(nullable = false)
+
     public boolean isDeleted() {
         return isDeleted;
     }
@@ -118,4 +120,5 @@ public class Ticket {
     public void setLocation(Location location) {
         this.location = location;
     }
+
 }
