@@ -68,7 +68,6 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
     Page<Employee> searchDateOfBirth(Pageable pageable,@Param("name") String name,@Param("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy")  String startDate,
                                        @Param("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate, @Param("street") String street, @Param("province") int province);
 
-
     /**
      * Created by: TaiLH
      * Date created: 29/03/2022

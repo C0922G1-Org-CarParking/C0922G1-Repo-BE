@@ -135,22 +135,16 @@ public class LocationService implements ILocationService {
         return checkMap;
     }
 
-    // Created by: TanTH
-    @Override
-    public void checkFloor(Long floorId) {
-        iLocationRepository.checkFloor(floorId);
-    }
 
     // Created by: TanTH
     @Override
-    public void checkSection(Long floorId, Long sectionId) {
-        iLocationRepository.checkSection(floorId, sectionId);
-    }
-
-    // Created by: TanTH
-    @Override
-    public void checkName(Long floorId, Long sectionId) {
-        iLocationRepository.checkSection(floorId, sectionId);
+    public int checkMaxName(Long floorId, Long sectionId) {
+        try{
+            iLocationRepository.checkMaxName(floorId,sectionId);
+        }catch (Exception r){
+            return 0;
+        }
+        return iLocationRepository.checkMaxName(floorId,sectionId)[0];
     }
 
     // Created by: TanTH

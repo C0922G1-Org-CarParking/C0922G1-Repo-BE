@@ -23,9 +23,7 @@ public interface ILocationService {
     void updateLocation(Long name , Double width ,Double height, Double length, Long floorId, Long sectionId, Long Id);
     Map<String, String> checkCreate(LocationDto locationDto);
     Map<String, String> checkUpdate(LocationDto locationDto);
-    void checkFloor(Long floorId);
-    void checkSection(Long floorId, Long sectionId);
-    void checkName(Long floorId,Long sectionId);
+    int checkMaxName(Long floorId, Long sectionId);
     ILocationView findLocationById(Long id);
     void deleteLocation(Long id);
     Location findLocationId(Long id);
