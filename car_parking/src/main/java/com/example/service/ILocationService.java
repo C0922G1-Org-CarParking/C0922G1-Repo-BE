@@ -1,6 +1,4 @@
 package com.example.service;
-
-import com.example.dto.CheckLocation;
 import com.example.dto.ILocationDto;
 import com.example.dto.LocationDto;
 import com.example.model.Location;
@@ -16,8 +14,8 @@ public interface ILocationService {
     Map<String, String> checkCreate(LocationDto locationDto);
     Map<String, String> checkUpdate(LocationDto locationDto);
     void checkFloor(Long floorId);
-    void checkSection(Long floorId, Long sectionId);
-    void checkName(Long floorId,Long sectionId);
+    int checkMaxName(Long floorId, Long sectionId);
+
     ILocationDto findLocationById(Long id);
 
 

@@ -73,14 +73,18 @@ public class LocationService implements ILocationService {
     }
 
     @Override
-    public void checkSection(Long floorId, Long sectionId) {
-        iLocationRepository.checkSection(floorId, sectionId);
+    public int checkMaxName(Long floorId, Long sectionId) {
+        try{
+            iLocationRepository.checkMaxName(floorId,sectionId);
+        }catch (Exception r){
+            return 0;
+        }
+
+      return iLocationRepository.checkMaxName(floorId,sectionId)[0];
+
     }
 
-    @Override
-    public void checkName(Long floorId, Long sectionId) {
-        iLocationRepository.checkSection(floorId, sectionId);
-    }
+
 
     @Override
     public ILocationDto findLocationById(Long id) {

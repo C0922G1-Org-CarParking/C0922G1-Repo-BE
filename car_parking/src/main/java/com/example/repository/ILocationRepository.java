@@ -2,6 +2,7 @@ package com.example.repository;
 
 import com.example.dto.CheckLocation;
 import com.example.dto.ILocationDto;
+import com.example.dto.LocationDto;
 import com.example.model.Location;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -14,7 +15,7 @@ import java.util.List;
 
 
 @Repository
-public interface ILocationRepository extends JpaRepository<Location, Long> {
+public interface ILocationRepository extends JpaRepository<Location, Integer> {
      @Modifying
     @Transactional
     @Query(value = "insert into location(\n" +
@@ -78,12 +79,9 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
 
     @Modifying
     @Transactional
-    @Query(value = "select count(section_id) from  location where floor_id = :floor_id and section_id = :section_id ", nativeQuery = true)
-    void checkSection(@Param("floor_id") Long floorId, @Param("section_id") Long sectionId);
-    @Modifying
-    @Transactional
-    @Query(value = "select max(name) as name from location", nativeQuery = true)
-    CheckLocation checkName();
+    @Query(value = "select max(name) from `location` where floor_id = :floor_id and section_id = :section_id limit 1", nativeQuery = true)
+    int[] checkMaxName(@Param("floor_id") Long floorId,@Param("section_id") Long sectionId);
+
 
     @Query(value = "select f.name as floorName, s.name as sectionName, location.name as locationName from location join floor f on f.id = location.floor_id join section s on s.id = location.section_id  where location.id =:id",nativeQuery = true)
     ILocationDto findLocationById(@Param("id") Long id);
