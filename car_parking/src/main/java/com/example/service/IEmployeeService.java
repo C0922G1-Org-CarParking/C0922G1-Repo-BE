@@ -28,7 +28,7 @@ public interface IEmployeeService {
      * @param street
      * @return
      */
-    Page<Employee> searchAll(Pageable pageable, String name, String startDate, String endDate, String street);
+    Page<Employee> searchAll(Pageable pageable, String name, String startDate, String endDate, String street, int province);
 
     /**
      * Created by: TaiLH
@@ -41,7 +41,7 @@ public interface IEmployeeService {
      * @param street
      * @return
      */
-    Page<Employee> searchDateOfBirth(Pageable pageable, String name, String startDate, String endDate, String street);
+    Page<Employee> searchDateOfBirth(Pageable pageable, String name, String startDate, String endDate, String street, int province);
 
     /**
      * Created by: TaiLH
@@ -49,7 +49,7 @@ public interface IEmployeeService {
      * function: soft delete employee by id
      * @param id
      */
-    void softDeleteById(@Param("id") Long id);
+    boolean softDeleteById(@Param("id") Long id);
 
     /**
      * Created by: TaiLH
