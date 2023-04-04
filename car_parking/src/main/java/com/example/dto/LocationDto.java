@@ -16,7 +16,6 @@ public class LocationDto implements Validator {
     private Long name;
     private boolean isOccupied;
     @Min(value = 0 , message = "không được nhập số âm")
-<<<<<<< HEAD
     @NotNull(message = "không được để trống")
     private Double width;
     @Min(value = 0 , message = "không được nhập số âm")
@@ -25,14 +24,6 @@ public class LocationDto implements Validator {
     @Min(value = 0 , message = "không được nhập số âm")
     @NotNull(message = "không được để trống")
     private Double length;
-=======
-    private double width;
-    @Min(value = 0 , message = "không được nhập số âm")
-    private double height;
-    @Min(value = 0 , message = "không được nhập số âm")
-    private double length;
-
->>>>>>> origin/develop
     private String[] permissionCarTypeLocations;
     private Section section;
     private Floor floor;

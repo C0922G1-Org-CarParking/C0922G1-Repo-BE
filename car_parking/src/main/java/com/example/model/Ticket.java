@@ -12,8 +12,7 @@ public class Ticket {
     private String effectiveDate;
     @Column(nullable = false, columnDefinition = "date")
     private String expiryDate;
-
-
+    @Column(nullable = false)
     private double totalPrice;
 
     @Column(nullable = false)
@@ -36,8 +35,6 @@ public class Ticket {
     private Location location;
 
     private boolean isDeleted;
-
-    @Column(nullable = false)
 
     public boolean isDeleted() {
         return isDeleted;
@@ -121,5 +118,4 @@ public class Ticket {
     public void setLocation(Location location) {
         this.location = location;
     }
-
 }

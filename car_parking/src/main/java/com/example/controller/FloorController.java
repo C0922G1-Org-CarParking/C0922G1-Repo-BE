@@ -19,9 +19,13 @@ public class FloorController {
 
     @Autowired
     private IFloorService iFloorService;
-
+    /**
+     * Created by: TanTH
+     * Date created: 04/04/2023
+     * Function: list floor
+     */
     @GetMapping("")
-    public ResponseEntity<List<Floor>> getAllTrademark() {
+    public ResponseEntity<List<Floor>> getAllFloor() {
         List<Floor> floorList = iFloorService.FloorList();
         if (floorList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -16,6 +16,12 @@ public class SectionController {
     @Autowired
     private ISectionService iSectionService;
 
+    /**
+     * Created by: TanTH
+     * Date created: 04/04/2023
+     * Function: list section
+     */
+
     @GetMapping("")
     public ResponseEntity<List<Section>> getSectionList(@RequestParam("floor") Long floor) {
         List<Section> sectionList = iSectionService.sectionList(floor);
@@ -24,6 +30,11 @@ public class SectionController {
         }
         return new ResponseEntity<>(sectionList, HttpStatus.OK);
     }
+    /**
+     * Created by: TanTH
+     * Date created: 04/04/2023
+     * Function: list section
+     */
     @GetMapping("/list")
     public ResponseEntity<List<Section>> getSectionList1() {
         List<Section> sectionList = iSectionService.sectionList1();

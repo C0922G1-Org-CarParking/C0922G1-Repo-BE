@@ -47,5 +47,4 @@ public class AccountRole {
     public void setAccountRoleId(Long accountRoleId) {
         this.accountRoleId = accountRoleId;
     }
-
 }

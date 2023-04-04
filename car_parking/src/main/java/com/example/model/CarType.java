@@ -17,15 +17,6 @@ public class CarType {
     @Column(nullable = false)
     private double rate;
 
-
-    public CarType(Long id, String name, double rate, Set<Car> carSet) {
-        this.id = id;
-        this.name = name;
-        this.rate = rate;
-        this.carSet = carSet;
-    }
-
-
     @OneToMany(mappedBy = "carType")
     @JsonIgnore
     private Set<Car> carSet;
@@ -65,5 +56,4 @@ public class CarType {
     public void setCarSet(Set<Car> carSet) {
         this.carSet = carSet;
     }
-
 }

@@ -3,9 +3,7 @@ package com.example.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 import java.util.Set;
-
 
 @Entity
 public class Location {
@@ -14,7 +12,6 @@ public class Location {
     private Long id;
 
     @Column(length = 45, nullable = false)
-
     private Long name;
 
     private boolean isOccupied;
@@ -135,5 +132,3 @@ public class Location {
         this.ticketSet = ticketSet;
     }
 }
-
-

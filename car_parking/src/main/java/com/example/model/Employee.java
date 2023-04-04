@@ -2,8 +2,6 @@ package com.example.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import org.hibernate.annotations.Where;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -43,7 +41,6 @@ public class Employee {
     private boolean isDeleted;
 
     @OneToOne(mappedBy = "employee")
-    @JsonIgnore
     private Account account;
 
     @ManyToOne
@@ -178,4 +175,3 @@ public class Employee {
         this.ticketSet = ticketSet;
     }
 }
-

@@ -18,26 +18,8 @@ public class Section {
     @JsonIgnore
     private Set<Location> locationSet;
 
-    public Section(long id) {
-        this.id = id;
-    }
-
-
-    public Section(Long id, String name, Set<Location> locationSet) {
-        this.id = id;
-        this.name = name;
-        this.locationSet = locationSet;
-    }
 
     public Section() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Long getId() {
@@ -48,6 +30,13 @@ public class Section {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Set<Location> getLocationSet() {
         return locationSet;
@@ -56,5 +45,4 @@ public class Section {
     public void setLocationSet(Set<Location> locationSet) {
         this.locationSet = locationSet;
     }
-
 }
