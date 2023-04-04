@@ -11,22 +11,15 @@ import org.springframework.validation.Validator;
 import javax.validation.constraints.*;
 
 public class TicketDto implements Validator {
-
-    private Long id;
-    @Size(max = 20 , min = 2 , message = "dài nhất 12 kí tự , ngắn nhất 2 kí tự")
-    @NotBlank(message = "Không được để trống")
-    @Pattern(regexp = "^\\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\\d|3[01])$",message = "Đúng định dạng dd/mm/yyyy" )
     private String effectiveDate;
-    @Pattern(regexp = "^\\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\\d|3[01])$",message = "Đúng định dạng dd/mm/yyyy" )
-    @NotBlank(message = "Không được để trống")
-    @Size(max = 20,min = 2 , message = "Dài nhất 12 kí tự , ít nhất 2 kí tự ")
+//    @NotBlank(message = "Không được để trống")
+//    @Size(max = 20,min = 2 , message = "Dài nhất 12 kí tự , ít nhất 2 kí tự ")
     private String expiryDate;
     @NotNull(message = "Không được để trống")
     private TicketType ticketType;
     @NotNull(message = "Không được để trống")
     private Car car;
-    @NotNull(message = "Không được để trống")
-    private Employee employee;
+
     @NotNull(message = "Không được để trống")
     @Min(value = 0 , message = "Nhỏ nhất là 0")
     private Double totalPrice;
@@ -36,17 +29,8 @@ public class TicketDto implements Validator {
     @NotNull(message = "Không được để trống")
     @Min(value = 0 , message = "Nhỏ nhất là 0")
     private Double price;
-
-    public TicketDto() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @NotNull(message = "Không được để trống")
+    private Employee employee;
 
     public String getEffectiveDate() {
         return effectiveDate;
@@ -80,14 +64,6 @@ public class TicketDto implements Validator {
         this.car = car;
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
     public Double getTotalPrice() {
         return totalPrice;
     }
@@ -118,6 +94,14 @@ public class TicketDto implements Validator {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     @Override

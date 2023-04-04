@@ -60,14 +60,14 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
                    @Param("expiryDate") String expiryDate,
                    @Param("isDeleted") boolean isDeleted,
                    @Param("totalPrice") double totalPrice,
-                   @Param("carId") Long carId, @Param("employeeId") Long employeeId,
+                   @Param("carId") Long carId,
+                   @Param("employeeId") Long employeeId,
                    @Param("locationId") Long locationId,
                    @Param("ticketTypeId") Long ticketTypeId,
                    @Param("price") Double price);
 
-
     @Query(value = "SELECT DATEDIFF(:expiry_date, :effective_date ) * 15000 * :rate ", nativeQuery = true)
-    Double getPriceOfTicket(@Param("expiry_date") Date expiry_date
+    Integer getPriceOfTicket(@Param("expiry_date") Date expiry_date
             , @Param("effective_date") Date effective_date,
                              @Param("rate") double rate);
 
@@ -146,38 +146,34 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
             "            t.expiry_date < curdate() and\n" +
             "            tt.name like concat('%',:ticketType,'%') and\n" +
             "            t.is_deleted = 0")
-    Page<TicketOfListDto> searchTicketExpired(@Param("customerName") String customerName,
-                                              @Param("customerPhone") String customerPhone,
-                                              @Param("employeeName") String employeeName,
-                                              @Param("employeePhone") String employeePhone,
-                                              @Param("floor") String floor,
-                                              @Param("ticketType") String ticketType, Pageable pageable);
+    Page<TicketOfListDto> searchTicketExpired(@Param("customerName")String customerName,
+                                              @Param("customerPhone")String customerPhone,
+                                              @Param("employeeName")String employeeName,
+                                              @Param("employeePhone")String employeePhone,
+                                              @Param("floor")String floor,
+                                              @Param("ticketType")String ticketType, Pageable pageable);
+
+    @Query(value = "SELECT COUNT(ticket.id) " +
+            "FROM car " +
+            "JOIN ticket ON car.id = ticket.car_id " +
+            "WHERE MONTH(ticket.effective_date) >= :sinceMonth " +
+            "  AND MONTH(ticket.expiry_date) <= :toMonth " +
+            "  AND YEAR(ticket.effective_date) = YEAR(ticket.expiry_date) " +
+            "  AND (MONTH(ticket.effective_date) =:month )", nativeQuery = true)
+    Integer getTotalOfTicket(@Param("sinceMonth") int sinceMonth,
+                             @Param("toMonth") int toMonth,
+                             @Param("month") int month);
 
 
-    /**
-     * Create by: VuBD
-     * Date create: 30/03/2023
-     * Function: connect database to get data a ticket with corresponding id
-     *
-     * @param carId
-     * @return
-     */
-    @Query(value = "SELECT ticket.id FROM c0922g1_car_parking.ticket where car_id = :carId " +
-            "and is_deleted = 0 " +
-            "and expiry_date >= CURRENT_DATE()", nativeQuery = true)
-    int[] findTicketByCarId(@Param("carId") int carId);
-
-    /**
-     * Create by: VuBD
-     * Date create: 03/04/2023
-     * Function: connect database to delete a ticket with corresponding id
-     *
-     * @param carId
-     */
-    @Transactional
-    @Modifying
-    @Query(value = "UPDATE c0922g1_car_parking.ticket SET is_deleted = 1  WHERE car_id = :carId", nativeQuery = true)
-    void deleteTicketByCarId(@Param("carId") int carId);
-
+    @Query(value = "SELECT COUNT(distinct customer.phone_number)" +
+            " FROM customer " +
+            " JOIN car ON customer.id = car.customer_id " +
+            " JOIN ticket ON car.id = ticket.car_id" +
+            " WHERE MONTH(ticket.effective_date) >=:sinceMonth AND MONTH(ticket.expiry_date) <= :toMonth " +
+            "AND YEAR(ticket.effective_date) = YEAR(ticket.expiry_date) " +
+            "AND MONTH(ticket.effective_date) = :month" , nativeQuery = true)
+    Integer getTotalOfCustomer(@Param("sinceMonth") int sinceMonth,
+                               @Param("toMonth") int toMonth,
+                               @Param("month") int month);
 }
 

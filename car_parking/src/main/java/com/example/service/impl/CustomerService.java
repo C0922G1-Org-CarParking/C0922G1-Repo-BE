@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import com.example.dto.ICarOfTicketDTO;
 import com.example.dto.ICarTicketDto;
 import com.example.dto.ICustomerDTO;
 import com.example.repository.ICustomerRepository;
@@ -51,7 +52,7 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public List<ICarTicketDto> findCarListOfCustomerId(int id) {
+    public List<ICarOfTicketDTO> findCarListOfCustomerId(int id) {
         return iCustomerRepository.findCarListOfCustomerId(id);
     }
 
@@ -174,21 +175,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public long deleteCustomer(int id) {
-        if (customerRepository.findCustomerById(id) != null) {
-            int[] carIds = carRepository.findCarByCustomerId(id);
-            for (int i = 0; i < carIds.length; i++) {
-                int[] ticketIds = ticketRepository.findTicketByCarId(carIds[i]);
-                if (ticketIds.length != 0) {
-                    return 0;
-                }
-            }
-            if (carIds.length != 0) {
-                carRepository.deleteCarByCustomerId(id);
-            }
-            customerRepository.deleteCustomer(id);
-            return 1;
-        }
-        return -1;
+        return 1;
     }
 
     @Override
@@ -198,11 +185,6 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void deleteCustomerAndTicket(int id) {
-        int[] carIds = carRepository.findCarByCustomerId(id);
-        for (int i = 0; i < carIds.length; i++) {
-            ticketRepository.deleteTicketByCarId(carIds[i]);
-        }
-        carRepository.deleteCarByCustomerId(id);
-        customerRepository.deleteCustomer(id);
+
     }
 }

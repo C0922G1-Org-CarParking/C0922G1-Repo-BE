@@ -1,6 +1,6 @@
 package com.example.service;
 
-import com.example.dto.ICarTicketDto;
+import com.example.dto.ICarOfTicketDTO;
 import com.example.dto.ICustomerDTO;
 import com.example.model.Customer;
 import org.springframework.data.domain.Page;
@@ -17,9 +17,12 @@ public interface ICustomerService {
 
     ICustomerDTO findCustomerId(int id);
 
+
     List<ICustomerDTO> statisticalChart(int sinceMonth, int toMonth);
 
-    List<ICarTicketDto> findCarListOfCustomerId(int id);
+
+    List<ICarOfTicketDTO> findCarListOfCustomerId(int id);
+
 
     double findRateById(int id);
 
