@@ -1,4 +1,4 @@
-package com.example.controller.location;
+package com.example.controller;
 
 import com.example.dto.ILocationDto;
 import com.example.service.location.ILocationService;
@@ -38,16 +38,6 @@ public class LocationController {
         }
     }
 
-//    @GetMapping("/list")
-//    public ResponseEntity<Page<ILocationDto>> showList(@RequestParam(defaultValue = "", required = false) String search, @PageableDefault(size = 2,page = 0) Pageable pageable) {
-//        Page<ILocationDto> locationDtos = locationService.showList(pageable, search);
-//        if (locationDtos == null) {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//        return new ResponseEntity<>(locationDtos, HttpStatus.OK);
-//    }
-
-
     @GetMapping("/list")
     public ResponseEntity<Page<ILocationDto>> showList(
             @RequestParam(defaultValue = "") String search,
@@ -58,6 +48,4 @@ public class LocationController {
         }
         return new ResponseEntity<>(locationDto, HttpStatus.OK);
     }
-
-
 }

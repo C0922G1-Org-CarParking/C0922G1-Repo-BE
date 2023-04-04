@@ -33,5 +33,4 @@ public interface ICarInOutRepository extends JpaRepository<CarInOut, Long> {
                       @Param("timeIn") String timeIn,
                       @Param("timeOut") String timeOut);
 
-
 }
