@@ -127,7 +127,7 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
     TicketOfListDto findById(@Param("id") int id);
     /**
      * this method no param expiredDate and status
-    * */
+     * */
     @Query(nativeQuery = true, value = "select t.id as TicketId, c.plate_number as PlateNumber, cus.name as CustomerName, cus.phone_number as CustomerPhoneNumber,\n" +
             "            e.name as EmployeeName, e.phone_number as EmployeePhoneNumber, tt.name as TicketType, \n" +
             "             DATEDIFF(t.expiry_date , t.effective_date) * t.price * ct.rate as TotalPrice, \n" +
