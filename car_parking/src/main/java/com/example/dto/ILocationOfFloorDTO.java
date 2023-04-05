@@ -1,6 +1,6 @@
 package com.example.dto;
 
-public interface ILocationOfFloor {
+public interface ILocationOfFloorDTO {
     public Long getId();
     public String getName();
 }

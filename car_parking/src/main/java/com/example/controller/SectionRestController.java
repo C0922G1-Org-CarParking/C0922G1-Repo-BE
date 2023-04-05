@@ -11,8 +11,8 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/section")
-public class SectionController {
+@RequestMapping("api/user/section")
+public class SectionRestController {
     @Autowired
     private ISectionService iSectionService;
 

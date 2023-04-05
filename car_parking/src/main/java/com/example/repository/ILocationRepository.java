@@ -37,7 +37,7 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
             " left join car on car.id=ticket.car_id\n" +
             " left join car_type on car_type.id=car.car_type_id\n" +
             " left join customer on car.customer_id=customer.id where location.id=:id  and ticket.expiry_date >=curdate()    ", nativeQuery = true)
-    ILocationDetailDto findLocationById(@Param("id") int id);
+    ILocationDetailDTO findLocationById(@Param("id") int id);
 // Created by: TheNV
 
 
@@ -111,13 +111,14 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
      * Function: checkMaxName location
      */
 
+
     @Modifying
     @Transactional
     @Query(value = "select max(name) from `location` where floor_id = :floor_id and section_id = :section_id limit 1", nativeQuery = true)
     int[] checkMaxName(@Param("floor_id") Long floorId,@Param("section_id") Long sectionId);
 
     @Query(value = "select f.name as floorName, s.name as sectionName, location.name as locationName from location join floor f on f.id = location.floor_id join section s on s.id = location.section_id  where location.id =:id", nativeQuery = true)
-    ILocationView findLocationById(@Param("id") Long id);
+    ILocationViewDTO findLocationById(@Param("id") Long id);
 
 //    BaoHX
     @Modifying
@@ -154,7 +155,7 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
                             "                            where f.name like concat('%', :search , '%') \n" +
                             "                                                        and l.is_deleted = false ",
             nativeQuery = true )
-    Page<ILocationDto>showListT(Pageable pageable, @Param("search") String search);
+    Page<ILocationDTO>showListT(Pageable pageable, @Param("search") String search);
 
 
 
@@ -164,11 +165,11 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
 
     @Query(value = "select f.id as id, f.name as name from floor as f",
             nativeQuery = true)
-    List<IFloorDto> getListNameFloor();
+    List<IFloorDTO> getListNameFloor();
 
 
     @Query(value = "select location.id as id, location.name as name  from location",
             nativeQuery = true)
-    List<ILocationOfFloor> getListNameLocation();
+    List<ILocationOfFloorDTO> getListNameLocation();
 
 }

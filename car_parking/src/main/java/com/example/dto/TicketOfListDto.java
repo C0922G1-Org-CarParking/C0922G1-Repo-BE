@@ -1,6 +1,6 @@
 package com.example.dto;
 
-public interface TicketOfListDto {
+public interface TicketOfListDTO {
     Integer getTicketId();
     String getPlateNumber();
     String getCustomerName();

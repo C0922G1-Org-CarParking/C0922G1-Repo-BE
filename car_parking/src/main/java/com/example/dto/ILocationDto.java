@@ -1,6 +1,6 @@
 package com.example.dto;
 
-public interface ILocationDto {
+public interface ILocationDTO {
 
     Long getId();
     String getName();

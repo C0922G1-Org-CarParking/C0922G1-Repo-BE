@@ -11,7 +11,7 @@ import java.util.Map;
 public interface ILocationService {
     List<Location> listMapParking(int idFloor);
 
-    ILocationDetailDto findLocationById(int id);
+    ILocationDetailDTO findLocationById(int id);
 
     void resetIsOccupiedLocationToFalse();
 
@@ -21,17 +21,17 @@ public interface ILocationService {
     void addLocation(Long name,Double width, Double height, Double length, String permissionCarTypeLocations, Long floorId, Long sectionId);
     Location findLocation(Long id);
     void updateLocation(Long name , Double width ,Double height, Double length, Long floorId, Long sectionId, Long Id);
-    Map<String, String> checkCreate(LocationDto locationDto);
-    Map<String, String> checkUpdate(LocationDto locationDto);
+    Map<String, String> checkCreate(LocationDTO locationDto);
+    Map<String, String> checkUpdate(LocationDTO locationDto);
 
-    ILocationView findLocationById(Long id);
+    ILocationViewDTO findLocationById(Long id);
     void deleteLocation(Long id);
     Location findLocationId(Long id);
-    Page<ILocationDto>showList(Pageable pageable, @Param("search") String search);
+    Page<ILocationDTO>showList(Pageable pageable, @Param("search") String search);
 
-    List<IFloorDto> getListNameFloor();
+    List<IFloorDTO> getListNameFloor();
 
-    List<ILocationOfFloor> getListNameLocation();
+    List<ILocationOfFloorDTO> getListNameLocation();
 
     int checkMaxName(Long floorId, Long sectionId);
 }

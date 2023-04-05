@@ -1,11 +1,10 @@
 package com.example.repository;
 
-import com.example.dto.ITicketDto;
+import com.example.dto.ITicketDTO;
 import com.example.model.Ticket;
-import com.example.dto.TicketOfListDto;
+import com.example.dto.TicketOfListDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import com.example.model.Ticket;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -16,8 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Date;
 
 import java.util.List;
-
-import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public interface ITicketRepository extends JpaRepository<Ticket, Long> {
@@ -38,7 +35,7 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
             " join `customer` c on c.id = c2.customer_id join `location` l on l.id = ticket.location_id \n" +
             " join `section` s on s.id = l.section_id join `floor` f on f.id = l.floor_id \n" +
             " join `ticket_type` tt on tt.id = ticket.ticket_type_id where ticket.id = :id and ticket.is_deleted = false", nativeQuery = true)
-    ITicketDto findTicket(@Param("id") Long id);
+    ITicketDTO findTicket(@Param("id") Long id);
 
 
 
@@ -73,7 +70,7 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
 
 
     @Query(value = "SELECT DISTINCT MONTH(expiry_date) AS month FROM ticket WHERE MONTH(expiry_date) BETWEEN :sinceMonth AND :toMonth ORDER BY month ASC", nativeQuery = true)
-    List<ITicketDto> displayMonth(@Param("sinceMonth") int sinceMonth, @Param("toMonth") int toMonth);
+    List<ITicketDTO> displayMonth(@Param("sinceMonth") int sinceMonth, @Param("toMonth") int toMonth);
 
     @Query(nativeQuery = true, value = "select t.id as TicketId, c.plate_number as PlateNumber, cus.name as CustomerName, cus.phone_number as CustomerPhoneNumber,\n" +
             "            e.name as EmployeeName, e.phone_number as EmployeePhoneNumber, tt.name as TicketType, \n" +
@@ -95,7 +92,7 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
             "            t.expiry_date = coalesce(nullif(:expiryDate,''), t.expiry_date) and\n" +
             "            tt.name like concat('%',:ticketType,'%') and\n" +
             "            t.is_deleted = :status")
-    Page<TicketOfListDto> search(@Param("customerName") String customerName,
+    Page<TicketOfListDTO> search(@Param("customerName") String customerName,
                                  @Param("customerPhone") String customerPhone,
                                  @Param("employeeName") String employeeName,
                                  @Param("employeePhone") String employeePhone,
@@ -121,7 +118,7 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
             "\tjoin floor as f on f.id = lc.floor_id\n" +
             "\tjoin section as s on s.id = lc.section_id\n" +
             "where t.id = :id")
-    TicketOfListDto findById(@Param("id") int id);
+    TicketOfListDTO findById(@Param("id") int id);
 
     /**
      * this method no param expiredDate and status
@@ -146,7 +143,7 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
             "            t.expiry_date < curdate() and\n" +
             "            tt.name like concat('%',:ticketType,'%') and\n" +
             "            t.is_deleted = 0")
-    Page<TicketOfListDto> searchTicketExpired(@Param("customerName")String customerName,
+    Page<TicketOfListDTO> searchTicketExpired(@Param("customerName")String customerName,
                                               @Param("customerPhone")String customerPhone,
                                               @Param("employeeName")String employeeName,
                                               @Param("employeePhone")String employeePhone,
@@ -158,11 +155,11 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
             "JOIN ticket ON car.id = ticket.car_id " +
             "WHERE MONTH(ticket.effective_date) >= :sinceMonth " +
             "  AND MONTH(ticket.expiry_date) <= :toMonth " +
-            "  AND YEAR(ticket.effective_date) = YEAR(ticket.expiry_date) " +
+            "  AND YEAR(ticket.effective_date) = :year and YEAR(ticket.expiry_date) =:year " +
             "  AND (MONTH(ticket.effective_date) =:month )", nativeQuery = true)
     Integer getTotalOfTicket(@Param("sinceMonth") int sinceMonth,
                              @Param("toMonth") int toMonth,
-                             @Param("month") int month);
+                             @Param("month") int month,@Param("year") int year );
 
 
     @Query(value = "SELECT COUNT(distinct customer.phone_number)" +
@@ -170,10 +167,10 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
             " JOIN car ON customer.id = car.customer_id " +
             " JOIN ticket ON car.id = ticket.car_id" +
             " WHERE MONTH(ticket.effective_date) >=:sinceMonth AND MONTH(ticket.expiry_date) <= :toMonth " +
-            "AND YEAR(ticket.effective_date) = YEAR(ticket.expiry_date) " +
+            "AND YEAR(ticket.effective_date) =:year and YEAR(ticket.expiry_date)= :year " +
             "AND MONTH(ticket.effective_date) = :month" , nativeQuery = true)
     Integer getTotalOfCustomer(@Param("sinceMonth") int sinceMonth,
                                @Param("toMonth") int toMonth,
-                               @Param("month") int month);
+                               @Param("month") int month,@Param("year") int year);
 }
 

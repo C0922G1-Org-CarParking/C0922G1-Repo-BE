@@ -1,7 +1,7 @@
 package com.example.controller;
 
-import com.example.dto.ILocationDetailDto;
-import com.example.dto.ILocationView;
+import com.example.dto.ILocationDetailDTO;
+import com.example.dto.ILocationViewDTO;
 import com.example.model.Location;
 import com.example.service.ILocationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +11,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.dto.ILocationDto;
-import com.example.dto.LocationDto;
+import com.example.dto.ILocationDTO;
+import com.example.dto.LocationDTO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -23,8 +23,8 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("location")
-public class LocationController {
+@RequestMapping("api/user/location")
+public class LocationRestController {
     @Autowired
     private ILocationService iLocationService;
     /**
@@ -53,8 +53,8 @@ public class LocationController {
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
      */
     @GetMapping("findLocationById")
-    public ResponseEntity <ILocationDetailDto> findLocationById(@RequestParam int id){
-        ILocationDetailDto iLocationDetailDto= iLocationService.findLocationById(id);
+    public ResponseEntity <ILocationDetailDTO> findLocationById(@RequestParam int id){
+        ILocationDetailDTO iLocationDetailDto= iLocationService.findLocationById(id);
         if(iLocationDetailDto==null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -71,27 +71,25 @@ public class LocationController {
 
     /**
      * Create: TanTH
-     * @param floorId
-     * @param sectionId
      * @return
      */
     @PostMapping("/create")
-    public ResponseEntity<?> createLocation(@Validated @RequestBody  LocationDto locationDto, BindingResult bindingResult) {
-        new LocationDto().validate(locationDto, bindingResult);
+    public ResponseEntity<?> createLocation(@Validated @RequestBody LocationDTO locationDto, BindingResult bindingResult) {
+        new LocationDTO().validate(locationDto, bindingResult);
         Map<String, String> check = iLocationService.checkCreate(locationDto);
         int count  = iLocationService.checkMaxName(locationDto.getFloor().getId(), locationDto.getSection().getId());
         count++;
 
-        LocationDto locationDto1 = locationDto;
+        LocationDTO locationDTO1 = locationDto;
 
         iLocationService.addLocation(
                 Long.parseLong(count+""),
-                locationDto1.getWidth(),
-                locationDto1.getHeight(),
-                locationDto1.getLength(),
-                Arrays.toString(locationDto1.getPermissionCarTypeLocations()),
-                locationDto1.getFloor().getId(),
-                locationDto1.getSection().getId());
+                locationDTO1.getWidth(),
+                locationDTO1.getHeight(),
+                locationDTO1.getLength(),
+                Arrays.toString(locationDTO1.getPermissionCarTypeLocations()),
+                locationDTO1.getFloor().getId(),
+                locationDTO1.getSection().getId());
 
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
@@ -101,9 +99,8 @@ public class LocationController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
     @PatchMapping("/edit/{id}")
-    public ResponseEntity<?> updateLocation(@PathVariable(value = "id") Long Id, @RequestBody @Validated LocationDto locationDto, BindingResult bindingResult) {
+    public ResponseEntity<?> updateLocation(@PathVariable(value = "id") Long Id, @RequestBody @Validated LocationDTO locationDto, BindingResult bindingResult) {
         Location location = new Location();
         BeanUtils.copyProperties(locationDto, location);
         iLocationService. updateLocation(location.getName(), location.getWidth(), location.getHeight(), location.getLength(),location.getFloor().getId(), location.getSection().getId(), Id);
@@ -122,12 +119,12 @@ public class LocationController {
 
 
     @GetMapping("/info/{id}")
-    public ResponseEntity<ILocationView> findLocationById(@PathVariable("id") Long id) {
-        ILocationView iLocationView = iLocationService.findLocationById(id);
-        if (iLocationView == null) {
+    public ResponseEntity<ILocationViewDTO> findLocationById(@PathVariable("id") Long id) {
+        ILocationViewDTO iLocationViewDTO = iLocationService.findLocationById(id);
+        if (iLocationViewDTO == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(iLocationView, HttpStatus.OK);
+        return new ResponseEntity<>(iLocationViewDTO, HttpStatus.OK);
     }
     /**
      * Created by: BaoHX
@@ -150,10 +147,10 @@ public class LocationController {
 
 
     @GetMapping("/list")
-    public ResponseEntity<Page<ILocationDto>> showList(
+    public ResponseEntity<Page<ILocationDTO>> showList(
             @RequestParam(defaultValue = "") String search,
             @PageableDefault(value = 5) Pageable pageable) {
-        Page<ILocationDto> locationDto = iLocationService.showList(pageable, search);
+        Page<ILocationDTO> locationDto = iLocationService.showList(pageable, search);
         if (locationDto.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

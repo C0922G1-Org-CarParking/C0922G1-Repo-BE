@@ -14,8 +14,8 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/floor")
-public class FloorController {
+@RequestMapping("api/user/floor")
+public class FloorRestController {
 
     @Autowired
     private IFloorService iFloorService;

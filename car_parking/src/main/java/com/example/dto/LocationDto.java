@@ -5,17 +5,16 @@ import com.example.model.Section;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-public class LocationDto implements Validator {
+public class LocationDTO implements Validator {
 
     private Long id;
     @Min(value = 0 , message = "Không được nhập số âm.")
     private Long name;
     private boolean isOccupied;
     @Min(value = 0 , message = "Không được nhập số âm.")
+
     @NotNull(message = "không được để trống")
     private Double width;
     @Min(value = 0 , message = "Không được nhập số âm.")
@@ -30,7 +29,7 @@ public class LocationDto implements Validator {
 
     private boolean isDeleted;
 
-    public LocationDto() {
+    public LocationDTO() {
     }
 
     public Long getId() {

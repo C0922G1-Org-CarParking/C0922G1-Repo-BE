@@ -20,7 +20,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/ticket")
+@RequestMapping("api/user/ticket")
 public class TicketRestController {
     @Autowired
     private ITicketService iTicketService;
@@ -44,8 +44,8 @@ public class TicketRestController {
      * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
      */
     @PostMapping("/createTicket")
-    public ResponseEntity<Ticket> createTicket(@Validated @RequestBody TicketDto ticketDto, BindingResult bindingResult) {
-        new TicketDto().validate(ticketDto, bindingResult);
+    public ResponseEntity<Ticket> createTicket(@Validated @RequestBody TicketDTO ticketDto, BindingResult bindingResult) {
+        new TicketDTO().validate(ticketDto, bindingResult);
          if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -66,8 +66,8 @@ public class TicketRestController {
      * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
      */
     @GetMapping("/listTicketType")
-    public ResponseEntity<List<ITicketTypeDto>> getListNameTicketType() {
-        List<ITicketTypeDto> iTicketTypes = iticketTypeService.getAllTicketTypes();
+    public ResponseEntity<List<ITicketTypeDTO>> getListNameTicketType() {
+        List<ITicketTypeDTO> iTicketTypes = iticketTypeService.getAllTicketTypes();
         if (iTicketTypes.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -84,8 +84,8 @@ public class TicketRestController {
      * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
      */
     @GetMapping("/listLocation")
-    public ResponseEntity<List<ILocationOfFloor>> getListLocation() {
-        List<ILocationOfFloor> iLocationDtos = iLocationService.getListNameLocation();
+    public ResponseEntity<List<ILocationOfFloorDTO>> getListLocation() {
+        List<ILocationOfFloorDTO> iLocationDtos = iLocationService.getListNameLocation();
         if (iLocationDtos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -101,8 +101,8 @@ public class TicketRestController {
      * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
      */
     @GetMapping("/listFloor")
-    public ResponseEntity<List<IFloorDto>> getListFloor() {
-        List<IFloorDto> floorList = iLocationService.getListNameFloor();
+    public ResponseEntity<List<IFloorDTO>> getListFloor() {
+        List<IFloorDTO> floorList = iLocationService.getListNameFloor();
         if (floorList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -118,8 +118,8 @@ public class TicketRestController {
      * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
      */
     @GetMapping("/listEmployee")
-    public ResponseEntity<List<IEmployeeDto>> getListEmployee() {
-        List<IEmployeeDto> employeeList = iEmployeeService.getListEmployeeByName();
+    public ResponseEntity<List<IEmployeeDTO>> getListEmployee() {
+        List<IEmployeeDTO> employeeList = iEmployeeService.getListEmployeeByName();
         if (employeeList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -168,8 +168,9 @@ public class TicketRestController {
      */
     @GetMapping("/statisticalCustomerChart")
     public ResponseEntity<Integer[]> getTotalStatisticalCustomerChart(@RequestParam(value = "sinceMonth", defaultValue = "") int sinceMonth
-            , @RequestParam(value = "toMonth",defaultValue = "") int toMonth) {
-        Integer[] customers = iTicketService.getValue(sinceMonth, toMonth);
+            , @RequestParam(value = "toMonth",defaultValue = "") int toMonth,
+                                                                      @RequestParam(value = "year", defaultValue = "") int year) {
+        Integer[] customers = iTicketService.getValue(sinceMonth, toMonth,year);
         if (customers == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -188,8 +189,9 @@ public class TicketRestController {
     @GetMapping("/statisticalTicketChart")
     public ResponseEntity<Integer[]> getTotalStatisticalTicketChart(
             @RequestParam(value = "sinceMonth", defaultValue = "") int sinceMonth
-            , @RequestParam(value = "toMonth",defaultValue = "") int toMonth) {
-        Integer[] tickets = iTicketService.getTicketList(sinceMonth, toMonth);
+            , @RequestParam(value = "toMonth",defaultValue = "") int toMonth,
+            @RequestParam(value = "year", defaultValue = "") int year) {
+        Integer[] tickets = iTicketService.getTicketList(sinceMonth, toMonth, year);
         if (tickets == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -229,9 +231,9 @@ public class TicketRestController {
      */
     @GetMapping("/findCarListOfCustomerId/{id}")
 
+
     public ResponseEntity<List<ICarOfTicketDTO>> findCarListOfCustomerId(@PathVariable("id") int id) {
         List<ICarOfTicketDTO> iCarTicketDTO = customerService.findCarListOfCustomerId(id);
-
         if (iCarTicketDTO == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -240,7 +242,7 @@ public class TicketRestController {
 
     @GetMapping("/displayMonth/{sinceMonth}/{toMonth}")
     public ResponseEntity<?> getMonth(@PathVariable int sinceMonth, @PathVariable int toMonth) {
-        List<ITicketDto> tickets = iTicketService.displayMonth(sinceMonth, toMonth);
+        List<ITicketDTO> tickets = iTicketService.displayMonth(sinceMonth, toMonth);
         if (tickets.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -290,7 +292,7 @@ public class TicketRestController {
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
      */
     @PutMapping("/update/{id}")
-    private ResponseEntity<?> updateTicket(@Validated @RequestBody EditTicketDto editTicketDto,
+    private ResponseEntity<?> updateTicket(@Validated @RequestBody EditTicketDTO editTicketDto,
                                            BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
@@ -325,7 +327,7 @@ public class TicketRestController {
      */
 
     @GetMapping("/search")
-    public ResponseEntity<Page<TicketOfListDto>> searchTicket(@RequestParam(value = "customerName", defaultValue = "") String customerName,
+    public ResponseEntity<Page<TicketOfListDTO>> searchTicket(@RequestParam(value = "customerName", defaultValue = "") String customerName,
                                                               @RequestParam(value = "customerPhone", defaultValue = "") String customerPhone,
                                                               @RequestParam(value = "employeeName", defaultValue = "") String employeeName,
                                                               @RequestParam(value = "employeePhone", defaultValue = "") String employeePhone,
@@ -338,7 +340,7 @@ public class TicketRestController {
         Sort sort = Sort.by(Sort.Direction.ASC, "TicketId");
 
         Pageable pageable = PageRequest.of(page, size, sort);
-        Page<TicketOfListDto> ticketPage;
+        Page<TicketOfListDTO> ticketPage;
         if (status == 3) {
             ticketPage = iTicketService.searchTicketExpired(customerName, customerPhone, employeeName, employeePhone, floor, ticketType, pageable);
         } else {
@@ -400,8 +402,8 @@ public class TicketRestController {
      */
 
     @GetMapping("detail/{id}")
-    public ResponseEntity<TicketOfListDto> detailTicket(@PathVariable("id") int id) {
-        TicketOfListDto ticket = iTicketService.findTicketDetailById(id);
+    public ResponseEntity<TicketOfListDTO> detailTicket(@PathVariable("id") int id) {
+        TicketOfListDTO ticket = iTicketService.findTicketDetailById(id);
         if (ticket == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {

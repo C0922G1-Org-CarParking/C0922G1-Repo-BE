@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.time.Period;
 
 
-public class EmployeeDto implements Validator {
+public class EmployeeDTO implements Validator {
     private Long id;
     @Size(max = 100, message = "Tên nhân viên không được quá 30 ký tự.")
     @NotBlank(message = "tên nhân viên không được để trống")
@@ -61,7 +61,7 @@ public class EmployeeDto implements Validator {
         this.email = email;
     }
 
-    public EmployeeDto() {
+    public EmployeeDTO() {
     }
 
     public Long getId() {
@@ -159,20 +159,20 @@ public class EmployeeDto implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        EmployeeDto employeeDto = (EmployeeDto) target;
+        EmployeeDTO employeeDto = (EmployeeDTO) target;
 
-// Kiểm tra định dạng ngày tháng năm sinh của người dùng
+    // Kiểm tra định dạng ngày tháng năm sinh của người dùng
         if (!employeeDto.getDateOfBirth().matches(DATE_REGEX)) {
-            errors.rejectValue("dateOfBirth", "user.birthday.invalidFormat", "Invalid date format");
+            errors.rejectValue("dateOfBirth", "user.birthday.invalidFormat", "Ngày sinh chưa đúng định dạng.");
             return;
         }
 
-// Tính toán tuổi của người dùng từ ngày tháng năm sinh đó
+    // Tính toán tuổi của người dùng từ ngày tháng năm sinh đó
         LocalDate dateOfBirth = LocalDate.parse(employeeDto.getDateOfBirth());
         LocalDate now = LocalDate.now();
         int age = Period.between(dateOfBirth, now).getYears();
 
-// Kiểm tra tuổi của người dùng
+    // Kiểm tra tuổi của người dùng
         if (age < 18) {
             errors.rejectValue("dateOfBirth", "employeeDto.dateOfBirth.notEnoughAge", "Phải đủ 18 tuổi mới được");
         }

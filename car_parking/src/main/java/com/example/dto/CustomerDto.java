@@ -1,9 +1,6 @@
 package com.example.dto;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-
-public class CustomerDto {
+public class CustomerDTO {
     private Long id;
 //    @NotBlank(message = "Tên không đươc để trống.")
 //    @Pattern(regexp = "[a-zA-z ]+", message = "Tên không được nhập số và ký tự đặc biệt.")

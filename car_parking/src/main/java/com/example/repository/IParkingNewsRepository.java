@@ -1,6 +1,6 @@
 package com.example.repository;
 
-import com.example.dto.IParkingNewsDto;
+import com.example.dto.IParkingNewsDTO;
 import com.example.model.ParkingNews;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,9 +22,9 @@ public interface IParkingNewsRepository extends JpaRepository<ParkingNews, Integ
             "where pn.is_deleted = 0 and pn.parking_news_id = :id";
 
     @Query(value = Get_All_Parking_News, countQuery = "select count(*) from parking_news", nativeQuery = true)
-    Page<IParkingNewsDto> findAll(Pageable pageable, @Param("keyword") String keyword);
+    Page<IParkingNewsDTO> findAll(Pageable pageable, @Param("keyword") String keyword);
 
     @Query(value = Find_By_Id, nativeQuery = true)
-    IParkingNewsDto findById(@Param("id") int id);
+    IParkingNewsDTO findById(@Param("id") int id);
 
 }

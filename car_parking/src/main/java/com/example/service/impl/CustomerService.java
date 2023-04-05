@@ -1,6 +1,4 @@
 package com.example.service.impl;
-
-
 import com.example.dto.ICarOfTicketDTO;
 import com.example.dto.ICustomerDTO;
 import com.example.dto.ICustomerListDTO;
@@ -9,7 +7,6 @@ import com.example.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.model.Customer;
-
 import com.example.repository.ICarRepository;
 import com.example.repository.ITicketRepository;
 import org.springframework.data.domain.Page;
@@ -45,8 +42,8 @@ public class CustomerService implements ICustomerService {
 
     @Override
 
-    public List<ICarOfTicketDTO> findCarListOfCustomerId(int id) {
 
+    public List<ICarOfTicketDTO> findCarListOfCustomerId(int id) {
         return iCustomerRepository.findCarListOfCustomerId(id);
     }
 
@@ -105,7 +102,6 @@ public class CustomerService implements ICustomerService {
      * Create by: VuBD
      * Date create: 29/03/2023
      * Function: connect database to delete a customer with corresponding id
-     *
      * @param id
      * @return: If successful, return 1, if unsuccessful, return -1, if the customer is still valid for tickets 0
      */
@@ -113,7 +109,6 @@ public class CustomerService implements ICustomerService {
     public long deleteCustomer(int id) {
         return -1;
     }
-
     @Override
     public ICustomerDTO findById(int id) {
         return customerRepository.findCustomerById(id);
@@ -123,7 +118,6 @@ public class CustomerService implements ICustomerService {
      * Create by: VuBD
      * Date create: 04/04/2023
      * Function: delete customers with valid tickets when customers decide to click on the delete link
-     *
      * @param id
      */
     @Override

@@ -26,7 +26,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/car-in-out")
+@RequestMapping("api/user/car-in-out")
 public class CarInOutRestController {
     @Autowired
     private ICarInOutService iCarInOutService;
@@ -120,7 +120,6 @@ public class CarInOutRestController {
         }
     }
 
-
     /**
      * Created by: NamLQN
      * Date created: 29/03/2023
@@ -171,8 +170,7 @@ public class CarInOutRestController {
 
     @ResponseStatus(
             value = HttpStatus.INTERNAL_SERVER_ERROR,
-            reason = "Hệ thống đang bảo trì"
-    )
+            reason = "Hệ thống đang bảo trì")
     @ExceptionHandler(Exception.class)
     public void handleException(Exception e) {
     }

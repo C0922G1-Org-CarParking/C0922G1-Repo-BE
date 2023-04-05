@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="c6279971-3fb9-43ee-b0f2-a2045fb7fb42" name="Changes" comment="">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/LocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/LocationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarTicketDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarTicketDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/IEmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/IEmployeeRepository.java" afterDir="false" />
+=======
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarTicketDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarTicketDto.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarTicketDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarTicketDTO.java" afterDir="false" />
+>>>>>>> e3b8da2669b0ce1962efdee8281d2fda56aeb74a
+>>>>>>> origin/customer-car-VuBD
+    </list>
+=======
     <list default="true" id="c6279971-3fb9-43ee-b0f2-a2045fb7fb42" name="Changes" comment="" />
+>>>>>>> origin/develop
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,8 +62,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -58,6 +77,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/5.3.26/1d086008c084cba1b8eef20fce4ab3913e0cbfe1/spring-web-5.3.26-sources.jar!/org/springframework/http/HttpStatus.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/controller/SecurityController.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -68,6 +88,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/CodeGym/module6/demo/C0922G1-Repo-BE/car_parking/src/main/java/com/example&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;8b813644e54a34321b3ce14b11b55c0d&quot;
+=======
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Git.Branch.Popup.ShowAllRemotes": "true",
@@ -85,6 +124,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "spring.configuration.checksum": "8b813644e54a34321b3ce14b11b55c0d"
+>>>>>>> origin/develop
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -94,9 +134,13 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+<<<<<<< HEAD
+      <recent name="D:\CodeGym\module6\demo\C0922G1-Repo-BE\car_parking\src\main\java\com\example" />
+=======
       <recent name="E:\car_parking_module_6\C0922G1-Repo-BE\car_parking\src\main\resources" />
       <recent name="E:\car_parking_module_6\C0922G1-Repo-BE\car_parking" />
       <recent name="E:\car_parking_module_6\C0922G1-Repo-BE\car_parking\src" />
+>>>>>>> origin/develop
       <recent name="D:\CodeGym\module6\demo\C0922G1-Repo-BE\car_parking\src\main" />
       <recent name="D:\CodeGym\module6\demo\C0922G1-Repo-BE\car_parking\src\main\java\com" />
     </key>
@@ -265,11 +309,25 @@
       <workItem from="1680399311934" duration="11008000" />
       <workItem from="1680489952387" duration="15082000" />
       <workItem from="1680518970677" duration="3323000" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <workItem from="1680523498363" duration="886000" />
+<<<<<<< HEAD
+      <workItem from="1680571423309" duration="15145000" />
+=======
+      <workItem from="1680574105975" duration="63000" />
+=======
+      <workItem from="1680523498363" duration="1616000" />
+      <workItem from="1680572348975" duration="1222000" />
+>>>>>>> e3b8da2669b0ce1962efdee8281d2fda56aeb74a
+>>>>>>> origin/customer-car-VuBD
+=======
       <workItem from="1680523498363" duration="1616000" />
       <workItem from="1680572348975" duration="13749000" />
       <workItem from="1680620324281" duration="5031000" />
       <workItem from="1680658543557" duration="774000" />
       <workItem from="1680659447200" duration="1425000" />
+>>>>>>> origin/develop
     </task>
     <servers />
   </component>
@@ -297,13 +355,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/controller/SecurityController.java</url>
-          <line>89</line>
+          <line>88</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/security_authentication/payload/request/ResetPasswordRequest.java</url>
           <line>68</line>
-          <option name="timeStamp" value="6" />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/controller/SecurityController.java</url>
+          <line>119</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/controller/CarInOutRestController.java</url>
