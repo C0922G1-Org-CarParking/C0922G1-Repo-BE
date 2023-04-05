@@ -1,6 +1,7 @@
 package com.example.service;
 
 
+
 import com.example.dto.ICarOfTicketDTO;
 import com.example.dto.ICustomerDTO;
 import com.example.dto.ICustomerListDTO;
@@ -21,6 +22,7 @@ public interface ICustomerService {
 
 
     List<ICustomerDTO> statisticalChart(int sinceMonth, int toMonth);
+
 
     List<ICarOfTicketDTO> findCarListOfCustomerId(int id);
 

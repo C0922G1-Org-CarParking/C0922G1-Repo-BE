@@ -18,7 +18,6 @@ public class CarInOut {
 
     private String urlCarOutImage;
 
-    private boolean isParked;
 
     public String getUrlCarInImage() {
         return urlCarInImage;
@@ -30,13 +29,6 @@ public class CarInOut {
     }
 
 
-    public boolean isParked() {
-        return isParked;
-    }
-
-    public void setParked(boolean parked) {
-        isParked = parked;
-    }
 
     @ManyToOne
     @JoinColumn(name = "car_id", referencedColumnName = "id")

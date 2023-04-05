@@ -41,6 +41,10 @@ public class Car {
     @JsonIgnore
     private Set<Ticket> ticketSet;
 
+    private boolean isParked;
+
+
+
 
 
     public Car(Long id, String name, String plateNumber, String brand, boolean isDeleted, CarType carType, Customer customer, Set<CarInOut> carInOutSet, Set<Ticket> ticketSet) {
@@ -65,6 +69,14 @@ public class Car {
     public Car() {
 
 
+    }
+
+    public boolean isParked() {
+        return isParked;
+    }
+
+    public void setParked(boolean parked) {
+        isParked = parked;
     }
 
     public boolean isDeleted() {

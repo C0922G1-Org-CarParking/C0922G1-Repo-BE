@@ -28,6 +28,7 @@ public class CarRestRepository {
 
     @GetMapping("/info/{id}")
     public ResponseEntity<List<ICarTicketDTO>> findCarById(@PathVariable Long id) {
+
         List<ICarTicketDTO> iCarTicketDtos = carService.findCarTicketByCustomerId(id);
         if (iCarTicketDtos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+
 import com.example.dto.ICarOfTicketDTO;
 import com.example.dto.ICustomerDTO;
 import com.example.dto.ICustomerListDTO;
@@ -43,6 +44,7 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
+
     public List<ICarOfTicketDTO> findCarListOfCustomerId(int id) {
 
         return iCustomerRepository.findCarListOfCustomerId(id);
@@ -121,11 +123,13 @@ public class CustomerService implements ICustomerService {
      * Create by: VuBD
      * Date create: 04/04/2023
      * Function: delete customers with valid tickets when customers decide to click on the delete link
+     *
      * @param id
      */
     @Override
     public void deleteCustomerAndTicket(int id) {
     }
+
     /**
      * Create by: VuBD
      * Date create: 29/03/2023
@@ -140,13 +144,13 @@ public class CustomerService implements ICustomerService {
      * @return Returns a Page object containing a list of data corresponding to the data to be searched
      */
     @Override
-    public Page<ICustomerListDTO> getListCustomer (
+    public Page<ICustomerListDTO> getListCustomer(
             String name,
             String idCard,
             String phoneNumber,
             String starDate,
             String endDate,
-            Pageable pageable){
+            Pageable pageable) {
         return customerRepository.getListCustomer(name, idCard, phoneNumber, starDate, endDate, pageable);
     }
 }

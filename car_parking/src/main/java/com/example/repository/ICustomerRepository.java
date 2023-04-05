@@ -1,22 +1,21 @@
 package com.example.repository;
 
+
 import com.example.dto.*;
 import com.example.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
 import com.example.model.Customer;
 import com.example.model.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 import java.util.List;
 @Transactional
 public interface ICustomerRepository extends JpaRepository<Customer,Long> {
@@ -57,6 +56,7 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
             " GROUP BY customer.name", nativeQuery = true)
     List<ICustomerDTO> getStatisticalChart(@Param("sinceMonth") int sinceMonth,@Param("toMonth") int toMonth);
     @Query(value = "select car.id as id , car.name as name from car join customer on car.customer_id = customer.id where customer.id = :id", nativeQuery = true)
+
 
     List<ICarOfTicketDTO> findCarListOfCustomerId(@Param("id") int id);
 

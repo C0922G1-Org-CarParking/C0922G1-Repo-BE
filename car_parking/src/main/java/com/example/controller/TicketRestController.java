@@ -228,6 +228,7 @@ public class TicketRestController {
      * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
      */
     @GetMapping("/findCarListOfCustomerId/{id}")
+
     public ResponseEntity<List<ICarOfTicketDTO>> findCarListOfCustomerId(@PathVariable("id") int id) {
         List<ICarOfTicketDTO> iCarTicketDTO = customerService.findCarListOfCustomerId(id);
 
