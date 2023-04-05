@@ -1,25 +1,16 @@
 package com.example.repository;
 
-import com.example.dto.ICarTicketDto;
+import com.example.dto.ICarTicketDTO;
 import com.example.dto.ICustomerDTO;
 import com.example.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import com.example.dto.CustomerCarDto;
-import com.example.dto.ICarDto;
-import com.example.model.Customer;
-import com.example.model.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.List;
 
 public interface ICustomerRepository extends JpaRepository<Customer,Long> {
@@ -70,7 +61,7 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
      */
 
     @Query(value = "select car.id as id , car.name as name from car join customer on car.customer_id = customer.id where customer.id = :id", nativeQuery = true)
-    List<ICarTicketDto> findCarListOfCustomerId(@Param("id") int id);
+    List<ICarTicketDTO> findCarListOfCustomerId(@Param("id") int id);
 
 
     /**

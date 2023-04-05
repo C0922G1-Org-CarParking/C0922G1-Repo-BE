@@ -1,26 +1,17 @@
 package com.example.service.impl;
 
-import com.example.dto.ICarTicketDto;
+import com.example.dto.ICarTicketDTO;
 import com.example.dto.ICustomerDTO;
 import com.example.repository.ICustomerRepository;
 import com.example.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.model.Customer;
-import com.example.repository.ICustomerRepository;
 
-import com.example.service.ICustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.example.dto.ICustomerDTO;
-import com.example.model.Ticket;
 import com.example.repository.ICarRepository;
-import com.example.repository.ICustomerRepository;
 import com.example.repository.ITicketRepository;
-import com.example.service.ICustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -51,7 +42,7 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public List<ICarTicketDto> findCarListOfCustomerId(int id) {
+    public List<ICarTicketDTO> findCarListOfCustomerId(int id) {
         return iCustomerRepository.findCarListOfCustomerId(id);
     }
 
