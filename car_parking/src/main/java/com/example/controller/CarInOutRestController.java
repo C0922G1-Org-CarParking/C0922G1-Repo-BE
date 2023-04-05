@@ -57,7 +57,7 @@ public class CarInOutRestController {
             if (plateNumber == null) {
                 return new ResponseEntity<>("Không scan được biển số", HttpStatus.NOT_ACCEPTABLE);
             }
-            ICarInOutDTO carInDto = iCarInOutService.searchCarInDto(plateNumber);
+            ICarInOutDTO carInDto = iCarInOutService.searchCarInDtoByScanning(plateNumber);
             if (carInDto == null) {
                 return new ResponseEntity<>("Không tìm thấy dữ liệu của biển số xe", HttpStatus.NOT_FOUND);
             }
@@ -90,8 +90,7 @@ public class CarInOutRestController {
         Car car = new Car();
         car.setId(carInDTO.getCarDTO().getId());
         carIn.setCar(car);
-        carIn.setParked(true);
-
+//        carIn.setParked(true);
         iCarInOutService.saveCarIn(carIn);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -111,7 +110,7 @@ public class CarInOutRestController {
             if (plateNumber == null) {
                 return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
             }
-            ICarInOutDTO carOutDTO = iCarInOutService.searchCarOutDTO(plateNumber);
+            ICarInOutDTO carOutDTO = iCarInOutService.searchCarOutDTOByScanning(plateNumber);
             if (carOutDTO == null) {
                 return new ResponseEntity<>("Không tìm thấy dữ liệu hoặc vé đã hết hạn", HttpStatus.NOT_FOUND);
             }
@@ -120,7 +119,6 @@ public class CarInOutRestController {
             throw new RuntimeException();
         }
     }
-
 
     /**
      * Created by: NamLQN
@@ -138,23 +136,19 @@ public class CarInOutRestController {
         }
         CarInOut carOut = new CarInOut();
         BeanUtils.copyProperties(carOutDTO, carOut);
-        carOut.setParked(false);
+//        carOut.setParked(false);
+        Car car = new Car();
+        car.setId(carOutDTO.getCarDTO().getId());
+        carOut.setCar(car);
         iCarInOutService.saveCarOut(carOut);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @ResponseStatus(
-            value = HttpStatus.INTERNAL_SERVER_ERROR,
-            reason = "Hệ thống đang bảo trì"
-    )
-    @ExceptionHandler(Exception.class)
-    public void handleException(Exception e) {
 
-    }
     @GetMapping("/list-car-in")
     public ResponseEntity<List<ICarInOutDTO>> searchCarInDtoByNameByCustomerNameByPhoneNumber(@RequestParam(defaultValue = "") String carPlateNumber,
-                                                                                                 @RequestParam(defaultValue = "") String customerName,
-                                                                                                 @RequestParam(defaultValue = "") String customerPhoneNumber) {
+                                                                                              @RequestParam(defaultValue = "") String customerName,
+                                                                                              @RequestParam(defaultValue = "") String customerPhoneNumber) {
         List<ICarInOutDTO> carInDTOList = iCarInOutService.searchCarInDtoByNameByCustomerNameByPhoneNumber(carPlateNumber, customerName, customerPhoneNumber);
         if (carInDTOList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -164,13 +158,22 @@ public class CarInOutRestController {
 
     @GetMapping("/list-car-out")
     public ResponseEntity<List<ICarInOutDTO>> searchCarOutDtoByNameByCustomerNameByPhoneNumber(@RequestParam(defaultValue = "") String carPlateNumber,
-                                                                                                 @RequestParam(defaultValue = "") String customerName,
-                                                                                                 @RequestParam(defaultValue = "") String customerPhoneNumber) {
+                                                                                               @RequestParam(defaultValue = "") String customerName,
+                                                                                               @RequestParam(defaultValue = "") String customerPhoneNumber) {
         List<ICarInOutDTO> carOutDTOList = iCarInOutService.searchCarOutDTOByCustomerNameByPhoneNumberByPlateNumber(carPlateNumber, customerName, customerPhoneNumber);
         if (carOutDTOList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(carOutDTOList, HttpStatus.OK);
     }
+
+
+    @ResponseStatus(
+            value = HttpStatus.INTERNAL_SERVER_ERROR,
+            reason = "Hệ thống đang bảo trì")
+    @ExceptionHandler(Exception.class)
+    public void handleException(Exception e) {
+    }
+
 
 }

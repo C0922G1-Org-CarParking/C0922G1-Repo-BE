@@ -52,9 +52,7 @@ public class LocationService implements ILocationService {
     public void updateLocation(Long name, Double width, Double height, Double length, Long floorId, Long
             sectionId, Long Id) {
         iLocationRepository.updateLocation(name, width, height, length, floorId, sectionId, Id);
-
     }
-
 
     /**
      * Created by: TheNV
@@ -65,7 +63,7 @@ public class LocationService implements ILocationService {
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
      */
     @Override
-    public ILocationDetailDto findLocationById(int id) {
+    public ILocationDetailDTO findLocationById(int id) {
         return iLocationRepository.findLocationById(id);
     }
 
@@ -96,7 +94,7 @@ public class LocationService implements ILocationService {
         iLocationRepository.resetIsOccupiedLocationToTrue();
     }
 
-    //    Created by: TheNV
+    //Created by: TheNV
     @Override
     public Location findLocationEmptyById(int id) {
         return iLocationRepository.findLocationEmptyById(id);
@@ -104,7 +102,7 @@ public class LocationService implements ILocationService {
 
     // Created by: TanTH
     @Override
-    public Map<String, String> checkCreate(LocationDto locationDto) {
+    public Map<String, String> checkCreate(LocationDTO locationDto) {
         Map<String, String> checkMap = new HashMap<>();
 
         for (int i = 0; i < iLocationRepository.locationList().size(); i++) {
@@ -121,7 +119,7 @@ public class LocationService implements ILocationService {
 
     // Created by: TanTH
     @Override
-    public Map<String, String> checkUpdate(LocationDto locationDto) {
+    public Map<String, String> checkUpdate(LocationDTO locationDto) {
         Map<String, String> checkMap = new HashMap<>();
 
         for (int i = 0; i < iLocationRepository.locationList().size(); i++) {
@@ -135,8 +133,12 @@ public class LocationService implements ILocationService {
         return checkMap;
     }
 
-
-    // Created by: TanTH
+    /**
+     * Create: TanTH
+     * @param floorId
+     * @param sectionId
+     * @return
+     */
     @Override
     public int checkMaxName(Long floorId, Long sectionId) {
         try{
@@ -144,12 +146,13 @@ public class LocationService implements ILocationService {
         }catch (Exception r){
             return 0;
         }
-        return iLocationRepository.checkMaxName(floorId,sectionId)[0];
-    }
 
+        return iLocationRepository.checkMaxName(floorId,sectionId)[0];
+
+    }
     // Created by: TanTH
     @Override
-    public ILocationView findLocationById(Long id) {
+    public ILocationViewDTO findLocationById(Long id) {
         return iLocationRepository.findLocationById(id);
     }
     //BaoHX
@@ -164,16 +167,16 @@ public class LocationService implements ILocationService {
     }
 
     @Override
-    public Page<ILocationDto> showList(Pageable pageable, String search) {
+    public Page<ILocationDTO> showList(Pageable pageable, String search) {
         return iLocationRepository.showListT(pageable, search);
     }
     @Override
-    public List<IFloorDto> getListNameFloor() {
+    public List<IFloorDTO> getListNameFloor() {
        return iLocationRepository.getListNameFloor();
     }
 
     @Override
-    public List<ILocationOfFloor> getListNameLocation() {
+    public List<ILocationOfFloorDTO> getListNameLocation() {
        return iLocationRepository.getListNameLocation();
     }
 }

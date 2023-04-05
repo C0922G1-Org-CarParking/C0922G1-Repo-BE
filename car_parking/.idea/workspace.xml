@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="c6279971-3fb9-43ee-b0f2-a2045fb7fb42" name="Changes" comment="">
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/LocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/LocationController.java" afterDir="false" />
@@ -20,6 +21,9 @@
 >>>>>>> e3b8da2669b0ce1962efdee8281d2fda56aeb74a
 >>>>>>> origin/customer-car-VuBD
     </list>
+=======
+    <list default="true" id="c6279971-3fb9-43ee-b0f2-a2045fb7fb42" name="Changes" comment="" />
+>>>>>>> origin/develop
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,6 +88,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
@@ -101,16 +106,41 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;8b813644e54a34321b3ce14b11b55c0d&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Git.Branch.Popup.ShowAllRemotes": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/car_parking_module_6/C0922G1-Repo-BE/car_parking/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "spring.configuration.checksum": "8b813644e54a34321b3ce14b11b55c0d"
+>>>>>>> origin/develop
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+<<<<<<< HEAD
       <recent name="D:\CodeGym\module6\demo\C0922G1-Repo-BE\car_parking\src\main\java\com\example" />
+=======
+      <recent name="E:\car_parking_module_6\C0922G1-Repo-BE\car_parking\src\main\resources" />
+      <recent name="E:\car_parking_module_6\C0922G1-Repo-BE\car_parking" />
+      <recent name="E:\car_parking_module_6\C0922G1-Repo-BE\car_parking\src" />
+>>>>>>> origin/develop
       <recent name="D:\CodeGym\module6\demo\C0922G1-Repo-BE\car_parking\src\main" />
       <recent name="D:\CodeGym\module6\demo\C0922G1-Repo-BE\car_parking\src\main\java\com" />
     </key>
@@ -280,6 +310,7 @@
       <workItem from="1680489952387" duration="15082000" />
       <workItem from="1680518970677" duration="3323000" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1680523498363" duration="886000" />
 <<<<<<< HEAD
       <workItem from="1680571423309" duration="15145000" />
@@ -290,6 +321,13 @@
       <workItem from="1680572348975" duration="1222000" />
 >>>>>>> e3b8da2669b0ce1962efdee8281d2fda56aeb74a
 >>>>>>> origin/customer-car-VuBD
+=======
+      <workItem from="1680523498363" duration="1616000" />
+      <workItem from="1680572348975" duration="13749000" />
+      <workItem from="1680620324281" duration="5031000" />
+      <workItem from="1680658543557" duration="774000" />
+      <workItem from="1680659447200" duration="1425000" />
+>>>>>>> origin/develop
     </task>
     <servers />
   </component>
@@ -342,13 +380,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/controller/CarInOutRestController.java</url>
-          <line>100</line>
+          <line>99</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/controller/CarInOutRestController.java</url>
-          <line>135</line>
+          <line>134</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/controller/CarInOutRestController.java</url>
+          <line>152</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/controller/CarInOutRestController.java</url>
+          <line>163</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

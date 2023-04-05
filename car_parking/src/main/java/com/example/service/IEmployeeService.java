@@ -1,8 +1,8 @@
 package com.example.service;
 
 
-import com.example.dto.EmployeeDto;
-import com.example.dto.IEmployeeDto;
+import com.example.dto.EmployeeDTO;
+import com.example.dto.IEmployeeDTO;
 import com.example.model.Employee;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -132,7 +132,7 @@ public interface IEmployeeService {
      * @param employeeDto
      * @return
      */
-    Map<String, String> checkCreate(EmployeeDto employeeDto);
+    Map<String, String> checkCreate(EmployeeDTO employeeDto);
 
     /**
      * Created by: DinhNTC
@@ -141,8 +141,8 @@ public interface IEmployeeService {
      * @param employeeDto
      * @return
      */
-    Map<String, String> checkUpdate(EmployeeDto employeeDto);
+    Map<String, String> checkUpdate(EmployeeDTO employeeDto);
 
-    List<IEmployeeDto> getListEmployeeByName();
+    List<IEmployeeDTO> getListEmployeeByName();
 
 }

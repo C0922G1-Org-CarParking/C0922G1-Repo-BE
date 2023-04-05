@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("api/user/section")
-public class SectionController {
+public class SectionRestController {
     @Autowired
     private ISectionService iSectionService;
 

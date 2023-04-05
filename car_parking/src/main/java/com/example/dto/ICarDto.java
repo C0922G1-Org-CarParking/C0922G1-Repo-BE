@@ -1,6 +1,6 @@
 package com.example.dto;
 
-public interface ICarDto {
+public interface ICarDTO {
     String getName();
     Long getId();
     String getIdCard();

@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/user/car")
 @CrossOrigin("*")
-public class CarRestRepository {
+public class CarRestController {
     @Autowired
     private ICarService carService;
 
@@ -25,9 +25,9 @@ public class CarRestRepository {
      * Return: infoCustomer and listCar
      */
 
-
     @GetMapping("/info/{id}")
     public ResponseEntity<List<ICarTicketDTO>> findCarById(@PathVariable Long id) {
+
         List<ICarTicketDTO> iCarTicketDtos = carService.findCarTicketByCustomerId(id);
         if (iCarTicketDtos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

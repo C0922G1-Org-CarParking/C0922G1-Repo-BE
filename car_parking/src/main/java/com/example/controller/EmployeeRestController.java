@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.dto.EmployeeDto;
+import com.example.dto.EmployeeDTO;
 import com.example.model.Employee;
 import com.example.model.Position;
 import com.example.service.IEmployeeService;
@@ -146,9 +146,9 @@ public class EmployeeRestController {
      * @return if has errors then return HttpStatus.Not_FOUND else add data into DB
      */
     @PostMapping("/create-employee")
-    public ResponseEntity<?> createEmployee(@Validated @RequestBody EmployeeDto employeeDto,
+    public ResponseEntity<?> createEmployee(@Validated @RequestBody EmployeeDTO employeeDto,
                                             BindingResult bindingResult) {
-        new EmployeeDto().validate(employeeDto, bindingResult);
+        new EmployeeDTO().validate(employeeDto, bindingResult);
         Map<String, String> check = iEmployeeService.checkCreate(employeeDto);
         if (check.get("errorIdCard") != null) {
             bindingResult.rejectValue("idCard", "idCard", check.get("errorIdCard"));
@@ -182,8 +182,8 @@ public class EmployeeRestController {
      */
 
     @PatchMapping("/update-employee/{id}")
-    public ResponseEntity<?> updateEmployee(@PathVariable("id") Long id, @Validated @RequestBody EmployeeDto employeeDto, BindingResult bindingResult) {
-        new EmployeeDto().validate(employeeDto, bindingResult);
+    public ResponseEntity<?> updateEmployee(@PathVariable("id") Long id, @Validated @RequestBody EmployeeDTO employeeDto, BindingResult bindingResult) {
+        new EmployeeDTO().validate(employeeDto, bindingResult);
         Map<String, String> check = iEmployeeService.checkUpdate(employeeDto);
         if (check.get("errorIdCard") != null) {
             bindingResult.rejectValue("idCard", "idCard", check.get("errorIdCard"));

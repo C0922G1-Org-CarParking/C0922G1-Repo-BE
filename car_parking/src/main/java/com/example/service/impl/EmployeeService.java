@@ -1,8 +1,8 @@
 package com.example.service.impl;
 
 
-import com.example.dto.EmployeeDto;
-import com.example.dto.IEmployeeDto;
+import com.example.dto.EmployeeDTO;
+import com.example.dto.IEmployeeDTO;
 import com.example.model.Employee;
 import com.example.repository.IEmployeeRepository;
 import com.example.service.IEmployeeService;
@@ -29,6 +29,7 @@ public class EmployeeService implements IEmployeeService {
     public Employee findByEmail(String email) {
         return iEmployeeRepository.findByEmail(email);
     }
+
 
     /**
      * Created by: TaiLH
@@ -157,7 +158,7 @@ public class EmployeeService implements IEmployeeService {
      */
 
     @Override
-    public Map<String, String> checkCreate(EmployeeDto employeeDto) {
+    public Map<String, String> checkCreate(EmployeeDTO employeeDto) {
         Map<String, String> checkMap = new HashMap<>();
 
         for (int i = 0; i < iEmployeeRepository.employeeList().size(); i++) {
@@ -184,7 +185,7 @@ public class EmployeeService implements IEmployeeService {
      * @return
      */
     @Override
-    public Map<String, String> checkUpdate(EmployeeDto employeeDto) {
+    public Map<String, String> checkUpdate(EmployeeDTO employeeDto) {
         Map<String, String> checkMap = new HashMap<>();
         Employee employee = findEmployeeById(employeeDto.getId());
         for (int i = 0; i < iEmployeeRepository.employeeList().size(); i++) {
@@ -202,7 +203,7 @@ public class EmployeeService implements IEmployeeService {
         return checkMap;
     }
 
-    public List<IEmployeeDto> getListEmployeeByName() {
+    public List<IEmployeeDTO> getListEmployeeByName() {
         return iEmployeeRepository.getListEmployeeByName();
     }
 }

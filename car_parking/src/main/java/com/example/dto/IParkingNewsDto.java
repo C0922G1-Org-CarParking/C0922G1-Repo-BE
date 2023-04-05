@@ -2,7 +2,7 @@ package com.example.dto;
 
 import java.time.LocalDate;
 
-public interface IParkingNewsDto {
+public interface IParkingNewsDTO {
     Integer getParkingNewsId();
     String getTitle();
     String getDescription();

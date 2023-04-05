@@ -1,6 +1,6 @@
 package com.example.dto;
 
-public interface ILocationView {
+public interface ILocationViewDTO {
     String getFloorName();
     String getSectionName();
     Long getLocationName();

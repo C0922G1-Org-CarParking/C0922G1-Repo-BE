@@ -2,23 +2,23 @@ package com.example.dto;
 
 import java.util.List;
 
-public class CarCustomerDto {
-    CustomerDto customerDto;
-    List<CarDto> carDtos;
+public class CarCustomerDTO {
+    CustomerDTO customerDto;
+    List<CarDTO> carDTOS;
 
-    public CustomerDto getCustomerDto() {
+    public CustomerDTO getCustomerDto() {
         return customerDto;
     }
 
-    public void setCustomerDto(CustomerDto customerDto) {
+    public void setCustomerDto(CustomerDTO customerDto) {
         this.customerDto = customerDto;
     }
 
-    public List<CarDto> getCarDtos() {
-        return carDtos;
+    public List<CarDTO> getCarDtos() {
+        return carDTOS;
     }
 
-    public void setCarDtos(List<CarDto> carDtos) {
-        this.carDtos = carDtos;
+    public void setCarDtos(List<CarDTO> carDTOS) {
+        this.carDTOS = carDTOS;
     }
 }

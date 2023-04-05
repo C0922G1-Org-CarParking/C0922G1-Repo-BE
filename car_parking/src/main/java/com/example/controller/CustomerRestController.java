@@ -77,9 +77,9 @@ public class CustomerRestController {
      */
 
     @PostMapping("/create")
-    public ResponseEntity<?> createCustomer(@Validated @RequestBody CarCustomerDto carCustomerDto, BindingResult bindingResult) {
-        CustomerDto customerDto = carCustomerDto.getCustomerDto();
-        List<CarDto> carDtos = carCustomerDto.getCarDtos();
+    public ResponseEntity<?> createCustomer(@Validated @RequestBody CarCustomerDTO carCustomerDto, BindingResult bindingResult) {
+        CustomerDTO customerDto = carCustomerDto.getCustomerDto();
+        List<CarDTO> carDTOS = carCustomerDto.getCarDtos();
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
         } else {
@@ -87,7 +87,7 @@ public class CustomerRestController {
                     customerDto.getEmail(), customerDto.isGender(), customerDto.getIdCard(), customerDto.getName(), customerDto.getPhoneNumber(),
                     customerDto.getProvince(), customerDto.getStreet());
             Customer customer = customerService.findCustomerByIdCard(customerDto.getIdCard());
-            for (CarDto car : carDtos) {
+            for (CarDTO car : carDTOS) {
                 carService.createCar(car.getBrand(), car.getName(), car.getPlateNumber(), car.getCarType().getId(), customer.getId());
             }
         }
@@ -140,13 +140,13 @@ public class CustomerRestController {
      * @RequestBody CustomerCarDto includes the customer object and the car object list
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<CustomerCarDto> updateCustomer(@PathVariable Long id, @RequestBody @Validated CustomerCarDto customerCarDto,
+    public ResponseEntity<CustomerCarDTO> updateCustomer(@PathVariable Long id, @RequestBody @Validated CustomerCarDTO customerCarDto,
                                                          BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
         }
-        CustomerCarDto customerDto = customerCarDto;
-        List<CarDto> carDtos = customerCarDto.getCarList();
+        CustomerCarDTO customerDto = customerCarDto;
+        List<CarDTO> carDTOS = customerCarDto.getCarList();
         Customer customer = new Customer();
         List<Car> carList = new ArrayList<>();
 
@@ -157,9 +157,9 @@ public class CustomerRestController {
 
         List<Car> existingCars = carService.listCar(id);
         if (existingCars.isEmpty()) {
-            for (int i = 0; i < carDtos.size(); i++) {
+            for (int i = 0; i < carDTOS.size(); i++) {
                 Car car2 = new Car();
-                BeanUtils.copyProperties(carDtos.get(i), car2);
+                BeanUtils.copyProperties(carDTOS.get(i), car2);
                 carList.add(car2);
             }
             for (int i = 0; i < carList.size(); i++) {
@@ -169,11 +169,11 @@ public class CustomerRestController {
             }
         } else {
             existingCars.stream()
-                    .filter(car -> carDtos.stream()
-                            .noneMatch(carDto -> carDto.getPlateNumber().equals(car.getPlateNumber())))
+                    .filter(car -> carDTOS.stream()
+                            .noneMatch(carDTO -> carDTO.getPlateNumber().equals(car.getPlateNumber())))
                     .forEach(car -> carService.deleteCar(car.getPlateNumber()));
 
-            for (CarDto carDto : carDtos) {
+            for (CarDTO carDto : carDTOS) {
                 boolean carExists = false;
                 for (Car existingCar : existingCars) {
                     if (existingCar.getPlateNumber().equals(carDto.getPlateNumber())) {
