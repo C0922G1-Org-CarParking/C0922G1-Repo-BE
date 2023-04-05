@@ -1,9 +1,12 @@
 package com.example.dto;
 
+import javax.validation.Valid;
 import java.util.List;
 
 public class CarCustomerDTO {
+    @Valid
     CustomerDTO customerDto;
+    @Valid
     List<CarDTO> carDTOS;
 
     public CustomerDTO getCustomerDto() {

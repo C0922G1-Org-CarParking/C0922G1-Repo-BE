@@ -22,13 +22,15 @@ public interface ICarRepository extends JpaRepository<Car, Long> {
      */
 
     @Modifying
-    @Query(value = "insert into car (brand, is_deleted, name, plate_number, car_type_id, customer_id)value(:brand, " +
-            "false, :name, :plateNumber, :carTypeId, :customerId)", nativeQuery = true)
+    @Query(value = "insert into car (brand, is_deleted, name, plate_number, car_type_id, customer_id,is_parked)value(:brand, " +
+            "false, :name, :plateNumber, :carTypeId, :customerId, 0)", nativeQuery = true)
     void createCar(@Param("brand") String brand,
                    @Param("name") String name,
                    @Param("plateNumber") String plateNumber,
                    @Param("carTypeId") Long carTypeId,
                    @Param("customerId") Long customerId);
+
+
 
     /**
      * Created by: MinhCDK

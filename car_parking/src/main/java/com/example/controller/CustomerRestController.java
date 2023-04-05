@@ -165,7 +165,7 @@ public class CustomerRestController {
             for (int i = 0; i < carList.size(); i++) {
                 Car car = new Car();
                 car = carList.get(i);
-                this.carService.createCar(car.getName(), car.getCarType().getId(), car.getBrand(), car.getPlateNumber(), car.getCustomer().getId());
+                carService.createCar(car.getBrand(), car.getName(), car.getPlateNumber(), car.getCarType().getId(), customer.getId());
             }
         } else {
             existingCars.stream()
@@ -184,7 +184,8 @@ public class CustomerRestController {
                 if (!carExists) {
                     Car car = new Car();
                     BeanUtils.copyProperties(carDto, car);
-                    this.carService.createCar(car.getName(), car.getCarType().getId(), car.getBrand(), car.getPlateNumber(), car.getCustomer().getId());
+                    carService.createCar(car.getBrand(), car.getName(), car.getPlateNumber(), car.getCarType().getId(), customer.getId());
+
                 }
             }
         }

@@ -440,4 +440,5 @@ public class TicketRestController {
         Integer price = this.iTicketService.getPriceOfTicket(expiryDate, effectiveDate, rate);
         return new ResponseEntity<>(price, HttpStatus.OK);
     }
+
 }

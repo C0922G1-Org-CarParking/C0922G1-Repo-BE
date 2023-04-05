@@ -50,9 +50,9 @@ public class CarService implements ICarService {
         return this.carRepository.findByCarId(id);
     }
 
-    @Override
-    public void createCar(String name, Long car_type_id, String brand,String plate_number, Long customer_id) {
-        this.carRepository.createCar(name, car_type_id,brand, plate_number, customer_id);
-    }
+//    @Override
+//    public void createCar(String name, Long car_type_id, String brand,String plate_number, Long customer_id) {
+//        this.carRepository.createCar(name, car_type_id,brand, plate_number, customer_id);
+//    }
 
 }

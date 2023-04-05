@@ -57,5 +57,5 @@ public interface ICarService {
      * Date create : 29/03/2023
      * function create car
      */
-    void createCar(String name,Long car_type_id,String brand,String plate_number,Long customer_id);
+//    void createCar(String name,Long car_type_id,String plate_number,Long customer_id);
 }
