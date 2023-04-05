@@ -35,7 +35,7 @@ public class TicketService implements ITicketService {
 //    }
 
     @Override
-    public Double getPriceOfTicket(String expiryDate, String effectiveDate, double rate) {
+    public Integer getPriceOfTicket(String expiryDate, String effectiveDate, double rate) {
         LocalDate localDate = LocalDate.parse(expiryDate); // Chuyển đổi chuỗi thành đối tượng LocalDate
         LocalDate localDate1 = LocalDate.parse(effectiveDate); // Chuyển đổi chuỗi thành đối tượng LocalDate
         java.sql.Date sqlDate = java.sql.Date.valueOf(localDate);
@@ -101,5 +101,35 @@ public class TicketService implements ITicketService {
 
     public TicketOfListDto findById(int id) {
         return iTicketRepository.findById(id);
+    }
+
+    @Override
+    public Integer getTotalStatisticalTicketChart(int sinceMonth, int toMonth, int month) {
+        return iTicketRepository.getTotalOfTicket(sinceMonth,toMonth,month);
+    }
+
+    @Override
+    public Integer getTotalStatisticalCustomerChart(int sinceMonth, int toMonth, int month) {
+        return iTicketRepository.getTotalOfCustomer(sinceMonth,toMonth,month);
+    }
+
+    @Override
+    public Integer[] getValue(int sinceMonth, int toMonth) {
+        Integer[] dd = new Integer[toMonth - sinceMonth + 1];
+        System.out.println(dd.toString());
+        for (int i = sinceMonth; i <= toMonth; i++) {
+            dd[i-sinceMonth] = iTicketRepository.getTotalOfCustomer(sinceMonth, toMonth, i);
+        }
+        return dd;
+    }
+
+    @Override
+    public Integer[] getTicketList(int sinceMonth, int toMonth) {
+        Integer[] dd = new Integer[toMonth - sinceMonth + 1];
+        System.out.println(dd.toString());
+        for (int i = sinceMonth; i <= toMonth; i++) {
+            dd[i-sinceMonth] = iTicketRepository.getTotalOfTicket(sinceMonth, toMonth, i);
+        }
+        return dd;
     }
 }

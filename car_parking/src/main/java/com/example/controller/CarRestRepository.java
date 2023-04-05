@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
 @RequestMapping("/car")
 @CrossOrigin("*")
@@ -27,10 +28,11 @@ public class CarRestRepository {
 
     @GetMapping("/info/{id}")
     public ResponseEntity<List<ICarTicketDTO>> findCarById(@PathVariable Long id) {
-        List<ICarTicketDTO> iCarTicketDTOS = carService.findCarTicketByCustomerId(id);
-        if (iCarTicketDTOS.isEmpty()) {
+
+        List<ICarTicketDTO> iCarTicketDtos = carService.findCarTicketByCustomerId(id);
+        if (iCarTicketDtos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(iCarTicketDTOS, HttpStatus.OK);
+        return new ResponseEntity<>(iCarTicketDtos, HttpStatus.OK);
     }
 }

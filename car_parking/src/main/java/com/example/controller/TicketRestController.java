@@ -46,7 +46,7 @@ public class TicketRestController {
     @PostMapping("/createTicket")
     public ResponseEntity<Ticket> createTicket(@Validated @RequestBody TicketDto ticketDto, BindingResult bindingResult) {
         new TicketDto().validate(ticketDto, bindingResult);
-        if (bindingResult.hasErrors()) {
+         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         Ticket ticket = new Ticket();
@@ -73,6 +73,7 @@ public class TicketRestController {
         }
         return new ResponseEntity<>(iTicketTypes, HttpStatus.OK);
     }
+
 
     /**
      * Created by: HuyNV
@@ -157,6 +158,24 @@ public class TicketRestController {
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
+    /**
+     * Created by: HuyNV
+     * Date created: 29/03/2023
+     * Function: getStatisticalCustomerChart
+     *
+     * @param
+     * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
+     */
+    @GetMapping("/statisticalCustomerChart")
+    public ResponseEntity<Integer[]> getTotalStatisticalCustomerChart(@RequestParam(value = "sinceMonth", defaultValue = "") int sinceMonth
+            , @RequestParam(value = "toMonth",defaultValue = "") int toMonth) {
+        Integer[] customers = iTicketService.getValue(sinceMonth, toMonth);
+        if (customers == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
+
 
     /**
      * Created by: HuyNV
@@ -166,30 +185,15 @@ public class TicketRestController {
      * @param
      * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
      */
-    @GetMapping("/statisticalTicketChart/{sinceMonth}/{toMonth}")
-    public ResponseEntity<List<ITicketDto>> getStatisticalTicketChart(@PathVariable int sinceMonth, @PathVariable int toMonth) {
-        List<ITicketDto> tickets = iTicketService.statisticalChart(sinceMonth, toMonth);
-        if (tickets.isEmpty()) {
+    @GetMapping("/statisticalTicketChart")
+    public ResponseEntity<Integer[]> getTotalStatisticalTicketChart(
+            @RequestParam(value = "sinceMonth", defaultValue = "") int sinceMonth
+            , @RequestParam(value = "toMonth",defaultValue = "") int toMonth) {
+        Integer[] tickets = iTicketService.getTicketList(sinceMonth, toMonth);
+        if (tickets == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(tickets, HttpStatus.OK);
-    }
-
-    /**
-     * Created by: HuyNV
-     * Date created: 29/03/2023
-     * Function: getStatisticalCustomerChart
-     *
-     * @param
-     * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
-     */
-    @GetMapping("/statisticalCustomerChart/{sinceMonth}/{toMonth}")
-    public ResponseEntity<List<ICustomerDTO>> getStatisticalCustomerChart(@PathVariable int sinceMonth, @PathVariable int toMonth) {
-        List<ICustomerDTO> customerDtoList = customerService.statisticalChart(sinceMonth, toMonth);
-        if (customerDtoList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<>(customerDtoList, HttpStatus.OK);
     }
 
     /**
@@ -206,7 +210,7 @@ public class TicketRestController {
             , @RequestParam(value = "rate", defaultValue = "") Double rate) {
         Double price = null;
         if (!effectiveDate.equals("") && !expiryDate.equals("") && !(rate == 0)) {
-            price = iTicketService.getPriceOfTicket(expiryDate, effectiveDate, rate);
+            price = Double.valueOf(iTicketService.getPriceOfTicket(expiryDate, effectiveDate, rate));
         }
 
         if (price == null) {
@@ -215,9 +219,19 @@ public class TicketRestController {
         return new ResponseEntity<>(price, HttpStatus.OK);
     }
 
+    /**
+     * Created by: HuyNV
+     * Date created: 29/03/2023
+     * Function: getStatisticalCustomerChart
+     *
+     * @param
+     * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
+     */
     @GetMapping("/findCarListOfCustomerId/{id}")
-    public ResponseEntity<List<ICarTicketDTO>> findCarListOfCustomerId(@PathVariable("id") int id) {
-        List<ICarTicketDTO> iCarTicketDTO = customerService.findCarListOfCustomerId(id);
+
+    public ResponseEntity<List<ICarOfTicketDTO>> findCarListOfCustomerId(@PathVariable("id") int id) {
+        List<ICarOfTicketDTO> iCarTicketDTO = customerService.findCarListOfCustomerId(id);
+
         if (iCarTicketDTO == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -233,7 +247,14 @@ public class TicketRestController {
         return new ResponseEntity<>(tickets, HttpStatus.OK);
     }
 
-
+    /**
+     * Created by: HuyNV
+     * Date created: 29/03/2023
+     * Function: getStatisticalCustomerChart
+     *
+     * @param
+     * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
+     */
     @GetMapping("/rate/{id}")
     public ResponseEntity<Double> getRate(@PathVariable("id") int id) {
         double rate = customerService.findRateById(id);
@@ -408,13 +429,13 @@ public class TicketRestController {
     }
 
     @GetMapping("/get-price")
-    public ResponseEntity<Double> getRenewalPrice(@RequestParam(value = "expiryDate", required = false) String expiryDate,
+    public ResponseEntity<Integer> getRenewalPrice(@RequestParam(value = "expiryDate", required = false) String expiryDate,
                                                   @RequestParam(value = "effectiveDate", required = false) String effectiveDate,
                                                   @RequestParam(value = "rate", required = false) Double rate) {
         if (expiryDate == null || effectiveDate == null || rate == null) {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
-        Double price = this.iTicketService.getPriceOfTicket(expiryDate, effectiveDate, rate);
+        Integer price = this.iTicketService.getPriceOfTicket(expiryDate, effectiveDate, rate);
         return new ResponseEntity<>(price, HttpStatus.OK);
     }
 }
