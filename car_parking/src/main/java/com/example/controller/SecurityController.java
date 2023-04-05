@@ -10,8 +10,6 @@ import com.example.security_authentication.payload.request.ResetPasswordRequest;
 import com.example.service.IAccountService;
 import com.example.service.IEmployeeService;
 import com.example.security_authentication.service.AccountDetails;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,7 +58,7 @@ public class SecurityController {
      * @return HttpStatus.No_Content if result is error or HttpStatus.OK is result is not error
      */
     @PostMapping("/login")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<JwtResponse> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword());
         Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -74,7 +72,6 @@ public class SecurityController {
                 new JwtResponse(
                         jwt,
                         userDetails.getUsername(),
-                        //inject employeeService để lấy tên
                         employeeService.findByEmail(loginRequest.getUsername()).getName(),
                         roles)
         );
@@ -86,7 +83,7 @@ public class SecurityController {
      * Function: reset password (forgot password)
      */
     @GetMapping("/reset-password/{username}")
-    public ResponseEntity<?> resetPassword(@Valid @PathVariable String username) {
+    public ResponseEntity<MessageResponse> resetPassword(@Valid @PathVariable String username) {
         Account account = accountService.findAccountByEmployeeEmail(username);
         if (account != null && !username.isEmpty()) {
             SimpleMailMessage message = new SimpleMailMessage();
@@ -136,14 +133,6 @@ public class SecurityController {
         }else {
             return new ResponseEntity<>(HttpStatus.OK);
         }
-    }
-
-    /**
-     * HoangNM
-     */
-    @GetMapping("add")
-    public ResponseEntity<?> get(){
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

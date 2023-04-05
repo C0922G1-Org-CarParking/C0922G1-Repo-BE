@@ -18,7 +18,7 @@ public class AccountDetails implements UserDetails {
 
     @JsonIgnore
     private String password;
-    List<GrantedAuthority> authorities = null;
+    private List<GrantedAuthority> authorities = null;
 
     public AccountDetails(String username, String password,
                           List<GrantedAuthority> authorities) {

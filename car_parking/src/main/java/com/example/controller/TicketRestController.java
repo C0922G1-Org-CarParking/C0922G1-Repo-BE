@@ -20,7 +20,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/ticket")
+@RequestMapping("api/user/ticket")
 public class TicketRestController {
     @Autowired
     private ITicketService iTicketService;
