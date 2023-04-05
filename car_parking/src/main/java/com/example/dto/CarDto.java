@@ -20,6 +20,7 @@ private Long id;
 
     private String name;
 
+
 //        @NotBlank(message = "Vui lòng nhập vào đây")
     private String plateNumber;
 
@@ -35,7 +36,7 @@ private Long id;
 
     private Customer customer;
 
-
+    private boolean isParked;
 //    private Set<CarInOut> carInOutSet;
 //
 //
@@ -43,6 +44,7 @@ private Long id;
 
     public CarDto() {
     }
+
 
     public Long getId() {
         return id;
