@@ -20,7 +20,7 @@ public interface ILocationService {
 
     void addLocation(Long name,Double width, Double height, Double length, String permissionCarTypeLocations, Long floorId, Long sectionId);
     Location findLocation(Long id);
-    void updateLocation(Long name , Double width ,Double height, Double length, Long floorId, Long sectionId, Long Id);
+    void updateLocation(Long name , Double width ,Double height, Double length,String permission_car_type_locations, Long floorId, Long sectionId, Long Id);
     Map<String, String> checkCreate(LocationDTO locationDto);
     Map<String, String> checkUpdate(LocationDTO locationDto);
 

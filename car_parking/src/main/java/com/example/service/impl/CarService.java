@@ -1,6 +1,6 @@
 package com.example.service.impl;
 
-import com.example.dto.ICarTicketDTO;
+import com.example.dto.ICarOfTicketDTO;
 import com.example.model.Car;
 import com.example.repository.ICarRepository;
 import com.example.service.ICarService;
@@ -30,7 +30,7 @@ public class CarService implements ICarService {
     }
 
     @Override
-    public List<ICarTicketDTO> findCarTicketByCustomerId(Long id) {
+    public List<ICarOfTicketDTO> findCarTicketByCustomerId(Long id) {
         return carRepository.findCarTicketByCustomerId(id);
     }
 

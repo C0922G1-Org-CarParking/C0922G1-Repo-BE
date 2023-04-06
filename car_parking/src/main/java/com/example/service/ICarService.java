@@ -1,6 +1,6 @@
 package com.example.service;
 
-import com.example.dto.ICarTicketDTO;
+import com.example.dto.ICarOfTicketDTO;
 import com.example.model.Car;
 import org.springframework.stereotype.Repository;
 
@@ -29,7 +29,7 @@ public interface ICarService {
 
 //    List<ICarDto> findCarById(Long id);
 
-    List<ICarTicketDTO> findCarTicketByCustomerId(Long id);
+    List<ICarOfTicketDTO> findCarTicketByCustomerId(Long id);
 
     /**
      * Create by: VuTN,

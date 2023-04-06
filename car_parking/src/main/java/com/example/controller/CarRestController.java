@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.dto.ICarTicketDTO;
+import com.example.dto.ICarOfTicketDTO;
 import com.example.service.ICarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,9 +26,9 @@ public class CarRestController {
      */
 
     @GetMapping("/info/{id}")
-    public ResponseEntity<List<ICarTicketDTO>> findCarById(@PathVariable Long id) {
+    public ResponseEntity<List<ICarOfTicketDTO>> findCarById(@PathVariable Long id) {
 
-        List<ICarTicketDTO> iCarTicketDtos = carService.findCarTicketByCustomerId(id);
+        List<ICarOfTicketDTO> iCarTicketDtos = carService.findCarTicketByCustomerId(id);
         if (iCarTicketDtos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
