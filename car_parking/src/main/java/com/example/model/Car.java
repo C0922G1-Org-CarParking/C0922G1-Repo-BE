@@ -40,8 +40,20 @@ public class Car {
     @JsonIgnore
     private Set<Ticket> ticketSet;
 
+    private boolean isParked;
+
+
+
 
     public Car() {
+    }
+
+    public boolean isParked() {
+        return isParked;
+    }
+
+    public void setParked(boolean parked) {
+        isParked = parked;
     }
 
     public boolean isDeleted() {

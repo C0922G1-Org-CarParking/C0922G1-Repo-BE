@@ -12,7 +12,11 @@ public class Ticket {
     private String effectiveDate;
     @Column(nullable = false, columnDefinition = "date")
     private String expiryDate;
+<<<<<<< HEAD
     @Column(nullable = false)
+=======
+
+>>>>>>> origin/car-in-out
     private double totalPrice;
 
     @Column(nullable = false)

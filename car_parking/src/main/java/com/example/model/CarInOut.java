@@ -14,6 +14,25 @@ public class CarInOut {
     @Column(columnDefinition = "date", length = 45)
     private String timeOut;
 
+<<<<<<< HEAD
+=======
+    private String urlCarInImage;
+
+    private String urlCarOutImage;
+
+
+    public String getUrlCarInImage() {
+        return urlCarInImage;
+    }
+
+
+    public void setUrlCarInImage(String originalImageName) {
+        this.urlCarInImage = originalImageName;
+    }
+
+
+
+>>>>>>> origin/car-in-out
     @ManyToOne
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     private Car car;

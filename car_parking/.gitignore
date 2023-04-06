@@ -1,5 +1,9 @@
 HELP.md
+<<<<<<< HEAD
 .gradle
+=======
+
+>>>>>>> origin/car-in-out
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
@@ -35,4 +39,11 @@ out/
 
 ### VS Code ###
 .vscode/
+<<<<<<< HEAD
 application.properties
+=======
+
+src/test
+
+
+>>>>>>> origin/car-in-out
