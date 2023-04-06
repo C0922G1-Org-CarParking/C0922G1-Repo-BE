@@ -141,7 +141,7 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
                     "                            where f.name like concat('%', :search , '%') \n" +
                     "                                                        and l.is_deleted = false ",
             countQuery =
-                    "select l.id as id, \n" +
+                    "select l.id as id, l.name as name \n" +
                             "                                    f.name as nameFloor, \n" +
                             "                                   l.floor_id as floorId, \n" +
                             "                                   l.section_id as sectionId, \n" +
