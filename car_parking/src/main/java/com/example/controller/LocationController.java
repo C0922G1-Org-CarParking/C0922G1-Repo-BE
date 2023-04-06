@@ -31,7 +31,7 @@ public class LocationController {
      * Function: create location
      */
     @PostMapping("/create")
-    public ResponseEntity<?> createLocation(@RequestBody @Validated LocationDto locationDto, BindingResult bindingResult) {
+    public ResponseEntity<?> createLocation(@Validated @RequestBody  LocationDto locationDto, BindingResult bindingResult) {
         new LocationDto().validate(locationDto, bindingResult);
         Map<String, String> check = iLocationService.checkCreate(locationDto);
         int count  = iLocationService.checkMaxName(locationDto.getFloor().getId(), locationDto.getSection().getId());
@@ -44,7 +44,7 @@ public class LocationController {
                       locationDto1.getWidth(),
                       locationDto1.getHeight(),
                       locationDto1.getLength(),
-                      Arrays.toString(locationDto1.getPermissionCarTypeLocations()),
+                      locationDto.getPermissionCarTypeLocations(),
                       locationDto1.getFloor().getId(),
                       locationDto1.getSection().getId());
 
@@ -66,7 +66,7 @@ public class LocationController {
     public ResponseEntity<?> updateLocation(@PathVariable(value = "id") Long Id, @RequestBody @Validated LocationDto locationDto, BindingResult bindingResult) {
         Location location = new Location();
         BeanUtils.copyProperties(locationDto, location);
-        iLocationService. updateLocation(location.getName(), location.getWidth(), location.getHeight(), location.getLength(),location.getFloor().getId(), location.getSection().getId(),Id);
+        iLocationService. updateLocation(location.getName(), location.getWidth(), location.getHeight(), location.getLength(),locationDto.getPermissionCarTypeLocations(), location.getFloor().getId(),location.getSection().getId(),Id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

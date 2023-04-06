@@ -5,304 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05dd7e3f-7109-41cf-95a3-0b1d07a1eeb4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.8/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/gc.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries-with-intellij-classes.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/create.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/jquery-3.6.3.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/CarParkingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/CarParkingApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/CarInOutRestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/CarRestRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/CustomerRestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/EmployeeRestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/FloorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/FloorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/LocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/LocationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/ParkingNewsRestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/SectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/SectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/TicketRestController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/CarCustomerDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/CarDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/CarInOutDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/CarScanningDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/CustomerCarDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/CustomerDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/EditTicketDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/EmployeeDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarInOutDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarInOutDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarTicketDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ICustomerDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/IEmployeeDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/IFloorDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ILocationDetailDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ILocationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ILocationDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ILocationOfFloor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ILocationView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/IParkingNewsDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/IPositionDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ITicketDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ITicketTypeDto.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/LocationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/LocationDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/TicketDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/TicketOfListDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/AccountRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/AccountRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/CarInOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/CarInOut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/CarType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/CarType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Floor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Floor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/ParkingNews.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Section.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Section.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/TicketType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/TicketType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/ICarInOutRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/ICarInOutRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/ICarRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/ICarTypeRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/ICustomerRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/IEmployeeRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/IFloorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/IFloorRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/ILocationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/ILocationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/IParkingNewsRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/IPositionRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/ISectionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/ISectionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/ITicketRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/ITicketTypeRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/CarInOutService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/CarInOutService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/ICarInOutService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/ICarInOutService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/ICarService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/ICarTypeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/ICustomerService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/IEmployeeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/IFloorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/IFloorService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/ILocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/ILocationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/IParkingNewsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/IPositionService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/ITicketService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/ITicketTypeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CarService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CarTypeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CustomerService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/EmployeeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/FloorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/FloorService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/LocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/LocationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/ParkingNewsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/PositionService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/TicketService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/TicketTypeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/0_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/1_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/2_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/3_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/4_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/5_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/6_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/7_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/8_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/9_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/a_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/b_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/c_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/d_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/e_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/f_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/g_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/h_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/i_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/j_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/k_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/l_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/m_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/n_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/o_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/p_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/q_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/r_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/s_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/t_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/u_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/v_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/w_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/x_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/y_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/z_10x15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/0_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/1_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/2_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/3_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/4_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/5_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/6_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/7_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/8_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/9_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/a_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/b_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/c_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/d_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/e_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/f_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/g_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/h_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/i_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/j_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/k_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/l_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/m_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/n_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/o_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/p_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/q_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/r_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/s_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/t_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/u_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/v_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/w_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/x_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/y_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/z_10x16_bw.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/0_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/1_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/2_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/3_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/4_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/5_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/6_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/7_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/8_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/9_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/a_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/b_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/c_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/d_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/e_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/f_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/g_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/h_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/i_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/j_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/k_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/l_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/m_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/n_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/o_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/p_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/q_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/r_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/s_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/t_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/u_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/v_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/w_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/x_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/y_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/z_6x8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/0_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/1_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/2_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/3_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/4_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/5_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/6_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/7_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/8_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/9_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/a_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/b_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/c_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/d_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/e_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/f_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/g_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/h_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/i_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/j_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/k_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/l_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/m_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/n_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/o_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/p_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/q_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/r_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/s_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/t_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/u_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/v_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/w_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/x_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/y_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/z_8x13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/car-images/test_097.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.xml.recommended" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/help/about.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/help/help.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/help/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/neuralnetworks/network_avgres_813_map.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/neuralnetworks/network_linres_1016_edge.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/reportgenerator/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/snapshot/blurred-plate-image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/snapshot/test_002.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/snapshot/test_097.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/syntax/syntax.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/create.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/jquery-3.6.3.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/EmployeeRestController_addEmployee.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/EmployeeRestController_editEmployee.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/EmployeeRestController_findById.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/controller/CustomerRestController_deleteCustomer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/controller/CustomerRestController_findCustomerById.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/controller/CustomerRestController_getAllCarType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/controller/CustomerRestController_getListCustomer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/controller/CustomerRestController_updateCustomer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/controller/EmployeeRestController_delete.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/controller/EmployeeRestController_getListEmployee.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/controller/ParkingNewsRestController_getDetailParkingNews.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/controller/ParkingNewsRestController_getListParkingNews.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/controller/location/LocationController_findByIdLocation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/controller/location/LocationController_getMapParking.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/location/LocationController_delete.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/location/LocationController_showList.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -554,6 +269,14 @@
       <workItem from="1680595651700" duration="399000" />
       <workItem from="1680600170423" duration="879000" />
       <workItem from="1680606607954" duration="521000" />
+      <workItem from="1680607230150" duration="1477000" />
+      <workItem from="1680609743427" duration="696000" />
+      <workItem from="1680610720586" duration="2466000" />
+      <workItem from="1680614200074" duration="708000" />
+      <workItem from="1680657692355" duration="11770000" />
+      <workItem from="1680708757556" duration="1239000" />
+      <workItem from="1680744201688" duration="32000" />
+      <workItem from="1680744438743" duration="13183000" />
     </task>
     <servers />
   </component>
@@ -573,6 +296,25 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/service/impl/LocationService.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/service/impl/LocationService.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.example.dto.LocationDto" memberName="name" />
+      </pinned-members>
+    </pin-to-top-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="floor.locationSet" />
