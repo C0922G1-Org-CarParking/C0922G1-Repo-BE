@@ -1,5 +1,11 @@
 package com.example.repository;
 
+
+
+
+
+
+import com.example.dto.IEmployeeDTO;
 import com.example.model.Employee;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,11 +21,13 @@ import java.util.List;
 
 @Repository
 public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
+
     /**
      * Created by: TaiLH
      * Date created: 29/03/2022
+     *
      * @param pageable the pageable to request a paged result, can be {@link Pageable#unpaged()}, must not be
-     *          {@literal null}.
+     *                 {@literal null}.
      */
     @Query(value = "select * from employee e where e.is_deleted = false", nativeQuery = true)
     Page<Employee> findAll(Pageable pageable);
@@ -28,6 +36,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
      * Created by: TaiLH
      * Date created: 29/03/2022
      * function: get the list employee and search by all field
+     *
      * @param pageable
      * @param name
      * @param startDate
@@ -37,14 +46,16 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
 
     @Transactional
     @Query(value = "select * from `employee` e where  lower(e.name) like lower(concat('%', :name, '%')) and e.date_of_birth >= COALESCE(NULLIF(:startDate, ''), date_of_birth)" +
-            "and e.date_of_birth <= COALESCE(NULLIF(:endDate, ''), date_of_birth) and e.is_deleted = false", nativeQuery = true)
+            "and e.date_of_birth <= COALESCE(NULLIF(:endDate, ''), date_of_birth) " +
+            "and lower(e.street) like lower(concat('%', :street, '%')) and IF(:province = 0, true, e.province = :province)and e.is_deleted = false", nativeQuery = true)
     Page<Employee> searchAll(Pageable pageable,@Param("name") String name, @Param("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy")  String startDate,
-                                       @Param("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate);
 
+                             @Param("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate, @Param("street") String street, @Param("province") int province);
     /**
      * Created by: TaiLH
      * Date created: 29/03/2022
      * function: get a list of employees and search by all fields but the date field can only search for the start date or only the end date
+     *
      * @param pageable
      * @param name
      * @param startDate
@@ -52,16 +63,19 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
      * @return
      */
     @Transactional
-    @Query(value = "select * from c0922g1_car_parking.`employee` e where  lower(e.name) like lower(concat('%', :name, '%')) and e.date_of_birth = COALESCE(NULLIF(:startDate, ''), date_of_birth)\n" +
-            "and e.date_of_birth = COALESCE(NULLIF(:endDate, ''), date_of_birth) and e.is_deleted = false", nativeQuery = true)
+    @Query(value = "select * from `c0922g1_car_parking`.`employee` e where  lower(e.name) like lower(concat('%',:name, '%')) and e.date_of_birth = COALESCE(NULLIF(:startDate, ''), date_of_birth)\n" +
+            "and e.date_of_birth = COALESCE(NULLIF(:endDate, ''), date_of_birth) " +
+            "and lower(e.street) like lower(concat('%', :street, '%')) and IF(:province = 0, true, e.province = :province) and e.is_deleted = false", nativeQuery = true)
     Page<Employee> searchDateOfBirth(Pageable pageable,@Param("name") String name,@Param("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy")  String startDate,
-                                       @Param("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate);
+
+                                     @Param("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate, @Param("street") String street, @Param("province") int province);
 
 
     /**
      * Created by: TaiLH
      * Date created: 29/03/2022
      * function: delete employee by id
+     *
      * @param id
      */
     @Modifying
@@ -73,6 +87,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
      * Created by: TaiLH
      * Date created: 29/03/2022
      * function: soft delete employee by id
+     *
      * @param id
      */
     //xóa mềm
@@ -85,6 +100,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
      * Created by: TaiLH
      * Date created: 29/03/2022
      * function: retrieve the list of soft-deleted employees
+     *
      * @param pageable
      */
     //    danh sách xóa mềm
@@ -95,16 +111,20 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
      * Created by: DinhNTC
      * Date created: 29/03/2023
      * Function: find id employee
-     * @return  call to updateEmployee in employeeRepository
+     *
+     * @return call to updateEmployee in employeeRepository
      */
-    @Query(value = "select e.* from employee e join `position` p on p.id = e.position_id  where e.id =:id", nativeQuery = true)
+    @Query(value = "select e.* from employee e join `position` p on p.id = e.position_id  where is_deleted = 0 and e.id =:id", nativeQuery = true)
     Employee findEmployeeById(@Param("id") Long id);
+
     /**
      * Created by: DinhNTC
      * Date created: 29/03/2023
      * Function: add  data employee   to data employee in database
+     *
      * @return
      */
+
     @Transactional
     @Modifying
     @Query(value = "INSERT INTO employee (commune, date_of_birth, district,gender,id_card,is_deleted,name,province,street,email,position_id,phone_number)" +
@@ -122,6 +142,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
                      @Param("positionId") Long positionId,
                      @Param("phoneNumber") String phoneNumber
     );
+
     @Transactional
     @Modifying
     @Query(value = "UPDATE employee " +
@@ -142,7 +163,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
      * Created by: DinhNTC
      * Date created: 29/03/2023
      * Function: add   new data employee to DB
-     * @return   param data employee in location id
+     * @return param data employee in location id
      */
     void updateEmployee(
             @Param("name") String name,
@@ -162,6 +183,14 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
     @Query(value = "select * from employee", nativeQuery = true)
     List<Employee> employeeList();
 
+
+    @Query(value = "select employee.id as id, employee.name as name from employee " , nativeQuery = true)
+    List<IEmployeeDTO> getListEmployeeByName();
+
+    /**
+     * HoangNM
+     */
+    Employee findByEmail(String email);
 
 
 }

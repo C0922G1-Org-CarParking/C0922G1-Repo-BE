@@ -1,14 +1,21 @@
 package com.example.service;
 
-import com.example.dto.EmployeeDto;
+
+import com.example.dto.EmployeeDTO;
+import com.example.dto.IEmployeeDTO;
 import com.example.model.Employee;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.Map;
 
 public interface IEmployeeService {
+    /**
+     * HoangNM
+     */
+    Employee findByEmail(String email);
 
     /**
      * Created by: TaiLH
@@ -18,9 +25,10 @@ public interface IEmployeeService {
      * @param name
      * @param startDate
      * @param endDate
+     * @param street
      * @return
      */
-    Page<Employee> searchAll(Pageable pageable, String name, String startDate, String endDate);
+    Page<Employee> searchAll(Pageable pageable, String name, String startDate, String endDate, String street, int province);
 
     /**
      * Created by: TaiLH
@@ -30,9 +38,10 @@ public interface IEmployeeService {
      * @param name
      * @param startDate
      * @param endDate
+     * @param street
      * @return
      */
-    Page<Employee> searchDateOfBirth(Pageable pageable, String name, String startDate, String endDate);
+    Page<Employee> searchDateOfBirth(Pageable pageable, String name, String startDate, String endDate, String street, int province);
 
     /**
      * Created by: TaiLH
@@ -40,7 +49,7 @@ public interface IEmployeeService {
      * function: soft delete employee by id
      * @param id
      */
-    void softDeleteById(@Param("id") Long id);
+    boolean softDeleteById(@Param("id") Long id);
 
     /**
      * Created by: TaiLH
@@ -58,6 +67,7 @@ public interface IEmployeeService {
      * @param id
      */
     void deleteEmployeeById(@Param("id") Long id);
+
 
 
     /**
@@ -87,9 +97,11 @@ public interface IEmployeeService {
      * @param id
      */
 
+
     void updateEmployee(String name,String dateOfBirth,boolean gender,String phoneNumber,Long positionId,
                         String email,String idCard,int district,int province,int commune,String street,
                         Long id);
+
 
     /**
      * Created by: DinhNTC
@@ -107,9 +119,11 @@ public interface IEmployeeService {
      * @param positionId
      * @param phoneNumber
      */
+
     void addEmployee(int commune, String dateOfBirth, int district,boolean gender, String idCard,
                      String name, int province, String street, String email,
                      Long positionId, String phoneNumber);
+
 
     /**
      * Created by: DinhNTC
@@ -118,7 +132,7 @@ public interface IEmployeeService {
      * @param employeeDto
      * @return
      */
-    Map<String, String> checkCreate(EmployeeDto employeeDto);
+    Map<String, String> checkCreate(EmployeeDTO employeeDto);
 
     /**
      * Created by: DinhNTC
@@ -127,8 +141,8 @@ public interface IEmployeeService {
      * @param employeeDto
      * @return
      */
-    Map<String, String> checkUpdate(EmployeeDto employeeDto);
+    Map<String, String> checkUpdate(EmployeeDTO employeeDto);
 
-
+    List<IEmployeeDTO> getListEmployeeByName();
 
 }

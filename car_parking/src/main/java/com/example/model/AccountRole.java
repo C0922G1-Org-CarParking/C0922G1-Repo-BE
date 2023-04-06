@@ -7,7 +7,6 @@ public class AccountRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountRoleId;
-
     @ManyToOne
     @JoinColumn(name = "account_id",referencedColumnName = "id")
     private Account account;
@@ -18,15 +17,6 @@ public class AccountRole {
 
     public AccountRole() {
     }
-
-    public Long getAccountRoleId() {
-        return accountRoleId;
-    }
-
-    public void setAccountRoleId(Long accountRoleId) {
-        this.accountRoleId = accountRoleId;
-    }
-
 
     public Account getAccount() {
         return account;
@@ -44,12 +34,18 @@ public class AccountRole {
         this.role = role;
     }
 
-
     public AccountRole(Long accountRoleId, Account account, Role role) {
         this.accountRoleId = accountRoleId;
         this.account = account;
         this.role = role;
     }
 
+    public Long getAccountRoleId() {
+        return accountRoleId;
+    }
+
+    public void setAccountRoleId(Long accountRoleId) {
+        this.accountRoleId = accountRoleId;
+    }
 
 }
