@@ -14,6 +14,7 @@ import java.util.List;
 
 @Repository
 public interface ITicketTypeRepository extends JpaRepository<TicketType, Long> {
+
     @Query(value = "select ticket_type.id as id,ticket_type.name as name from ticket_type ", nativeQuery = true)
     List<ITicketTypeDto> getListNameTicketType();
 

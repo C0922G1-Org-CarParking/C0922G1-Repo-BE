@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.dto.IFloorDto;
 import com.example.dto.ILocationDto;
+import com.example.dto.ILocationOfFloor;
 import com.example.model.Floor;
 import com.example.model.Location;
 
@@ -10,5 +11,5 @@ import java.util.List;
 public interface ILocationService {
     List<IFloorDto> getListNameFloor();
 
-    List<ILocationDto> getListNameLocation();
+    List<ILocationOfFloor> getListNameLocation(int floorId, int sectionId);
 }

@@ -2,6 +2,7 @@ package com.example.service.impl;
 
 import com.example.dto.IFloorDto;
 import com.example.dto.ILocationDto;
+import com.example.dto.ILocationOfFloor;
 import com.example.repository.ILocationRepository;
 import com.example.service.ILocationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,9 @@ public class LocationService implements ILocationService {
     }
 
     @Override
-    public List<ILocationDto> getListNameLocation() {
-       return iLocationRepository.getListNameLocation();
+    public List<ILocationOfFloor> getListNameLocation(int floorId, int sectionId) {
+        return iLocationRepository.getListNameLocation(floorId,sectionId);
     }
+
+
 }

@@ -15,6 +15,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -34,6 +41,36 @@ public class TicketRestController {
     private IFloorService iFloorService;
     @Autowired
     private ILocationService iLocationService;
+    @Autowired
+    private ISectionService iSectionService;
+
+    /**
+     * findLocation of floor
+     * HuyNL
+     */
+    @GetMapping("/findLocation/{idFloor}")
+    public ResponseEntity<List<ILocationDto>> findLocationOfFloor(@PathVariable("idFloor") int idFloor) {
+        List<ILocationDto> locationDtoList = iTicketService.findLocationOfFloor(idFloor);
+        if (locationDtoList == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity<>(locationDtoList, HttpStatus.OK);
+        }
+    }
+
+    /**
+     * findLocation of floor
+     * HuyNL
+     */
+    @GetMapping("/findSection/{idSection}")
+    public ResponseEntity<List<ISectionDTO>> findSectionOfFloor(@PathVariable("idSection") int idSection) {
+        List<ISectionDTO> sectionDTOList = iTicketService.findSectionOfFloor(idSection);
+        if (sectionDTOList == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity<>(sectionDTOList, HttpStatus.OK);
+        }
+    }
 
     /**
      * Created by: HuyNV
@@ -73,39 +110,6 @@ public class TicketRestController {
         return new ResponseEntity<>(iTicketTypes, HttpStatus.OK);
     }
 
-    /**
-     * Created by: HuyNV
-     * Date created: 29/03/2023
-     * Function: getListLocation
-     *
-     * @param
-     * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
-     */
-    @GetMapping("/listLocation")
-    public ResponseEntity<List<ILocationDto>> getListLocation() {
-        List<ILocationDto> iLocationDtos = iLocationService.getListNameLocation();
-        if (iLocationDtos.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<>(iLocationDtos, HttpStatus.OK);
-    }
-
-    /**
-     * Created by: HuyNV
-     * Date created: 29/03/2023
-     * Function: getListFloor
-     *
-     * @param
-     * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
-     */
-    @GetMapping("/listFloor")
-    public ResponseEntity<List<IFloorDto>> getListFloor() {
-        List<IFloorDto> floorList = iLocationService.getListNameFloor();
-        if (floorList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<>(floorList, HttpStatus.OK);
-    }
 
     /**
      * Created by: HuyNV
@@ -205,7 +209,7 @@ public class TicketRestController {
             , @RequestParam(value = "rate", defaultValue = "") Double rate) {
         Double price = null;
         if (!effectiveDate.equals("") && !expiryDate.equals("") && !(rate == 0)) {
-            price = iTicketService.getPriceOfTicket(expiryDate, effectiveDate, rate);
+            price = Double.valueOf(iTicketService.getPriceOfTicket(expiryDate, effectiveDate, rate));
         }
 
         if (price == null) {
@@ -251,10 +255,10 @@ public class TicketRestController {
      *
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
      */
-    @GetMapping("/{id}")
-    private ResponseEntity<ITicketDto> findTicketById(@PathVariable("id") Long id) {
+    @GetMapping("/edit/{id}")
+    private ResponseEntity<ITicketDto> findTicketById(@PathVariable("id") int id) {
         ITicketDto editTicketDto = iTicketService.findTicket(id);
-        if (editTicketDto == null || id == null || id == -1) {
+        if (editTicketDto == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(editTicketDto, HttpStatus.OK);
@@ -267,19 +271,18 @@ public class TicketRestController {
      *
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
      */
-    @PutMapping("/update/{id}")
-    private ResponseEntity<?> updateTicket(@Validated @RequestBody EditTicketDto editTicketDto,
+
+    @PutMapping("/update")
+    private ResponseEntity<?> updateTicket(@RequestBody @Validated TicketDTOEdit ticketDTOEdit,
                                            BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
-        iTicketService.updateTicket(
-                editTicketDto.getTicketTypeId(),
-                editTicketDto.getFloorId(),
-                editTicketDto.getSectionId(),
-                editTicketDto.getExpiryDate(),
-                editTicketDto.getId()
-        );
+        iTicketService.updateTicket(ticketDTOEdit.getExpiryDate(),
+                ticketDTOEdit.getLocationId(),
+                ticketDTOEdit.getTicketTypeId(),
+                ticketDTOEdit.getTotalPrice(),
+                ticketDTOEdit.getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -407,13 +410,58 @@ public class TicketRestController {
     }
 
     @GetMapping("/get-price")
-    public ResponseEntity<Double> getRenewalPrice(@RequestParam(value = "expiryDate", required = false) String expiryDate,
-                                                  @RequestParam(value = "effectiveDate", required = false) String effectiveDate,
-                                                  @RequestParam(value = "rate", required = false) Double rate) {
+    public ResponseEntity<Integer> getRenewalPrice(@RequestParam(value = "expiryDate", required = false) String expiryDate,
+                                                   @RequestParam(value = "effectiveDate", required = false) String effectiveDate,
+                                                   @RequestParam(value = "rate", required = false) Double rate) {
         if (expiryDate == null || effectiveDate == null || rate == null) {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
-        Double price = this.iTicketService.getPriceOfTicket(expiryDate, effectiveDate, rate);
+        Integer price = this.iTicketService.getPriceOfTicket(expiryDate, effectiveDate, rate);
         return new ResponseEntity<>(price, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/listLocation")
+    public ResponseEntity<List<ILocationOfFloor>> getListLocation(@RequestParam(value = "floorId", defaultValue = "") int floorId,
+                                                                  @RequestParam(value = "sectionId", defaultValue = "") int sectionId) {
+        List<ILocationOfFloor> iLocationDtos = iLocationService.getListNameLocation(floorId, sectionId);
+        if (iLocationDtos.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(iLocationDtos, HttpStatus.OK);
+    }
+
+    /**
+     * Created by: HuyNV
+     * Date created: 29/03/2023
+     * Function: getListFloor
+     *
+     * @param
+     * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
+     */
+    @GetMapping("/listFloor")
+    public ResponseEntity<List<IFloorDto>> getListFloor() {
+        List<IFloorDto> floorList = iLocationService.getListNameFloor();
+        if (floorList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(floorList, HttpStatus.OK);
+    }
+
+    /**
+     * Created by: HuyNV
+     * Date created: 29/03/2023
+     * Function: getListSection
+     *
+     * @param
+     * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
+     */
+    @GetMapping("/listSection/{id}")
+    public ResponseEntity<List<ISectionDTO>> getListSectionByFloorId(@PathVariable("id") int id) {
+        List<ISectionDTO> iSectionDTOS = iSectionService.getListNameFloor(id);
+        if (iSectionDTOS.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(iSectionDTOS, HttpStatus.OK);
     }
 }

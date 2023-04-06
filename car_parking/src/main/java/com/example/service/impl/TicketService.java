@@ -1,5 +1,7 @@
 package com.example.service.impl;
 
+import com.example.dto.ILocationDto;
+import com.example.dto.ISectionDTO;
 import com.example.dto.ITicketDto;
 import com.example.repository.ITicketRepository;
 import com.example.service.ITicketService;
@@ -30,11 +32,11 @@ public class TicketService implements ITicketService {
     }
 
     @Override
-    public Double getPriceOfTicket(String expiryDate, String effectiveDate, double rate) {
-        LocalDate localDate = LocalDate.parse(expiryDate); // Chuyển đổi chuỗi thành đối tượng LocalDate
-        LocalDate localDate1 = LocalDate.parse(effectiveDate); // Chuyển đổi chuỗi thành đối tượng LocalDate
-        java.sql.Date sqlDate = java.sql.Date.valueOf(localDate);
-        java.sql.Date sqlDate1 = java.sql.Date.valueOf(localDate1);
+    public Integer getPriceOfTicket(String expiryDate, String effectiveDate, double rate) {
+        LocalDate expiryDate1 = LocalDate.parse(expiryDate); // Chuyển đổi chuỗi thành đối tượng LocalDate
+        LocalDate effectiveDate1 = LocalDate.parse(effectiveDate); // Chuyển đổi chuỗi thành đối tượng LocalDate
+        java.sql.Date sqlDate = java.sql.Date.valueOf(expiryDate1);
+        java.sql.Date sqlDate1 = java.sql.Date.valueOf(effectiveDate1);
         return iTicketRepository.getPriceOfTicket(sqlDate, sqlDate1, rate);
     }
 
@@ -50,15 +52,30 @@ public class TicketService implements ITicketService {
 
 
     @Override
-    public ITicketDto findTicket(Long id) {
-        return iTicketRepository.findTicket(1L);
+    public void updateTicket(String expiryDate, Long locationId, Long ticketTypeId, double totalPrice, Long id) {
+        iTicketRepository.updateTicket(expiryDate, locationId, ticketTypeId, totalPrice, id);
     }
 
     @Override
-    public void updateTicket(Long ticketTypeId, Long floorId, Long sectionId, String expiryDate, Long id) {
-        iTicketRepository.updateTicket(ticketTypeId, floorId, sectionId, expiryDate, id);
-
+    public ITicketDto findTicket(int id) {
+        return iTicketRepository.findTicket(id);
     }
+
+    @Override
+    public List<ILocationDto> findLocationOfFloor(int idFloor) {
+        return iTicketRepository.findLocationOfFloor(idFloor);
+    }
+
+    @Override
+    public List<ISectionDTO> findSectionOfFloor(int idSection) {
+        return iTicketRepository.findSectionOfFloor(idSection);
+    }
+
+//    @Override
+//    public void updateTicket(Long ticketTypeId, Long floorId, Long sectionId, String expiryDate, Long id) {
+//        iTicketRepository.updateTicket(ticketTypeId, floorId, sectionId, expiryDate, id);
+//
+//    }
 
 
     @Override
