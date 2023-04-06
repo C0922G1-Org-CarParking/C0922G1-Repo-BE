@@ -130,6 +130,7 @@ public class SecurityRestController {
         if(bindingResult.hasErrors()){
             return new ResponseEntity<>(bindingResult.getFieldErrors(),HttpStatus.BAD_REQUEST);
         }else {
+            accountService.saveNewPassword(resetPasswordRequest.getNewPassword(),account.getId());
             return new ResponseEntity<>(HttpStatus.OK);
         }
     }
