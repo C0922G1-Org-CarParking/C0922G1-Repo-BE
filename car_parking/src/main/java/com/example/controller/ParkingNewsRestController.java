@@ -27,7 +27,7 @@ public class ParkingNewsRestController {
      * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
      */
     @GetMapping("")
-    public ResponseEntity<Page<IParkingNewsDTO>> getListParkingNews(@PageableDefault(size = 3, sort = "posting_date", direction = Sort.Direction.DESC) Pageable pageable,
+    public ResponseEntity<Page<IParkingNewsDTO>> getListParkingNews(@PageableDefault(size = 2, sort = "posting_date", direction = Sort.Direction.DESC) Pageable pageable,
                                                                     @RequestParam(name = "keyword", defaultValue = "") String keyWord) {
         Page<IParkingNewsDTO> parkingNewsPage = iParkingNewsService.findAll(pageable, keyWord);
         if (parkingNewsPage.isEmpty()) {
