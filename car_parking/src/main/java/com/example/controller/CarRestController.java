@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/car")
+@RequestMapping("api/user/car")
 @CrossOrigin("*")
-public class CarRestRepository {
+public class CarRestController {
     @Autowired
     private ICarService carService;
 
@@ -24,7 +24,6 @@ public class CarRestRepository {
      * @Param: customerId
      * Return: infoCustomer and listCar
      */
-
 
     @GetMapping("/info/{id}")
     public ResponseEntity<List<ICarTicketDTO>> findCarById(@PathVariable Long id) {

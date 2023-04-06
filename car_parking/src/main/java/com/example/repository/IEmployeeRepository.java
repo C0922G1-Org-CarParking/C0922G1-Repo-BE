@@ -5,7 +5,7 @@ package com.example.repository;
 
 
 
-import com.example.dto.IEmployeeDto;
+import com.example.dto.IEmployeeDTO;
 import com.example.model.Employee;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -49,6 +49,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
             "and e.date_of_birth <= COALESCE(NULLIF(:endDate, ''), date_of_birth) " +
             "and lower(e.street) like lower(concat('%', :street, '%')) and IF(:province = 0, true, e.province = :province)and e.is_deleted = false", nativeQuery = true)
     Page<Employee> searchAll(Pageable pageable,@Param("name") String name, @Param("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy")  String startDate,
+
                              @Param("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate, @Param("street") String street, @Param("province") int province);
     /**
      * Created by: TaiLH
@@ -66,6 +67,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
             "and e.date_of_birth = COALESCE(NULLIF(:endDate, ''), date_of_birth) " +
             "and lower(e.street) like lower(concat('%', :street, '%')) and IF(:province = 0, true, e.province = :province) and e.is_deleted = false", nativeQuery = true)
     Page<Employee> searchDateOfBirth(Pageable pageable,@Param("name") String name,@Param("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy")  String startDate,
+
                                      @Param("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") String endDate, @Param("street") String street, @Param("province") int province);
 
 
@@ -183,11 +185,12 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
 
 
     @Query(value = "select employee.id as id, employee.name as name from employee " , nativeQuery = true)
-    List<IEmployeeDto> getListEmployeeByName();
+    List<IEmployeeDTO> getListEmployeeByName();
 
     /**
      * HoangNM
      */
     Employee findByEmail(String email);
+
 
 }

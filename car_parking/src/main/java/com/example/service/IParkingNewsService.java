@@ -1,11 +1,11 @@
 package com.example.service;
 
-import com.example.dto.IParkingNewsDto;
+import com.example.dto.IParkingNewsDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 
 public interface IParkingNewsService {
-    Page<IParkingNewsDto> findAll(Pageable pageable, String keyword);
-    IParkingNewsDto findById(int id);
+    Page<IParkingNewsDTO> findAll(Pageable pageable, String keyword);
+    IParkingNewsDTO findById(int id);
 }

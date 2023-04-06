@@ -2,11 +2,9 @@ package com.example.dto;
 
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import java.util.List;
 
-public class CustomerCarDto {
+public class CustomerCarDTO {
 
     private Long id;
 //    @NotBlank(message = "Vui lòng nhập vào đây")
@@ -48,9 +46,9 @@ public class CustomerCarDto {
         isDeleted = deleted;
     }
     @Valid
-    private List<CarDto> carList;
+    private List<CarDTO> carList;
 
-    public CustomerCarDto() {
+    public CustomerCarDTO() {
     }
 
     public Long getId() {
@@ -141,11 +139,11 @@ public class CustomerCarDto {
         this.street = street;
     }
 
-    public List<CarDto> getCarList() {
+    public List<CarDTO> getCarList() {
         return carList;
     }
 
-    public void setCarList(List<CarDto> carList) {
+    public void setCarList(List<CarDTO> carList) {
         this.carList = carList;
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.validation.Validator;
 
 import javax.validation.constraints.*;
 
-public class TicketDto implements Validator {
+public class TicketDTO implements Validator {
     private String effectiveDate;
 //    @NotBlank(message = "Không được để trống")
 //    @Size(max = 20,min = 2 , message = "Dài nhất 12 kí tự , ít nhất 2 kí tự ")

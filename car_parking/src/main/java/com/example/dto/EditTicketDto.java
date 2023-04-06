@@ -1,6 +1,6 @@
 package com.example.dto;
 
-public class EditTicketDto {
+public class EditTicketDTO {
 
     private Long id;
     private Long floorId;
@@ -15,7 +15,7 @@ public class EditTicketDto {
     private String totalPrice;
 
 
-    public EditTicketDto() {
+    public EditTicketDTO() {
     }
 
 
