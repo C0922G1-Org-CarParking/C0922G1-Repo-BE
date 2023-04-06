@@ -34,6 +34,8 @@ public class TicketRestController {
     private ICustomerService customerService;
     @Autowired
     private ILocationService iLocationService;
+    @Autowired
+    private ISectionService iSectionService;
 
     /**
      * Created by: HuyNV
@@ -74,18 +76,10 @@ public class TicketRestController {
         return new ResponseEntity<>(iTicketTypes, HttpStatus.OK);
     }
 
-
-    /**
-     * Created by: HuyNV
-     * Date created: 29/03/2023
-     * Function: getListLocation
-     *
-     * @param
-     * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
-     */
     @GetMapping("/listLocation")
-    public ResponseEntity<List<ILocationOfFloorDTO>> getListLocation() {
-        List<ILocationOfFloorDTO> iLocationDtos = iLocationService.getListNameLocation();
+    public ResponseEntity<List<ILocationOfFloorDTO>> getListLocation(@RequestParam(value = "floorId" , defaultValue = "") int floorId ,
+                                                                  @RequestParam(value = "sectionId" , defaultValue = "") int sectionId) {
+        List<ILocationOfFloorDTO> iLocationDtos = iLocationService.getListNameLocation(floorId,sectionId);
         if (iLocationDtos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -108,6 +102,24 @@ public class TicketRestController {
         }
         return new ResponseEntity<>(floorList, HttpStatus.OK);
     }
+
+    /**
+     * Created by: HuyNV
+     * Date created: 29/03/2023
+     * Function: getListSection
+     *
+     * @param
+     * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
+     */
+    @GetMapping("/listSection/{id}")
+    public ResponseEntity<List<ISectionDTO>> getListSectionByFloorId(@PathVariable("id") int id) {
+        List<ISectionDTO> iSectionDTOS = iSectionService.getListNameFloor(id);
+        if (iSectionDTOS.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(iSectionDTOS, HttpStatus.OK);
+    }
+
 
     /**
      * Created by: HuyNV
@@ -136,8 +148,8 @@ public class TicketRestController {
      * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
      */
     @GetMapping("/listSearchCustomer")
-    public ResponseEntity<List<ICustomerDTO>> getListCustomer(@RequestParam(defaultValue = "") String name) {
-        List<ICustomerDTO> customerDtoList = customerService.getListCustomerByName(name);
+    public ResponseEntity<List<IListCustomerDTO>> getListCustomer(@RequestParam(defaultValue = "") String name) {
+        List<IListCustomerDTO> customerDtoList = customerService.getListCustomerByName(name);
         if (customerDtoList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -266,47 +278,6 @@ public class TicketRestController {
         }
         return new ResponseEntity<>(rate, HttpStatus.OK);
     }
-
-
-    /**
-     * Created by: HuyNL
-     * Date created: 29/03/2023
-     * Function: edit Ticket
-     *
-     * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
-     */
-//    @GetMapping("/{id}")
-//    private ResponseEntity<ITicketDto> findTicketById(@PathVariable("id") Long id) {
-//        ITicketDto editTicketDto = iTicketService.findTicket(id);
-//        if (editTicketDto == null || id == null || id == -1) {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//        return new ResponseEntity<>(editTicketDto, HttpStatus.OK);
-//    }
-
-    /**
-     * Created by: HuyNL
-     * Date created: 29/03/2023
-     * Function: edit Ticket
-     *
-     * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
-     */
-    @PutMapping("/update/{id}")
-    private ResponseEntity<?> updateTicket(@Validated @RequestBody EditTicketDTO editTicketDto,
-                                           BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
-        }
-        iTicketService.updateTicket(
-                editTicketDto.getTicketTypeId(),
-                editTicketDto.getFloorId(),
-                editTicketDto.getSectionId(),
-                editTicketDto.getExpiryDate(),
-                editTicketDto.getId()
-        );
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
 
     /**
      * Created by: NhanPT
@@ -440,5 +411,46 @@ public class TicketRestController {
         Integer price = this.iTicketService.getPriceOfTicket(expiryDate, effectiveDate, rate);
         return new ResponseEntity<>(price, HttpStatus.OK);
     }
+
+    /**
+     * Created by: HuyNL
+     * Date created: 29/03/2023
+     * Function: edit Ticket
+     *
+     * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
+     */
+
+
+    @GetMapping("/edit/{id}")
+    private ResponseEntity<ITicketDTO> findTicketById(@PathVariable("id") int id) {
+        ITicketDTO editTicketDto = iTicketService.findTicket(id);
+        if (editTicketDto == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(editTicketDto, HttpStatus.OK);
+    }
+
+    /**
+     * Created by: HuyNL
+     * Date created: 29/03/2023
+     * Function: edit Ticket
+     *
+     * @return HttpStatus.No_Content if result is null or HttpStatus.OK is result is not error
+     */
+
+    @PutMapping("/update")
+    private ResponseEntity<?> updateTicket(@RequestBody @Validated TicketDTOEdit ticketDTOEdit,
+                                           BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
+        }
+        iTicketService.updateTicket(ticketDTOEdit.getExpiryDate(),
+                ticketDTOEdit.getLocationId(),
+                ticketDTOEdit.getTicketTypeId(),
+                ticketDTOEdit.getTotalPrice(),
+                ticketDTOEdit.getId());
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
 }

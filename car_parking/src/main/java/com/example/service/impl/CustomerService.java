@@ -2,6 +2,7 @@ package com.example.service.impl;
 import com.example.dto.ICarOfTicketDTO;
 import com.example.dto.ICustomerDTO;
 import com.example.dto.ICustomerListDTO;
+import com.example.dto.IListCustomerDTO;
 import com.example.repository.ICustomerRepository;
 import com.example.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class CustomerService implements ICustomerService {
     private ITicketRepository ticketRepository;
 
     @Override
-    public List<ICustomerDTO> getListCustomerByName(String name) {
+    public List<IListCustomerDTO> getListCustomerByName(String name) {
         return iCustomerRepository.getListCustomerByName(name);
     }
 

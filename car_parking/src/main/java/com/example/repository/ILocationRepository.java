@@ -158,18 +158,17 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
     Page<ILocationDTO>showListT(Pageable pageable, @Param("search") String search);
 
 
-
-
-//@Repository
-//public interface ILocationRepository extends JpaRepository<Location,Long> {
-
     @Query(value = "select f.id as id, f.name as name from floor as f",
             nativeQuery = true)
     List<IFloorDTO> getListNameFloor();
 
 
-    @Query(value = "select location.id as id, location.name as name  from location",
+    @Query(value = "select location.id as id, location.name as name from location " +
+            "join `section` on `section`.id = location.section_id" +
+            " join floor on floor.id = location.floor_id" +
+            " where `section`.id = :floorId and floor.id = :sectionId",
             nativeQuery = true)
-    List<ILocationOfFloorDTO> getListNameLocation();
+    List<ILocationOfFloorDTO> getListNameLocation(@Param("floorId") int floorId ,
+                                               @Param("sectionId") int sectionId);
 
 }

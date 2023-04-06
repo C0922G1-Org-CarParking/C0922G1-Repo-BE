@@ -1,5 +1,7 @@
 package com.example.repository;
 
+import com.example.dto.ILocationDTOEdit;
+import com.example.dto.ISectionDTO;
 import com.example.dto.ITicketDTO;
 import com.example.model.Ticket;
 import com.example.dto.TicketOfListDTO;
@@ -24,9 +26,18 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
      * Date created: 29/03/2023
      * Function: editTicket and
      */
+    @Modifying
+    @Query(value = "update ticket as t set t.expiry_date = :expiryDate, t.location_id = :locationId, t.ticket_type_id = :ticketTypeId, t.total_price = :totalPrice where t.id =:id", nativeQuery = true)
+    void updateTicket(@Param("expiryDate") String expiryDate, @Param("locationId") Long locationId, @Param("ticketTypeId") Long ticketTypeId, @Param("totalPrice") double totalPrice, @Param("id") Long id);
+
+    /**
+     * Created by: HuyNL
+     * Date created: 29/03/2023
+     * Function: editTicket and
+     */
 
     @Query(value = " select \n" +
-            "ticket.id as TicketId, ct.rate as rate, c.name as CustomerName, c2.plate_number as PlateNumber,c.phone_number as PhoneNumber,\n" +
+            "ticket.id as TicketId, ct.rate as Rate, c.name as CustomerName, c2.plate_number as PlateNumber,c.phone_number as PhoneNumber,\n" +
             "ticket.effective_date as EffectiveDate, ticket.expiry_date as ExpiryDate, f.id as FloorId,l.id as LocationId, \n" +
             "s.id as SectionId, ticket.total_price as TotalPrice, tt.id as TicketTypeId \n" +
             " from `ticket` \n" +
@@ -35,8 +46,7 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
             " join `customer` c on c.id = c2.customer_id join `location` l on l.id = ticket.location_id \n" +
             " join `section` s on s.id = l.section_id join `floor` f on f.id = l.floor_id \n" +
             " join `ticket_type` tt on tt.id = ticket.ticket_type_id where ticket.id = :id and ticket.is_deleted = false", nativeQuery = true)
-    ITicketDTO findTicket(@Param("id") Long id);
-
+    ITicketDTO findTicket(@Param("id") int id);
 
 
     /**
@@ -44,9 +54,24 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
      * Date created: 29/03/2023
      * Function: editTicket and
      */
-    @Modifying
-    @Query(value = "update ticket join location l on l.id = ticket.location_id set l.floor_id= :floorId,l.section_id= :sectionId, ticket.ticket_type_id= :ticketTypeId, ticket.expiry_date = :expiryDate where ticket.id =:id and ticket.is_deleted = false", nativeQuery = true)
-    void updateTicket(@Param("ticketTypeId") Long ticketTypeId, @Param("floorId") Long floorId, @Param("sectionId") Long sectionId, @Param("expiryDate") String expiryDate, @Param("id") Long id);
+
+
+    @Query(nativeQuery = true, value = "select lc.id, lc.name\n" +
+            "from location as lc\n" +
+            "join floor as fl on lc.floor_id = fl.id\n" +
+            "where lc.is_occupied = 0\n" +
+            "and fl.id = :idFloor")
+    List<ILocationDTOEdit> findLocationOfFloor(@Param("idFloor") int idFloor);
+
+
+    @Query(nativeQuery = true, value = "select s.name,s.id\n" +
+            "from section as s\n" +
+            "join location as l on l.section_id = s.id\n" +
+            "join floor as f on l.floor_id = f.id\n" +
+            "where l.is_occupied = 0\n" +
+            "and f.id = 1;")
+    List<ISectionDTO> findSectionOfFloor(@Param("idSection") int idSection);
+
 
 
     @Transactional
@@ -197,5 +222,6 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
     Integer getTotalOfCustomer(@Param("sinceMonth") int sinceMonth,
                                @Param("toMonth") int toMonth,
                                @Param("month") int month,@Param("year") int year);
+
 }
 

@@ -18,7 +18,6 @@ public class EmployeeDTO implements Validator {
     @Pattern(regexp = "^[a-zA-ZÀ-ỹ\\s]*$", message = "Tên nhân viên không thể chứa ký tự đặc biệt và không thể chứa số")
     private String name;
     @NotBlank(message = "Nhập ngày sinh")
-//    @Pattern(regexp = "^(0?[1-9]|[12][0-9]|3[01])[\\\\/\\\\-](0?[1-9]|1[012])[\\\\/\\\\-]\\\\d{4}$",message = "không đúng định dạng")
     private String dateOfBirth;
     private boolean gender;
     @NotBlank(message = "Không được để trống.")
@@ -27,11 +26,8 @@ public class EmployeeDTO implements Validator {
     @NotBlank(message = "số cmnd không được để trống")
     @Pattern(regexp = "^(\\d{9})|(\\d{12})$", message = "số cmnd phải đúng định dạng,vd:XXXXXXXXX hoặc XXXXXXXXXXXX (X là số 0-9).")
     private String idCard;
-    @Min(value = 1)
     private int district;
-    @Min(value = 1)
     private int province;
-    @Min(value = 1)
     private int commune;
     @Size(max = 200, message = "Địa chỉ không được quá 200 ký tự.")
     @NotBlank(message = "Không được để trống.")
@@ -41,9 +37,6 @@ public class EmployeeDTO implements Validator {
     @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Email không đúng định dạng (Ví dụ: employee-email@email.com).")
     private String email;
     private boolean isDeleted;
-
-    private static final String DATE_REGEX = "^\\d{4}-\\d{2}-\\d{2}$";
-
 
     public boolean isDeleted() {
         return isDeleted;
@@ -157,30 +150,30 @@ public class EmployeeDTO implements Validator {
         return false;
     }
 
+    private static final String DATE_REGEX = "^\\d{4}-\\d{2}-\\d{2}$";
+
     @Override
     public void validate(Object target, Errors errors) {
         EmployeeDTO employeeDto = (EmployeeDTO) target;
 
-    // Kiểm tra định dạng ngày tháng năm sinh của người dùng
+        // Kiểm tra định dạng ngày tháng năm sinh của người dùng
         if (!employeeDto.getDateOfBirth().matches(DATE_REGEX)) {
-            errors.rejectValue("dateOfBirth", "user.birthday.invalidFormat", "Ngày sinh chưa đúng định dạng.");
+            errors.rejectValue("dateOfBirth", "user.birthday.invalidFormat", "Không đúng định dạng");
             return;
         }
 
-    // Tính toán tuổi của người dùng từ ngày tháng năm sinh đó
+        // Tính toán tuổi của người dùng từ ngày tháng năm sinh đó
         LocalDate dateOfBirth = LocalDate.parse(employeeDto.getDateOfBirth());
         LocalDate now = LocalDate.now();
         int age = Period.between(dateOfBirth, now).getYears();
 
-    // Kiểm tra tuổi của người dùng
-        if (age < 18) {
-            errors.rejectValue("dateOfBirth", "employeeDto.dateOfBirth.notEnoughAge", "Phải đủ 18 tuổi mới được");
-        }
+        // Kiểm tra tuổi của người dùng
         if (age < 0) {
-            errors.rejectValue("dateOfBirth", "employeeDto.dateOfBirth.notEnoughAge", "Chưa được sinh ra ");
-        } else if (age > 100) {
+            errors.rejectValue("dateOfBirth", "employeeDto.dateOfBirth.notEnoughAge", "Tuổi chưa tồn tại");
+        }else if (age < 18) {
+            errors.rejectValue("dateOfBirth", "employeeDto.dateOfBirth.notEnoughAge", "Tuổi phải lớn hơn 18 tuổi  ");
+        }else if (age > 100) {
             errors.rejectValue("dateOfBirth", "employeeDto.dateOfBirth.notEnoughAge", "Tuổi quá cao không phù hợp ");
         }
-
     }
 }

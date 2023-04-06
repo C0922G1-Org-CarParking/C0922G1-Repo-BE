@@ -2,6 +2,7 @@ package com.example.service;
 import com.example.dto.ICarOfTicketDTO;
 import com.example.dto.ICustomerDTO;
 import com.example.dto.ICustomerListDTO;
+import com.example.dto.IListCustomerDTO;
 import com.example.model.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +14,7 @@ import java.util.List;
 @Repository
 public interface ICustomerService {
 
-    List<ICustomerDTO> getListCustomerByName(String name);
+    List<IListCustomerDTO> getListCustomerByName(String name);
 
     ICustomerDTO findCustomerId(int id);
 

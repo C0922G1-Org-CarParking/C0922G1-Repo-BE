@@ -31,7 +31,7 @@ public interface ILocationService {
 
     List<IFloorDTO> getListNameFloor();
 
-    List<ILocationOfFloorDTO> getListNameLocation();
-
     int checkMaxName(Long floorId, Long sectionId);
+
+    List<ILocationOfFloorDTO> getListNameLocation(int floorId , int sectionId);
 }

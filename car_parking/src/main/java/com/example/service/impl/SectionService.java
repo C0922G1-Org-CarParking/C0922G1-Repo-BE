@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import com.example.dto.ISectionDTO;
 import com.example.model.Section;
 import com.example.repository.ISectionRepository;
 import com.example.service.ISectionService;
@@ -21,5 +22,10 @@ public class SectionService implements ISectionService {
     @Override
     public List<Section> sectionList1() {
         return iSectionRepository.sectionList1();
+    }
+
+    @Override
+    public List<ISectionDTO> getListNameFloor(int id) {
+        return iSectionRepository.getListNameFloor(id);
     }
 }

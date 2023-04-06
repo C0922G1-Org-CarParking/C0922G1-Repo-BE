@@ -1,5 +1,7 @@
 package com.example.service.impl;
 
+import com.example.dto.ILocationDTOEdit;
+import com.example.dto.ISectionDTO;
 import com.example.dto.ITicketDTO;
 import com.example.repository.ITicketRepository;
 import com.example.service.ITicketService;
@@ -47,17 +49,6 @@ public class TicketService implements ITicketService {
     }
 
 
-    @Override
-    public ITicketDTO findTicket(Long id) {
-        return iTicketRepository.findTicket(id);
-    }
-
-    @Override
-    public void updateTicket(Long ticketTypeId, Long floorId, Long sectionId, String expiryDate, Long id) {
-        iTicketRepository.updateTicket(ticketTypeId, floorId, sectionId, expiryDate, id);
-
-    }
-
 
     @Override
     public Page<TicketOfListDTO> searchTicketExpired(String customerName, String customerPhone, String employeeName, String employeePhone, String floor, String ticketType, Pageable pageable) {
@@ -71,7 +62,6 @@ public class TicketService implements ITicketService {
             iTicketRepository.delete(idDelete);
             return true;
         } catch (Exception e) {
-            System.out.println("Lỗi");
             return false;
         }
     }
@@ -112,5 +102,25 @@ public class TicketService implements ITicketService {
             dd[i-sinceMonth] = iTicketRepository.getTotalOfTicket(sinceMonth, toMonth, i, year);
         }
         return dd;
+    }
+
+    @Override
+    public void updateTicket(String expiryDate, Long locationId, Long ticketTypeId, double totalPrice, Long id) {
+        iTicketRepository.updateTicket(expiryDate, locationId, ticketTypeId, totalPrice, id);
+    }
+
+    @Override
+    public ITicketDTO findTicket(int id) {
+        return iTicketRepository.findTicket(id);
+    }
+
+    @Override
+    public List<ILocationDTOEdit> findLocationOfFloor(int idFloor) {
+        return iTicketRepository.findLocationOfFloor(idFloor);
+    }
+
+    @Override
+    public List<ISectionDTO> findSectionOfFloor(int idSection) {
+        return iTicketRepository.findSectionOfFloor(idSection);
     }
 }

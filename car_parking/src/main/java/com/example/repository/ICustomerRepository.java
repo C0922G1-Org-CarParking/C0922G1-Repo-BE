@@ -28,7 +28,7 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
 
     @Query(value = "select customer.id as id , customer.date_of_birth as dayOfBirth, customer.name as name , customer.phone_number as phoneNumber from customer " +
             "where customer.name like concat ('%',:name ,'%')", nativeQuery = true)
-    List<ICustomerDTO> getListCustomerByName(String name);
+    List<IListCustomerDTO> getListCustomerByName(String name);
 
     /**
      * Huy NV

@@ -176,7 +176,7 @@ public class LocationService implements ILocationService {
     }
 
     @Override
-    public List<ILocationOfFloorDTO> getListNameLocation() {
-       return iLocationRepository.getListNameLocation();
+    public List<ILocationOfFloorDTO> getListNameLocation(int floorId , int sectionId) {
+        return iLocationRepository.getListNameLocation(floorId,sectionId);
     }
 }

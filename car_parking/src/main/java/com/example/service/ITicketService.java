@@ -1,5 +1,7 @@
 package com.example.service;
 
+import com.example.dto.ILocationDTOEdit;
+import com.example.dto.ISectionDTO;
 import com.example.dto.ITicketDTO;
 import com.example.dto.TicketOfListDTO;
 import org.springframework.data.domain.Page;
@@ -8,9 +10,9 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface ITicketService {
-    ITicketDTO findTicket(Long id);
+//    ITicketDTO findTicket(Long id);
 
-    void updateTicket(Long ticketTypeId, Long floorId, Long sectionId, String expiryDate, Long id);
+//    void updateTicket(Long ticketTypeId, Long floorId, Long sectionId, String expiryDate, Long id);
 
     void addTicket(String effectiveDate, String expiryDate, boolean deleted, double totalPrice, Long id, Long id1, Long id2, Long id3, Double price);
 
@@ -48,5 +50,14 @@ public interface ITicketService {
     Integer[] getValue(int sinceMonth, int toMonth, int year);
 
     Integer[] getTicketList(int sinceMonth, int toMonth, int year);
+
+    void updateTicket(String expiryDate, Long locationId, Long ticketTypeId, double totalPrice, Long id);
+
+    ITicketDTO findTicket(int id);
+
+    //    void updateTicket(Long ticketTypeId, Long floorId, Long sectionId, String expiryDate, Long id);
+    List<ILocationDTOEdit> findLocationOfFloor(int idFloor);
+
+    List<ISectionDTO> findSectionOfFloor(int idSection);
 
 }
