@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE anpr-config SYSTEM >
+<anpr-config>
+    <image-preprocessing>
+        <gray-world enabled="true"/>
+        <contrast-stretching enabled="true"/>
+        <gaussian-filter enabled="true" size="5,5" sigma="1.5"/>
+        <vertical-edge-filter enabled="true"/>
+        <canny-edge-detector enabled="true" threshold="100,200"/>
+    </image-preprocessing>
+    <plate-detection>
+        <resize enabled="true" width="640" height="480"/>
+        <morphological-filter enabled="true" operation="CLOSE" kernel="rect" size="9,9"/>
+        <sobel-edge-detector enabled="true" threshold="20,100"/>
+        <color-gradient enabled="true" min-gradient="20" max-gradient="100"/>
+        <position-and-size-filter enabled="true" min-width="80" max-width="400" min-height="20" max-height="200"/>
+        <aspect-ratio-filter enabled="true" min-aspect-ratio="2.5" max-aspect-ratio="5.5"/>
+        <vertical-position-filter enabled="true" min-position="0.1" max-position="0.9"/>
+    </plate-detection>
+    <character-segmentation>
+        <projection-segmentation enabled="true" skew-correction="true"/>
+        <nearest-neighbor-filter enabled="true"/>
+        <dimension-filter enabled="true" min-width="10" max-width="50" min-height="15" max-height="70"/>
+        <color-filter enabled="true" min-intensity="100" max-intensity="255"/>
+        <height-comparison-filter enabled="true" min-ratio="0.4" max-ratio="1.0"/>
+    </character-segmentation>
+    <character-recognition>
+        <knn-recognition enabled="true" k="3" weights="1,2,1,2,4,2,1,2,1"/>
+    </character-recognition>
+</anpr-config>
