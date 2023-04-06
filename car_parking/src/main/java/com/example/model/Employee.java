@@ -28,11 +28,8 @@ public class Employee {
     @Column(length = 45, nullable = false, unique = true)
     private String idCard;
 
-    @Column(nullable = false)
     private int district;
-    @Column(nullable = false)
     private int province;
-    @Column(nullable = false)
     private int commune;
     @Column(nullable = false)
     private String street;
@@ -53,6 +50,7 @@ public class Employee {
     @OneToMany(mappedBy = "employee")
     @JsonIgnore
     private Set<Ticket> ticketSet;
+
 
     public Employee() {
     }

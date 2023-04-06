@@ -1,15 +1,13 @@
 package com.example.service.impl;
-
-
 import com.example.dto.ICarOfTicketDTO;
 import com.example.dto.ICustomerDTO;
 import com.example.dto.ICustomerListDTO;
+import com.example.dto.IListCustomerDTO;
 import com.example.repository.ICustomerRepository;
 import com.example.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.model.Customer;
-
 import com.example.repository.ICarRepository;
 import com.example.repository.ITicketRepository;
 import org.springframework.data.domain.Page;
@@ -29,7 +27,7 @@ public class CustomerService implements ICustomerService {
     private ITicketRepository ticketRepository;
 
     @Override
-    public List<ICustomerDTO> getListCustomerByName(String name) {
+    public List<IListCustomerDTO> getListCustomerByName(String name) {
         return iCustomerRepository.getListCustomerByName(name);
     }
 
@@ -45,8 +43,8 @@ public class CustomerService implements ICustomerService {
 
     @Override
 
-    public List<ICarOfTicketDTO> findCarListOfCustomerId(int id) {
 
+    public List<ICarOfTicketDTO> findCarListOfCustomerId(int id) {
         return iCustomerRepository.findCarListOfCustomerId(id);
     }
 
@@ -105,15 +103,27 @@ public class CustomerService implements ICustomerService {
      * Create by: VuBD
      * Date create: 29/03/2023
      * Function: connect database to delete a customer with corresponding id
-     *
      * @param id
      * @return: If successful, return 1, if unsuccessful, return -1, if the customer is still valid for tickets 0
      */
     @Override
     public long deleteCustomer(int id) {
+        if (customerRepository.findCustomerById(id) != null) {
+            int[] carIds = carRepository.findCarByCustomerId(id);
+            for (int i = 0; i < carIds.length; i++) {
+                int[] ticketIds = ticketRepository.findTicketByCarId(carIds[i]);
+                if (ticketIds.length != 0) {
+                    return 0;
+                }
+            }
+            if (carIds.length != 0) {
+                carRepository.deleteCarByCustomerId(id);
+            }
+            customerRepository.deleteCustomer(id);
+            return 1;
+        }
         return -1;
     }
-
     @Override
     public ICustomerDTO findById(int id) {
         return customerRepository.findCustomerById(id);
@@ -123,11 +133,16 @@ public class CustomerService implements ICustomerService {
      * Create by: VuBD
      * Date create: 04/04/2023
      * Function: delete customers with valid tickets when customers decide to click on the delete link
-     *
      * @param id
      */
     @Override
     public void deleteCustomerAndTicket(int id) {
+        int[] carIds = carRepository.findCarByCustomerId(id);
+        for (int i = 0; i < carIds.length; i++) {
+            ticketRepository.deleteTicketByCarId(carIds[i]);
+        }
+        carRepository.deleteCarByCustomerId(id);
+        customerRepository.deleteCustomer(id);
     }
 
     /**

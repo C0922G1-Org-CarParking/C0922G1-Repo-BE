@@ -26,7 +26,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/customer")
+@RequestMapping("api/user/customer")
 public class CustomerRestController {
     @Autowired
     private JavaMailSender javaMailSender;
@@ -77,9 +77,9 @@ public class CustomerRestController {
      */
 
     @PostMapping("/create")
-    public ResponseEntity<?> createCustomer(@Validated @RequestBody CarCustomerDto carCustomerDto, BindingResult bindingResult) {
-        CustomerDto customerDto = carCustomerDto.getCustomerDto();
-        List<CarDto> carDtos = carCustomerDto.getCarDtos();
+    public ResponseEntity<?> createCustomer(@Validated @RequestBody CarCustomerDTO carCustomerDto, BindingResult bindingResult) {
+        CustomerDTO customerDto = carCustomerDto.getCustomerDto();
+        List<CarDTO> carDTOS = carCustomerDto.getCarDtos();
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(bindingResult.getAllErrors(), HttpStatus.BAD_REQUEST);
         } else {
@@ -87,7 +87,7 @@ public class CustomerRestController {
                     customerDto.getEmail(), customerDto.isGender(), customerDto.getIdCard(), customerDto.getName(), customerDto.getPhoneNumber(),
                     customerDto.getProvince(), customerDto.getStreet());
             Customer customer = customerService.findCustomerByIdCard(customerDto.getIdCard());
-            for (CarDto car : carDtos) {
+            for (CarDTO car : carDTOS) {
                 carService.createCar(car.getBrand(), car.getName(), car.getPlateNumber(), car.getCarType().getId(), customer.getId());
             }
         }
@@ -120,15 +120,16 @@ public class CustomerRestController {
      * @return HttpStatus.NOT_FOUND if result= null else then return customerCarDto and HttpStatus.OK
      * @Param id
      */
-@GetMapping("/car/{id}")
-public  ResponseEntity<List<Car>> findCarById(@PathVariable Long id){
+    @GetMapping("/car/{id}")
+    public ResponseEntity<List<Car>> findCarById(@PathVariable Long id) {
         List<Car> carList = this.carService.findCarById(id);
-        if (carList.isEmpty()){
+        if (carList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }else {
-            return new ResponseEntity<>(carList,HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(carList, HttpStatus.OK);
         }
-}
+    }
+
     /**
      * Create by: VuTN,
      * Date create : 29/03/2023
@@ -139,13 +140,13 @@ public  ResponseEntity<List<Car>> findCarById(@PathVariable Long id){
      * @RequestBody CustomerCarDto includes the customer object and the car object list
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<CustomerCarDto> updateCustomer(@PathVariable Long id, @RequestBody @Validated CustomerCarDto customerCarDto,
-                                            BindingResult bindingResult) {
+    public ResponseEntity<CustomerCarDTO> updateCustomer(@PathVariable Long id, @RequestBody @Validated CustomerCarDTO customerCarDto,
+                                                         BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
         }
-        CustomerCarDto customerDto = customerCarDto;
-        List<CarDto> carDtos = customerCarDto.getCarList();
+        CustomerCarDTO customerDto = customerCarDto;
+        List<CarDTO> carDTOS = customerCarDto.getCarList();
         Customer customer = new Customer();
         List<Car> carList = new ArrayList<>();
 
@@ -155,38 +156,39 @@ public  ResponseEntity<List<Car>> findCarById(@PathVariable Long id){
 
 
         List<Car> existingCars = carService.listCar(id);
-            if (existingCars.isEmpty()) {
-                for (int i = 0; i < carDtos.size(); i++) {
-                    Car car2 = new Car();
-                    BeanUtils.copyProperties(carDtos.get(i), car2);
-                    carList.add(car2);
-                }
-                for (int i = 0; i < carList.size(); i++) {
-                    Car car = new Car();
-                    car = carList.get(i);
-                    this.carService.createCar(car.getName(), car.getCarType().getId(), car.getBrand(), car.getPlateNumber(), car.getCustomer().getId());
-                }
-            } else {
-                existingCars.stream()
-                        .filter(car -> carDtos.stream()
-                                .noneMatch(carDto -> carDto.getPlateNumber().equals(car.getPlateNumber())))
-                        .forEach(car -> carService.deleteCar(car.getPlateNumber()));
+        if (existingCars.isEmpty()) {
+            for (int i = 0; i < carDTOS.size(); i++) {
+                Car car2 = new Car();
+                BeanUtils.copyProperties(carDTOS.get(i), car2);
+                carList.add(car2);
+            }
+            for (int i = 0; i < carList.size(); i++) {
+                Car car = new Car();
+                car = carList.get(i);
+                carService.createCar(car.getBrand(), car.getName(), car.getPlateNumber(), car.getCarType().getId(), customer.getId());
+            }
+        } else {
+            existingCars.stream()
+                    .filter(car -> carDTOS.stream()
+                            .noneMatch(carDTO -> carDTO.getPlateNumber().equals(car.getPlateNumber())))
+                    .forEach(car -> carService.deleteCar(car.getPlateNumber()));
 
-                for (CarDto carDto : carDtos) {
-                    boolean carExists = false;
-                    for (Car existingCar : existingCars) {
-                        if (existingCar.getPlateNumber().equals(carDto.getPlateNumber())) {
-                            carExists = true;
-                            break;
-                        }
+            for (CarDTO carDto : carDTOS) {
+                boolean carExists = false;
+                for (Car existingCar : existingCars) {
+                    if (existingCar.getPlateNumber().equals(carDto.getPlateNumber())) {
+                        carExists = true;
+                        break;
                     }
-                    if (!carExists) {
-                        Car car = new Car();
-                        BeanUtils.copyProperties(carDto, car);
-                        this.carService.createCar(car.getName(), car.getCarType().getId(), car.getBrand(), car.getPlateNumber(), car.getCustomer().getId());
-                    }
+                }
+                if (!carExists) {
+                    Car car = new Car();
+                    BeanUtils.copyProperties(carDto, car);
+                    carService.createCar(car.getBrand(), car.getName(), car.getPlateNumber(), car.getCarType().getId(), customer.getId());
+
                 }
             }
+        }
 
 
         return new ResponseEntity<>(HttpStatus.OK);
@@ -207,12 +209,12 @@ public  ResponseEntity<List<Car>> findCarById(@PathVariable Long id){
      */
     @GetMapping("/list")
     public ResponseEntity<Page<ICustomerListDTO>> getListCustomer(@RequestParam(required = false, defaultValue = "") String name,
-                                                              @RequestParam(required = false, defaultValue = "") String idCard,
-                                                              @RequestParam(required = false, defaultValue = "") String phoneNumber,
-                                                              @RequestParam(required = false, defaultValue = "") String starDate,
-                                                              @RequestParam(required = false, defaultValue = "") String endDate,
-                                                              @RequestParam(required = false, defaultValue = "0") int page,
-                                                              @RequestParam(required = false, defaultValue = "2") int pageSize) {
+                                                                  @RequestParam(required = false, defaultValue = "") String idCard,
+                                                                  @RequestParam(required = false, defaultValue = "") String phoneNumber,
+                                                                  @RequestParam(required = false, defaultValue = "") String starDate,
+                                                                  @RequestParam(required = false, defaultValue = "") String endDate,
+                                                                  @RequestParam(required = false, defaultValue = "0") int page,
+                                                                  @RequestParam(required = false, defaultValue = "2") int pageSize) {
         Pageable pageable = PageRequest.of(page, pageSize);
         Page<ICustomerListDTO> customerPage = this.customerService.getListCustomer(name, idCard, phoneNumber, starDate, endDate, pageable);
         if (customerPage.getContent().isEmpty()) {
@@ -275,7 +277,7 @@ public  ResponseEntity<List<Car>> findCarById(@PathVariable Long id){
                 "http://localhost:4200/customer/delete/" + id);
         try {
             javaMailSender.send(message);
-            return  new ResponseEntity<>("Mail của bạn đã được gửi.", HttpStatus.OK);
+            return new ResponseEntity<>("Mail của bạn đã được gửi.", HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send email: " + e.getMessage());
         }
@@ -290,7 +292,7 @@ public  ResponseEntity<List<Car>> findCarById(@PathVariable Long id){
      * @return
      */
     @GetMapping("/delete/{id}")
-    public ResponseEntity<String> deleteCustomerAndTicket(@PathVariable int id){
+    public ResponseEntity<String> deleteCustomerAndTicket(@PathVariable int id) {
         customerService.deleteCustomerAndTicket(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

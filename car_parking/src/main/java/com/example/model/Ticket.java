@@ -13,7 +13,6 @@ public class Ticket {
     @Column(nullable = false, columnDefinition = "date")
     private String expiryDate;
 
-
     private double totalPrice;
 
     @Column(nullable = false)
