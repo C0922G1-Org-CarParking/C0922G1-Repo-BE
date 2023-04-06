@@ -1,4 +1,5 @@
 package com.example.dto;
+
 public class TicketDTOEdit {
     private Long id;
     private String expiryDate;
@@ -37,6 +38,7 @@ public class TicketDTOEdit {
     public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
+
     public Long getId() {
         return id;
     }

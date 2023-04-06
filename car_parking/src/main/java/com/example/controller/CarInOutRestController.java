@@ -25,7 +25,7 @@ public class CarInOutRestController {
                                                                                                  @RequestParam(defaultValue = "") String customerPhoneNumber) {
         List<ICarInOutDTO> carInDTOList = iCarInOutService.searchCarInDtoByNameByCustomerNameByPhoneNumber(carPlateNumber, customerName, customerPhoneNumber);
         if (carInDTOList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(carInDTOList, HttpStatus.OK);
     }
@@ -36,7 +36,7 @@ public class CarInOutRestController {
                                                                                                  @RequestParam(defaultValue = "") String customerPhoneNumber) {
         List<ICarInOutDTO> carOutDTOList = iCarInOutService.searchCarOutDTOByCustomerNameByPhoneNumberByPlateNumber(carPlateNumber, customerName, customerPhoneNumber);
         if (carOutDTOList.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(carOutDTOList, HttpStatus.OK);
     }
