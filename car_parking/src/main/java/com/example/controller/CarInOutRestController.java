@@ -42,13 +42,13 @@ public class CarInOutRestController {
     @PostMapping(value = "/scanning-car-in",
             consumes = {MediaType.MULTIPART_FORM_DATA_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Object> searchCarInDTOByScanning(@RequestParam(value = "plateNumberImage") MultipartFile plateNumberImage) throws IOException {
+    public ResponseEntity<Object> searchCarInDTOByScanning(@RequestParam(value = "plateNumberImage") MultipartFile plateNumberImage) {
 
         InputStream plateNumberIS = null;
         try {
             plateNumberIS = plateNumberImage.getInputStream();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         try {
             Intelligence intelligence = new Intelligence();
@@ -76,7 +76,7 @@ public class CarInOutRestController {
      * @return Http.status.NOT_FOUND or Http.status.OK
      */
     @PostMapping("/save-car-in")
-    public ResponseEntity<Object> saveCarIn(@Validated @RequestBody CarInOutDTO carInDTO, BindingResult bindingResult) throws IOException {
+    public ResponseEntity<Object> saveCarIn(@Validated @RequestBody CarInOutDTO carInDTO, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.METHOD_NOT_ALLOWED);
@@ -90,7 +90,6 @@ public class CarInOutRestController {
         Car car = new Car();
         car.setId(carInDTO.getCarDTO().getId());
         carIn.setCar(car);
-//        carIn.setParked(true);
         iCarInOutService.saveCarIn(carIn);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -131,13 +130,11 @@ public class CarInOutRestController {
      */
     @PostMapping("/save-car-out")
     public ResponseEntity<Object> saveCarOut(@Validated @RequestBody CarInOutDTO carOutDTO, BindingResult bindingResult) {
-//        new CarInOutDTO().validate(carOutDTO, bindingResult);
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(carOutDTO, HttpStatus.NOT_ACCEPTABLE);
         }
         CarInOut carOut = new CarInOut();
         BeanUtils.copyProperties(carOutDTO, carOut);
-//        carOut.setParked(false);
         Car car = new Car();
         car.setId(carOutDTO.getCarDTO().getId());
         carOut.setCar(car);
@@ -175,6 +172,7 @@ public class CarInOutRestController {
     )
     @ExceptionHandler(Exception.class)
     public void handleException(Exception e) {
+        //No specified comment
     }
 
 

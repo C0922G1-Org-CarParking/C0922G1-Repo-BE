@@ -26,7 +26,7 @@ public interface ICarInOutRepository extends JpaRepository<CarInOut, Long> {
             "join location on location.id = ticket.location_id\t\t\n" +
             "join floor on location.floor_id = floor.id\t\t\n" +
             "join section on location.section_id = section.id\t\t\n" +
-            "where car.plate_number = :plateNumber and ticket.expiry_date >= now();", nativeQuery = true)
+            "where car.plate_number = :plateNumber and ticket.effective_date <= now() and ticket.expiry_date >= now();", nativeQuery = true)
     ICarInOutDTO searchCarInDTOByScanning(@Param("plateNumber") String plateNumber);
 
 
@@ -52,7 +52,7 @@ public interface ICarInOutRepository extends JpaRepository<CarInOut, Long> {
             "                        join car_in_out on car_in_out.car_id = car.id\n" +
             "                        where car.plate_number = :plateNumber \n" +
             "                        and car.is_parked = true and car_in_out.time_out is null\n" +
-            "                        and ticket.expiry_date >= now();", nativeQuery = true)
+            "                        and ticket.effective_date <= now() and ticket.expiry_date >= now();", nativeQuery = true)
     ICarInOutDTO searchCarOutDTOByScanning(@Param("plateNumber") String plateNumber);
 
 
@@ -99,7 +99,7 @@ public interface ICarInOutRepository extends JpaRepository<CarInOut, Long> {
             "                        join section on location.section_id = section.id\n" +
             "                        where car.plate_number like :carPlateNumber and customer.name like :customerName \n" +
             "                        and car.is_parked = false\n" +
-            "                        and customer.phone_number like :customerPhoneNumber and ticket.expiry_date >= now();", nativeQuery = true)
+            "                        and customer.phone_number like :customerPhoneNumber and ticket.effective_date <= now() and ticket.expiry_date >= now();", nativeQuery = true)
     List<ICarInOutDTO> searchCarInDTOByCustomerNameByPhoneNumberByPlateNumber(@Param("carPlateNumber") String carPlateNumber,
                                                                               @Param("customerName") String customerName,
                                                                               @Param("customerPhoneNumber") String customerPhoneNumber);
@@ -126,7 +126,7 @@ public interface ICarInOutRepository extends JpaRepository<CarInOut, Long> {
             "                        join car_in_out on car_in_out.car_id = car.id\n" +
             "                        where car.plate_number like :carPlateNumber and customer.name like :customerName \n" +
             "                        and car.is_parked = true and car_in_out.time_out is null\n" +
-            "\t\t\t\t\t\tand customer.phone_number like :customerPhoneNumber and ticket.expiry_date >= now();", nativeQuery = true)
+            "\t\t\t\t\t\tand customer.phone_number like :customerPhoneNumber and ticket.effective_date <= now() and ticket.expiry_date >= now();", nativeQuery = true)
     List<ICarInOutDTO> searchCarOutDTOByCustomerNameByPhoneNumberByPlateNumber(@Param("carPlateNumber") String carPlateNumber,
                                                                                @Param("customerName") String customerName,
                                                                                @Param("customerPhoneNumber") String customerPhoneNumber);
