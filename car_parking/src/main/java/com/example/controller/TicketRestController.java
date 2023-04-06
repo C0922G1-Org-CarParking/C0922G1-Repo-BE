@@ -340,7 +340,8 @@ public class TicketRestController {
         if (floorList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
-            return new ResponseEntity<>(floorList, HttpStatus.OK);
+            return new ResponseEntity<>
+                    (floorList, HttpStatus.OK);
         }
     }
 
