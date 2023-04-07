@@ -17,10 +17,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -269,13 +272,17 @@ public class CustomerRestController {
      * @return
      */
     @PostMapping("/send")
-    public ResponseEntity<String> sendEmail(@RequestParam String to, @RequestBody Integer id) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(to);
-        message.setSubject("Xác nhận xóa khách hàng.");
-        message.setText("Vé của bạn còn thời hạn, có nên xóa hay không. Nếu muốn xóa thì bấm vào link này: " +
-                "http://localhost:4200/customer/delete/" + id);
+    public ResponseEntity<String> sendEmail(@RequestParam String to, @RequestBody Integer id) throws MessagingException {
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
         try {
+            helper.setTo(to);
+            helper.setSubject("Xác nhận xóa khách hàng.");
+            helper.setText("<html><body>Cám ơn bạn đã sử dụng dịch vụ của chúng tôi.<br>" +
+                    "Hiện tại bạn không muốn sử dụng dịch vụ nữa nhưng Vé của bạn đang còn thời hạn," +
+                    " bạn có thật sự muốn hủy dịch vụ: " +
+                    "<button><a type=\"button\" href=\"http://localhost:4200/customer/delete/true/"+ to +"\">Đồng Ý</a></button>." +
+                    "<button><a type=\"button\" href=\"http://localhost:4200/customer/delete/false/"+ to +"\">Không</a></button></body></html>", true);
             javaMailSender.send(message);
             return new ResponseEntity<>("Mail của bạn đã được gửi.", HttpStatus.OK);
         } catch (Exception e) {
