@@ -12,11 +12,11 @@ public class Ticket {
     private String effectiveDate;
     @Column(nullable = false, columnDefinition = "date")
     private String expiryDate;
-    @Column(nullable = false)
-    private Double totalPrice;
-    @Column(nullable = false)
-    private Double price;
 
+    private double totalPrice;
+
+    @Column(nullable = false)
+    private double price;
 
     @ManyToOne
     @JoinColumn(name = "ticket_type_id", referencedColumnName = "id")
@@ -35,6 +35,7 @@ public class Ticket {
     private Location location;
 
     private boolean isDeleted;
+
     @Column(nullable = false)
 
     public boolean isDeleted() {
@@ -48,6 +49,13 @@ public class Ticket {
     public Ticket() {
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     public Long getId() {
         return id;
@@ -113,11 +121,4 @@ public class Ticket {
         this.location = location;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 }

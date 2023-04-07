@@ -2,19 +2,36 @@ package com.example.dto;
 
 public interface ICarInOutDTO {
     Long getCarId();
+
     String getCarPlateNumber();
+
     String getCarName();
+
     String getCarBrand();
+
     String getCarTypeName();
+
     String getCustomerName();
+
     String getCustomerPhoneNumber();
+
     String getLocationName();
+
     String getFloorName();
+
     String getTicketEffectiveDate();
+
     String getTicketExpiryDate();
+
     String getCustomerIdCard();
-    Long getTicketId();
-    String getSectionName();
+
+    String getCarInOutId();
+
     String getTimeIn();
-    String getTimeOut();
+
+    String getUrlCarInImage();
+
+    String getUrlCarOutImage();
+    String getUrlCarOuImage();
+
 }

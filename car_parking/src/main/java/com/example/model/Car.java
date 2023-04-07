@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.Set;
 
+
 @Entity
 public class Car {
     @Id
@@ -40,14 +41,42 @@ public class Car {
     @JsonIgnore
     private Set<Ticket> ticketSet;
 
+    private boolean isParked;
+
+
+
+
+
+    public Car(Long id, String name, String plateNumber, String brand, boolean isDeleted, CarType carType, Customer customer, Set<CarInOut> carInOutSet, Set<Ticket> ticketSet) {
+        this.id = id;
+        this.name = name;
+        this.plateNumber = plateNumber;
+        this.brand = brand;
+        this.isDeleted = isDeleted;
+        this.carType = carType;
+        this.customer = customer;
+        this.carInOutSet = carInOutSet;
+        this.ticketSet = ticketSet;
+    }
+
+
 
     public Car(long id) {
         this.id = id;
     }
 
+
     public Car() {
 
 
+    }
+
+    public boolean isParked() {
+        return isParked;
+    }
+
+    public void setParked(boolean parked) {
+        isParked = parked;
     }
 
     public boolean isDeleted() {
@@ -121,4 +150,5 @@ public class Car {
     public void setTicketSet(Set<Ticket> ticketSet) {
         this.ticketSet = ticketSet;
     }
+
 }

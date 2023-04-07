@@ -3,7 +3,9 @@ package com.example.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import java.util.Set;
+
 
 @Entity
 public class Location {
@@ -12,7 +14,8 @@ public class Location {
     private Long id;
 
     @Column(length = 45, nullable = false)
-    private String name;
+
+    private Long name;
 
     private boolean isOccupied;
 
@@ -25,9 +28,7 @@ public class Location {
     @Column(nullable = false)
     private double length;
 
-    @OneToMany(mappedBy = "location")
-    @JsonIgnore
-    private Set<PermissionCarTypeLocation> permissionCarTypeLocations;
+    private String permissionCarTypeLocations;
 
     @ManyToOne
     @JoinColumn(name = "section_id", referencedColumnName = "id")
@@ -41,15 +42,15 @@ public class Location {
     @JsonIgnore
     private Set<Ticket> ticketSet;
 
+    public String getPermissionCarTypeLocations() {
+        return permissionCarTypeLocations;
+    }
+
+    public void setPermissionCarTypeLocations(String permissionCarTypeLocations) {
+        this.permissionCarTypeLocations = permissionCarTypeLocations;
+    }
+
     private boolean isDeleted;
-
-    public Location() {
-
-    }
-
-    public Location(Long id) {
-        this.id =id;
-    }
 
     public boolean isDeleted() {
         return isDeleted;
@@ -59,8 +60,7 @@ public class Location {
         isDeleted = deleted;
     }
 
-    public Location(long id) {
-        this.id= id;
+    public Location() {
     }
 
     public Long getId() {
@@ -71,11 +71,11 @@ public class Location {
         this.id = id;
     }
 
-    public String getName() {
+    public Long getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Long name) {
         this.name = name;
     }
 
@@ -111,14 +111,6 @@ public class Location {
         this.length = length;
     }
 
-    public Set<PermissionCarTypeLocation> getPermissionCarTypeLocations() {
-        return permissionCarTypeLocations;
-    }
-
-    public void setPermissionCarTypeLocations(Set<PermissionCarTypeLocation> permissionCarTypeLocations) {
-        this.permissionCarTypeLocations = permissionCarTypeLocations;
-    }
-
     public Floor getFloor() {
         return floor;
     }
@@ -143,3 +135,5 @@ public class Location {
         this.ticketSet = ticketSet;
     }
 }
+
+
