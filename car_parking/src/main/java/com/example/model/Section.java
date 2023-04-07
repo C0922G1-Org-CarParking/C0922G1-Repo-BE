@@ -18,17 +18,18 @@ public class Section {
     @JsonIgnore
     private Set<Location> locationSet;
 
-
     public Section(long id) {
         this.id = id;
     }
 
-    public Long getId() {
-        return id;
+
+    public Section(Long id, String name, Set<Location> locationSet) {
+        this.id = id;
+        this.name = name;
+        this.locationSet = locationSet;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Section() {
     }
 
     public String getName() {
@@ -39,6 +40,15 @@ public class Section {
         this.name = name;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
     public Set<Location> getLocationSet() {
         return locationSet;
     }
@@ -46,4 +56,5 @@ public class Section {
     public void setLocationSet(Set<Location> locationSet) {
         this.locationSet = locationSet;
     }
+
 }

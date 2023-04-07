@@ -11,9 +11,14 @@ public class Floor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 45,nullable = false,unique = true)
+    @Column(length = 45, nullable = false, unique = true)
     private String name;
 
+    public Floor(Long id, String name, Set<Location> locationSet) {
+        this.id = id;
+        this.name = name;
+        this.locationSet = locationSet;
+    }
 
     @OneToMany(mappedBy = "floor")
     @JsonIgnore
@@ -51,9 +56,10 @@ public class Floor {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String nameFloor) {
         this.name = name;
     }
 
-
 }
+
+

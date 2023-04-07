@@ -1,6 +1,6 @@
 package com.example.service.impl;
 
-import com.example.dto.ITicketTypeDto;
+import com.example.dto.ITicketTypeDTO;
 import com.example.model.TicketType;
 import com.example.repository.ITicketTypeRepository;
 import com.example.service.ITicketTypeService;
@@ -15,7 +15,7 @@ public class TicketTypeService implements ITicketTypeService {
     private ITicketTypeRepository iTicketTypeRepository;
 
     @Override
-    public List<ITicketTypeDto> getAllTicketTypes() {
+    public List<ITicketTypeDTO> getAllTicketTypes() {
         return iTicketTypeRepository.getListNameTicketType();
     }
 

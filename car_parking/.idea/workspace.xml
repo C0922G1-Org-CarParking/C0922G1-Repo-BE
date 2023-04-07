@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c6279971-3fb9-43ee-b0f2-a2045fb7fb42" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/C0922G1-Repo-BE.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/CarInOutRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/CarRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/CustomerRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/EmployeeRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/FloorRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/LocationRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/ParkingNewsRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/SectionRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/SecurityRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/CarCustomerDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/CarDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/CarInOutDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/CarScanningDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/CheckLocation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/CustomerCarDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/CustomerDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/EmployeeDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarOfTicketDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ICustomerDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ICustomerListDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/IListCustomerDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ILocationDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ILocationDTOEdit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ILocationDetailDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ILocationViewDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/IParkingNewsDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/IPositionDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/LocationDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/TicketDTOEdit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/model/ParkingNews.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/IAccountRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/ICarInOutRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/ICarRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/ICarTypeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/IParkingNewsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/IPositionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/ISectionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/security_authentication/config/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/security_authentication/jwt/JwtFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/security_authentication/jwt/JwtUtility.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/security_authentication/payload/reponse/JwtResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/security_authentication/payload/reponse/MessageResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/security_authentication/payload/request/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/security_authentication/payload/request/ResetPasswordRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/security_authentication/service/AccountDetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/security_authentication/service/AccountDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/IAccountService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/ICarInOutService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/ICarService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/ICarTypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/IParkingNewsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/IPositionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/ISectionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/AccountService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CarInOutService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CarService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CarTypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/ParkingNewsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/PositionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/SectionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/0_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/1_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/2_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/3_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/4_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/5_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/6_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/7_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/8_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/9_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/a_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/b_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/c_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/d_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/e_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/f_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/g_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/h_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/i_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/j_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/k_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/l_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/m_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/n_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/o_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/p_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/q_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/r_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/s_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/t_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/u_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/v_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/w_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/x_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/y_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x15/z_10x15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/0_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/1_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/2_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/3_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/4_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/5_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/6_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/7_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/8_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/9_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/a_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/b_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/c_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/d_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/e_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/f_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/g_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/h_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/i_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/j_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/k_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/l_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/m_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/n_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/o_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/p_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/q_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/r_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/s_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/t_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/u_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/v_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/w_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/x_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/y_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_10x16_bw/z_10x16_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/0_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/1_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/2_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/3_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/4_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/5_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/6_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/7_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/8_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/9_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/a_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/b_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/c_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/d_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/e_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/f_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/g_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/h_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/i_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/j_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/k_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/l_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/m_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/n_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/o_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/p_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/q_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/r_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/s_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/t_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/u_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/v_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/w_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/x_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/y_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_6x8/z_6x8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/0_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/1_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/2_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/3_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/4_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/5_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/6_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/7_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/8_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/9_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/a_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/b_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/c_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/d_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/e_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/f_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/g_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/h_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/i_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/j_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/k_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/l_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/m_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/n_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/o_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/p_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/q_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/r_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/s_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/t_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/u_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/v_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/w_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/x_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/y_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alphabets/alphabet_8x13/z_8x13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/anpr-config.dtd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/anpr.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/anpr.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/car-images/test_097.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/config.xml.recommended" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/help/about.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/help/help.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/help/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/neuralnetworks/network_avgres_813_map.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/neuralnetworks/network_linres_1016_edge.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/reportgenerator/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/snapshot/blurred-plate-image.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/snapshot/test_002.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/snapshot/test_097.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/syntax/syntax.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/jquery-3.6.3.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries-with-intellij-classes.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/CarParkingApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ServletInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/dto/EditTicketDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/dto/ICarInOutDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/dto/ITicketDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/dto/TicketDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/model/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/model/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/model/AccountRole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/model/Car.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/model/CarInOut.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/model/CarType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/model/Customer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/model/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/model/Employee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/model/Floor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/model/Location.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/model/Position.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/model/Role.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/model/Section.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/model/Ticket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/model/TicketType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/bootWar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/war/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/CarParkingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/CarParkingApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ServletInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/TicketRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/TicketRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/EditTicketDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/EditTicketDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ISectionDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarInOutDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarInOutDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ICustomerDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/IEmployeeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/IEmployeeDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/IFloorDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/IFloorDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ILocationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ILocationOfFloorDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ITicketDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ITicketDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/ITicketTypeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ITicketTypeDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/TicketDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/TicketDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/dto/TicketOfListDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/TicketOfListDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/AccountRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/AccountRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/CarInOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/CarInOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/CarType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/CarType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Floor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Floor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Section.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Section.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/TicketType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/TicketType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/ICustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/ICustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/IEmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/IEmployeeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/IFloorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/IFloorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/ILocationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/ILocationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/ITicketRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/ITicketRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/ITicketTypeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/ITicketTypeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/ICustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/IEmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/IEmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/IFloorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/IFloorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/ILocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/ILocationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/ITicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/ITicketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/ITicketTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/ITicketTypeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/FloorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/FloorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/LocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/LocationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/TicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/TicketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/TicketTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/TicketTypeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/CarParkingApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="car_parking" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="car_parking" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="spring-beans.schema" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/5.3.26/1d086008c084cba1b8eef20fce4ab3913e0cbfe1/spring-web-5.3.26-sources.jar!/org/springframework/http/HttpStatus.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NfsbMgV3KjNwLva6JjiEcbi4Vc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/car_parking_module_6/C0922G1-Repo-BE/car_parking/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;8b813644e54a34321b3ce14b11b55c0d&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\car_parking_module_6\C0922G1-Repo-BE\car_parking\src\main\resources" />
+      <recent name="E:\car_parking_module_6\C0922G1-Repo-BE\car_parking" />
+      <recent name="E:\car_parking_module_6\C0922G1-Repo-BE\car_parking\src" />
+      <recent name="D:\CodeGym\module6\demo\C0922G1-Repo-BE\car_parking\src\main" />
+      <recent name="D:\CodeGym\module6\demo\C0922G1-Repo-BE\car_parking\src\main\java\com" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example" />
+      <recent name="com.example.controller" />
+      <recent name="com.example.commons" />
+      <recent name="com.example.config" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.CarParkingApplication">
+    <configuration name="CarParkingRestController_authenticateUser.authenticateUser_18" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.controller.CarParkingRestController_authenticateUser.authenticateUser_18&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="CarParkingRestController_resetPassword.resetPassword_email_1" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.controller.CarParkingRestController_resetPassword.resetPassword_email_1&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="CarParkingRestController_resetPassword.resetPassword_email_2" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.controller.CarParkingRestController_resetPassword.resetPassword_email_2&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="CarParkingRestController_resetPassword.resetPassword_email_3" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.controller.CarParkingRestController_resetPassword.resetPassword_email_3&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="CarParkingRestController_resetPassword.resetPassword_email_4" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.controller.CarParkingRestController_resetPassword.resetPassword_email_4&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="CarParkingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="car_parking.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.CarParkingApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.CarParkingRestController_resetPassword.resetPassword_email_4" />
+        <item itemvalue="Gradle.CarParkingRestController_resetPassword.resetPassword_email_3" />
+        <item itemvalue="Gradle.CarParkingRestController_resetPassword.resetPassword_email_2" />
+        <item itemvalue="Gradle.CarParkingRestController_resetPassword.resetPassword_email_1" />
+        <item itemvalue="Gradle.CarParkingRestController_authenticateUser.authenticateUser_18" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c6279971-3fb9-43ee-b0f2-a2045fb7fb42" name="Changes" comment="" />
+      <created>1680066542027</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680066542027</updated>
+      <workItem from="1680066543533" duration="213000" />
+      <workItem from="1680066768922" duration="274000" />
+      <workItem from="1680067968152" duration="11725000" />
+      <workItem from="1680092405233" duration="4592000" />
+      <workItem from="1680099366418" duration="4732000" />
+      <workItem from="1680140392757" duration="4473000" />
+      <workItem from="1680153103834" duration="170000" />
+      <workItem from="1680154228987" duration="247000" />
+      <workItem from="1680157677778" duration="9020000" />
+      <workItem from="1680177633716" duration="4700000" />
+      <workItem from="1680226177429" duration="3334000" />
+      <workItem from="1680244211224" duration="6001000" />
+      <workItem from="1680271876027" duration="2971000" />
+      <workItem from="1680310725027" duration="8271000" />
+      <workItem from="1680338953819" duration="10245000" />
+      <workItem from="1680399311934" duration="11008000" />
+      <workItem from="1680489952387" duration="15082000" />
+      <workItem from="1680518970677" duration="3323000" />
+      <workItem from="1680523498363" duration="1616000" />
+      <workItem from="1680572348975" duration="13749000" />
+      <workItem from="1680620324281" duration="5031000" />
+      <workItem from="1680658543557" duration="774000" />
+      <workItem from="1680659447200" duration="2879000" />
+      <workItem from="1680663783630" duration="13066000" />
+      <workItem from="1680744167232" duration="10825000" />
+      <workItem from="1680779564114" duration="8000" />
+      <workItem from="1680787196793" duration="3921000" />
+      <workItem from="1680828095401" duration="651000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/service/impl/AccountService.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/controller/SecurityController.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/security_authentication/payload/request/ResetPasswordRequest.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/controller/CarInOutRestController.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/controller/CarInOutRestController.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/controller/CarInOutRestController.java</url>
+          <line>131</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/controller/CarInOutRestController.java</url>
+          <line>159</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/controller/CarInOutRestController.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.springframework.mock.web.MockMultipartFile" memberName="content" />
+        <PinnedItemInfo parentTag="org.springframework.mock.web.MockMultipartFile" memberName="contentType" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>
