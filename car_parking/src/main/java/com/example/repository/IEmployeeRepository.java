@@ -5,7 +5,7 @@ package com.example.repository;
 
 
 
-import com.example.dto.IEmployeeDTO;
+import com.example.dto.EmployeeDTO;
 import com.example.model.Employee;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -185,7 +185,7 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
 
 
     @Query(value = "select employee.id as id, employee.name as name from employee " , nativeQuery = true)
-    List<IEmployeeDTO> getListEmployeeByName();
+    List<EmployeeDTO> getListEmployeeByName();
 
     /**
      * HoangNM

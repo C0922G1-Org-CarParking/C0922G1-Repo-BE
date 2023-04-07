@@ -2,7 +2,6 @@ package com.example.service.impl;
 
 
 import com.example.dto.EmployeeDTO;
-import com.example.dto.IEmployeeDTO;
 import com.example.model.Employee;
 import com.example.repository.IEmployeeRepository;
 import com.example.service.IEmployeeService;
@@ -203,7 +202,7 @@ public class EmployeeService implements IEmployeeService {
         return checkMap;
     }
 
-    public List<IEmployeeDTO> getListEmployeeByName() {
+    public List<EmployeeDTO> getListEmployeeByName() {
         return iEmployeeRepository.getListEmployeeByName();
     }
 }

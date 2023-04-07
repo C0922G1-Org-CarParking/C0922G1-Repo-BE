@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.dto.ILocationDetailDTO;
+
 import com.example.dto.ILocationViewDTO;
 import com.example.model.Location;
 import com.example.service.ILocationService;
@@ -11,8 +11,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.dto.ILocationDTO;
-import com.example.dto.LocationDTO;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;

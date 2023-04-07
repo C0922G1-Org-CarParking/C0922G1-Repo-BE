@@ -2,7 +2,7 @@ package com.example.service;
 
 
 import com.example.dto.EmployeeDTO;
-import com.example.dto.IEmployeeDTO;
+
 import com.example.model.Employee;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -143,6 +143,6 @@ public interface IEmployeeService {
      */
     Map<String, String> checkUpdate(EmployeeDTO employeeDto);
 
-    List<IEmployeeDTO> getListEmployeeByName();
+    List<EmployeeDTO> getListEmployeeByName();
 
 }
