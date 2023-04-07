@@ -92,13 +92,14 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
 
 
     @Modifying
-    @Query(value = "update location  set name = :name,width = :width, height = :height, length = :length, floor_id = :floor_id,section_id = :section_id where id = :id",
+    @Query(value = "update location  set name = :name,width = :width, height = :height, length = :length,permission_car_type_locations = :permission_car_type_locations, floor_id = :floor_id,section_id = :section_id where id = :id",
             nativeQuery = true)
     void updateLocation(
             @Param("name") Long name,
             @Param("width") Double width,
             @Param("height") Double height,
             @Param("length") Double length,
+            @Param("permission_car_type_locations") String permission_car_type_locations,
             @Param("floor_id") Long floorId,
             @Param("section_id") Long sectionId,
             @Param("id") Long Id);

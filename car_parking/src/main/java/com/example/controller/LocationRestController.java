@@ -87,7 +87,7 @@ public class LocationRestController {
                 locationDTO1.getWidth(),
                 locationDTO1.getHeight(),
                 locationDTO1.getLength(),
-                Arrays.toString(locationDTO1.getPermissionCarTypeLocations()),
+                locationDTO1.getPermissionCarTypeLocations(),
                 locationDTO1.getFloor().getId(),
                 locationDTO1.getSection().getId());
 
@@ -103,7 +103,7 @@ public class LocationRestController {
     public ResponseEntity<?> updateLocation(@PathVariable(value = "id") Long Id, @RequestBody @Validated LocationDTO locationDto, BindingResult bindingResult) {
         Location location = new Location();
         BeanUtils.copyProperties(locationDto, location);
-        iLocationService. updateLocation(location.getName(), location.getWidth(), location.getHeight(), location.getLength(),location.getFloor().getId(), location.getSection().getId(), Id);
+        iLocationService. updateLocation(location.getName(), location.getWidth(), location.getHeight(), location.getLength(), location.getPermissionCarTypeLocations(),location.getFloor().getId(), location.getSection().getId(), Id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

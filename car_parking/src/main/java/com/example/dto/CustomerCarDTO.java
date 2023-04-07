@@ -1,28 +1,26 @@
 package com.example.dto;
 
-
 import javax.validation.Valid;
 import java.util.List;
 
 public class CustomerCarDTO {
-
     private Long id;
-//    @NotBlank(message = "Vui lòng nhập vào đây")
+    //    @NotBlank(message = "Vui lòng nhập vào đây")
     private String name;
 //    @NotBlank(message = "Vui lòng nhập vào đây")
 
     private String dateOfBirth;
 
-//    @NotBlank(message = "Vui lòng nhập vào đây")
+    //    @NotBlank(message = "Vui lòng nhập vào đây")
 //    @Pattern(regexp = "^(\\d{9}|\\d{12
 //    })| *$",
 //            message = "Số CCCD phải đúng định dạng XXXXXXXXX hoặc XXXXXXXXXXXX (X là số 0-9).")
     private String idCard;
-//    @Pattern(message = "Số điện thoại không đúng định dạng.", regexp = "^(((\\\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})$")
+    //    @Pattern(message = "Số điện thoại không đúng định dạng.", regexp = "^(((\\\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})$")
 //    @NotBlank(message = "Vui lòng nhập vào đây")
     private String phoneNumber;
 
-//    @NotBlank(message = "Vui lòng nhập vào đây")
+    //    @NotBlank(message = "Vui lòng nhập vào đây")
 //    @Pattern(message = "Email không đúng định dạng.", regexp = "[\\w]+[@][\\w]+.[\\w]+")
     private String email;
     private boolean gender;
@@ -33,7 +31,7 @@ public class CustomerCarDTO {
     private int province;
 
     private int commune;
-//    @NotBlank(message = "Vui lòng nhập vào đây")
+    //    @NotBlank(message = "Vui lòng nhập vào đây")
     private String street;
 
     private boolean isDeleted;
@@ -146,4 +144,5 @@ public class CustomerCarDTO {
     public void setCarList(List<CarDTO> carList) {
         this.carList = carList;
     }
+
 }
