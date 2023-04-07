@@ -40,6 +40,8 @@ public class EmployeeRestController {
      * @param name
      * @param startDate
      * @param endDate
+     * @param street
+     * @param province
      * @return
      */
     @GetMapping("/list-employee")
