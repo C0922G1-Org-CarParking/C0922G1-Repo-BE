@@ -22,7 +22,7 @@ import java.util.List;
 public interface ILocationRepository extends JpaRepository<Location, Long> {
 
 // Created by: TheNV
-    @Query(value = "select * from location\n" +
+    @Query(value = "select location.* from location\n" +
             " left join floor on floor.id=location.floor_id\n" +
             " left join section on section.id= location.section_id where floor_id=:id and location.is_deleted=false order by location.section_id ,location.name", nativeQuery = true)
     List<Location> listLocation(@Param("id") int id);

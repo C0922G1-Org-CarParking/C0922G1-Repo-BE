@@ -60,4 +60,7 @@ public interface ITicketService {
 
     List<ISectionDTO> findSectionOfFloor(int idSection);
 
+    Integer[] getCustomerChartRange(int sinceMonth, int toMonth, int yearStart, int yearEnd);
+
+    Integer[] getTicketChartRange(int sinceMonth, int toMonth, int yearStart, int yearEnd);
 }

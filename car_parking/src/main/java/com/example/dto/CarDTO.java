@@ -12,7 +12,7 @@ public class CarDTO {
 
 //        @NotBlank(message = "Vui lòng nhập vào đây")
 //    @Size(max = 20 ,message = "Tên không được quá 20 ký tự")
-//    @Pattern(regexp = "^[a-zA-z0-9]+$", message = "Tên không được nhập số và ký tự đặc biệt.")
+//    @Pattern(regexp = "^[a-zA-z1-9]+$", message = "Tên không được nhập số và ký tự đặc biệt.")
     private String name;
 
 

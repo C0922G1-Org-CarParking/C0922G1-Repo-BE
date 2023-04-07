@@ -452,5 +452,44 @@ public class TicketRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    /**
+     * Created by: HuyNL
+     * Date created: 29/03/2023
+     *
+     */
+
+    @GetMapping("/statisticalCustomerChartRange")
+    public ResponseEntity<Integer[]> getTotalStatisticalCustomerChartRange(
+            @RequestParam(value = "sinceMonth", defaultValue = "") int sinceMonth
+            ,@RequestParam(value = "toMonth",defaultValue = "") int toMonth,
+            @RequestParam(value = "yearStart", defaultValue = "") int yearStart,
+            @RequestParam(value = "yearEnd", defaultValue = "") int yearEnd) {
+        Integer[] customerChartRange = iTicketService.getCustomerChartRange(sinceMonth, toMonth , yearStart , yearEnd);
+        if (customerChartRange == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(customerChartRange, HttpStatus.OK);
+    }
+
+    /**
+     * Created by: HuyNV
+     * Date created: 29/03/2023
+     * Function: getStatisticalCustomerChartRange
+     *
+     * @param
+     * @return HttpStatus.BAD_REQUEST if result is null or HttpStatus.OK is result is not error
+     */
+    @GetMapping("/statisticalTicketChartRange")
+    public ResponseEntity<Integer[]> getTotalStatisticalTicketChartRange(
+            @RequestParam(value = "sinceMonth", defaultValue = "") int sinceMonth
+            ,@RequestParam(value = "toMonth",defaultValue = "") int toMonth,
+            @RequestParam(value = "yearStart",defaultValue = "") int yearStart,
+            @RequestParam(value = "yearEnd",defaultValue = "") int yearEnd) {
+        Integer[] ticketChartRange = iTicketService.getTicketChartRange(sinceMonth, toMonth , yearStart , yearEnd);
+        if (ticketChartRange == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(ticketChartRange, HttpStatus.OK);
+    }
 
 }
