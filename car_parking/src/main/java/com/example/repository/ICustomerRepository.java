@@ -55,10 +55,9 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
             "  AND YEAR(ticket.effective_date) = YEAR(ticket.expiry_date)"+
             " GROUP BY customer.name", nativeQuery = true)
     List<ICustomerDTO> getStatisticalChart(@Param("sinceMonth") int sinceMonth,@Param("toMonth") int toMonth);
+
     @Query(value = "select car.id as id , car.name as name from car join customer on car.customer_id = customer.id where customer.id = :id", nativeQuery = true)
-
-
-    List<ICarOfTicketDTO> findCarListOfCustomerId(@Param("id") int id);
+    List<ICarTicketDTO> findCarListOfCustomerId(@Param("id") int id);
 
     /**
      * Huy NV
