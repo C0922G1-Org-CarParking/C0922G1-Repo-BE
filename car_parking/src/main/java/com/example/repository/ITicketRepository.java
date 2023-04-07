@@ -223,5 +223,42 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
                                @Param("toMonth") int toMonth,
                                @Param("month") int month,@Param("year") int year);
 
+    @Query(value = "SELECT COUNT(DISTINCT customer.phone_number)" +
+            "FROM car\n" +
+            "JOIN customer ON car.customer_id = customer.id" +
+            " JOIN ticket ON car.id = ticket.car_id" +
+            " WHERE ((MONTH(ticket.effective_date) >= :sinceMonth" +
+            "        AND YEAR(ticket.effective_date) = :yearStart)" +
+            "       OR (MONTH(ticket.expiry_date) >= :sinceMonth" +
+            "        AND YEAR(ticket.expiry_date) = :yearEnd))" +
+            "  AND ((MONTH(ticket.effective_date) <= :toMonth" +
+            "        AND YEAR(ticket.effective_date) = :yearStart)" +
+            "       OR (MONTH(ticket.expiry_date) <= :toMonth" +
+            "        AND YEAR(ticket.expiry_date) = :yearEnd)" +
+            " AND MONTH(ticket.effective_date) = :month)", nativeQuery = true)
+    Integer getTotalOfCustomerRange(@Param("sinceMonth") int sinceMonth,
+                                    @Param("toMonth") int toMonth,
+                                    @Param("month") int month,
+                                    @Param("yearStart") int yearStart,
+                                    @Param("yearEnd") int yearEnd);
+
+
+    @Query(value = "SELECT COUNT(ticket.id) " +
+            "FROM car " +
+            "JOIN ticket ON car.id = ticket.car_id " +
+            "WHERE ((MONTH(ticket.effective_date) >= :sinceMonth " +
+            "   AND YEAR(ticket.effective_date) = :yearStart) " +
+            "   OR (MONTH(ticket.expiry_date) >= :sinceMonth " +
+            "   AND YEAR(ticket.expiry_date) = :yearEnd)) " +
+            " AND ((MONTH(ticket.effective_date) <= :toMonth " +
+            "   AND YEAR(ticket.effective_date) = :yearStart) " +
+            "   OR (MONTH(ticket.expiry_date) <= :toMonth " +
+            "   AND YEAR(ticket.expiry_date) = :yearEnd))" +
+            " AND MONTH(ticket.effective_date) = :month", nativeQuery = true)
+    Integer getTotalOfTicketRange(@Param("sinceMonth") int sinceMonth,
+                                  @Param("toMonth") int toMonth,
+                                  @Param("month") int month,
+                                  @Param("yearStart") int yearStart,
+                                  @Param("yearEnd") int yearEnd);
 }
 

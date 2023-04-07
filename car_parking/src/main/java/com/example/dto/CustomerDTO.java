@@ -6,7 +6,7 @@ import javax.validation.constraints.Pattern;
 public class CustomerDTO {
     private Long id;
     @NotBlank(message = "Tên không đươc để trống.")
-    @Pattern(regexp = "[a-zA-z ]+", message = "Tên không được nhập số và ký tự đặc biệt.")
+    @Pattern(regexp = "^[a-zA-ZÀ-ỹ\\s ]*$", message = "Tên không được nhập số và ký tự đặc biệt.")
     private String name;
 
     @NotBlank(message = "Ngày sinh không đươc để trống")

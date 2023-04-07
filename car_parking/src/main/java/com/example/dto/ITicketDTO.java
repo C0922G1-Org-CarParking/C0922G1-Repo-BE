@@ -13,8 +13,4 @@ public interface ITicketDTO {
     Long getTicketTypeId();
     String getTotalPrice();
     Double getRate();
-
-
-
-
 }

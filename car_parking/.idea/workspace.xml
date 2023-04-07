@@ -4,9 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="8dfa7311-8275-47bd-9184-be6b1d32c103" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+<<<<<<< HEAD
+    <list default="true" id="c6279971-3fb9-43ee-b0f2-a2045fb7fb42" name="Changes" comment="" />
+=======
+    <list default="true" id="678275f3-7633-4a67-9a01-2c7faa4592eb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarTicketDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/CustomerRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/CustomerRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/TicketRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/TicketRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/ICustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/ICustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/ICustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CustomerService.java" afterDir="false" />
+>>>>>>> origin/car-in-out
     </list>
+>>>>>>> origin/customer-car-MinhCDK
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +39,43 @@
       <ProjectState />
     </projectState>
   </component>
+<<<<<<< HEAD
+=======
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="car_parking" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="car_parking" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="spring-beans.schema" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+>>>>>>> origin/car-in-out
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -37,6 +96,22 @@
       </map>
     </option>
   </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -46,6 +121,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RequestMappingsPanelOrder0": "0",
@@ -61,6 +137,22 @@
     "spring.configuration.checksum": "8b813644e54a34321b3ce14b11b55c0d"
   }
 }]]></component>
+=======
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../car-parking-BE/C0922G1-Repo-BE/car_parking" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+>>>>>>> origin/car-in-out
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\codemodule6\car_parking_clone\C0922G1-Repo-BE\car_parking\src\main" />
@@ -78,6 +170,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="8dfa7311-8275-47bd-9184-be6b1d32c103" name="Changes" comment="" />
       <created>1680756181505</created>
       <option name="number" value="Default" />
@@ -85,6 +178,45 @@
       <updated>1680756181505</updated>
       <workItem from="1680756182958" duration="2750000" />
       <workItem from="1680830578681" duration="2834000" />
+=======
+      <changelist id="678275f3-7633-4a67-9a01-2c7faa4592eb" name="Changes" comment="" />
+      <created>1680066542027</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680066542027</updated>
+      <workItem from="1680066543533" duration="213000" />
+      <workItem from="1680066768922" duration="274000" />
+      <workItem from="1680067968152" duration="11725000" />
+      <workItem from="1680092405233" duration="4592000" />
+      <workItem from="1680099366418" duration="4732000" />
+      <workItem from="1680140392757" duration="4473000" />
+      <workItem from="1680153103834" duration="170000" />
+      <workItem from="1680154228987" duration="247000" />
+      <workItem from="1680157677778" duration="9020000" />
+      <workItem from="1680177633716" duration="4700000" />
+      <workItem from="1680226177429" duration="3334000" />
+      <workItem from="1680244211224" duration="6001000" />
+      <workItem from="1680271876027" duration="2971000" />
+      <workItem from="1680310725027" duration="8271000" />
+      <workItem from="1680338953819" duration="10245000" />
+      <workItem from="1680399311934" duration="11008000" />
+      <workItem from="1680489952387" duration="15082000" />
+      <workItem from="1680518970677" duration="3323000" />
+      <workItem from="1680523498363" duration="1616000" />
+      <workItem from="1680572348975" duration="13749000" />
+      <workItem from="1680620324281" duration="5031000" />
+      <workItem from="1680658543557" duration="774000" />
+      <workItem from="1680659447200" duration="2879000" />
+      <workItem from="1680663783630" duration="13066000" />
+<<<<<<< HEAD
+      <workItem from="1680744167232" duration="14827000" />
+      <workItem from="1680789229611" duration="420000" />
+=======
+      <workItem from="1680744167232" duration="5395000" />
+      <workItem from="1680794600064" duration="789000" />
+      <workItem from="1680830326723" duration="5042000" />
+>>>>>>> origin/customer-car-MinhCDK
+>>>>>>> origin/car-in-out
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1680781880839</created>
@@ -109,6 +241,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />

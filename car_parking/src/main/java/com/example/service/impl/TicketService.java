@@ -123,4 +123,25 @@ public class TicketService implements ITicketService {
     public List<ISectionDTO> findSectionOfFloor(int idSection) {
         return iTicketRepository.findSectionOfFloor(idSection);
     }
+
+    @Override
+    public Integer[] getCustomerChartRange(int sinceMonth, int toMonth, int yearStart, int yearEnd) {
+        Integer[] dd = new Integer[toMonth - sinceMonth + 1];
+        for (int i = sinceMonth; i <= toMonth; i++) {
+            dd[i-sinceMonth] = iTicketRepository.getTotalOfCustomerRange(sinceMonth, toMonth, i , yearStart , yearEnd);
+        }
+        return dd;
+    }
+
+    @Override
+    public Integer[] getTicketChartRange(int sinceMonth, int toMonth, int startYear, int endYear) {
+        Integer[] ticketCount = new Integer[toMonth - sinceMonth + 1];
+        for (int i = 0; i <= toMonth - sinceMonth; i++) {
+            int month = toMonth - i;
+            int start = (month <= 12 && toMonth<sinceMonth) ? startYear : endYear;
+            int end = (month <= 12 && toMonth<sinceMonth) ? endYear : startYear;
+            ticketCount[i] = iTicketRepository.getTotalOfTicketRange(sinceMonth, toMonth,i, start, endYear);
+        }
+        return ticketCount;
+    }
 }

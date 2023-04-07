@@ -140,10 +140,10 @@ public class CustomerRestController {
      * @RequestBody CustomerCarDto includes the customer object and the car object list
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<CustomerCarDTO> updateCustomer(@PathVariable Long id, @RequestBody @Validated CustomerCarDTO customerCarDto,
+    public ResponseEntity<?> updateCustomer(@PathVariable Long id, @RequestBody @Validated CustomerCarDTO customerCarDto,
                                                          BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+            return new ResponseEntity<>(bindingResult.getAllErrors(),HttpStatus.EXPECTATION_FAILED);
         }
         CustomerCarDTO customerDto = customerCarDto;
         List<CarDTO> carDTOS = customerCarDto.getCarList();
@@ -273,8 +273,7 @@ public class CustomerRestController {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
         message.setSubject("Xác nhận xóa khách hàng.");
-        message.setText("Vé của bạn còn thời hạn, có nên xóa hay không. Nếu muốn xóa thì bấm vào link này: " +
-                "http://localhost:4200/customer/delete/" + id);
+        message.setText("Vé của bạn còn thời hạn, có nên xóa hay không. Vui lòng liên hệ để biết thêm thông tin!");
         try {
             javaMailSender.send(message);
             return new ResponseEntity<>("Mail của bạn đã được gửi.", HttpStatus.OK);
