@@ -39,7 +39,7 @@ public interface ITicketRepository extends JpaRepository<Ticket, Long> {
     @Query(value = " select \n" +
             "ticket.id as TicketId, ct.rate as Rate, c.name as CustomerName, c2.plate_number as PlateNumber,c.phone_number as PhoneNumber,\n" +
             "ticket.effective_date as EffectiveDate, ticket.expiry_date as ExpiryDate, f.id as FloorId,l.id as LocationId, \n" +
-            "s.id as SectionId, ticket.total_price as TotalPrice, tt.id as TicketTypeId \n" +
+            "s.id as SectionId, ticket.total_price as totalPrice, tt.id as TicketTypeId \n" +
             " from `ticket` \n" +
             " join `car` c2 on c2.id = ticket.car_id \n" +
             " join `car_type` ct on ct.id = c2.car_type_id \n" +

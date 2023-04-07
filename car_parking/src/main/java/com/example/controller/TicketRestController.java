@@ -425,6 +425,7 @@ public class TicketRestController {
     @GetMapping("/edit/{id}")
     private ResponseEntity<ITicketDTO> findTicketById(@PathVariable("id") int id) {
         ITicketDTO editTicketDto = iTicketService.findTicket(id);
+
         if (editTicketDto == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
