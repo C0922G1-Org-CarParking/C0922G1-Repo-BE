@@ -1,6 +1,5 @@
 package com.example.dto;
 
-
 import com.example.model.Car;
 import com.example.model.Employee;
 import com.example.model.Location;
@@ -8,11 +7,12 @@ import com.example.model.TicketType;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 public class TicketDTO implements Validator {
     private String effectiveDate;
-//    @NotBlank(message = "Không được để trống")
+    //    @NotBlank(message = "Không được để trống")
 //    @Size(max = 20,min = 2 , message = "Dài nhất 12 kí tự , ít nhất 2 kí tự ")
     private String expiryDate;
     @NotNull(message = "Không được để trống")

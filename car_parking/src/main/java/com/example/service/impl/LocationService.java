@@ -49,9 +49,9 @@ public class LocationService implements ILocationService {
     }
 
     @Override
-    public void updateLocation(Long name, Double width, Double height, Double length, Long floorId, Long
+    public void updateLocation(Long name, Double width, Double height, Double length,String permission_car_type_locations, Long floorId, Long
             sectionId, Long Id) {
-        iLocationRepository.updateLocation(name, width, height, length, floorId, sectionId, Id);
+        iLocationRepository.updateLocation(name, width, height, length,permission_car_type_locations, floorId, sectionId, Id);
     }
 
     /**

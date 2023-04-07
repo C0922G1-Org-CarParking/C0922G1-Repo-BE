@@ -1,7 +1,6 @@
 package com.example.dto;
 
 public interface ILocationDTO {
-
     Long getId();
     String getName();
     Integer getFloorId();
@@ -11,7 +10,5 @@ public interface ILocationDTO {
     Double getHeight();
     String getNameFloor();
     String getNameSection();
-
-
 
 }
