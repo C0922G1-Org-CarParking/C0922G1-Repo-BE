@@ -23,7 +23,7 @@ public class LocationDTO implements Validator {
     @Min(value = 0 , message = "Không được nhập số âm.")
     @NotNull(message = "không được để trống")
     private Double length;
-    private String[] permissionCarTypeLocations;
+    private String permissionCarTypeLocations;
     private Section section;
     private Floor floor;
 
@@ -80,11 +80,11 @@ public class LocationDTO implements Validator {
         this.length = length;
     }
 
-    public String[] getPermissionCarTypeLocations() {
+    public String getPermissionCarTypeLocations() {
         return permissionCarTypeLocations;
     }
 
-    public void setPermissionCarTypeLocations(String[] permissionCarTypeLocations) {
+    public void setPermissionCarTypeLocations(String permissionCarTypeLocations) {
         this.permissionCarTypeLocations = permissionCarTypeLocations;
     }
 

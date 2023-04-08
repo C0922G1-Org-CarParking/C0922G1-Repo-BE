@@ -1,16 +1,14 @@
 package com.example.dto;
 
-
 import com.example.model.Position;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.Period;
-
-
 public class EmployeeDTO implements Validator {
     private Long id;
     @Size(max = 100, message = "Tên nhân viên không được quá 30 ký tự.")

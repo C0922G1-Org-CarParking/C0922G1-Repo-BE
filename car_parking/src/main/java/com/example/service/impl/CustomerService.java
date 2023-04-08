@@ -42,8 +42,6 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-
-
     public List<ICarOfTicketDTO> findCarListOfCustomerId(int id) {
         return iCustomerRepository.findCarListOfCustomerId(id);
     }

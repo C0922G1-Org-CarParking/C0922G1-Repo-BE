@@ -143,10 +143,10 @@ public class CustomerRestController {
      * @RequestBody CustomerCarDto includes the customer object and the car object list
      */
     @PutMapping("/update/{id}")
-    public ResponseEntity<CustomerCarDTO> updateCustomer(@PathVariable Long id, @RequestBody @Validated CustomerCarDTO customerCarDto,
+    public ResponseEntity<?> updateCustomer(@PathVariable Long id, @RequestBody @Validated CustomerCarDTO customerCarDto,
                                                          BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+            return new ResponseEntity<>(bindingResult.getAllErrors(),HttpStatus.EXPECTATION_FAILED);
         }
         CustomerCarDTO customerDto = customerCarDto;
         List<CarDTO> carDTOS = customerCarDto.getCarList();

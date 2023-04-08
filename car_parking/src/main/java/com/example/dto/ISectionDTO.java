@@ -1,6 +1,6 @@
 package com.example.dto;
 
 public interface ISectionDTO {
-    Long getId();
+    int getId();
     String getName();
 }
