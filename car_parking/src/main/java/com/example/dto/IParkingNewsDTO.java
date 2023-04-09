@@ -9,6 +9,4 @@ public interface IParkingNewsDTO {
     String getImageUrl();
     String getContent();
     LocalDate getPostingDate();
-
 }
-

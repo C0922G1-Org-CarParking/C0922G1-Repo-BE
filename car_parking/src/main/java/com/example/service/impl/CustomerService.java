@@ -1,8 +1,5 @@
 package com.example.service.impl;
-import com.example.dto.ICarOfTicketDTO;
-import com.example.dto.ICustomerDTO;
-import com.example.dto.ICustomerListDTO;
-import com.example.dto.IListCustomerDTO;
+import com.example.dto.*;
 import com.example.repository.ICustomerRepository;
 import com.example.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +41,7 @@ public class CustomerService implements ICustomerService {
     @Override
 
 
-    public List<ICarOfTicketDTO> findCarListOfCustomerId(int id) {
+    public List<ICarTicketDTO> findCarListOfCustomerId(int id) {
         return iCustomerRepository.findCarListOfCustomerId(id);
     }
 

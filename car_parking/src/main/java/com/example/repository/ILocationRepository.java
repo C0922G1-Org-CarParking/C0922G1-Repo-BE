@@ -4,10 +4,8 @@ package com.example.repository;
 
 import com.example.dto.*;
 import com.example.model.Location;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -22,7 +20,7 @@ import java.util.List;
 public interface ILocationRepository extends JpaRepository<Location, Long> {
 
 // Created by: TheNV
-    @Query(value = "select * from location\n" +
+    @Query(value = "select location.* from location\n" +
             " left join floor on floor.id=location.floor_id\n" +
             " left join section on section.id= location.section_id where floor_id=:id and location.is_deleted=false order by location.section_id ,location.name", nativeQuery = true)
     List<Location> listLocation(@Param("id") int id);
@@ -94,13 +92,14 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
 
 
     @Modifying
-    @Query(value = "update location  set name = :name,width = :width, height = :height, length = :length, floor_id = :floor_id,section_id = :section_id where id = :id",
+    @Query(value = "update location  set name = :name,width = :width, height = :height, length = :length,permission_car_type_locations = :permission_car_type_locations, floor_id = :floor_id,section_id = :section_id where id = :id",
             nativeQuery = true)
     void updateLocation(
             @Param("name") Long name,
             @Param("width") Double width,
             @Param("height") Double height,
             @Param("length") Double length,
+            @Param("permission_car_type_locations") String permission_car_type_locations,
             @Param("floor_id") Long floorId,
             @Param("section_id") Long sectionId,
             @Param("id") Long Id);
@@ -127,7 +126,7 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
 //    BaoHX
 
     @Query(value =
-            "select l.id as id, \n" +
+            "select l.id as id, l.name as name, \n" +
                     "                                    f.name as nameFloor, \n" +
                     "                                   l.floor_id as floorId, \n" +
                     "                                   l.section_id as sectionId, \n" +
@@ -141,7 +140,7 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
                     "                            where f.name like concat('%', :search , '%') \n" +
                     "                                                        and l.is_deleted = false ",
             countQuery =
-                    "select l.id as id, \n" +
+                    "select l.id as id, l.name as name, \n" +
                             "                                    f.name as nameFloor, \n" +
                             "                                   l.floor_id as floorId, \n" +
                             "                                   l.section_id as sectionId, \n" +
