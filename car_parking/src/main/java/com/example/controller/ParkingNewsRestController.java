@@ -42,7 +42,7 @@ public class ParkingNewsRestController {
      * Date created: 29/03/2023
      * Function: find parking news by id
      *
-     * @param id
+     * @param  id
      * @return HttpStatus.BAB_REQUEST if result is null or HttpStatus.OK is result is not error
      */
     @GetMapping("/detail/{parkingNewsId}")
