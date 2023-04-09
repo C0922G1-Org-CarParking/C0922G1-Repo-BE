@@ -120,7 +120,6 @@ public class TicketRestController {
         return new ResponseEntity<>(iSectionDTOS, HttpStatus.OK);
     }
 
-
     /**
      * Created by: HuyNV
      * Date created: 29/03/2023
