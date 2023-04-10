@@ -4,36 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="1b2a9b48-b38d-43f3-8621-faebcbd0ab10" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/checksums/checksums.lock" afterDir="false" />
-    </list>
-=======
-<<<<<<< HEAD
-    <list default="true" id="668f7ff7-1853-455b-802b-dc343afba6c4" name="Changes" comment="" />
-=======
-<<<<<<< HEAD
-    <list default="true" id="c6279971-3fb9-43ee-b0f2-a2045fb7fb42" name="Changes" comment="" />
-=======
-    <list default="true" id="678275f3-7633-4a67-9a01-2c7faa4592eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/dto/ICarTicketDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+    <list default="true" id="6aaf647f-8874-4619-a5e7-0097cec3bebe" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/CustomerRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/CustomerRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/controller/TicketRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/controller/TicketRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/repository/ICustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/repository/ICustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/ICustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/service/impl/CustomerService.java" afterDir="false" />
     </list>
->>>>>>> origin/customer-car-MinhCDK
->>>>>>> 60607af3aeaf497df6850ed930fc00cfc8cebcac
->>>>>>> fd9e2b7567ef4ddcf7e521608735dcf9d8f97663
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="car-in-out" />
+        <entry key="$PROJECT_DIR$/.." value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -60,11 +40,11 @@
     </option>
     <option name="myId2Visible">
       <map>
-        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
   </component>
-  <component name="ProjectId" id="2O5v3oORDuZMKJeeA6ur7Zbro7j" />
+  <component name="ProjectId" id="2ODKdF25kDvJA4bbeXI51KRn61m" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -74,144 +54,12 @@
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
-<<<<<<< HEAD
   <component name="RunManager">
-=======
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\car_parking_module_6\C0922G1-Repo-BE\car_parking\src\main\resources" />
-      <recent name="E:\car_parking_module_6\C0922G1-Repo-BE\car_parking" />
-      <recent name="E:\car_parking_module_6\C0922G1-Repo-BE\car_parking\src" />
-      <recent name="D:\CodeGym\module6\demo\C0922G1-Repo-BE\car_parking\src\main" />
-      <recent name="D:\CodeGym\module6\demo\C0922G1-Repo-BE\car_parking\src\main\java\com" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example" />
-      <recent name="com.example.controller" />
-      <recent name="com.example.commons" />
-      <recent name="com.example.config" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Spring Boot.CarParkingApplication">
-    <configuration name="CarParkingRestController_authenticateUser.authenticateUser_18" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.example.controller.CarParkingRestController_authenticateUser.authenticateUser_18&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="CarParkingRestController_resetPassword.resetPassword_email_1" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.example.controller.CarParkingRestController_resetPassword.resetPassword_email_1&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="CarParkingRestController_resetPassword.resetPassword_email_2" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.example.controller.CarParkingRestController_resetPassword.resetPassword_email_2&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="CarParkingRestController_resetPassword.resetPassword_email_3" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.example.controller.CarParkingRestController_resetPassword.resetPassword_email_3&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="CarParkingRestController_resetPassword.resetPassword_email_4" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.example.controller.CarParkingRestController_resetPassword.resetPassword_email_4&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
->>>>>>> fd9e2b7567ef4ddcf7e521608735dcf9d8f97663
     <configuration name="CarParkingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="car_parking.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.CarParkingApplication" />
@@ -223,55 +71,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1b2a9b48-b38d-43f3-8621-faebcbd0ab10" name="Changes" comment="" />
-      <created>1680863061313</created>
+      <changelist id="6aaf647f-8874-4619-a5e7-0097cec3bebe" name="Changes" comment="" />
+      <created>1681089798285</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-<<<<<<< HEAD
-      <updated>1680863061313</updated>
-      <workItem from="1680863062553" duration="138000" />
-=======
-      <updated>1680066542027</updated>
-      <workItem from="1680066543533" duration="213000" />
-      <workItem from="1680066768922" duration="274000" />
-      <workItem from="1680067968152" duration="11725000" />
-      <workItem from="1680092405233" duration="4592000" />
-      <workItem from="1680099366418" duration="4732000" />
-      <workItem from="1680140392757" duration="4473000" />
-      <workItem from="1680153103834" duration="170000" />
-      <workItem from="1680154228987" duration="247000" />
-      <workItem from="1680157677778" duration="9020000" />
-      <workItem from="1680177633716" duration="4700000" />
-      <workItem from="1680226177429" duration="3334000" />
-      <workItem from="1680244211224" duration="6001000" />
-      <workItem from="1680271876027" duration="2971000" />
-      <workItem from="1680310725027" duration="8271000" />
-      <workItem from="1680338953819" duration="10245000" />
-      <workItem from="1680399311934" duration="11008000" />
-      <workItem from="1680489952387" duration="15082000" />
-      <workItem from="1680518970677" duration="3323000" />
-      <workItem from="1680523498363" duration="1616000" />
-      <workItem from="1680572348975" duration="13749000" />
-      <workItem from="1680620324281" duration="5031000" />
-      <workItem from="1680658543557" duration="774000" />
-      <workItem from="1680659447200" duration="2879000" />
-      <workItem from="1680663783630" duration="13066000" />
-<<<<<<< HEAD
-      <workItem from="1680744167232" duration="10825000" />
-      <workItem from="1680779564114" duration="8000" />
-      <workItem from="1680787196793" duration="3921000" />
-      <workItem from="1680828095401" duration="651000" />
-=======
-<<<<<<< HEAD
-      <workItem from="1680744167232" duration="14827000" />
-      <workItem from="1680789229611" duration="420000" />
-=======
-      <workItem from="1680744167232" duration="5395000" />
-      <workItem from="1680794600064" duration="789000" />
-      <workItem from="1680830326723" duration="5042000" />
->>>>>>> origin/customer-car-MinhCDK
->>>>>>> 60607af3aeaf497df6850ed930fc00cfc8cebcac
->>>>>>> fd9e2b7567ef4ddcf7e521608735dcf9d8f97663
+      <updated>1681089798285</updated>
+      <workItem from="1681089799943" duration="162000" />
     </task>
     <servers />
   </component>
