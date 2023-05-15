@@ -88,4 +88,6 @@ public interface ICustomerService {
     ICustomerDTO findById(int id);
 
     void deleteCustomerAndTicket(int id);
+
+    ICustomerDTO findCustomerIdAndLocationId(int id, int idLocation);
 }

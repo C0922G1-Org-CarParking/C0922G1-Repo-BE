@@ -16,23 +16,6 @@ public class Customer {
     @Column(columnDefinition = "date", nullable = false)
     private String dateOfBirth;
 
-
-    public Customer(Long id, String name, String dateOfBirth, String idCard, String phoneNumber, String email, boolean gender, int district, int province, int commune, String street, Set<Car> carSet, boolean isDeleted) {
-        this.id = id;
-        this.name = name;
-        this.dateOfBirth = dateOfBirth;
-        this.idCard = idCard;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.gender = gender;
-        this.district = district;
-        this.province = province;
-        this.commune = commune;
-        this.street = street;
-        this.carSet = carSet;
-        this.isDeleted = isDeleted;
-    }
-
     @Column(length = 45, nullable = false, unique = true)
     private String idCard;
 
@@ -55,6 +38,22 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     @JsonIgnore
     private Set<Car> carSet;
+
+    public Customer(Long id, String name, String dateOfBirth, String idCard, String phoneNumber, String email, boolean gender, int district, int province, int commune, String street, Set<Car> carSet, boolean isDeleted) {
+        this.id = id;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.idCard = idCard;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.gender = gender;
+        this.district = district;
+        this.province = province;
+        this.commune = commune;
+        this.street = street;
+        this.carSet = carSet;
+        this.isDeleted = isDeleted;
+    }
 
     private boolean isDeleted;
 

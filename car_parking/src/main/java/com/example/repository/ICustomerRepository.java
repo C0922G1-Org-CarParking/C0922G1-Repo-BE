@@ -215,4 +215,12 @@ public interface ICustomerRepository extends JpaRepository<Customer,Long> {
             "WHERE id = :id AND is_deleted = 0", nativeQuery = true)
     ICustomerDTO findCustomerById(@Param("id") int id);
 
+
+
+
+    @Query(value = "select customer.id as id,customer.name as name, customer.phone_number as phoneNumber " +
+            "from customer join car on customer.id = car.customer_id " +
+            "join ticket on ticket.car_id = car.id" +
+            " where customer.id =:id and  ticket.location_id =:idLocation",nativeQuery = true)
+    ICustomerDTO findCustomerIdAndLocationId(@Param("id") int id,@Param("idLocation") int idLocation);
 }

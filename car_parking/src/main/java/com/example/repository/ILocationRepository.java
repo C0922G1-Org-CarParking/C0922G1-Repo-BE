@@ -165,7 +165,7 @@ public interface ILocationRepository extends JpaRepository<Location, Long> {
     @Query(value = "select location.id as id, location.name as name from location " +
             "join `section` on `section`.id = location.section_id" +
             " join floor on floor.id = location.floor_id" +
-            " where `section`.id = :floorId and floor.id = :sectionId",
+            " where `section`.id = :sectionId and floor.id = :floorId and location.is_occupied = 0",
             nativeQuery = true)
     List<ILocationOfFloorDTO> getListNameLocation(@Param("floorId") int floorId ,
                                                @Param("sectionId") int sectionId);

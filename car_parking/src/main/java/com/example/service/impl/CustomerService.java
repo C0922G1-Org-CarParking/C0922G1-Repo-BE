@@ -142,6 +142,11 @@ public class CustomerService implements ICustomerService {
         customerRepository.deleteCustomer(id);
     }
 
+    @Override
+    public ICustomerDTO findCustomerIdAndLocationId(int id, int idLocation) {
+        return iCustomerRepository.findCustomerIdAndLocationId(id,idLocation);
+    }
+
     /**
      * Create by: VuBD
      * Date create: 29/03/2023
